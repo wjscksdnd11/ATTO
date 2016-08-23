@@ -5,9 +5,10 @@
     tools:context="com.atto.developers.atto.fragment.MakerFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ListView
+        android:id="@+id/rv_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent"></ListView>
 
 </FrameLayout>
