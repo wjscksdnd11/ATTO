@@ -14,4 +14,14 @@
     <string name="btn_setting_price">가격 설정하기</string>
     <string name="btn_accept_request">승인 및 수락 요청하기</string>
     <string name="text_maker_order_dialog">협상 카드 등록이 마감됩니다. 제작 주문서 작성페이지로 이동합니다.</string>
+    <string name="text_detail_port_title">작품 제목</string>
+    <string name="btn_detail_port_move_trade">거래 작성하러 가기</string>
+    <string name="edit_add_port_title">제목을 입력해주세요</string>
+    <string name="edit_add_port_category">해당 제품에 관련된 해시태그를 작성해주세요</string>
+    <string name="btn_add_port_register">등록하기</string>
+    <string name="btn_mypage_setting_myprofile">내 프로필 설정</string>
+    <string name="btn_complete_update">수정 완료</string>
+    <string name="btn_move_address">주소 변경</string>
+    <string name="btn_post_code">우편 번호</string>
+    <string name="edit_detail_address">상세 주소 입력</string>
 </resources>

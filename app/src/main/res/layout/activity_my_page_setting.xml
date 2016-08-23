@@ -9,4 +9,51 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.atto.developers.atto.MyPageSettingActivity">
 
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/img_mypage_set_profile"
+        android:layout_marginTop="61dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/edit_profile_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="주소"
+        android:id="@+id/text_profile_set_address"
+        android:layout_alignBottom="@+id/btn_move_address"
+        android:layout_toLeftOf="@+id/btn_move_address"
+        android:layout_toStartOf="@+id/btn_move_address" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_move_address"
+        android:id="@+id/btn_move_address"
+        android:layout_below="@+id/edit_profile_nickname"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_complete_update"
+        android:id="@+id/btn_complete_update"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/edit_profile_nickname"
+        android:layout_alignEnd="@+id/edit_profile_nickname" />
+
 </RelativeLayout>

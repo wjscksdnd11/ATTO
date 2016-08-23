@@ -8,4 +8,9 @@
     <string name="text_add_trade_register_trade">거래 등록하기</string>
     <string name="btn_accept_request">승인 및 수락 요청하기</string>
     <string name="text_maker_order_dialog" />
+    <string name="btn_add_port_register">등록하기</string>
+    <string name="btn_mypage_setting_myprofile">내 프로필 설정</string>
+    <string name="btn_complete_update">수정 완료</string>
+    <string name="btn_move_address">주소 변경</string>
+    <string name="btn_post_code">우편 번호</string>
 </resources>
