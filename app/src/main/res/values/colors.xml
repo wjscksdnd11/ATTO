@@ -3,5 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <string name="btn_local_login">Login</string>
+
+    <color name="white">#ffffff</color>
+    <color name="color_btn">#5E5E5E</color>
+
+    <color name="color_atto_main">#ff3b7b</color>
+    <color name="color_atto_sub">#f8b895</color>
+
 </resources>

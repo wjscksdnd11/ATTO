@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="main_tab_one">atto</string>
+    <string name="main_tab_realtrade">실시간 거래</string>
+    <string name="main_tab_maker">아토 제작자</string>
+    <string name="btn_realtimetrade_write_text">거래글 작성하러 가기</string>
+    <string name="text_nego_register">협상카드 등록하기</string>
+    <string name="text_add_trade_register_trade">거래 등록하기</string>
+    <string name="btn_accept_request">승인 및 수락 요청하기</string>
+    <string name="text_maker_order_dialog" />
+</resources>
