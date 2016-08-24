@@ -24,7 +24,6 @@ public class MakerFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class MakerFragment extends Fragment {
         listView = (ListView)view.findViewById(R.id.rv_list);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Intent intent = new Intent(getContext(), DetailMakerActivity.class);
                 startActivity(intent);
             }

@@ -21,6 +21,7 @@ public class DetailTradeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(DetailTradeActivity.this, AddNegoActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

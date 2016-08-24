@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class DemoUtils {
-  int currentOffset;
+  public int currentOffset;
 
   public DemoUtils() {
   }

@@ -24,4 +24,15 @@
     <string name="btn_move_address">주소 변경</string>
     <string name="btn_post_code">우편 번호</string>
     <string name="edit_detail_address">상세 주소 입력</string>
+
+    <string name="edit_hint_search_address">예) 판교역로 235, 한남동 714</string>
+    <string name="edit_login_id_hint">아이디</string>
+    <string name="edit_login_password_hint">비밀번호</string>
+    <string name="text_login_signup">회원가입</string>
+    <string name="text_login_guest">둘러보기</string>
+    <string name="btn_final_accept_request">제작자에게 최종수락 요청</string>
+    <string name="btn_update_order">수정하기</string>
+    <string name="btn_footer_move_maker_info">제작자 등록 정보</string>
+    <string name="btn_footer_move_maker_nego">협상중인 거래</string>
+    <string name="btn_footer_move_accept_wait">수락대기 중인 거래</string>
 </resources>
