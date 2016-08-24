@@ -1,18 +1,18 @@
-package com.atto.developers.atto.data.NetworkData.TradeData;
+package com.atto.developers.atto.data.NetworkData.NegoData;
 
 import com.atto.developers.atto.data.NetworkData.ListData.PagingData;
 
-public class ListData implements java.io.Serializable {
-    private static final long serialVersionUID = 4222295191657793439L;
-    private TradeData[] data;
+public class NegoListData implements java.io.Serializable {
+    private static final long serialVersionUID = 8180847119468994447L;
+    private NegoData[] data;
     private PagingData paging;
     private String message;
 
-    public TradeData[] getData() {
+    public NegoData[] getData() {
         return this.data;
     }
 
-    public void setData(TradeData[] data) {
+    public void setData(NegoData[] data) {
         this.data = data;
     }
 
