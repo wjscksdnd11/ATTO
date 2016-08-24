@@ -39,7 +39,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, MyPageActivity.class);
                 startActivity(intent);
+            }
+        });
 
+        btn = (ImageButton)toolbar.findViewById(R.id.ic_notification);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NoticeMainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -48,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, UnifiedSearchActivity.class);
+                startActivity(intent);
             }
         });
 

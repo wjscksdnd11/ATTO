@@ -16,11 +16,11 @@
     <com.hanks.htextview.HTextView
         android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:textColor="#000000"
-        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textSize="36sp"
         htext:animateType="line"
-        android:layout_gravity="center" />
+        htext:fontAsset="fonts/nanumgothic.ttf" />
 
 </LinearLayout>
