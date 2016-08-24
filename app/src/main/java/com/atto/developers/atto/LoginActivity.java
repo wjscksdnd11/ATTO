@@ -15,11 +15,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button btn_local_login = (Button)findViewById(R.id.button);
-        Button btn_kakao_login = (Button)findViewById(R.id.button2);
-        TextView text_login_signup = (TextView)findViewById(R.id.textView);
-        TextView text_login_guest = (TextView)findViewById(R.id.textView2);;
-        TextView text_search_password = (TextView)findViewById(R.id.textView3);;
+        Button btn_local_login = (Button)findViewById(R.id.btn_local_login);
+        Button btn_kakao_login = (Button)findViewById(R.id.btn_kakao_login);
+        TextView text_login_signup = (TextView)findViewById(R.id.text_login_signup);
+        TextView text_login_guest = (TextView)findViewById(R.id.text_login_guest);;
+        TextView text_search_password = (TextView)findViewById(R.id.text_search_password);;
 
         btn_local_login.setOnClickListener(new View.OnClickListener() {
             @Override

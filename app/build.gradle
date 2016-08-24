@@ -41,4 +41,6 @@ dependencies {
 
     compile 'com.felipecsl.asymmetricgridview:library:2.0.1'
     compile 'org.jetbrains:annotations-java5:15.0'
+
+    compile 'hanks.xyz:htextview-library:0.1.5'
 }

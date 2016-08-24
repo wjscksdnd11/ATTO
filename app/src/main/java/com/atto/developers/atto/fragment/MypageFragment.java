@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.atto.developers.atto.AcceptWaitActivity;
+import com.atto.developers.atto.MakerInfoActivity;
+import com.atto.developers.atto.MakerNegoActivity;
 import com.atto.developers.atto.MyPageSettingActivity;
 import com.atto.developers.atto.R;
 
@@ -38,6 +41,34 @@ public class MypageFragment extends Fragment {
 
             }
         });
+
+        View footerView = view.findViewById(R.id.view_mypage_maker_footerview);
+        btn = (Button)footerView.findViewById(R.id.btn_footer_move_maker_info);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), MakerInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn = (Button)footerView.findViewById(R.id.btn_footer_move_maker_nego);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), MakerNegoActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn = (Button)footerView.findViewById(R.id.btn_footer_move_accept_wait);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AcceptWaitActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         return view;
     }
 

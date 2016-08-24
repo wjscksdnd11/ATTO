@@ -16,12 +16,13 @@ public class AddNegoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_nego);
 
-        Button btn = (Button)findViewById(R.id.btn_move_nego_register);
+        Button btn = (Button)findViewById(R.id.btn_nego_register);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AddNegoActivity.this, DetailTradeActivity.class);
                 startActivity(intent);
+                finish();
 
             }
         });

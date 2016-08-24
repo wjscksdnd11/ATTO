@@ -1,6 +1,7 @@
 package com.atto.developers.atto.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.atto.developers.atto.DetailPortActivity;
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.asymmetricgridview.DefaultListAdapter;
 import com.atto.developers.atto.asymmetricgridview.DemoAdapter;
@@ -59,6 +61,8 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
 
     private void init() {
 
+        demoUtils.currentOffset = 0;
+        adapter.setItems(demoUtils.moarItems(30));
         adapter.appendItems(demoUtils.moarItems(30));
         listView.setRequestedColumnCount(3);
         listView.setRequestedHorizontalSpacing(Utils.dpToPx(getContext(), 3));
@@ -81,6 +85,8 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
     @Override
     public void onItemClick(@NotNull AdapterView<?> parent, @NotNull View view, int position, long id) {
         Toast.makeText(getContext(), "item : " + position, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getContext(), DetailPortActivity.class);
+        startActivity(intent);
     }
 
 }
