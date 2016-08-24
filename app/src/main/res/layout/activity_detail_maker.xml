@@ -19,7 +19,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/include" />
+        android:id="@+id/view_item_maker" />
+
 
     <TextView
         android:textColor="@color/white"
@@ -28,11 +29,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_detail_maker_signed"
-        android:layout_below="@+id/include"
+        android:layout_below="@+id/view_item_maker"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/include"
-        android:layout_alignEnd="@+id/include"
+        android:layout_alignRight="@+id/view_item_maker"
+        android:layout_alignEnd="@+id/view_item_maker"
         android:gravity="center"
         android:textSize="16sp" />
 

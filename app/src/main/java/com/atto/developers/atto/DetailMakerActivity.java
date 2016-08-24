@@ -7,31 +7,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class DetailMakerActivity extends AppCompatActivity {
 
     ListView listView;
-
+    TextView signedView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_maker);
 
-        Button btn = (Button) findViewById(R.id.btn_detail_port_cancel);
-        btn.setOnClickListener(new View.OnClickListener() {
+        signedView = (TextView)findViewById(R.id.text_detail_maker_signed);
+        signedView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-            }
-        });
-        btn = (Button) findViewById(R.id.btn_detail_port_move_trade);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DetailMakerActivity.this, AddTradeActivity.class);
-                startActivity(intent);
 
             }
         });

@@ -4,19 +4,20 @@ package com.atto.developers.atto.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
 
-import com.atto.developers.atto.AddTradeActivity;
 import com.atto.developers.atto.DetailTradeActivity;
 import com.atto.developers.atto.R;
+import com.atto.developers.atto.TradeAdapter;
+import com.atto.developers.atto.data.NetworkData.ListData.KeywordList;
+import com.atto.developers.atto.data.NetworkData.TradeData.TradeData;
+import com.atto.developers.atto.data.NetworkData.UserData.Member_info;
+
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,7 +25,8 @@ import com.atto.developers.atto.R;
 public class RealTimeTradeFragment extends Fragment {
 
 
-    ListView listView;
+    RecyclerView listView;
+    TradeAdapter mAdapter;
     public RealTimeTradeFragment() {
         // Required empty public constructor
     }
@@ -38,34 +40,46 @@ public class RealTimeTradeFragment extends Fragment {
 
         setHasOptionsMenu(true);
 
-        listView = (ListView)view.findViewById(R.id.listView);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Intent intent = new Intent(getContext(), DetailTradeActivity.class);
-                startActivity(intent);
-            }
-        });
-        Button btn = (Button)view.findViewById(R.id.btn_trade_add);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), AddTradeActivity.class);
-                startActivity(intent);
+        listView = (RecyclerView) view.findViewById(R.id.rv_list);
+        mAdapter = new TradeAdapter();
 
+
+
+        mAdapter.setOnAdapterItemClickListener(new TradeAdapter.OnAdapterItemClickListener() {
+            @Override
+            public void onAdapterItemClick(View view, TradeData tradeData, int position) {
+                Intent intent = new Intent(getContext(),  DetailTradeActivity.class);
+                startActivity(intent);
             }
         });
+
+        listView.setAdapter(mAdapter);
+        LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        listView.setLayoutManager(manager);
+
+        initData();
         return view;
     }
 
+    private void initData() {
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-    }
+        Random r = new Random();
+        for (int i = 0; i < 20; i++) {
+            TradeData tradeData = new TradeData();
+            Member_info member_info = new Member_info();
+            member_info.setMember_alias("atto " + i);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+            KeywordList keywordList = new KeywordList();
+            keywordList.setKey_word_1("무방부제");
+            tradeData.setMember_info(member_info);
+            tradeData.setTrade_status(r.nextInt(5) + " 개 협상 진행 중");
+            tradeData.setTrade_price(r.nextInt(15000) + "");
+            tradeData.setTrade_key_word_lists(keywordList);
+            tradeData.setTrade_dtime("2016년 8월" + r.nextInt(30) + "일");
+
+            mAdapter.add(tradeData);
+
+        }
+
     }
 }

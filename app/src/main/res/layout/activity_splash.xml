@@ -10,6 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/color_atto_main"
     tools:context="com.atto.developers.atto.SplashActivity">
 
     <com.hanks.htextview.HTextView

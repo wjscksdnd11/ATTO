@@ -10,4 +10,7 @@
     <color name="color_atto_main">#ff3b7b</color>
     <color name="color_atto_sub">#f8b895</color>
 
+    <color name="color_trade_status_text_bg">#9A59B5</color>
+    <color name="color_trade_status_layout_bg">#E0E0E0</color>
+
 </resources>
