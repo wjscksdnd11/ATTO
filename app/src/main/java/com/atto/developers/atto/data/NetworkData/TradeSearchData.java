@@ -1,5 +1,7 @@
 package com.atto.developers.atto.data.NetworkData;
 
+import com.atto.developers.atto.data.NetworkData.ListData.KeywordList;
+
 public class TradeSearchData implements java.io.Serializable {
     private static final long serialVersionUID = 5103017597792251620L;
     private String trade_id;
@@ -8,7 +10,7 @@ public class TradeSearchData implements java.io.Serializable {
     private String trade_price;
     private String trade_dtime;
     private String trade_product_img;
-    private TradeSearchDataTrade_key_word_lists trade_key_word_lists;
+    private KeywordList trade_key_word_lists;
     private String member_profile_img;
     private String trade_status;
 
@@ -60,11 +62,11 @@ public class TradeSearchData implements java.io.Serializable {
         this.trade_product_img = trade_product_img;
     }
 
-    public TradeSearchDataTrade_key_word_lists getTrade_key_word_lists() {
+    public KeywordList getTrade_key_word_lists() {
         return this.trade_key_word_lists;
     }
 
-    public void setTrade_key_word_lists(TradeSearchDataTrade_key_word_lists trade_key_word_lists) {
+    public void setTrade_key_word_lists(KeywordList trade_key_word_lists) {
         this.trade_key_word_lists = trade_key_word_lists;
     }
 

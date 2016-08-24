@@ -1,8 +1,7 @@
-package com.atto.developers.atto.data.NetworkData;
+package com.atto.developers.atto.data.NetworkData.ListData;
 
-import java.io.Serializable;
-
-public class TradeListPaging implements Serializable {
+public class PagingData implements java.io.Serializable {
+    private static final long serialVersionUID = -5008020232738356514L;
     private String next;
     private String prev;
 

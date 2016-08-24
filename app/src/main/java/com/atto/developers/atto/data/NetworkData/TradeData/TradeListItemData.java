@@ -1,15 +1,15 @@
 package com.atto.developers.atto.data.NetworkData.TradeData;
 
-public class TradeRegister implements java.io.Serializable {
+public class TradeListItemData implements java.io.Serializable {
     private static final long serialVersionUID = 3311847018150535221L;
-    private TradeItemData data;
+    private TradeData data;
     private String message;
 
-    public TradeItemData getData() {
+    public TradeData getData() {
         return this.data;
     }
 
-    public void setData(TradeItemData data) {
+    public void setData(TradeData data) {
         this.data = data;
     }
 

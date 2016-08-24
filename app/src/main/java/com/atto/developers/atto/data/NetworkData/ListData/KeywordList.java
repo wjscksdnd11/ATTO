@@ -1,7 +1,7 @@
-package com.atto.developers.atto.data.NetworkData.TradeData;
+package com.atto.developers.atto.data.NetworkData.ListData;
 
-public class TradeKeywordLists implements java.io.Serializable {
-    private static final long serialVersionUID = 3417399339545538218L;
+public class KeywordList implements java.io.Serializable {
+    private static final long serialVersionUID = -4256873173802320166L;
     private String key_word_3;
     private String key_word_1;
     private String key_word_2;
