@@ -27,7 +27,7 @@ public class MyPageActivity extends AppCompatActivity {
         });
 
         TextView textView = (TextView)toolbar.findViewById(R.id.text_title);
-        textView.setText("마이페이지");
+        textView.setText(R.string.activity_my_page);
 
         View headerView = findViewById(R.id.mypage_header);
         Button btn = (Button)headerView.findViewById(R.id.btn_mypage_setting_myprofile);
