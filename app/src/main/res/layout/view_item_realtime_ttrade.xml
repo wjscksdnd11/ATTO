@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:background="@color/color_trade_status_layout_bg"
+        android:id="@+id/layout_trade_status"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:background="@color/color_trade_status_text_bg"
+            android:textColor="@color/white"
+            android:id="@+id/text_trade_staus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_trade_status"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/img_realtime_photo"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/text_trade_title"
+        android:textColor="@color/colorBlack"
+
+        android:layout_toRightOf="@+id/img_realtime_photo"
+        android:layout_toEndOf="@+id/img_realtime_photo"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Textz"
+        android:id="@+id/text_trade_price"
+        android:layout_below="@+id/text_trade_title"
+        android:layout_toRightOf="@+id/img_realtime_photo"
+        android:layout_toEndOf="@+id/img_realtime_photo"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/text_trade_limit_date"
+        android:textColor="@color/colorBlack"
+        android:layout_below="@+id/text_trade_price"
+        android:layout_toRightOf="@+id/img_realtime_photo"
+        android:layout_toEndOf="@+id/img_realtime_photo"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="D-3"
+        android:id="@+id/text_trade_dday"
+        android:textColor="@color/colorWhite"
+        android:layout_alignTop="@+id/text_trade_limit_date"
+        android:layout_alignLeft="@+id/img_trade_profile"
+        android:layout_alignStart="@+id/img_trade_profile" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/img_trade_profile"
+        android:background="@drawable/profile_shapes"
+        android:layout_above="@+id/text_trade_limit_date"
+        android:layout_toLeftOf="@+id/text_trade_nickname"
+        android:layout_toStartOf="@+id/text_trade_nickname" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_trade_nickname"
+        android:text="TextView"
+        android:layout_alignTop="@+id/text_trade_price"
+        android:layout_alignRight="@+id/text_trade_title"
+        android:layout_alignEnd="@+id/text_trade_title"
+        android:layout_marginLeft="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="keyword"
+        android:id="@+id/text_trade_keyword"
+        android:background="@drawable/keyword_shapes"
+        android:textColor="@color/colorBlack"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/img_realtime_photo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+</RelativeLayout>

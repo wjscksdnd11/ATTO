@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.atto.developers.atto.DetailTradeActivity;
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.TradeAdapter;
+import com.atto.developers.atto.adapter.TradeAdapter;
 import com.atto.developers.atto.data.NetworkData.ListData.KeywordList;
 import com.atto.developers.atto.data.NetworkData.TradeData.TradeData;
 import com.atto.developers.atto.data.NetworkData.UserData.Member_info;
