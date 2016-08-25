@@ -12,13 +12,13 @@
 
         <ImageView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="150dp"
         android:id="@+id/img_realtime_photo"
         android:background="@color/colorPrimary"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/text_trade_limit_date"
         android:layout_alignEnd="@+id/text_trade_limit_date"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="30dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -137,7 +137,7 @@
         android:layout_gravity="bottom"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="New Title"
         android:gravity="center|fill_vertical" />
 
