@@ -12,9 +12,10 @@ import com.atto.developers.atto.viewholder.RecyclerMakerViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+*
  * Created by Tacademy on 2016-08-23.
- */
+
+
 public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerViewHolder> {
 
     List<MakerItemData> items = new ArrayList<>();

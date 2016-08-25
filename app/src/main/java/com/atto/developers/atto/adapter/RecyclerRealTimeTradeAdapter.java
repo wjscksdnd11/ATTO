@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
+
 import com.atto.developers.atto.data.NetworkData.TradeData.TradeData;
 import com.atto.developers.atto.viewholder.RealTimeTradeViewHolder;
 
@@ -41,7 +42,7 @@ public class RecyclerRealTimeTradeAdapter extends RecyclerView.Adapter<RealTimeT
 
     @Override
     public RealTimeTradeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item_realtime_ttrade, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item_realtime_trade, parent, false);
         RealTimeTradeViewHolder holder = new RealTimeTradeViewHolder(view);
         holder.setOnTradeItemClickListener(this);
         return holder;

@@ -1,3 +1,4 @@
+/*
 package com.atto.developers.atto.viewholder;
 
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +9,11 @@ import android.widget.TextView;
 
 import com.atto.developers.atto.data.MakerItemData;
 
+*/
 /**
  * Created by Tacademy on 2016-08-23.
- */
+ *//*
+
 public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
 
 
@@ -34,3 +37,4 @@ public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
     }
     }
 }
+*/

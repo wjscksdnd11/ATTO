@@ -9,10 +9,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.atto.developers.atto.fragment.AttoFragment;
 import com.atto.developers.atto.fragment.MakerFragment;
 import com.atto.developers.atto.fragment.RealTimeTradeFragment;
+
 
 public class MainActivity extends AppCompatActivity {
 

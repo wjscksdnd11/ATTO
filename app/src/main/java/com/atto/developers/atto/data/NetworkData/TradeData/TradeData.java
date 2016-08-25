@@ -1,7 +1,8 @@
-package com.atto.developers.atto.data.networkData.tradeData;
+package com.atto.developers.atto.data.NetworkData.TradeData;
+import com.atto.developers.atto.data.NetworkData.ListData.KeywordList;
+import com.atto.developers.atto.data.NetworkData.UserData.Member_info;
 
-import com.atto.developers.atto.data.networkData.listData.KeywordList;
-import com.atto.developers.atto.data.networkData.userData.Member_info;
+
 // // TODO: 2016-08-24  이미지 배열이랑, 이미지 만 받는거 둘 중 하나는 null 이 올 수 있음 .
 public class TradeData implements java.io.Serializable {
     private static final long serialVersionUID = -7123457291554300083L;

@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkData.negoData;
+package com.atto.developers.atto.data.NetworkData.NegoData;
 
 public class NegeListItemData implements java.io.Serializable {
     private static final long serialVersionUID = 2319219203764986017L;

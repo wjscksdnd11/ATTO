@@ -83,7 +83,6 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="D-3"
         android:id="@+id/text_trade_dday"
-        android:textColor="@color/colorWhite"
         android:layout_alignTop="@+id/text_trade_limit_date"
         android:layout_alignLeft="@+id/img_trade_profile"
         android:layout_alignStart="@+id/img_trade_profile" />
@@ -92,7 +91,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:id="@+id/img_trade_profile"
-        android:background="@drawable/profile_shapes"
+            android:background="@color/colorPrimary"
         android:layout_above="@+id/text_trade_limit_date"
         android:layout_toLeftOf="@+id/text_trade_nickname"
         android:layout_toStartOf="@+id/text_trade_nickname" />
@@ -121,4 +120,15 @@
         android:layout_alignParentStart="true" />
 
     </RelativeLayout>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/toggleButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="598dp"
+        android:layout_marginStart="598dp" />
 </RelativeLayout>

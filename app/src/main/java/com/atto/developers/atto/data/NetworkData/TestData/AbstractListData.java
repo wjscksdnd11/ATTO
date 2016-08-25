@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkData.testData;
+package com.atto.developers.atto.data.NetworkData.TestData;
 
 import java.io.Serializable;
 

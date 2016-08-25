@@ -1,6 +1,6 @@
-package com.atto.developers.atto.data.networkData.negoData;
+package com.atto.developers.atto.data.NetworkData.NegoData;
 
-import com.atto.developers.atto.data.networkData.listData.PagingData;
+import com.atto.developers.atto.data.NetworkData.ListData.PagingData;
 
 public class NegoListData implements java.io.Serializable {
     private static final long serialVersionUID = 8180847119468994447L;

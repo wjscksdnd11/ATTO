@@ -1,3 +1,4 @@
+
 package com.atto.developers.atto.fragment;
 
 
@@ -12,20 +13,23 @@ import android.view.ViewGroup;
 
 import com.atto.developers.atto.DetailMakerActivity;
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.adapter.TradeAdapter;
+
+import com.atto.developers.atto.adapter.RecyclerRealTimeTradeAdapter;
 import com.atto.developers.atto.data.NetworkData.ListData.KeywordList;
 import com.atto.developers.atto.data.NetworkData.TradeData.TradeData;
 import com.atto.developers.atto.data.NetworkData.UserData.Member_info;
 
 import java.util.Random;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
+
 public class MakerFragment extends Fragment {
 
     RecyclerView listView;
-    TradeAdapter mAdapter;
+    RecyclerRealTimeTradeAdapter mAdapter;
 
     public MakerFragment() {
         // Required empty public constructor
@@ -38,13 +42,13 @@ public class MakerFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_maker, container, false);
 
         listView = (RecyclerView) view.findViewById(R.id.rv_list);
-        mAdapter = new TradeAdapter();
+        mAdapter = new RecyclerRealTimeTradeAdapter();
         listView.setAdapter(mAdapter);
 
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         listView.setLayoutManager(manager);
 
-        mAdapter.setOnAdapterItemClickListener(new TradeAdapter.OnAdapterItemClickListener() {
+        mAdapter.setOnAdapterItemClickListener(new RecyclerRealTimeTradeAdapter.OnAdapterItemClickListener() {
             @Override
             public void onAdapterItemClick(View view, TradeData tradeData, int position) {
                 Intent intent = new Intent(getContext(), DetailMakerActivity.class);
