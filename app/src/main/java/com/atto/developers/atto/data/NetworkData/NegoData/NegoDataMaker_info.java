@@ -1,10 +1,11 @@
-package com.atto.developers.atto.data.NetworkData.NegoData;
+package com.atto.developers.atto.data.networkData.negoData;
 
 public class NegoDataMaker_info implements java.io.Serializable {
     private static final long serialVersionUID = -2961397907002658023L;
     private String maker_profile_img;
     private String maker_name;
     private String maker_score;
+    private String maker_id;
 
     public String getMaker_profile_img() {
         return this.maker_profile_img;
@@ -28,5 +29,13 @@ public class NegoDataMaker_info implements java.io.Serializable {
 
     public void setMaker_score(String maker_score) {
         this.maker_score = maker_score;
+    }
+
+    public String getMaker_id() {
+        return maker_id;
+    }
+
+    public void setMaker_id(String maker_id) {
+        this.maker_id = maker_id;
     }
 }

@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.NetworkData.MakerData;
+package com.atto.developers.atto.data.networkData.makerData;
 
 public class MakerData implements java.io.Serializable {
     private static final long serialVersionUID = 6984295785682812238L;
