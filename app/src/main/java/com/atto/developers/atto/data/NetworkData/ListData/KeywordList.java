@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.NetworkData.ListData;
+package com.atto.developers.atto.data.networkData.listData;
 
 public class KeywordList implements java.io.Serializable {
     private static final long serialVersionUID = -4256873173802320166L;
