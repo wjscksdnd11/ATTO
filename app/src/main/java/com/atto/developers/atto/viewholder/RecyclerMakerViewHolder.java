@@ -17,11 +17,11 @@ public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
     RatingBar ratingbar_maker_grade;
     TextView trade_keyword, trade_nickname, text_detail_maker_intro;
 
-    MakerData makerdata;
+    MakerData makerData;
 
 
     public interface OnTradeItemClickListener {
-        public void onTradeItemClick(View view, MakerData makerItemData, int position);
+        public void onTradeItemClick(View view, MakerData makerData, int position);
     }
 
 
@@ -44,12 +44,12 @@ public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void setMakerData(MakerData makerdata) {
-        this.makerdata = makerdata;
+    public void setMakerData(MakerData makerData) {
+        this.makerData = makerData;
        // maker_profile.setImageDrawable(makerdata.getMader_representation_img());
-        ratingbar_maker_grade.setRating(Float.parseFloat(makerdata.getMaker_score()));
-        trade_keyword.setText(makerdata.getMaker_key_word_lists().getKey_word_1());
-        trade_nickname.setText(makerdata.getMaker_id());
+        ratingbar_maker_grade.setRating(Float.parseFloat(makerData.getMaker_score()));
+        trade_keyword.setText(makerData.getMaker_key_word_lists().getKey_word_1());
+        trade_nickname.setText(makerData.getMaker_id());
     }
     }
 

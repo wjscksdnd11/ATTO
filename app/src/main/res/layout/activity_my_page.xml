@@ -1,8 +1,10 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.atto.developers.atto.fragment.MypageFragment">
+    android:orientation="vertical"
+    tools:context="com.atto.developers.atto.fragment.MypageFragment"
+    android:weightSum="1">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/main_toolbar"
@@ -18,21 +20,21 @@
     </android.support.v7.widget.Toolbar>
 
     <include
-        android:layout_below="@+id/main_toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        layout="@layout/view_mypage_headerview"
-        android:layout_gravity="left|top"
-        android:id="@+id/mypage_header" />
-    <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv_list"
-        android:layout_above="@+id/view_mypage_maker_footerview"
-        android:layout_below="@+id/mypage_header" />
+        android:layout_height="wrap_content"
+        layout="@layout/view_header"
+        android:layout_below="@+id/main_toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/view"
+        android:layout_weight="1" />
 
     <include
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/view_mypage_maker_footerview"
         android:layout_alignParentBottom="true"
@@ -41,4 +43,5 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/view_mypage_maker_footerview" />
-</RelativeLayout>
+
+</LinearLayout>

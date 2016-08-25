@@ -15,26 +15,21 @@ import com.atto.developers.atto.data.MypageData;
 public class MypageViewHolder extends RecyclerView.ViewHolder {
 
 
+    ImageView my_page_profile;
+    TextView my_page_staus, my_page_title, my_page_price,
+            my_page_day, my_page_limit_date, my_page_nickname;
+    ImageButton btn_chat;
 
+    MypageData mypageData;
     public interface OnTradeItemClickListener {
         public void onTradeItemClick(View view, MypageData mypageData, int position);
     }
-
 
 
     OnTradeItemClickListener listener;
     public void setOnTradeItemClickListener(OnTradeItemClickListener listener) {
         this.listener = listener;
     }
-
-
-
-
-    ImageView my_page_profile;
-    TextView my_page_staus, my_page_title, my_page_price,
-            my_page_day, my_page_limit_date, my_page_nickname;
-    ImageButton btn_chat;
-
     public MypageViewHolder(View itemView) {
         super(itemView);
         my_page_profile =(ImageView)itemView.findViewById(R.id.my_page_img_trade_profile);
@@ -45,6 +40,11 @@ public class MypageViewHolder extends RecyclerView.ViewHolder {
         my_page_limit_date=(TextView)itemView.findViewById(R.id.my_page_text_trade_limit_date);
         my_page_nickname=(TextView)itemView.findViewById(R.id.my_page_text_trade_nickname);
         btn_chat=(ImageButton)itemView.findViewById(R.id.btn_chat);
+    }
+
+    public void setMypageData(MypageData mypageData){
+        this.mypageData = mypageData;
+
     }
 
 

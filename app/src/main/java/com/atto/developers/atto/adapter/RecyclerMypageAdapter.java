@@ -32,7 +32,6 @@ public class RecyclerMypageAdapter extends RecyclerView.Adapter<MypageViewHolder
         this.listener = listener;
     }
 
-
     @Override
     public MypageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item_mypage, parent, false);
