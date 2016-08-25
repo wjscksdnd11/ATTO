@@ -13,17 +13,18 @@
         android:id="@+id/edit_input_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
+        android:layout_toLeftOf="@+id/ic_search"
+        android:layout_toStartOf="@+id/ic_search" />
 
-    <Button
-        android:id="@+id/button"
+    <ImageButton
+        android:background="@null"
+        android:src="@drawable/ic_toolbar_search"
+        android:id="@+id/ic_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/edit_input_search"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:text="search" />
+        android:layout_alignParentRight="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,19 +41,6 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="150dp">
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp">
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="150dp">
-
             </FrameLayout>
         </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
