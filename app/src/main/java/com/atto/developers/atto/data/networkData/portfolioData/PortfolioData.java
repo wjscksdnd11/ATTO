@@ -1,5 +1,6 @@
 package com.atto.developers.atto.data.networkData.portfolioData;
 
+
 import com.atto.developers.atto.data.networkData.listData.KeywordList;
 
 public class PortfolioData implements java.io.Serializable {

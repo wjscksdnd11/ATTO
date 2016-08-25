@@ -14,10 +14,11 @@ import android.view.ViewGroup;
 import com.atto.developers.atto.DetailMakerActivity;
 import com.atto.developers.atto.R;
 
-import com.atto.developers.atto.adapter.RecyclerRealTimeTradeAdapter;
-import com.atto.developers.atto.data.NetworkData.ListData.KeywordList;
-import com.atto.developers.atto.data.NetworkData.TradeData.TradeData;
-import com.atto.developers.atto.data.NetworkData.UserData.Member_info;
+import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
+import com.atto.developers.atto.data.networkData.listData.KeywordList;
+import com.atto.developers.atto.data.networkData.makerData.MakerData;
+import com.atto.developers.atto.data.networkData.tradeData.TradeData;
+import com.atto.developers.atto.data.networkData.userData.Member_info;
 
 import java.util.Random;
 
@@ -29,7 +30,7 @@ import java.util.Random;
 public class MakerFragment extends Fragment {
 
     RecyclerView listView;
-    RecyclerRealTimeTradeAdapter mAdapter;
+    RecyclerMakerAdapter mAdapter;
 
     public MakerFragment() {
         // Required empty public constructor
@@ -42,15 +43,16 @@ public class MakerFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_maker, container, false);
 
         listView = (RecyclerView) view.findViewById(R.id.rv_list);
-        mAdapter = new RecyclerRealTimeTradeAdapter();
+        mAdapter = new RecyclerMakerAdapter();
         listView.setAdapter(mAdapter);
 
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         listView.setLayoutManager(manager);
 
-        mAdapter.setOnAdapterItemClickListener(new RecyclerRealTimeTradeAdapter.OnAdapterItemClickListener() {
+        mAdapter.setOnAdapterItemClickListener(new RecyclerMakerAdapter.OnAdapterItemClickListener() {
+
             @Override
-            public void onAdapterItemClick(View view, TradeData tradeData, int position) {
+            public void onAdapterItemClick(View view, MakerData makerItemData, int position) {
                 Intent intent = new Intent(getContext(), DetailMakerActivity.class);
                 startActivity(intent);
             }
@@ -65,19 +67,8 @@ public class MakerFragment extends Fragment {
 
         Random r = new Random();
         for (int i = 0; i < 20; i++) {
-            TradeData tradeData = new TradeData();
-            Member_info member_info = new Member_info();
-            member_info.setMember_alias("atto " + i);
-
-            KeywordList keywordList = new KeywordList();
-            keywordList.setKey_word_1("무방부제");
-            tradeData.setMember_info(member_info);
-            tradeData.setTrade_status(r.nextInt(5) + " 개 협상 진행 중");
-            tradeData.setTrade_price(r.nextInt(15000) + "");
-            tradeData.setTrade_key_word_lists(keywordList);
-            tradeData.setTrade_dtime("2016년 8월" + r.nextInt(30) + "일");
-
-            mAdapter.add(tradeData);
+            MakerData makerData = new MakerData();
+            mAdapter.add(makerData);
 
         }
 

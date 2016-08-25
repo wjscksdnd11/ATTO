@@ -1,6 +1,6 @@
-package com.atto.developers.atto.data.NetworkData.TradeData;
+package com.atto.developers.atto.data.networkData.tradeData;
 
-import com.atto.developers.atto.data.NetworkData.ListData.PagingData;
+import com.atto.developers.atto.data.networkData.listData.PagingData;
 
 public class TradeListData implements java.io.Serializable {
     private static final long serialVersionUID = 4222295191657793439L;

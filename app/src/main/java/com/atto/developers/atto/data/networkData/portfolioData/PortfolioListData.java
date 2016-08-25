@@ -1,5 +1,6 @@
 package com.atto.developers.atto.data.networkData.portfolioData;
 
+
 import com.atto.developers.atto.data.networkData.listData.PagingData;
 
 public class PortfolioListData implements java.io.Serializable {

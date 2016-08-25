@@ -1,4 +1,6 @@
-package com.atto.developers.atto.data.NetworkData.MakerData;
+package com.atto.developers.atto.data.networkData.makerData;
+
+import com.atto.developers.atto.data.networkData.listData.KeywordList;
 
 public class MakerData implements java.io.Serializable {
     private static final long serialVersionUID = 6984295785682812238L;
@@ -7,11 +9,9 @@ public class MakerData implements java.io.Serializable {
     private String maker_product_category_1;
     private String maker_product_category;// null 가능
     private String maker_product_category_2;
-    private String   maker_line_tag;// null 가능
+    private String maker_line_tag;// null 가능
     private String maker_score;
-
-
-
+    private KeywordList maker_key_word_lists;
 
 
     public String getMaker_id() {
@@ -71,4 +71,14 @@ public class MakerData implements java.io.Serializable {
     public void setMaker_line_tag(String maker_line_tag) {
         this.maker_line_tag = maker_line_tag;
     }
+
+
+    public KeywordList getMaker_key_word_lists() {
+        return this.maker_key_word_lists;
+    }
+
+    public void setMaker_key_word_lists(KeywordList maker_key_word_lists) {
+        this.maker_key_word_lists = maker_key_word_lists;
+    }
+
 }

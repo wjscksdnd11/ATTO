@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.NetworkData.UserData;
+package com.atto.developers.atto.data.networkData.userData;
 
 //나의 프로필 데이터 객체
 

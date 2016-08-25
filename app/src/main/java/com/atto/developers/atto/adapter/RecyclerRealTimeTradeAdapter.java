@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
 
-import com.atto.developers.atto.data.NetworkData.TradeData.TradeData;
+import com.atto.developers.atto.data.networkData.tradeData.TradeData;
 import com.atto.developers.atto.viewholder.RealTimeTradeViewHolder;
 
 import java.util.ArrayList;
