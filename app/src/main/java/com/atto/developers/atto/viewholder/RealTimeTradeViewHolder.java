@@ -2,12 +2,11 @@ package com.atto.developers.atto.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.data.networkData.tradeData.TradeData;
+import com.atto.developers.atto.data.networkData.tradedata.TradeData;
 
 /**
  * Created by Tacademy on 2016-08-23.

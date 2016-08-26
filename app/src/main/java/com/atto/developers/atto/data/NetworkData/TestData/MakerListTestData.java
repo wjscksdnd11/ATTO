@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkData.testData;
+package com.atto.developers.atto.data.networkData.testdata;
 
 /**
  * Created by Tacademy on 2016-08-24.

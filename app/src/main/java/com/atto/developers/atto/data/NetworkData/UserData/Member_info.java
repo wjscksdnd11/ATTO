@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkData.userData;
+package com.atto.developers.atto.data.networkData.userdata;
 
 public class Member_info implements java.io.Serializable {
     private static final long serialVersionUID = -1187373761882327994L;

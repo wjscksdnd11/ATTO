@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="wrap_content">
 
         <ImageView
         android:layout_width="match_parent"
@@ -16,91 +15,32 @@
         android:id="@+id/img_realtime_photo"
         android:background="@color/colorPrimary"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/text_trade_limit_date"
-        android:layout_alignEnd="@+id/text_trade_limit_date"
-        android:layout_marginTop="30dp" />
+            android:layout_marginTop="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/text_trade_title"
-        android:textColor="@color/colorBlack"
-        android:layout_below="@+id/text_trade_keyword"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/my_page_text_trade_price"
-        android:layout_below="@+id/text_trade_title"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/text_trade_limit_date"
-        android:textColor="@color/colorBlack"
-        android:layout_below="@+id/img_maker_profile"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="10dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="D-3"
-        android:id="@+id/my_page_text_trade_dday"
-        android:layout_alignTop="@+id/text_trade_limit_date"
-        android:layout_toRightOf="@+id/text_trade_title"
-        android:layout_toEndOf="@+id/text_trade_title" />
-
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/img_maker_profile"
-        android:background="@drawable/image_shape"
-        android:layout_alignTop="@+id/text_trade_title"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="30dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_trade_nickname"
-        android:text="TextView"
-        android:layout_below="@+id/img_maker_profile"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="25dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="keyword"
-        android:id="@+id/text_trade_keyword"
-        android:background="@drawable/keyword_shapes"
-        android:textColor="@color/colorBlack"
-        android:layout_alignBottom="@+id/img_realtime_photo"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp" />
         <TextView
+            android:textColor="@color/white"
+            android:background="@drawable/staus_shape"
+            android:text="New Title"
+            android:id="@+id/text_trade_staus"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/img_realtime_photo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -108,36 +48,117 @@
             android:id="@+id/text_trade_keyword_a"
             android:background="@drawable/keyword_shapes"
             android:textColor="@color/colorBlack"
-            android:layout_alignTop="@+id/text_trade_keyword"
-            android:layout_toRightOf="@+id/text_trade_keyword"
-            android:layout_toEndOf="@+id/text_trade_keyword"
+
+            android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="keyword"
-            android:id="@+id/text_trade_keyword_b"
-            android:background="@drawable/keyword_shapes"
-            android:textColor="@color/colorBlack"
-            android:layout_alignTop="@+id/text_trade_keyword_a"
-            android:layout_toRightOf="@+id/text_trade_keyword_a"
-            android:layout_toEndOf="@+id/text_trade_keyword_a"
-            android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="keyword"
+                android:id="@+id/text_trade_keyword_b"
+                android:background="@drawable/keyword_shapes"
+                android:textColor="@color/colorBlack"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="keyword"
+                android:id="@+id/text_trade_keyword_c"
+                android:background="@drawable/keyword_shapes"
+                android:textColor="@color/colorBlack"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
 
     </RelativeLayout>
 
-    <TextView
-        android:background="@color/color_trade_status_text_bg"
-        android:textColor="@color/white"
-        android:id="@+id/text_trade_staus"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_gravity="bottom"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="New Title"
-        android:gravity="center|fill_vertical" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Large Text"
+            android:textColor="@color/colorBlack"
+            android:id="@+id/text_trade_title"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp" />
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/my_page_text_trade_price"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_trade_nickname"
+                    android:text="2016a 08a 25a"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="D-13"
+                    android:textColor="@color/white"
+                    android:id="@+id/my_page_text_trade_dday"
+                    android:background="@drawable/staus_shape"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/img_maker_profile"
+            android:background="@drawable/image_shape"
+            android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/text_trade_limit_date"
+            android:textColor="@color/colorBlack"
+            android:text="textname"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

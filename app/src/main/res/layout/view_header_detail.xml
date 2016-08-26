@@ -15,16 +15,18 @@
         android:layout_marginTop="30dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
+        android:textColor="@color/white"
         android:id="@+id/text_trade_staus"
-        android:background="@color/color_atto_main"
+        android:background="@drawable/staus_shape"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:gravity="center" />
 
     <LinearLayout
         android:orientation="vertical"
@@ -47,9 +49,6 @@
                 android:text="Large Text"
                 android:id="@+id/text_trade_title"
                 android:layout_gravity="center_horizontal"
-                android:layout_below="@+id/img_realtime_photo"
-                android:layout_alignLeft="@+id/text_trade_staus"
-                android:layout_alignStart="@+id/text_trade_staus"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp" />
 
@@ -60,10 +59,7 @@
                 android:id="@+id/textView14"
                 android:background="@color/colorBackg"
                 android:layout_gravity="center_horizontal"
-                android:gravity="center"
-                android:layout_below="@+id/text_trade_title"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:gravity="center" />
 
         </LinearLayout>
 
@@ -80,9 +76,6 @@
                 android:text="New Text"
                 android:id="@+id/textView16"
                 android:background="@drawable/keyword_shapes"
-                android:layout_below="@+id/textView13"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1" />
 
@@ -92,9 +85,6 @@
                 android:text="New Text"
                 android:id="@+id/textView17"
                 android:background="@drawable/keyword_shapes"
-                android:layout_below="@+id/textView13"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:layout_marginLeft="5dp" />
@@ -122,12 +112,16 @@
                 android:layout_marginLeft="50dp" >
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:text="D-3"
-                    android:id="@+id/text_trade_dday"
+                    android:text="D-13"
+                    android:textColor="@color/white"
+                    android:background="@drawable/staus_shape"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/my_page_text_trade_dday"
                     android:layout_weight="1"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -150,7 +144,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/img_maker_profile"
-                android:background="@color/color_btn" />
+                android:background="@drawable/image_shape" />
 
             <TextView
                 android:layout_width="wrap_content"

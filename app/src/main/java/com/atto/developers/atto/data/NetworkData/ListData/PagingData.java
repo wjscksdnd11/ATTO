@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkData.listData;
+package com.atto.developers.atto.data.networkData.listdata;
 
 public class PagingData implements java.io.Serializable {
     private static final long serialVersionUID = -5008020232738356514L;

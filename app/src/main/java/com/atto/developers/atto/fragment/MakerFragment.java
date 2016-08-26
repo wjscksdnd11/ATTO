@@ -15,10 +15,7 @@ import com.atto.developers.atto.DetailMakerActivity;
 import com.atto.developers.atto.R;
 
 import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
-import com.atto.developers.atto.data.networkData.listData.KeywordList;
-import com.atto.developers.atto.data.networkData.makerData.MakerData;
-import com.atto.developers.atto.data.networkData.tradeData.TradeData;
-import com.atto.developers.atto.data.networkData.userData.Member_info;
+import com.atto.developers.atto.data.networkData.makerdata.MakerData;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkData.userData;
+package com.atto.developers.atto.data.networkData.userdata;
 
 
 //나 프로필 정보 조회 클래스
