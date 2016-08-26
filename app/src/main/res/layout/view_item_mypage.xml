@@ -117,7 +117,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/my_page_img_trade_profile"
-                android:background="@color/color_btn"/>
+                android:background="@drawable/image_shape"/>
 
             <TextView
                 android:layout_width="wrap_content"

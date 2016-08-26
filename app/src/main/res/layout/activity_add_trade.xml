@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_trade_title"
-        android:background="@drawable/edit_shapes"
+        android:background="@drawable/edit_shape"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="15dp" />
@@ -77,7 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_trade_content"
-        android:background="@drawable/edit_shapes"
+        android:background="@drawable/edit_shape"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp" />
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/edit_trade_keyword"
         android:hint="# 해당 제품의 키워드는 최대 3개 까지입니다."
-        android:background="@drawable/edit_shapes"
+        android:background="@drawable/edit_shape"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp" />

@@ -70,7 +70,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/img_maker_profile"
-            android:background="@color/colorPrimary"
+        android:background="@drawable/image_shape"
         android:layout_alignTop="@+id/text_trade_title"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"

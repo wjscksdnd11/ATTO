@@ -24,7 +24,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/img_maker_profile"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/image_shape"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp" />
 

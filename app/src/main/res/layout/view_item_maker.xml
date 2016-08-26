@@ -7,7 +7,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/img_maker_profile"
-        android:src="@mipmap/ic_launcher" />
+        android:background="@drawable/image_shape" />
 
     <RatingBar
         android:layout_width="wrap_content"

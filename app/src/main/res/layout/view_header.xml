@@ -8,7 +8,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/img_mypage_profile"
-        android:background="@color/color_atto_main"
+        android:background="@drawable/image_shape"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp" />
 
