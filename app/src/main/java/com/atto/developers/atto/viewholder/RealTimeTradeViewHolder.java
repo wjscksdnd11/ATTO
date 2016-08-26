@@ -50,7 +50,7 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         trade_dday = (TextView)itemView.findViewById(R.id.text_trade_dday);
         trade_nickname = (TextView)itemView.findViewById(R.id.text_trade_nickname);
         trade_limit_date = (TextView)itemView.findViewById(R.id.text_trade_limit_date);
-        trade_keyword = (TextView)itemView.findViewById(R.id.text_trade_keyword);
+        //trade_keyword = (TextView)itemView.findViewById(R.id.text_trade_keyword);
 
     }
 
