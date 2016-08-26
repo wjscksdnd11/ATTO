@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_trade_status_text_bg"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="38dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="134dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_atto_sub">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/img_maker_profile"
+                android:background="@color/colorPrimary"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/text_trade_profile_nickname"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:id="@+id/ratingbar_trade_grade"
+                android:background="@color/colorBackg"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="120dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="10000원"
+                android:id="@+id/offer_pice"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="25dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="D-3"
+                android:id="@+id/text_trade_dday"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/limit_date"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/text_trade_remain_time"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_btn"
+        android:layout_marginTop="25dp" />
+
+</RelativeLayout>

@@ -2,6 +2,7 @@ package com.atto.developers.atto.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,7 +44,7 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
        });
 
         realtime_photo = (ImageView)itemView.findViewById(R.id.img_realtime_photo);
-        trade_profile = (ImageView)itemView.findViewById(R.id.img_trade_profile);
+        trade_profile = (ImageView)itemView.findViewById(R.id.img_maker_profile);
         trade_staus = (TextView)itemView.findViewById(R.id.text_trade_staus);
         trade_title = (TextView)itemView.findViewById(R.id.text_trade_title);
         trade_price = (TextView)itemView.findViewById(R.id.text_trade_price);

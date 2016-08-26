@@ -51,10 +51,9 @@
         android:text="Small Text"
         android:id="@+id/text_trade_limit_date"
         android:textColor="@color/colorBlack"
-        android:layout_below="@+id/text_trade_price"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
+        android:layout_below="@+id/img_maker_profile"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginLeft="10dp" />
 
     <TextView
@@ -70,7 +69,7 @@
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/img_trade_profile"
+        android:id="@+id/img_maker_profile"
             android:background="@color/colorPrimary"
         android:layout_alignTop="@+id/text_trade_title"
         android:layout_alignParentRight="true"
@@ -83,10 +82,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/text_trade_nickname"
         android:text="TextView"
-        android:layout_alignTop="@+id/text_trade_limit_date"
-        android:layout_alignLeft="@+id/img_trade_profile"
-        android:layout_alignStart="@+id/img_trade_profile"
-        android:layout_marginTop="2dp" />
+        android:layout_below="@+id/img_maker_profile"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="25dp" />
 
     <TextView
         android:layout_width="wrap_content"

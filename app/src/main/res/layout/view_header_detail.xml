@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:id="@+id/imageView"
+        android:id="@+id/img_realtime_photo"
         android:background="@color/colorPrimary"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/textView12"
+        android:id="@+id/text_trade_staus"
         android:background="@color/color_atto_main"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
@@ -30,12 +30,13 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
+        android:layout_below="@+id/img_realtime_photo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
         <LinearLayout
             android:orientation="vertical"
+            android:id="@+id/trade_keyword_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -44,11 +45,11 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
-                android:id="@+id/textView15"
+                android:id="@+id/text_trade_title"
                 android:layout_gravity="center_horizontal"
-                android:layout_below="@+id/imageView"
-                android:layout_alignLeft="@+id/textView12"
-                android:layout_alignStart="@+id/textView12"
+                android:layout_below="@+id/img_realtime_photo"
+                android:layout_alignLeft="@+id/text_trade_staus"
+                android:layout_alignStart="@+id/text_trade_staus"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp" />
 
@@ -60,7 +61,7 @@
                 android:background="@color/colorBackg"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:layout_below="@+id/textView15"
+                android:layout_below="@+id/text_trade_title"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 
@@ -111,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="20000원"
-                android:id="@+id/textView18"
+                android:id="@+id/text_trade_price"
                 android:layout_marginTop="10dp" />
 
             <LinearLayout
@@ -124,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="D-3"
-                    android:id="@+id/textView19"
+                    android:id="@+id/text_trade_dday"
                     android:layout_weight="1"
                     android:layout_gravity="center_horizontal" />
 
@@ -132,7 +133,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="New Text"
-                    android:id="@+id/textView20"
+                    android:id="@+id/text_trade_limit_date"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1" />
             </LinearLayout>
@@ -148,14 +149,14 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/imageView3"
+                android:id="@+id/img_maker_profile"
                 android:background="@color/color_btn" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:id="@+id/textView21"
+                android:id="@+id/text_trade_nickname"
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp" />
 
