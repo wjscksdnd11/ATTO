@@ -7,7 +7,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.data.networkData.makerdata.MakerData;
+import com.atto.developers.atto.data.networkdata.makerdata.MakerData;
 
 
 public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {

@@ -1,6 +1,6 @@
-package com.atto.developers.atto.data.networkData.tradedata;
-import com.atto.developers.atto.data.networkData.listdata.KeywordList;
-import com.atto.developers.atto.data.networkData.userdata.Member_info;
+package com.atto.developers.atto.data.networkdata.tradedata;
+import com.atto.developers.atto.data.networkdata.listdata.KeywordList;
+import com.atto.developers.atto.data.networkdata.userdata.Member_info;
 
 
 // // TODO: 2016-08-24  이미지 배열이랑, 이미지 만 받는거 둘 중 하나는 null 이 올 수 있음 .

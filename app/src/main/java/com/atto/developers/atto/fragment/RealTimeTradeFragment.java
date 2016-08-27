@@ -14,9 +14,9 @@ import com.atto.developers.atto.DetailTradeActivity;
 import com.atto.developers.atto.R;
 
 import com.atto.developers.atto.adapter.RecyclerRealTimeTradeAdapter;
-import com.atto.developers.atto.data.networkData.listdata.KeywordList;
-import com.atto.developers.atto.data.networkData.tradedata.TradeData;
-import com.atto.developers.atto.data.networkData.userdata.Member_info;
+import com.atto.developers.atto.data.networkdata.listdata.KeywordList;
+import com.atto.developers.atto.data.networkdata.tradedata.TradeData;
+import com.atto.developers.atto.data.networkdata.userdata.Member_info;
 
 import java.util.Random;
 

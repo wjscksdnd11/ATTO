@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkData.notidata;
+package com.atto.developers.atto.data.networkdata.notidata;
 
 public class NotiData implements java.io.Serializable {
     private static final long serialVersionUID = 6722883179600308245L;
