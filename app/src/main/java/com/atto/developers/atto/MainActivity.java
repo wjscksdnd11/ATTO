@@ -15,12 +15,13 @@ import android.widget.Toast;
 import com.atto.developers.atto.fragment.AttoFragment;
 import com.atto.developers.atto.fragment.MakerFragment;
 import com.atto.developers.atto.fragment.RealTimeTradeFragment;
+import com.atto.developers.atto.networkdata.ResultMessage;
 
 
 public class MainActivity extends AppCompatActivity {
 
     FragmentTabHost tabHost;
-
+    ResultMessage rm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
                 RealTimeTradeFragment.class, null);
         tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator(getTabIndicator(this, getString(R.string.main_tab_maker))),
                 MakerFragment.class, null);
+
+
 
     }
 
