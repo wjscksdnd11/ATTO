@@ -1,12 +1,10 @@
 package com.atto.developers.atto;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -33,15 +31,6 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
         textView.setText(R.string.activity_my_page_set_profile);
 
         addressView = (TextView)findViewById(R.id.text_profile_set_address);
-
-        ImageButton btn = (ImageButton)findViewById(R.id.btn_change_address);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MyPageSetProfileActivity.this, ChangeAddressActivity.class);
-                startActivity(intent);
-            }
-        });
 
         ImageButton imgBtn = (ImageButton) findViewById(R.id.btn_img_address);
         imgBtn.setOnClickListener(new View.OnClickListener() {

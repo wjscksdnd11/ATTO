@@ -3,7 +3,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.atto.developers.atto.fragment.MypageFragment">
+        tools:context="com.atto.developers.atto.MyPageActivity">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/main_toolbar"
@@ -14,7 +14,7 @@
             <include
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                layout="@layout/toolbar_back">
+                layout="@layout/toolbar_mypage">
             </include>
         </android.support.v7.widget.Toolbar>
 

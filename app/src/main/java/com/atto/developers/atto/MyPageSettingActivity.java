@@ -1,6 +1,5 @@
 package com.atto.developers.atto;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,15 +22,6 @@ public class MyPageSettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-            }
-        });
-
-        imageBtn = (ImageButton) findViewById(R.id.btn_img_address);
-        imageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MyPageSettingActivity.this, ChangeAddressActivity.class);
-                startActivity(intent);
             }
         });
         TextView textView = (TextView) toolbar.findViewById(R.id.text_title);

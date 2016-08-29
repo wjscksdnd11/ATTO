@@ -2,12 +2,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/color_layout">
+    android:background="@android:color/white"
+    android:layout_marginBottom="8dp">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/color_layout">
 
         <LinearLayout
             android:orientation="vertical"
@@ -66,13 +68,5 @@
 
         </LinearLayout>
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:id="@+id/imageView7"
-        android:background="@color/color_edit_line"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
 
 </LinearLayout>

@@ -33,9 +33,17 @@ public class MyPageActivity extends AppCompatActivity {
             }
         });
 
+        imageBtn = (ImageButton) toolbar.findViewById(R.id.ic_mypage_setting);
+        imageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyPageActivity.this, MyPageSettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
         titleView = (TextView) toolbar.findViewById(R.id.text_title);
         titleView.setText(R.string.activity_my_page);
-
         View headerView = findViewById(R.id.mypage_header);
 
         // My 거래 페이지로 이동
@@ -45,7 +53,6 @@ public class MyPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MyPageActivity.this, MyPageMoreTradeActivity.class);
                 startActivity(intent);
-
             }
         });
 
@@ -58,7 +65,6 @@ public class MyPageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
 
         // 제작자일때만 생기는 페이지
