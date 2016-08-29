@@ -80,7 +80,16 @@
     <string name="activity_accept_wait">수락대기 중인 거래</string>
 
 
-    AccountLeaveActivity
+   <!-- 마이페이지설정 -->
+    <string name="activity_mypage_setting">설정</string>
+    <string name="text_key_setting_profile">프로필수정</string>
+    <string name="text_key_change_password">비밀번호변경</string>
+    <string name="text_key_change_address">주소변경</string>
+    <string name="text_key_alert_setting">알림 ON/OFF</string>
+    <string name="text_key_register_maker">판매자등록</string>
+    <string name="text_key_logout">로그아웃</string>
+    <string name="text_key_leave_atto">탈퇴하기</string>
+
 
     <!-- 탈퇴 -->
     <string name="activity_leave_account">계정탈퇴</string>
@@ -122,32 +131,6 @@
     <string name="activity_my_page_setting">설정</string>
     <string name="activity_notice">알림</string>
 
-
-    <string name="search_text">search_text</string>
-    <string name="search_maker_text">search_maker_text</string>
-    <string name="search_trade_text">search_trade_text</string>
-    <string name="search_itemphoto_text">search_itemphoto_text</string>
-    <string name="search_more_text">search_more_text</string>
-    <string name="edit_search_hint_text">edit_search_hint_text</string>
-
-    <string name="text_address">Address</string>
-    <string name="btn_update">Update complete</string>
-
-    <string name="btn_post">postcode</string>
-
-
-    <string name="text_btn_login"><b>로그인</b></string>
-    <string name="text_btn_kakao"><b>카카오톡 로그인하기</b></string>
-    <string name="text_signup"><b>회원가입</b></string>
-    <string name="text_guest"><b>로그인없이 둘러보기</b></string>
-    <string name="text_login_id_hint">아이디</string>
-    <string name="text_login_password_hint">비밀번호</string>
-
-    <string name="btn_setting_myprofile">내 프로필 설정</string>
-    <string name="edit_name">닉네임</string>
-    <string name="edit_sex">성별</string>
-    <string name="edit_phone">연락처</string>
-    <string name="activity_search_address">주소 검색</string>
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
