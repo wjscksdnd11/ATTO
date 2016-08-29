@@ -34,6 +34,12 @@ public class MakerFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static MakerFragment newInstance() {
+
+        MakerFragment fragment = new MakerFragment();
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -6,16 +6,12 @@
         tools:context="com.atto.developers.atto.MyPageActivity">
 
         <android.support.v7.widget.Toolbar
+            android:titleTextColor="@color/white"
             android:id="@+id/main_toolbar"
             android:minHeight="?attr/actionBarSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/atto_bg">
-            <include
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/toolbar_mypage">
-            </include>
         </android.support.v7.widget.Toolbar>
 
         <include

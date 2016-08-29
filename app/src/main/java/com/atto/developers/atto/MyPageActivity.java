@@ -1,13 +1,18 @@
 package com.atto.developers.atto;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Tacademy on 2016-08-26.
@@ -15,39 +20,18 @@ import android.widget.TextView;
 public class MyPageActivity extends AppCompatActivity {
 
     TextView titleView;
-    TextView moreTradeView;
+    @BindView(R.id.text_mypage_more_trade) TextView moreTradeView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        setSupportActionBar(toolbar);
+        ButterKnife.bind(this);
 
-        ImageButton imageBtn = (ImageButton) toolbar.findViewById(R.id.ic_back);
-        imageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        imageBtn = (ImageButton) toolbar.findViewById(R.id.ic_mypage_setting);
-        imageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MyPageActivity.this, MyPageSettingActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        titleView = (TextView) toolbar.findViewById(R.id.text_title);
-        titleView.setText(R.string.activity_my_page);
-        View headerView = findViewById(R.id.mypage_header);
+        initToolBar();
 
         // My 거래 페이지로 이동
-        moreTradeView = (TextView) headerView.findViewById(R.id.text_mypage_more_trade);
         moreTradeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,8 +40,8 @@ public class MyPageActivity extends AppCompatActivity {
             }
         });
 
-        // 설정 페이지로 이동
-        Button btn = (Button) headerView.findViewById(R.id.btn_mypage_setting_myprofile);
+        // 프로필 설정 페이지로 이동
+        Button btn = (Button) findViewById(R.id.btn_mypage_setting_myprofile);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +79,43 @@ public class MyPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MyPageActivity.this, AcceptWaitActivity.class);
                 startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_my_page_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if(id == R.id.action_setting) {
+            Intent intent = new Intent(MyPageActivity.this, MyPageSettingActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void initToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        toolbar.setTitle(R.string.activity_my_page);
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

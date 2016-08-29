@@ -33,6 +33,12 @@ public class RealTimeTradeFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static RealTimeTradeFragment newInstance() {
+
+        RealTimeTradeFragment fragment = new RealTimeTradeFragment();
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
