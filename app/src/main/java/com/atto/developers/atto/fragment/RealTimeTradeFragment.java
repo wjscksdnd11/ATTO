@@ -88,6 +88,7 @@ public class RealTimeTradeFragment extends Fragment {
             tradeData.setTrade_price(r.nextInt(15000) + "");
             tradeData.setTrade_key_word_lists(keywordList);
             tradeData.setTrade_dtime("2016년 8월" + r.nextInt(30) + "일");
+            tradeData.setTrade_dday("D-"+i);
             mAdapter.add(tradeData);
         }
 

@@ -62,7 +62,7 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         trade_staus.setText(tradeData.getTrade_status());
         trade_title.setText(tradeData.getTrade_title());
         trade_price.setText(tradeData.getTrade_price() + "원");
-        trade_dday.setText(tradeData.getTrade_dtime());
+        trade_dday.setText(tradeData.getTrade_dday());
         trade_nickname.setText(tradeData.getMember_info().getMember_alias());
         trade_limit_date.setText(tradeData.getTrade_dtime());
         trade_keyword.setText(tradeData.getTrade_key_word_lists().getKey_word_1());

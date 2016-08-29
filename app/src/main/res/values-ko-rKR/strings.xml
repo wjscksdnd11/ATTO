@@ -22,6 +22,8 @@
     <string name="activity_add_nego">협상카드작성하기</string>
     <string name="activity_my_page_setting">설정</string>
     <string name="activity_unified_search">통합 검색</string>
+
+
     <string name="text_logo_title">atto</string>
     <string name="text_check_agreement">이용약관과 개인정보 취급방침 보기</string>
     <string name="text_sell_management">판매 관리</string>
@@ -30,13 +32,9 @@
     <string name="activity_maker_info">제작자 등록 정보</string>
     <string name="activity_maker_nego">협상중인 거래</string>
 
-    <string name="text_btn_login"><b>로그인</b></string>
-    <string name="text_btn_kakao"><b>카카오톡 로그인하기</b></string>
-    <string name="text_login_search"><b><u>로그인 정보를 잊으셨나요?</u></b></string>
-    <string name="text_signup"><b>회원가입</b></string>
-    <string name="text_guest"><b>로그인없이 둘러보기</b></string>
-    <string name="text_login_id_hint">아이디</string>
-    <string name="text_login_password_hint">비밀번호</string>
+
+
+
 
     <string name="search_text">검색결과</string>
     <string name="search_maker_text">제작자</string>

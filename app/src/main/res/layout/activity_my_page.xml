@@ -1,15 +1,9 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.atto.developers.atto.fragment.MypageFragment"
-    android:weightSum="1">
-
-    <LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context="com.atto.developers.atto.fragment.MypageFragment">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/main_toolbar"
@@ -41,5 +35,3 @@
             layout="@layout/view_mypage_maker_footerview"
             android:id="@+id/view_mypage_maker_footerview" />
     </LinearLayout>
-
-</ScrollView>

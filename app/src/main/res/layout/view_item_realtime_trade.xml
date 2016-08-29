@@ -11,81 +11,14 @@
         <ImageView
             android:id="@+id/img_realtime_photo"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="180dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="30dp"
             android:background="@color/colorPrimary"
             android:src="@drawable/trade_sample01"
             android:scaleType="centerCrop"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <TextView
-            android:id="@+id/text_trade_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/layout_trade_keyword"
-            android:layout_marginLeft="10dp"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/colorBlack" />
-
-        <TextView
-            android:id="@+id/text_trade_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/text_trade_title"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/text_trade_limit_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/img_maker_profile"
-            android:layout_marginLeft="10dp"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/colorBlack"
-            android:layout_alignRight="@+id/text_trade_title"
-            android:layout_alignEnd="@+id/text_trade_title" />
-
-        <TextView
-            android:id="@+id/text_trade_dday"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/text_trade_limit_date"
-            android:layout_toEndOf="@+id/text_trade_title"
-            android:layout_toRightOf="@+id/text_trade_title"
-            android:text="D-3"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <ImageView
-            android:id="@+id/img_maker_profile"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/text_trade_title"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/image_shape" />
-
-        <TextView
-            android:id="@+id/text_trade_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/img_maker_profile"
-            android:layout_marginRight="25dp"
-            android:text="TextView" />
+            android:layout_marginTop="12dp" />
 
         <TextView
             android:id="@+id/text_trade_staus"
@@ -94,7 +27,6 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_gravity="bottom"
-            android:layout_marginTop="20dp"
             android:background="@drawable/staus_shape"
             android:gravity="center"
             android:text="New Title"
@@ -142,5 +74,89 @@
         </LinearLayout>
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:id="@+id/text_trade_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Large Text"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/text_trade_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium Text"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="5dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/text_trade_limit_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Small Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="@color/colorBlack" />
+
+                <TextView
+                    android:id="@+id/text_trade_dday"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:text="D-3"
+                    android:background="@drawable/staus_shape"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/img_maker_profile"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:background="@drawable/image_shape"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="30dp" />
+
+            <TextView
+                android:id="@+id/text_trade_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nickname"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="30dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>
 

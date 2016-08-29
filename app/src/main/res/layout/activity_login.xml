@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:hint="@string/text_login_password_hint"
+        android:hint="@string/edit_login_password_hint"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
         android:id="@+id/editText2"
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:background="@color/white"
-        android:text="@string/text_btn_login"
+        android:text="@string/btn_local_login"
         android:textSize="20dp"
         android:textColor="@color/color_atto_main" />
 
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:background="#FFF100"
-        android:text="@string/text_btn_kakao"
+        android:text="@string/btn_kakao_login"
         android:textSize="20dp"
         android:textColor="@color/colorBlack" />
 
@@ -104,7 +104,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/text_signup"
+            android:text="@string/text_login_signup"
             android:textColor="@color/white"
             android:textSize="15dp"
             android:gravity="left"
@@ -115,7 +115,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/text_guest"
+            android:text="@string/text_login_guest"
             android:textColor="@color/white"
             android:textSize="15dp"
             android:layout_gravity="bottom"
