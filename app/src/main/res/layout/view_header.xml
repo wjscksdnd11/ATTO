@@ -24,7 +24,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="@string/btn_mypage_setting_myprofile"
         android:id="@+id/btn_mypage_setting_myprofile"
         android:background="@color/color_btn"
         android:textColor="@color/white"

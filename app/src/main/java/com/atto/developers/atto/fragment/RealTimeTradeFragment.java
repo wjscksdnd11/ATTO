@@ -15,9 +15,9 @@ import com.atto.developers.atto.AddTradeActivity;
 import com.atto.developers.atto.DetailTradeActivity;
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.adapter.RecyclerRealTimeTradeAdapter;
-import com.atto.developers.atto.data.networkdata.listdata.KeywordList;
-import com.atto.developers.atto.data.networkdata.tradedata.TradeData;
-import com.atto.developers.atto.data.networkdata.userdata.Member_info;
+import com.atto.developers.atto.networkdata.listdata.KeywordList;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
+import com.atto.developers.atto.networkdata.userdata.Member_info;
 
 import java.util.Random;
 
@@ -88,6 +88,7 @@ public class RealTimeTradeFragment extends Fragment {
             tradeData.setTrade_price(r.nextInt(15000) + "");
             tradeData.setTrade_key_word_lists(keywordList);
             tradeData.setTrade_dtime("2016년 8월" + r.nextInt(30) + "일");
+            tradeData.setTrade_dday("D-"+i);
             mAdapter.add(tradeData);
         }
 
