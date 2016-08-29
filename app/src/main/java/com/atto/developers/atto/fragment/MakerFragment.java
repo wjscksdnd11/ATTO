@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 import com.atto.developers.atto.DetailMakerActivity;
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
-import com.atto.developers.atto.data.networkdata.listdata.KeywordList;
-import com.atto.developers.atto.data.networkdata.makerdata.MakerData;
+import com.atto.developers.atto.networkdata.listdata.KeywordList;
+import com.atto.developers.atto.networkdata.makerdata.MakerData;
 
 import java.util.Random;
 
