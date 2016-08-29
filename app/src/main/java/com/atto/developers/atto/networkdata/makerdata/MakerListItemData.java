@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkdata.makerdata;
+package com.atto.developers.atto.networkdata.makerdata;
 
 
 public class MakerListItemData implements java.io.Serializable {

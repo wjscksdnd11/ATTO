@@ -1,5 +1,4 @@
-package com.atto.developers.atto.data.networkdata.negodata;
-
+package com.atto.developers.atto.networkdata.negodata;
 
 public class NegoData implements java.io.Serializable {
     private static final long serialVersionUID = -2572726441148153839L;

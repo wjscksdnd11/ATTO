@@ -1,7 +1,7 @@
-package com.atto.developers.atto.data.networkdata.portfoliodata;
+package com.atto.developers.atto.networkdata.portfoliodata;
 
 
-import com.atto.developers.atto.data.networkdata.listdata.KeywordList;
+import com.atto.developers.atto.networkdata.listdata.KeywordList;
 
 public class PortfolioData implements java.io.Serializable {
     private static final long serialVersionUID = 4583482272816862747L;

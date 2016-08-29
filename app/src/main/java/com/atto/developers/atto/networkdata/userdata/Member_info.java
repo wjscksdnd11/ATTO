@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkdata.userdata;
+package com.atto.developers.atto.networkdata.userdata;
 
 
 public class Member_info implements java.io.Serializable {

@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkdata.tradedata;
+package com.atto.developers.atto.networkdata.tradedata;
 
 
 public class TradeListItemData implements java.io.Serializable {

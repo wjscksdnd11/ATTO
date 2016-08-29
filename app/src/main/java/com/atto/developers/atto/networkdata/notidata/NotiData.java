@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkdata.notidata;
+package com.atto.developers.atto.networkdata.notidata;
 
 
 public class NotiData implements java.io.Serializable {

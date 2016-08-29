@@ -1,4 +1,4 @@
-package com.atto.developers.atto.data.networkdata.listdata;
+package com.atto.developers.atto.networkdata.listdata;
 
 
 public class PagingData implements java.io.Serializable {

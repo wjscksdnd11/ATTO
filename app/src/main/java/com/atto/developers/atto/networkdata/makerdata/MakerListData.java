@@ -1,6 +1,7 @@
 package com.atto.developers.atto.data.networkdata.makerdata;
 
-import com.atto.developers.atto.data.networkdata.listdata.PagingData;
+import com.atto.developers.atto.networkdata.listdata.PagingData;
+import com.atto.developers.atto.networkdata.makerdata.MakerData;
 
 public class MakerListData implements java.io.Serializable {
     private static final long serialVersionUID = -1250749530431167091L;

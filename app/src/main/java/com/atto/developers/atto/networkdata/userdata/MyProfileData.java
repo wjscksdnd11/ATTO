@@ -1,5 +1,4 @@
-
-package com.atto.developers.atto.data.networkdata.userdata;
+package com.atto.developers.atto.networkdata.userdata;
 //나의 프로필 데이터 객체
 
 import java.io.Serializable;
