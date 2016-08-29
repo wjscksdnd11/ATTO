@@ -169,7 +169,8 @@ public class NetworkManager {
                 }
             };
             sc.init(null,tmf.getTrustManagers(),null);
-//            builder.sslSocketFactory(sc.getSocketFactory(), X509TrustManager);
+            builder.sslSocketFactory(sc.getSocketFactory(), (X509TrustManager) site);
+//            builder.sslSocketFactory(sc.getSocketFactory()) ;
             builder.hostnameVerifier(hv);
 
         } catch (CertificateException e) {
