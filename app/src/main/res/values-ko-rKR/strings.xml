@@ -55,4 +55,5 @@
     <string name="btn_change_address">주소변경</string>
     <string name="btn_post">우편번호</string>
     <string name="activity_accept_wait">수락대기 중인 거래</string>
+    <string name="activity_search_address">주소 검색</string>
 </resources>

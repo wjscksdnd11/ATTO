@@ -32,14 +32,15 @@
 
     <Button
         android:id="@+id/btn_detail_port_cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignEnd="@+id/img_detail_port"
         android:layout_alignRight="@+id/img_detail_port"
         android:layout_alignTop="@+id/img_detail_port"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:background="@drawable/btn_oval"
         android:text="X"
+        android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="30sp" />
 
