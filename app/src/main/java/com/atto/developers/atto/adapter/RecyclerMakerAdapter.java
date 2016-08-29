@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.data.networkdata.makerdata.MakerData;
+import com.atto.developers.atto.networkdata.makerdata.MakerData;
 import com.atto.developers.atto.viewholder.RecyclerMakerViewHolder;
 
 import java.util.ArrayList;

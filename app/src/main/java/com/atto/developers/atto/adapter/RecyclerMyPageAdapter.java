@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.data.networkdata.userdata.MyProfileData;
+import com.atto.developers.atto.networkdata.userdata.MyProfileData;
 import com.atto.developers.atto.viewholder.MyPageViewHolder;
 
 import java.util.ArrayList;

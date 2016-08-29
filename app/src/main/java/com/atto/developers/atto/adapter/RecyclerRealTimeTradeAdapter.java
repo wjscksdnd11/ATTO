@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.data.networkdata.tradedata.TradeData;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.atto.developers.atto.viewholder.RealTimeTradeViewHolder;
 
 import java.util.ArrayList;
@@ -38,6 +38,11 @@ public class RecyclerRealTimeTradeAdapter extends RecyclerView.Adapter<RealTimeT
 
     }
 
+    @Override
+    public void onTradeItemClick(View view, TradeData tradeData, int position) {
+
+    }
+
 
     public interface OnAdapterItemClickListener {
 
@@ -55,12 +60,6 @@ public class RecyclerRealTimeTradeAdapter extends RecyclerView.Adapter<RealTimeT
         return items.size();
     }
 
-    @Override
-    public void onTradeItemClick(View view, TradeData tradeData, int position) {
-
-        if (listener != null) {
-            listener.onAdapterItemClick(view, tradeData, position);
-        }
 
     }
-}
+

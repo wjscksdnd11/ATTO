@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.data.networkdata.userdata.MyProfileData;
+import com.atto.developers.atto.networkdata.userdata.MyProfileData;
 
 /**
  * Created by Tacademy on 2016-08-25.

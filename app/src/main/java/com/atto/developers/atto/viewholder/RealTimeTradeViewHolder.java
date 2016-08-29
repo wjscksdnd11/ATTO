@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.data.networkdata.tradedata.TradeData;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
 
 /**
  * Created by Tacademy on 2016-08-23.
