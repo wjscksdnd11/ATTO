@@ -22,4 +22,5 @@
     <color name="color_detail_port_text_bg">#99000000</color>
     <color name="color_add_form_bg">#E5E5E5</color>
 
+    <color name="color_rating_bg">#5F5F5F</color>
 </resources>
