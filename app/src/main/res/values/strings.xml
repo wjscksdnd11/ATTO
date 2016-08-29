@@ -1,0 +1,91 @@
+<resources>
+    <string name="app_name">atto</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_local_login">로그인</string>
+    <string name="main_tab_one">atto</string>
+    <string name="main_tab_realtrade">실시간 거래</string>
+    <string name="main_tab_maker">아토 제작자</string>
+    <string name="btn_realtimetrade_write_text">거래글 작성하러 가기</string>
+    <string name="text_register_nego">협상카드 작성하기</string>
+    <string name="text_nego_register">협상카드 등록하기</string>
+    <string name="text_add_trade_register_trade">거래 작성하기</string>
+    <string name="btn_setting_price">가격 설정하기</string>
+    <string name="btn_accept_request">승인 및 수락 요청하기</string>
+    <string name="text_maker_order_dialog">협상 카드 등록이 마감됩니다. 제작 주문서 작성페이지로 이동합니다.</string>
+    <string name="text_detail_port_title">작품 제목</string>
+    <string name="btn_detail_port_move_trade">거래 작성하러 가기</string>
+    <string name="edit_add_port_title">제목을 입력해주세요</string>
+    <string name="edit_add_port_category">해당 제품에 관련된 해시태그를 작성해주세요</string>
+    <string name="btn_add_port_register">등록하기</string>
+    <string name="btn_mypage_setting_myprofile">내 프로필 설정</string>
+    <string name="btn_complete_update">수정 완료</string>
+    <string name="btn_move_address">주소 변경</string>
+    <string name="btn_post_code">우편 번호</string>
+    <string name="edit_detail_address">상세 주소 입력</string>
+
+    <string name="edit_hint_search_address">예) 판교역로 235, 한남동 714</string>
+    <string name="edit_login_id_hint">아이디</string>
+    <string name="edit_login_password_hint">비밀번호</string>
+    <string name="text_login_signup">회원가입</string>
+    <string name="text_login_guest">둘러보기</string>
+    <string name="btn_final_accept_request">제작자에게 최종수락 요청</string>
+    <string name="btn_update_order">수정하기</string>
+    <string name="btn_footer_move_maker_info">제작자 등록 정보</string>
+    <string name="btn_footer_move_maker_nego">협상중인 거래</string>
+    <string name="btn_footer_move_accept_wait">수락대기 중인 거래</string>
+    <string name="edit_input_search_hint">검색어를 입력하세요</string>
+    <string name="btn_find_email">이메일로 전송</string>
+    <string name="btn_complete_signup">동의하고 회원 가입하기</string>
+
+    <string name="activity_find_password">비밀번호 찾기</string>
+    <string name="activity_my_page">마이페이지</string>
+    <string name="activity_signup">회원가입</string>
+    <string name="activity_addtrade">거래글 작성하기</string>
+    <string name="activity_detail_trade">거래글상세보기</string>
+    <string name="activity_add_nego">협상카드작성하기</string>
+    <string name="activity_detail_maker">제작자 상세보기</string>
+    <string name="activity_my_page_set_profile">내 프로필 설정</string>
+    <string name="activity_mypage_more_trade">My 거래</string>
+    <string name="activity_my_page_setting">설정</string>
+    <string name="activity_notice">알림</string>
+    <string name="activity_unified_search">통합 검색</string>
+    <string name="activity_maker_info">제작자 등록 정보</string>
+    <string name="activity_maker_nego">협상중인 거래</string>
+
+    <string name="search_text">search_text</string>
+    <string name="search_maker_text">search_maker_text</string>
+    <string name="search_trade_text">search_trade_text</string>
+    <string name="search_itemphoto_text">search_itemphoto_text</string>
+    <string name="search_more_text">search_more_text</string>
+    <string name="edit_search_hint_text">edit_search_hint_text</string>
+
+    <string name="text_address">Address</string>
+    <string name="text_main_address">Main address</string>
+    <string name="text_notice">Notice</string>
+    <string name="btn_update">Updatecomplete</string>
+    <string name="btn_change_address">Addresschange</string>
+    <string name="btn_post">postcode</string>
+    <string name="text_logo_title">atto</string>
+
+    <string name="text_btn_login"><b>로그인</b></string>
+    <string name="text_btn_kakao"><b>카카오톡 로그인하기</b></string>
+    <string name="text_login_search"><b><u>로그인 정보를 잊으셨나요?</u></b></string>
+    <string name="text_signup"><b>회원가입</b></string>
+    <string name="text_guest"><b>로그인없이 둘러보기</b></string>
+    <string name="text_login_id_hint">아이디</string>
+    <string name="text_login_password_hint">비밀번호</string>
+
+    <string name="btn_setting_myprofile">내 프로필 설정</string>
+    <string name="edit_name">닉네임</string>
+    <string name="edit_sex">성별</string>
+    <string name="edit_phone">연락처</string>
+    <string name="text_check_agreement">이용약관과 개인정보 취급방침 보기</string>
+    <string name="text_sell_management">판매 관리</string>
+    <string name="text_my_trade">My 거래</string>
+    <string name="text_mypage_more_trade"><![CDATA[더보기 >]]></string>
+    <string name="activity_accept_wait">수락대기 중인 거래</string>
+
+
+</resources>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/atto_bg"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.atto.developers.atto.LoginActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:layout_gravity="center_horizontal"
+        android:background="@mipmap/ic_launcher"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="&quot;당신을 위한 작은 정성&quot;"
+        android:textColor="@color/white"
+        android:id="@+id/textView13"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/text_logo_title"
+        android:textColor="@color/white"
+        android:textSize="36sp" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:hint="@string/edit_login_id_hint"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:id="@+id/editText"
+        android:background="@drawable/edit_shape"
+        android:layout_marginTop="15dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:hint="@string/text_login_password_hint"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:id="@+id/editText2"
+        android:background="@drawable/edit_shape"
+        android:layout_marginTop="18dp" />
+
+    <Button
+        android:id="@+id/btn_local_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:background="@color/white"
+        android:text="@string/text_btn_login"
+        android:textSize="20dp"
+        android:textColor="@color/color_atto_main" />
+
+    <Button
+        android:id="@+id/btn_kakao_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:background="#FFF100"
+        android:text="@string/text_btn_kakao"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/text_search_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/text_login_search"
+        android:textSize="15dp"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_login_signup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/text_signup"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:gravity="left"
+            android:layout_gravity="bottom" />
+
+        <TextView
+            android:id="@+id/text_login_guest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/text_guest"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:layout_gravity="bottom"
+            android:gravity="right"/>
+    </LinearLayout>
+
+
+</LinearLayout>
