@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.atto.developers.atto">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApplication"
@@ -48,9 +48,9 @@
         <activity android:name=".FindPasswordActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".AgreementActivity" />
-        <activity
-            android:name=".LoginActivity" />
-        <activity android:name=".MyPageActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MyPageActivity" />
+        <activity android:name=".SearchAddressActivity"></activity>
     </application>
 
 </manifest>
