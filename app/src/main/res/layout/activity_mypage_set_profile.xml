@@ -132,8 +132,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_change_address"
-        android:id="@+id/button"
+        android:text="@string/btn_complete_update"
+        android:id="@+id/btn_complete_update"
         android:background="@drawable/btn_shape"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"

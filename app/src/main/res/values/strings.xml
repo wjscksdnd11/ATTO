@@ -64,8 +64,8 @@
     <string name="text_address">Address</string>
     <string name="text_main_address">Main address</string>
     <string name="text_notice">Notice</string>
-    <string name="btn_update">Updatecomplete</string>
-    <string name="btn_change_address">Addresschange</string>
+    <string name="btn_update">Update complete</string>
+    <string name="btn_change_address">Address change</string>
     <string name="btn_post">postcode</string>
     <string name="text_logo_title">atto</string>
 
