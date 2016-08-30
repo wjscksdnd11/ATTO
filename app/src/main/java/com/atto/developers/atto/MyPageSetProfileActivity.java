@@ -53,7 +53,7 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        toolbar.setTitle(R.string.activity_detail_trade);
+        toolbar.setTitle(R.string.activity_my_page_set_profile);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 

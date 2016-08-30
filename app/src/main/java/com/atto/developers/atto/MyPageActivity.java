@@ -41,10 +41,11 @@ public class MyPageActivity extends AppCompatActivity {
     }
 
     Intent intent;
+
     // 제작자 일대만 생기는 페이지
     @OnClick({R.id.btn_footer_move_maker_info, R.id.btn_footer_move_maker_nego, R.id.btn_footer_move_accept_wait})
     void onMovePage(View view) {
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.btn_footer_move_maker_info:
                 intent = new Intent(MyPageActivity.this, MakerInfoActivity.class);
                 startActivity(intent);
@@ -74,7 +75,7 @@ public class MyPageActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if(id == R.id.action_setting) {
+        if (id == R.id.action_setting) {
             Intent intent = new Intent(MyPageActivity.this, MyPageSettingActivity.class);
             startActivity(intent);
         }
