@@ -6,8 +6,26 @@ import java.io.Serializable;
 public class MyProfileData implements Serializable {
     private String member_alias;
     private String member_phone;
-    private String member_address;
+
+    public String getMember_zipcode_1() {
+        return member_zipcode_1;
+    }
+
+    public void setMember_zipcode_1(String member_zipcode_1) {
+        this.member_zipcode_1 = member_zipcode_1;
+    }
+
+    public String getMember_address_1() {
+        return member_address_1;
+    }
+
+    public void setMember_address_1(String member_address_1) {
+        this.member_address_1 = member_address_1;
+    }
+
     private String member_profile_img;
+    private String member_zipcode_1;
+    private String member_address_1;
 
     public String getMember_alias() {
         return this.member_alias;
@@ -25,13 +43,6 @@ public class MyProfileData implements Serializable {
         this.member_phone = member_phone;
     }
 
-    public String getMember_address() {
-        return this.member_address;
-    }
-
-    public void setMember_address(String member_address) {
-        this.member_address = member_address;
-    }
 
     public String getMember_profile_img() {
         return this.member_profile_img;

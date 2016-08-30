@@ -108,10 +108,13 @@ public class MyPageActivity extends AppCompatActivity {
             public void onSuccess(NetworkRequest<MyProfile> request, MyProfile result) {
                 String message =result.getMessage();
                 String nickname = result.getData().getMember_alias();
-                String adress = result.getData().getMember_address();
+                String adress = result.getData().getMember_address_1();
                 String phone = result.getData().getMember_phone();
+                String zipcode = result.getData().getMember_zipcode_1();
+                String profile_img = result.getData().getMember_profile_img();
 
-                Toast.makeText(MyPageActivity.this, "MyProfile Result : "+message+","+nickname+","+adress+","+phone+",",Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(MyPageActivity.this, "MyProfile Result : "+message+","+nickname+","+adress+","+phone+","+zipcode+" , "+profile_img,Toast.LENGTH_SHORT).show();
             }
 
             @Override
