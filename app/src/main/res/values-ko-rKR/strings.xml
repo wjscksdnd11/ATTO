@@ -58,4 +58,5 @@
     <string name="text_check_logout">로그아웃 하시겠습니까?</string>
     <string name="btn_check_complete">OK</string>
     <string name="btn_cancel">CANCEL</string>
+    <string name="text_detail_port_title">작품 제목</string>
 </resources>

@@ -4,17 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.atto.developers.atto.manager.NetworkManager;
-import com.atto.developers.atto.manager.NetworkRequest;
-import com.atto.developers.atto.networkdata.ResultMessage;
-import com.atto.developers.atto.request.TestRequest;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -41,22 +34,22 @@ public class SignUpActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TestRequest request = new TestRequest(SignUpActivity.this);
-                NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
-
-                    @Override
-                    public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
-                        Log.i("result",result.getMessage());
-                        Toast.makeText(SignUpActivity.this,result.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
-                        Toast.makeText(getApplication(),"실패",Toast.LENGTH_SHORT).show();
-                        Log.e("error",errorMessage+" , "+errorCode);
-//                Log.e("error",request.getRequest().toString()+" , "+errorCode);
-                    }
-                });
+//                SignUpRequest request = new SignUpRequest(String email, String password, String name, String zipcode, String adress_1, String phone, String registration_token);
+//                NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
+//
+//                    @Override
+//                    public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
+//                        Log.i("result",result.getMessage());
+//                        Toast.makeText(SignUpActivity.this,result.getMessage(),Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                    @Override
+//                    public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
+//
+//
+//                        Log.e("error",request+" , "+errorCode+" , "+errorMessage);
+//                    }
+//                });
 
                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                 startActivity(intent);

@@ -25,7 +25,7 @@ public class AddTradeActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.btn_move_trade_register)
+    @OnClick(R.id.text_add_trade_register_trade)
     public void onTradeRegister() {
         Intent intent = new Intent(AddTradeActivity.this, DetailTradeActivity.class);
         startActivity(intent);

@@ -80,7 +80,7 @@
     <string name="activity_accept_wait">수락대기 중인 거래</string>
 
 
-   <!-- 마이페이지설정 -->
+    <!-- 마이페이지설정 -->
     <string name="activity_mypage_setting">설정</string>
     <string name="text_key_setting_profile">프로필수정</string>
     <string name="text_key_change_password">비밀번호변경</string>
@@ -145,6 +145,7 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_settings">설정</string>
+    <string name="text_detail_port_title">작품 제목</string>
     <string name="text_detail_port_title">작품 제목</string>
     <string name="text_check_logout">로그아웃 하시겠습니까?</string>
     <string name="btn_check_complete">OK</string>
