@@ -10,6 +10,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.atto.developers.atto.fragment.SendMailDialogFragment;
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.userdata.MyProfile;
+import com.atto.developers.atto.request.MyProfileRequest;
 
 public class FindPasswordActivity extends AppCompatActivity {
 
@@ -41,7 +45,20 @@ public class FindPasswordActivity extends AppCompatActivity {
 
             }
         });
+        String password = "1";
+        String new_password="2";
+        MyProfileRequest request = new MyProfileRequest(password,new_password);
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MyProfile>() {
+            @Override
+            public void onSuccess(NetworkRequest<MyProfile> request, MyProfile result) {
 
+            }
+
+            @Override
+            public void onFail(NetworkRequest<MyProfile> request, int errorCode, String errorMessage, Throwable e) {
+
+            }
+        });
 
     }
 }

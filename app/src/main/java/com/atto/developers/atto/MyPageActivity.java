@@ -34,10 +34,13 @@ public class MyPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
         ButterKnife.bind(this);
+        initData();
         initToolBar();
         getRequestData();
 
+
     }
+
 
     @OnClick(R.id.text_mypage_more_trade)
     void onTradeViewClick() {
@@ -52,8 +55,7 @@ public class MyPageActivity extends AppCompatActivity {
     }
 
     Intent intent;
-
-    // 제작자 일때만 생기는 페이지
+    // 제작자 일대만 생기는 페이지
     @OnClick({R.id.btn_footer_move_maker_info, R.id.btn_footer_move_maker_nego, R.id.btn_footer_move_accept_wait})
     void onMovePage(View view) {
         switch (view.getId()) {
@@ -94,6 +96,8 @@ public class MyPageActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_my_page);
@@ -111,7 +115,13 @@ public class MyPageActivity extends AppCompatActivity {
     }
 
     private void getRequestData() {
-        MyProfileRequest request = new MyProfileRequest(MyPageActivity.this);
+        MyProfileRequest request = new MyProfileRequest();
+
+
+
+    }
+    private void initData(){
+        MyProfileRequest request = new MyProfileRequest();
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MyProfile>() {
             @Override
             public void onSuccess(NetworkRequest<MyProfile> request, MyProfile result) {
@@ -129,6 +139,8 @@ public class MyPageActivity extends AppCompatActivity {
             @Override
             public void onFail(NetworkRequest<MyProfile> request, int errorCode, String errorMessage, Throwable e) {
                 Log.e("error", request + " , " + errorCode + " , " + errorMessage);
+
+                Toast.makeText(MyPageActivity.this, "MyProfile Result : "+errorCode,Toast.LENGTH_SHORT).show();
             }
         });
     }
