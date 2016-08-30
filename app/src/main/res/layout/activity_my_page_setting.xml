@@ -102,19 +102,6 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="15dp" />
 
-    <TextView
-        android:textSize="@dimen/btn_text_size"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/text_key_logout"
-        android:background="@color/color_layout"
-        android:id="@+id/key_logout"
-        android:layout_below="@+id/key_register_maker"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:gravity="center_vertical"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="15dp" />
 
     <TextView
 
@@ -124,11 +111,31 @@
         android:text="@string/text_key_leave_atto"
         android:background="@color/color_layout"
         android:id="@+id/key_leave_atto"
-        android:layout_below="@+id/key_change_password"
+        android:layout_below="@+id/key_register_maker"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:gravity="center_vertical"
         android:layout_marginTop="10dp"
         android:paddingLeft="15dp" />
+
+
+
+    <TextView
+        android:textSize="@dimen/btn_text_size"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/text_key_logout"
+        android:background="@color/color_layout"
+        android:id="@+id/key_logout"
+        android:layout_below="@+id/key_leave_atto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="15dp" />
+
+
+
+
 
 </RelativeLayout>

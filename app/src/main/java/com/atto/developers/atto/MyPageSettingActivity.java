@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.atto.developers.atto.fragment.CheckLogoutDialogFragment;
+import com.atto.developers.atto.fragment.SearchPostcodeDialogFragment;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -34,12 +35,37 @@ public class MyPageSettingActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @OnClick(R.id.key_change_address)
+    public void onChangeAddress(){
+       Intent intent = new Intent(MyPageSettingActivity.this, SearchAddressActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.key_alert_setting)
+    public void onAlertSetting(){
+
+    }
+
+    @OnClick(R.id.key_register_maker)
+    public void onRegisterMaker(){
+        Intent intent = new Intent(MyPageSettingActivity.this, RegsiterMakerActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.key_leave_atto)
+    public void onLeaveAtto(){
+        Intent intent = new Intent(MyPageSettingActivity.this, AccountLeaveActivity.class);
+        startActivity(intent);
+    }
+
     @OnClick(R.id.key_logout)
     public void onLogOut() {
 
         CheckLogoutDialogFragment dialogFragment = new CheckLogoutDialogFragment();
         dialogFragment.show(getSupportFragmentManager(), "logout");
     }
+
+
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
