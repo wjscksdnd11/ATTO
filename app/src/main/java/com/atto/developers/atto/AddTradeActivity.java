@@ -40,5 +40,17 @@ public class AddTradeActivity extends AppCompatActivity {
                 finish();
             }
         });
+        TextView textView = (TextView)toolbar.findViewById(R.id.text_title);
+        textView.setText(R.string.activity_addtrade);
+
+        Button btn = (Button)findViewById(R.id.text_add_trade_register_trade);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddTradeActivity.this, DetailTradeActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 }
