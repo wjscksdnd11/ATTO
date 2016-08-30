@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
->
+    android:layout_height="match_parent">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -17,11 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/atto_bg">
-        <include
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/toolbar_back">
-        </include>
     </android.support.v7.widget.Toolbar>
 
         <EditText
@@ -72,7 +66,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="2016년 08월 30일"
-            android:id="@+id/textView9"
+            android:id="@+id/text_pickup_date"
             android:gravity="center"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
@@ -81,7 +75,7 @@
         <ImageButton
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/imageButton"
+            android:id="@+id/btn_wish_delevery"
             android:background="@android:drawable/ic_menu_edit" />
     </LinearLayout>
 

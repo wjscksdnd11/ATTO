@@ -111,18 +111,12 @@
     <string name="btn_agreement">전체동의하기</string>
 
 
-
     <!-- 포트폴리오 추가 -->
     <string name="activity_add_port.xml">포트폴리오 추가</string>
     <string name="text_img_add_port_photo">이미지추가</string>
     <string name="edit_hint_add_port_title">제목을 입력하세요.</string>
     <string name="edit_hint_add_port_category"># 키워드를 입력해주세요. (최대 3개)</string>
     <string name="btn_add_port_register">등록하기</string>
-
-
-
-
-
 
 
     <string name="text_register_nego">협상카드 작성하기</string>
@@ -142,10 +136,8 @@
     <string name="activity_notice">알림</string>
 
 
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_settings">설정</string>
-    <string name="text_detail_port_title">작품 제목</string>
     <string name="text_detail_port_title">작품 제목</string>
     <string name="text_check_logout">로그아웃 하시겠습니까?</string>
     <string name="btn_check_complete">OK</string>
