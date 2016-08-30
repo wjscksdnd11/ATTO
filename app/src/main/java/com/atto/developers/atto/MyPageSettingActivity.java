@@ -54,4 +54,13 @@ public class MyPageSettingActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void startIntent() {
+
+        Intent intent = new Intent(MyPageSettingActivity.this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+
+    }
 }

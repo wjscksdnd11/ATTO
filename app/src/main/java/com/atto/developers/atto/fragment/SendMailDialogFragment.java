@@ -35,7 +35,6 @@ public class SendMailDialogFragment extends DialogFragment {
                 dismiss();
             }
         });
-
         return view;
 
     }

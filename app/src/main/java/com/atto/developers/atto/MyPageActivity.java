@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atto.developers.atto.manager.NetworkManager;
@@ -16,6 +17,7 @@ import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.userdata.MyProfile;
 import com.atto.developers.atto.request.MyProfileRequest;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -24,6 +26,8 @@ import butterknife.OnClick;
  */
 public class MyPageActivity extends AppCompatActivity {
 
+    @BindView(R.id.text_mypage_nickname)
+    TextView nickNameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +35,9 @@ public class MyPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_page);
         ButterKnife.bind(this);
         initToolBar();
+        getRequestData();
 
     }
-
 
     @OnClick(R.id.text_mypage_more_trade)
     void onTradeViewClick() {
@@ -49,7 +53,7 @@ public class MyPageActivity extends AppCompatActivity {
 
     Intent intent;
 
-    // 제작자 일대만 생기는 페이지
+    // 제작자 일때만 생기는 페이지
     @OnClick({R.id.btn_footer_move_maker_info, R.id.btn_footer_move_maker_nego, R.id.btn_footer_move_accept_wait})
     void onMovePage(View view) {
         switch (view.getId()) {
@@ -103,26 +107,31 @@ public class MyPageActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+    }
+
+    private void getRequestData() {
         MyProfileRequest request = new MyProfileRequest(MyPageActivity.this);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MyProfile>() {
             @Override
             public void onSuccess(NetworkRequest<MyProfile> request, MyProfile result) {
-                String message =result.getMessage();
+                String message = result.getMessage();
                 String nickname = result.getData().getMember_alias();
                 String adress = result.getData().getMember_address_1();
                 String phone = result.getData().getMember_phone();
                 String zipcode = result.getData().getMember_zipcode_1();
                 String profile_img = result.getData().getMember_profile_img();
 
-
-                Toast.makeText(MyPageActivity.this, "MyProfile Result : "+message+","+nickname+","+adress+","+phone+","+zipcode+" , "+profile_img,Toast.LENGTH_SHORT).show();
+                nickNameView.setText(nickname);
+                Toast.makeText(MyPageActivity.this, "MyProfile Result : " + message + "," + nickname + "," + adress + "," + phone + "," + zipcode + " , " + profile_img, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFail(NetworkRequest<MyProfile> request, int errorCode, String errorMessage, Throwable e) {
-                    Log.e("error",request+" , "+errorCode+" , "+errorMessage);
+                Log.e("error", request + " , " + errorCode + " , " + errorMessage);
             }
         });
     }
+
 
 }

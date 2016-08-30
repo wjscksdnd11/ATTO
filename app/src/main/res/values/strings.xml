@@ -52,7 +52,7 @@
     <string name="btn_footer_move_maker_info">제작자 등록 정보</string>
     <string name="btn_footer_move_maker_nego">협상중인 거래</string>
     <string name="btn_footer_move_accept_wait">수락대기 중인 거래</string>
-    <string name="btn_mypage_setting_myprofile">내 프로필 설정</string>
+    <string name="btn_mypage_setting_myprofile">프로필 수정하기</string>
 
     <!-- 프로필 설정 -->
     <string name="activity_my_page_set_profile">내 프로필 설정</string>
@@ -142,4 +142,5 @@
     <string name="text_check_logout">로그아웃 하시겠습니까?</string>
     <string name="btn_check_complete">OK</string>
     <string name="btn_cancel">CANCEL</string>
+    <string name="activity_add_image">이미지 추가하기</string>
 </resources>

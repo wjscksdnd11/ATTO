@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/textView2"
+        android:id="@+id/text_mypage_nickname"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp" />
 

@@ -1,7 +1,6 @@
 package com.atto.developers.atto.fragment;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -9,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.atto.developers.atto.MainActivity;
+import com.atto.developers.atto.MyPageSettingActivity;
 import com.atto.developers.atto.R;
 
 import butterknife.ButterKnife;
@@ -39,9 +38,9 @@ public class CheckLogoutDialogFragment extends DialogFragment {
     @OnClick(R.id.btn_check_complete)
     public void onCheckComplete() {
 
-        Intent intent = new Intent(getActivity(), MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP  | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(intent);
+        MyPageSettingActivity callerActivity = (MyPageSettingActivity)getActivity();
+        dismiss();
+        callerActivity.startIntent();
 
     }
 

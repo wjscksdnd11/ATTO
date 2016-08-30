@@ -40,7 +40,7 @@
     <string name="search_more_text">더보기 ></string>
     <string name="edit_search_hint_text">검색어를 입력해주세요.</string>
 
-    <string name="btn_setting_myprofile">내 프로필 설정</string>
+    <string name="btn_setting_myprofile">프로필 수정하기</string>
     <string name="edit_name">닉네임</string>
     <string name="edit_sex">성별</string>
     <string name="edit_phone">연락처</string>
@@ -58,4 +58,5 @@
     <string name="btn_check_complete">OK</string>
     <string name="btn_cancel">CANCEL</string>
     <string name="text_detail_port_title">작품 제목</string>
+    <string name="activity_add_image">이미지 추가하기</string>
 </resources>
