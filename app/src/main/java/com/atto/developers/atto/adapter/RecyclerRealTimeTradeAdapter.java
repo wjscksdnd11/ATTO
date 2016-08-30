@@ -41,6 +41,9 @@ public class RecyclerRealTimeTradeAdapter extends RecyclerView.Adapter<RealTimeT
     @Override
     public void onTradeItemClick(View view, TradeData tradeData, int position) {
 
+        if (listener != null) {
+            listener.onAdapterItemClick(view, tradeData, position);
+        }
     }
 
 
@@ -61,5 +64,5 @@ public class RecyclerRealTimeTradeAdapter extends RecyclerView.Adapter<RealTimeT
     }
 
 
-    }
+}
 

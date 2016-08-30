@@ -16,11 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/atto_bg">
-            <include
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/toolbar_back">
-            </include>
         </android.support.v7.widget.Toolbar>
 
         <EditText
@@ -70,13 +65,6 @@
             android:id="@+id/btn_wish_delevery"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp" />
-
-        <CalendarView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/cal_trade_select_date"
-            android:layout_weight="2.48"
             android:layout_marginTop="10dp" />
 
         <EditText

@@ -36,7 +36,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_toolbar_search"
+        android:src="@drawable/ic_search_white"
         android:layout_marginRight="@dimen/main_toolbar_ic_margin"
         android:layout_marginTop="4dp" />
 
