@@ -111,17 +111,27 @@
     <string name="btn_agreement">전체동의하기</string>
 
 
+
+    <!-- 포트폴리오 추가 -->
+    <string name="activity_add_port.xml">포트폴리오 추가</string>
+    <string name="text_img_add_port_photo">이미지추가</string>
+    <string name="edit_hint_add_port_title">제목을 입력하세요.</string>
+    <string name="edit_hint_add_port_category"># 키워드를 입력해주세요. (최대 3개)</string>
+    <string name="btn_add_port_register">등록하기</string>
+
+
+
+
+
+
+
     <string name="text_register_nego">협상카드 작성하기</string>
     <string name="text_nego_register">협상카드 등록하기</string>
     <string name="text_add_trade_register_trade">거래 작성하기</string>
     <string name="btn_setting_price">가격 설정하기</string>
     <string name="btn_accept_request">승인 및 수락 요청하기</string>
     <string name="text_maker_order_dialog">협상 카드 등록이 마감됩니다. 제작 주문서 작성페이지로 이동합니다.</string>
-    <string name="text_detail_port_title">작품 제목</string>
     <string name="btn_detail_port_move_trade">거래 작성하러 가기</string>
-    <string name="edit_add_port_title">제목을 입력해주세요</string>
-    <string name="edit_add_port_category">해당 제품에 관련된 해시태그를 작성해주세요</string>
-    <string name="btn_add_port_register">등록하기</string>
     <string name="btn_final_accept_request">제작자에게 최종수락 요청</string>
     <string name="btn_update_order">수정하기</string>
     <string name="activity_addtrade">거래글 작성하기</string>
