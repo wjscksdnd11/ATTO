@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -21,7 +23,7 @@ public class AddTradeActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.btn_move_trade_register)
+    @OnClick(R.id.text_add_trade_register_trade)
     public void onTradeRegister() {
         Intent intent = new Intent(AddTradeActivity.this, DetailTradeActivity.class);
         startActivity(intent);
