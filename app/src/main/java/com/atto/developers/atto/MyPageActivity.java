@@ -51,7 +51,7 @@ public class MyPageActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.btn_footer_move_maker_nego:
-                intent = new Intent(MyPageActivity.this, MakerInfoActivity.class);
+                intent = new Intent(MyPageActivity.this, MakerNegoActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn_footer_move_accept_wait:

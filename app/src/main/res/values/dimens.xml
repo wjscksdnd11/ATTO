@@ -6,4 +6,5 @@
     <dimen name="main_toolbar_ic_margin">16dp</dimen>
     <dimen name="main_tab_margin">8dp</dimen>
     <dimen name="size_text_my_trade">20sp</dimen>
+    <dimen name="btn_text_size">14sp</dimen>
 </resources>

@@ -1,33 +1,37 @@
 package com.atto.developers.atto;
 
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
+
+import butterknife.ButterKnife;
 
 public class MakerInfoActivity extends AppCompatActivity {
 
-    TextView titleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maker_info);
+        ButterKnife.bind(this);
+        initToolBar();
+
+    }
+
+    private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        toolbar.setTitle(R.string.activity_maker_info);
+        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
-        ImageButton imageBtn = (ImageButton) toolbar.findViewById(R.id.ic_back);
-        imageBtn.setOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-
-        titleView = (TextView) toolbar.findViewById(R.id.text_title);
-        titleView.setText(R.string.activity_maker_info);
-
     }
 }
