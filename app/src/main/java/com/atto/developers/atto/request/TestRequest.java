@@ -21,7 +21,7 @@ public class TestRequest extends AbstractRequest<ResultMessage> {
     Request request;
 
     public TestRequest(Context context) {
-        HttpUrl url = getBaseUrlBuilder()
+        HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment("members")
                 .build();
 

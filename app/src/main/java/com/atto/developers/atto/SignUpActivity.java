@@ -52,9 +52,9 @@ public class SignUpActivity extends AppCompatActivity {
 
                     @Override
                     public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
-                        Toast.makeText(getApplication(),"실패",Toast.LENGTH_SHORT).show();
-                        Log.e("error",errorMessage+" , "+errorCode);
-//                Log.e("error",request.getRequest().toString()+" , "+errorCode);
+
+
+                        Log.e("error",request+" , "+errorCode+" , "+errorMessage);
                     }
                 });
 

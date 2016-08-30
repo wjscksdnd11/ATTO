@@ -5,9 +5,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.userdata.MyProfile;
+import com.atto.developers.atto.request.MyProfileRequest;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -95,5 +102,23 @@ public class MyPageActivity extends AppCompatActivity {
                 finish();
             }
         });
+        MyProfileRequest request = new MyProfileRequest(MyPageActivity.this);
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MyProfile>() {
+            @Override
+            public void onSuccess(NetworkRequest<MyProfile> request, MyProfile result) {
+                String message =result.getMessage();
+                String nickname = result.getData().getMember_alias();
+                String adress = result.getData().getMember_address();
+                String phone = result.getData().getMember_phone();
+
+                Toast.makeText(MyPageActivity.this, "MyProfile Result : "+message+","+nickname+","+adress+","+phone+",",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(NetworkRequest<MyProfile> request, int errorCode, String errorMessage, Throwable e) {
+                    Log.e("error",request+" , "+errorCode+" , "+errorMessage);
+            }
+        });
     }
+
 }

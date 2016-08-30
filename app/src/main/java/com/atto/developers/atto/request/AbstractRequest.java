@@ -9,7 +9,7 @@ import okhttp3.HttpUrl;
  */
 public abstract class AbstractRequest<T> extends NetworkRequest<T> {
 
-    protected HttpUrl.Builder getBaseUrlBuilder() {
+    protected HttpUrl.Builder getBaseUrlHttpsBuilder() {
         HttpUrl.Builder builder = new HttpUrl.Builder();
         builder.scheme("https");
         builder.host("ec2-52-78-136-23.ap-northeast-2.compute.amazonaws.com");
@@ -18,4 +18,11 @@ public abstract class AbstractRequest<T> extends NetworkRequest<T> {
     }
 
 
+        protected HttpUrl.Builder getBaseUrlBuilder() {
+                HttpUrl.Builder builder = new HttpUrl.Builder();
+                builder.scheme("http");
+                builder.host("ec2-52-78-136-23.ap-northeast-2.compute.amazonaws.com");
+                builder.port(80);
+                return builder;
+        }
 }
