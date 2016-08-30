@@ -16,7 +16,8 @@ import butterknife.ButterKnife;
 public class DetailMakerActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_list) ListView listView;
-    @BindView(R.id.text_detail_maker_signed) TextView signedView;
+    @BindView(R.id.text_trade_staus)
+    TextView statusView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +25,8 @@ public class DetailMakerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_maker);
         ButterKnife.bind(this);
         initToolBar();
+        statusView.bringToFront();
 
-        signedView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

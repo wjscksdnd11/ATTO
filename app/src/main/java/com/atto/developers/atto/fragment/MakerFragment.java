@@ -64,8 +64,6 @@ public class MakerFragment extends Fragment {
         });
 
         initData();
-
-
         return view;
     }
 
@@ -73,8 +71,11 @@ public class MakerFragment extends Fragment {
     public void onResume() {
         super.onResume();
         initData();
-
     }
+
+    String[] nicknames = {"Lana Delange", "Sueann Membreno", "Kent Huntoon", "Dione Kogut", "Chelsea Ribeiro", "Ruth Kearns",
+            "Maryanne Sweigart", "Chasidy Scheffer", "Kyla Seddon", "Trinh Farr", "Tandy Norby", "Augustus Helm", "Annabel Schenck",
+            "Lurlene Meares", "Micheline Vannote", "Coretta Salaam", "Anya Quesenberry", "Gavin Caskey", "Annie Nellum", "Hershel Parkman"};
 
     private void initData() {
 
@@ -85,7 +86,7 @@ public class MakerFragment extends Fragment {
             KeywordList keywordList = new KeywordList();
             keywordList.setKey_word_1("keyword : " + i);
             makerData.setMaker_score(r.nextInt(5) + "");
-            makerData.setMaker_id(r.nextInt(5) + "");
+            makerData.setMaker_id(nicknames[i]);
             makerData.setMaker_line_tag("tag " + i);
             makerData.setMaker_key_word_lists(keywordList);
             makerData.setMaker_product_category("category 1 ");

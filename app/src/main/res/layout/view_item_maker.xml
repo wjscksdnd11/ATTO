@@ -1,69 +1,75 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@android:color/white"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="8dp"
+    android:background="@color/color_layout"
+    android:orientation="horizontal">
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/color_layout">
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_maker_profile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/sample_profile" />
+
+        <RatingBar
+            android:id="@+id/ratingbar_maker_grade"
+            style="@style/myrating"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/ratingbar_height"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_detail_maker_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="NickName"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <LinearLayout
-            android:orientation="vertical"
+
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp">
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:id="@+id/img_maker_profile"
-                android:background="@drawable/image_shape" />
-
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ratingbar_maker_grade"
-                android:theme="@style/RatingBar"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NicName"
-                android:id="@+id/text_detail_maker_nickname"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_marginTop="7dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="New Text"
-                android:id="@+id/text_detail_maker_intro"
-                android:layout_marginTop="5dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="New Text"
                 android:id="@+id/text_detail_maker_keyword"
-                android:layout_marginTop="5dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@drawable/keyword_shapes"
+                android:text="#반려동물" />
 
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyword_shapes"
+                android:text="#간식" />
         </LinearLayout>
     </LinearLayout>
 
