@@ -42,7 +42,7 @@ public class MyProfileRequest extends AbstractRequest<MyProfile> {
         String text = body.string();
         Gson gson = new Gson();
         MyProfile temp = gson.fromJson(text, MyProfile.class);
-        Log.i("MyProfile Result :", temp.getMessage()+" , "+ temp.getData().getMember_alias()+" , "+ temp.getData().getMember_address()+" , "+ temp.getData().getMember_phone());
+        Log.i("MyProfile Result :", temp.getMessage()+" , "+ temp.getData().getMember_alias()+" , "+ temp.getData().getMember_address_1()+" , "+ temp.getData().getMember_phone());
         return temp;
     }
 
