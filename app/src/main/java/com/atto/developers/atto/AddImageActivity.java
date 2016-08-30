@@ -1,9 +1,10 @@
 package com.atto.developers.atto;
 
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 public class AddImageActivity extends AppCompatActivity {
 
@@ -11,21 +12,23 @@ public class AddImageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_image);
+        initToolBar();
     }
 
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.back_menu, menu);
-        return true;
-    }
+    private void initToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        toolbar.setTitle(R.string.activity_add_image);
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.back) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

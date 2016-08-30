@@ -10,45 +10,51 @@
         android:id="@+id/img_mypage_profile"
         android:background="@drawable/image_shape"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="7dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/textView2"
+        android:id="@+id/text_mypage_nickname"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="5dp" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="@string/btn_mypage_setting_myprofile"
         android:id="@+id/btn_mypage_setting_myprofile"
+        android:background="@color/color_btn"
+        android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="5dp" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="3dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="abcdefg"
-            android:id="@+id/textView3"
-            android:layout_marginLeft="15dp" />
+            android:text="@string/text_my_trade"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/text_my_trade"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:gravity="left" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="abcdefg"
-            android:id="@+id/textView4"
-            android:layout_marginLeft="190dp" />
+            android:text="@string/text_mypage_more_trade"
+            android:id="@+id/text_mypage_more_trade"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:layout_marginRight="15dp" />
     </LinearLayout>
 </LinearLayout>

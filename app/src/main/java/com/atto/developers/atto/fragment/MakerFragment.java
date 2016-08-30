@@ -13,9 +13,10 @@ import android.view.ViewGroup;
 
 import com.atto.developers.atto.DetailMakerActivity;
 import com.atto.developers.atto.R;
-
 import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
-import com.atto.developers.atto.data.networkdata.makerdata.MakerData;
+import com.atto.developers.atto.networkdata.listdata.KeywordList;
+import com.atto.developers.atto.networkdata.makerdata.MakerData;
+
 
 import java.util.Random;
 
@@ -33,11 +34,17 @@ public class MakerFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static MakerFragment newInstance() {
+
+        MakerFragment fragment = new MakerFragment();
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_maker, container, false);
+        View view = inflater.inflate(R.layout.fragment_maker, container, false);
 
         listView = (RecyclerView) view.findViewById(R.id.rv_list);
         mAdapter = new RecyclerMakerAdapter();
@@ -46,10 +53,11 @@ public class MakerFragment extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         listView.setLayoutManager(manager);
 
-        mAdapter.setOnAdapterItemClickListener(new RecyclerMakerAdapter.OnAdapterItemClickListener() {
+        mAdapter.setOnAdapterItemClickListener(new RecyclerMakerAdapter.OnAdapterItemClickLIstener() {
 
             @Override
             public void onAdapterItemClick(View view, MakerData makerItemData, int position) {
+
                 Intent intent = new Intent(getContext(), DetailMakerActivity.class);
                 startActivity(intent);
             }
@@ -57,7 +65,15 @@ public class MakerFragment extends Fragment {
 
         initData();
 
+
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
+
     }
 
     private void initData() {
@@ -65,6 +81,17 @@ public class MakerFragment extends Fragment {
         Random r = new Random();
         for (int i = 0; i < 20; i++) {
             MakerData makerData = new MakerData();
+
+            KeywordList keywordList = new KeywordList();
+            keywordList.setKey_word_1("keyword : " + i);
+            makerData.setMaker_score(r.nextInt(5) + "");
+            makerData.setMaker_id(r.nextInt(5) + "");
+            makerData.setMaker_line_tag("tag " + i);
+            makerData.setMaker_key_word_lists(keywordList);
+            makerData.setMaker_product_category("category 1 ");
+            makerData.setMaker_product_category_1("category 2");
+            makerData.setMaker_product_category_2("category 3");
+
             mAdapter.add(makerData);
 
         }

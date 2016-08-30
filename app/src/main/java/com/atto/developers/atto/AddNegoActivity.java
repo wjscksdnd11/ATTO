@@ -1,13 +1,14 @@
 package com.atto.developers.atto;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class AddNegoActivity extends AppCompatActivity {
 
@@ -15,38 +16,36 @@ public class AddNegoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_nego);
+        ButterKnife.bind(this);
+        initToolBar();
 
-        Button btn = (Button)findViewById(R.id.btn_nego_register);
-        btn.setOnClickListener(new View.OnClickListener() {
+
+    }
+    @OnClick(R.id.btn_nego_register)
+    public void onCompleteNegoRegister() {
+        Intent intent = new Intent(AddNegoActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP  | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_move_setting_price)
+    public void onMoveSettingPrice() {
+
+    }
+
+    private void initToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        toolbar.setTitle(R.string.activity_add_nego);
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddNegoActivity.this, DetailTradeActivity.class);
-                startActivity(intent);
                 finish();
-
-            }
-        });
-
-        btn = (Button)findViewById(R.id.btn_move_setting_price);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main_tab, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if( item.getItemId() == R.id.notification) {
-            Toast.makeText(this, "notification", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

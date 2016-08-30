@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.atto.developers.atto.data.DetailMaker;
-
 public class AddPortActivity extends AppCompatActivity {
 
     ImageView photoView;
@@ -24,14 +22,10 @@ public class AddPortActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddPortActivity.this, DetailMaker.class);
+                Intent intent = new Intent(AddPortActivity.this, DetailMakerActivity.class);
                 startActivity(intent);
-
             }
         });
-
-
-
 
     }
 

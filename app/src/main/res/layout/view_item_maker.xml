@@ -1,47 +1,70 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/activity_horizontal_margin">
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:layout_marginBottom="8dp">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/img_maker_profile"
-        android:background="@drawable/image_shape" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_layout">
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ratingbar_maker_grade"
-        android:layout_below="@+id/img_maker_profile"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/text_detail_maker_nickname"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/img_maker_profile"
-        android:layout_toEndOf="@+id/img_maker_profile" />
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/img_maker_profile"
+                android:background="@drawable/image_shape" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/text_detail_maker_intro"
-        android:layout_below="@+id/text_detail_maker_nickname"
-        android:layout_toRightOf="@+id/img_maker_profile"
-        android:layout_toEndOf="@+id/img_maker_profile" />
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingbar_maker_grade"
+                android:theme="@style/RatingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/text_detail_maker_keyword"
-        android:layout_below="@+id/text_detail_maker_intro"
-        android:layout_toRightOf="@+id/img_maker_profile"
-        android:layout_toEndOf="@+id/img_maker_profile" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp">
 
-</RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NicName"
+                android:id="@+id/text_detail_maker_nickname"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginTop="7dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/text_detail_maker_intro"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/text_detail_maker_keyword"
+                android:layout_marginTop="5dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

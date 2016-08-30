@@ -6,15 +6,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.data.networkdata.tradedata.TradeData;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
 
 /**
  * Created by Tacademy on 2016-08-23.
  */
 public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
     ImageView realtime_photo, trade_profile;
-    TextView trade_staus,trade_title,trade_price,
-           trade_dday,trade_nickname,trade_limit_date,trade_keyword;
+    TextView trade_staus, trade_title, trade_price,
+            trade_dday, trade_nickname, trade_limit_date, trade_keyword;
 
     TradeData tradeData;
 
@@ -23,8 +23,8 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-
     OnTradeItemClickListener listener;
+
     public void setOnTradeItemClickListener(OnTradeItemClickListener listener) {
         this.listener = listener;
     }
@@ -33,24 +33,24 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
     public RealTimeTradeViewHolder(View itemView) {
         super(itemView);
 
-       itemView.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               if(listener != null) {
-                   listener.onTradeItemClick(view, tradeData, getAdapterPosition());
-               }
-           }
-       });
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onTradeItemClick(view, tradeData, getAdapterPosition());
+                }
+            }
+        });
 
-        realtime_photo = (ImageView)itemView.findViewById(R.id.img_realtime_photo);
-        trade_profile = (ImageView)itemView.findViewById(R.id.img_maker_profile);
-        trade_staus = (TextView)itemView.findViewById(R.id.text_trade_staus);
-        trade_title = (TextView)itemView.findViewById(R.id.text_trade_title);
-        trade_price = (TextView)itemView.findViewById(R.id.text_trade_price);
-        trade_dday = (TextView)itemView.findViewById(R.id.text_trade_dday);
-        trade_nickname = (TextView)itemView.findViewById(R.id.text_trade_nickname);
-        trade_limit_date = (TextView)itemView.findViewById(R.id.text_trade_limit_date);
-        //trade_keyword = (TextView)itemView.findViewById(R.id.text_trade_keyword);
+        realtime_photo = (ImageView) itemView.findViewById(R.id.img_realtime_photo);
+        trade_profile = (ImageView) itemView.findViewById(R.id.img_maker_profile);
+        trade_staus = (TextView) itemView.findViewById(R.id.text_trade_staus);
+        trade_title = (TextView) itemView.findViewById(R.id.text_trade_title);
+        trade_price = (TextView) itemView.findViewById(R.id.text_trade_price);
+        trade_dday = (TextView) itemView.findViewById(R.id.text_trade_dday);
+        trade_nickname = (TextView) itemView.findViewById(R.id.text_trade_nickname);
+        trade_limit_date = (TextView) itemView.findViewById(R.id.text_trade_limit_date);
+        trade_keyword = (TextView) itemView.findViewById(R.id.text_trade_keyword_a);
 
     }
 
@@ -62,7 +62,7 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         trade_staus.setText(tradeData.getTrade_status());
         trade_title.setText(tradeData.getTrade_title());
         trade_price.setText(tradeData.getTrade_price() + "원");
-        trade_dday.setText(tradeData.getTrade_dtime());
+        trade_dday.setText(tradeData.getTrade_dday());
         trade_nickname.setText(tradeData.getMember_info().getMember_alias());
         trade_limit_date.setText(tradeData.getTrade_dtime());
         trade_keyword.setText(tradeData.getTrade_key_word_lists().getKey_word_1());

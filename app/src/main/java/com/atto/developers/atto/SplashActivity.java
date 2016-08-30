@@ -47,7 +47,7 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
                 startActivity(intent);
                 finish();
             }
-        }, 3000);
+        }, 2000);
     }
 
     private void moveLoginActivity() {
@@ -58,7 +58,7 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
                 startActivity(intent);
                 finish();
             }
-        }, 3000);
+        }, 2000);
 
     }
 

@@ -6,14 +6,22 @@
     android:orientation="vertical"
     tools:context="com.atto.developers.atto.MyTradeActivity">
 
-    <include
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/main_toolbar"
+        android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/toolbar_main" />
+        android:background="@drawable/atto_bg">
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/toolbar_back">
+        </include>
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/view3" />
+        android:id="@+id/rv_list" />
 
 </LinearLayout>

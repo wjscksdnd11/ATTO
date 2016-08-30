@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -34,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
+
             }
         });
 
@@ -42,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
+
             }
         });
         text_login_guest.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
+                finish();
+
             }
         });
         text_search_password.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, FindPasswordActivity.class);
                 startActivity(intent);
+
             }
         });
     }
