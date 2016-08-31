@@ -16,8 +16,8 @@ public class AcceptWaitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_accept_wait);
         ButterKnife.bind(this);
         initToolBar();
-
     }
+    
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_accept_wait);
