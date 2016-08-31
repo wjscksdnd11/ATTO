@@ -13,10 +13,11 @@ import com.atto.developers.atto.fragment.RealTimeTradeFragment;
  */
 public class MyPagerAdapter extends FragmentPagerAdapter {
 
+    public static final int PAGE_COUNT = 3;
+
     public MyPagerAdapter(FragmentManager fm) {
         super(fm);
     }
-
     @Override
     public Fragment getItem(int position) {
         switch (position) {
@@ -28,13 +29,12 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
                 return MakerFragment.newInstance();
             default:
                 return AttoFragment.newInstance();
-
         }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return PAGE_COUNT;
     }
 
     @Override

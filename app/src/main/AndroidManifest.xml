@@ -41,7 +41,7 @@
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".AboutAttoActivity" />
         <activity android:name=".AccountLeaveActivity" />
-        <activity android:name=".RegsiterMakerActivity" />
+        <activity android:name=".RegisterMakerActivity" />
         <activity android:name=".UnifiedSearchActivity" />
         <activity android:name=".NoticeMainActivity" />
         <activity android:name=".MainActivity" />

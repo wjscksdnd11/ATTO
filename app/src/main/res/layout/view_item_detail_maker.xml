@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="Large Text"
         android:textColor="@color/white"
-        android:id="@+id/text_trade_staus"
+        android:id="@+id/text_detail_maker_signed"
         android:background="@drawable/staus_shape"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
@@ -20,9 +20,9 @@
         android:layout_marginTop="16dp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/img_mypage_profile"
+        android:id="@+id/img_detail_maker_profile"
         android:layout_gravity="center_horizontal"
-        android:layout_alignTop="@+id/text_trade_staus"
+        android:layout_alignTop="@+id/text_detail_maker_signed"
         android:layout_centerHorizontal="true"
         android:src="@drawable/sample_profile" />
 
@@ -31,26 +31,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="맛간식"
-        android:id="@+id/text_maker_nickname"
-        android:layout_below="@+id/img_mypage_profile"
+        android:id="@+id/text_detail_maker_nickname"
+        android:layout_below="@+id/img_detail_maker_profile"
         android:layout_centerHorizontal="true" />
 
     <RatingBar
+        android:rating="3.5"
         android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/ratingbar_height"
-        android:id="@+id/ratingbar_maker_grade"
+        android:id="@+id/ratingbar_detail_maker_grade"
         style="@style/myrating"
-        android:layout_below="@+id/text_maker_nickname"
+        android:layout_below="@+id/text_detail_maker_nickname"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="반려동물을 위한 건강한 간식을 제작합니다."
-        android:id="@+id/text_maker_content"
-        android:layout_below="@+id/ratingbar_maker_grade"
+        android:text="@string/text_detail_maker_intro"
+        android:id="@+id/text_detail_maker_intro"
+        android:layout_below="@+id/ratingbar_detail_maker_grade"
         android:layout_centerHorizontal="true" />
 
     <LinearLayout
@@ -59,14 +60,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/text_maker_content"
+        android:layout_below="@+id/text_detail_maker_intro"
         android:layout_centerHorizontal="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#반려동물"
-            android:id="@+id/textView16"
+            android:id="@+id/text_detail_maker_keyword_one"
             android:background="@drawable/keyword_shapes"
             android:layout_gravity="center_vertical"
             android:layout_weight="1" />
@@ -75,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#간식"
-            android:id="@+id/textView17"
+            android:id="@+id/text_detail_maker_keyword_two"
             android:background="@drawable/keyword_shapes"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"

@@ -95,7 +95,6 @@ public class MyPageActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_my_page);

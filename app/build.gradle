@@ -46,4 +46,5 @@ dependencies {
     compile 'hanks.xyz:htextview-library:0.1.5'
 
     compile 'com.prolificinteractive:material-calendarview:1.4.0'
+
 }

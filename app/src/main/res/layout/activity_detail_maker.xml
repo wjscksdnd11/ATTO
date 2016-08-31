@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailMakerActivity">
+    tools:context=".DetailMakerActivity"
+    android:background="@color/white">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/main_toolbar"
@@ -13,24 +14,14 @@
         android:background="@drawable/atto_bg">
     </android.support.v7.widget.Toolbar>
 
-    <include
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        layout="@layout/view_item_detail_maker"
-        android:id="@+id/view_item_maker"
-        android:layout_below="@+id/main_toolbar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/main_toolbar"
-        android:layout_alignEnd="@+id/main_toolbar" />
-
-    <ListView
+    <android.support.v7.widget.RecyclerView
+        android:padding="@dimen/item_offset"
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/view_item_maker">
+        android:layout_below="@+id/main_toolbar">
 
-    </ListView>
+    </android.support.v7.widget.RecyclerView>
 
 
 </RelativeLayout>

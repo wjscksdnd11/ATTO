@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.atto.developers.atto.fragment.CheckLogoutDialogFragment;
-import com.atto.developers.atto.fragment.SearchPostcodeDialogFragment;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -48,7 +47,7 @@ public class MyPageSettingActivity extends AppCompatActivity {
 
     @OnClick(R.id.key_register_maker)
     public void onRegisterMaker(){
-        Intent intent = new Intent(MyPageSettingActivity.this, RegsiterMakerActivity.class);
+        Intent intent = new Intent(MyPageSettingActivity.this, RegisterMakerActivity.class);
         startActivity(intent);
     }
 

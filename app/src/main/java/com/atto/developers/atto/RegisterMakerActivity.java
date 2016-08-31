@@ -1,26 +1,23 @@
 package com.atto.developers.atto;
 
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import butterknife.ButterKnife;
-
-public class AcceptWaitActivity extends AppCompatActivity {
+public class RegisterMakerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_accept_wait);
-        ButterKnife.bind(this);
+        setContentView(R.layout.activity_regsiter_maker);
         initToolBar();
-
     }
+
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        toolbar.setTitle(R.string.activity_accept_wait);
+        toolbar.setTitle(R.string.activity_regsiter_maker);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
@@ -32,4 +29,5 @@ public class AcceptWaitActivity extends AppCompatActivity {
             }
         });
     }
+
 }
