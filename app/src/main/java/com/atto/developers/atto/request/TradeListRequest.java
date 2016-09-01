@@ -1,5 +1,6 @@
 package com.atto.developers.atto.request;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
@@ -23,7 +24,7 @@ public class TradeListRequest extends AbstractRequest<TradeListData<TradeData>> 
 
 
 
-    public TradeListRequest(Context context,String page_no, String row_count ) {
+    public TradeListRequest(Context context, String page_no, String row_count ) {
 
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADES)
@@ -43,8 +44,7 @@ public class TradeListRequest extends AbstractRequest<TradeListData<TradeData>> 
 
     @Override
     protected Type getType() {
-        return new TypeToken<TradeListData<TradeData>>() {
-        }.getType();
+        return new TypeToken<TradeListData<TradeData>>() {}.getType();
     }
 
     @Override
