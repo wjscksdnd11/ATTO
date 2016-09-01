@@ -25,7 +25,7 @@ public class MyProfileRequest extends AbstractRequest<MyProfile> {
     Request mRequest;
 
 
-    public MyProfileRequest() { //내 프로필 조회
+    public MyProfileRequest(Context context) { //내 프로필 조회
 
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(MEMBERS)
@@ -34,6 +34,7 @@ public class MyProfileRequest extends AbstractRequest<MyProfile> {
 
         mRequest = new Request.Builder()
                 .url(url)
+                .tag(context)
                 .build();
 
 

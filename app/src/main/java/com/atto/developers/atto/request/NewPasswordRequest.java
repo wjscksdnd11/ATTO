@@ -1,5 +1,7 @@
 package com.atto.developers.atto.request;
 
+import android.content.Context;
+
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
@@ -24,7 +26,7 @@ public class NewPasswordRequest extends AbstractRequest<ResultMessage> {
 
     Request mRequest;
 
-    public NewPasswordRequest(String password, String new_password) {
+    public NewPasswordRequest(Context context,String password, String new_password) {
         HttpUrl url  = getBaseUrlHttpsBuilder()
                 .addPathSegment(MEMBERS)
                 .addPathSegment(ME)
@@ -37,6 +39,7 @@ public class NewPasswordRequest extends AbstractRequest<ResultMessage> {
         mRequest = new Request.Builder()
                 .url(url)
                 .put(body)
+                .tag(context)
                 .build();
 
 

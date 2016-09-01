@@ -1,5 +1,6 @@
 package com.atto.developers.atto.request;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.atto.developers.atto.networkdata.ResultMessage;
@@ -31,7 +32,7 @@ public class LocalLoginRequest extends AbstractRequest<ResultMessage> {
     private final static String TOKEN ="member_registration_token";
     private final static String PASSWORD = "member_password";
 
-    public LocalLoginRequest(String e_mail, String password, String member_registration_token) {
+    public LocalLoginRequest(Context context, String e_mail, String password, String member_registration_token) {
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment(AUTH)
                 .addPathSegment(LOGIN)
@@ -46,6 +47,7 @@ public class LocalLoginRequest extends AbstractRequest<ResultMessage> {
         mRequest = new Request.Builder()
                 .url(url)
                 .post(body)
+                .tag(context)
                 .build();
 
         Log.i("URL", mRequest.url().toString());

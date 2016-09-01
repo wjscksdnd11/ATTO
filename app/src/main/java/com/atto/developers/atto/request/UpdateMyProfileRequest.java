@@ -1,5 +1,7 @@
 package com.atto.developers.atto.request;
 
+import android.content.Context;
+
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
@@ -38,7 +40,7 @@ public class UpdateMyProfileRequest extends AbstractRequest<ResultMessage> {
     final static String GENDER = "member_gender";
 
 
-    public UpdateMyProfileRequest(String member_phone,String member_zipcode_1,String member_address_1, String alias, String member_profile_img, String member_gender ) {
+    public UpdateMyProfileRequest(Context context, String member_phone, String member_zipcode_1, String member_address_1, String alias, String member_profile_img, String member_gender ) {
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment(MEMBERS)
                 .addPathSegment(ME)
@@ -48,13 +50,14 @@ public class UpdateMyProfileRequest extends AbstractRequest<ResultMessage> {
                 .add(ZIP_CODE,member_zipcode_1)
                 .add(ADRESS,member_address_1)
                 .add(NICKNAME,alias)
-                .add(GENDER,member_profile_img)
+                .add(GENDER,member_gender)
                 .add(PROFILE_IMG,member_gender)
                 .build();
 
         mRequest = new Request.Builder()
                 .url(url)
                 .put(body)
+                .tag(context)
                 .build();
 
 

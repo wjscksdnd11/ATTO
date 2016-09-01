@@ -1,5 +1,7 @@
 package com.atto.developers.atto.request;
 
+import android.content.Context;
+
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
@@ -16,7 +18,7 @@ public class MemberLeaveRequest extends AbstractRequest<ResultMessage> {
 
     private final static String MEMBERS = "members";
     private final static String ME ="me";
-    public MemberLeaveRequest() {
+    public MemberLeaveRequest(Context context) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(MEMBERS)
                 .addPathSegment(ME)
@@ -25,6 +27,7 @@ public class MemberLeaveRequest extends AbstractRequest<ResultMessage> {
         mRequest = new Request.Builder()
                 .url(url)
                 .delete()
+                .tag(context)
                 .build();
     }
 
