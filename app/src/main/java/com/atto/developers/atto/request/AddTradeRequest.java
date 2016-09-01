@@ -43,7 +43,7 @@ public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
     private final static String DDATE = "trade_dtime";
     private final static String CONTENTS = "trade_product_contents";
     private final static String KEYWORDS = "trade_key_words";
-    private final static String IMAGES = "trade_product_imges";
+    private final static String IMAGES = "trade_product_imges_info";
 
     private final static String TRADE = "trades";
     Request mRequest;

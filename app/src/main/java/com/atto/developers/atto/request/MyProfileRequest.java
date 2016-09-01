@@ -18,10 +18,7 @@ public class MyProfileRequest extends AbstractRequest<MyProfile> {
 
     private final static String MEMBERS = "members";
     private final static String ME ="me";
-    private final static String ACTION="action";
-    private final static String ACTION_VALUE ="password";
-    private final static String PASSWORD = "member_password";
-    private final static String NEW_PASSWORD ="member_newpassword";
+
 
     Request mRequest;
 

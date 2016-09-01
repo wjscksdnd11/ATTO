@@ -13,7 +13,7 @@ public class TradeData implements java.io.Serializable {
     private String trade_dday;
 
 
-    private String[] trade_product_imges;// null 가능
+    private String[] trade_product_imges_info;// null 가능
     private String trade_product_img;// null 가능
     private String trade_product_category_1;// null 가능
     private String trade_product_category_2;// null 가능
@@ -77,12 +77,12 @@ public class TradeData implements java.io.Serializable {
         this.trade_dtime = trade_dtime;
     }
 
-    public String[] getTrade_product_imges() {
-        return this.trade_product_imges;
+    public String[] getTrade_product_imges_info() {
+        return this.trade_product_imges_info;
     }
 
-    public void setTrade_product_imges(String[] trade_product_imges) {
-        this.trade_product_imges = trade_product_imges;
+    public void setTrade_product_imges_info(String[] trade_product_imges_info) {
+        this.trade_product_imges_info = trade_product_imges_info;
     }
 
 
