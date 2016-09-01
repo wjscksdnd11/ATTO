@@ -12,11 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atto.developers.atto.adapter.MyPagerAdapter;
-import com.atto.developers.atto.networkdata.ResultMessage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,13 +22,14 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-//    FragmentTabHost tabHost;
-    ResultMessage rm;
 
-    @BindView(R.id.tabs) TabLayout tabs;
-    @BindView(R.id.pager) ViewPager pager;
+    @BindView(R.id.tabs)
+    TabLayout tabs;
+    @BindView(R.id.pager)
+    ViewPager pager;
 
     MyPagerAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         pager.setAdapter(mAdapter);
         tabs.setupWithViewPager(pager);
         tabs.removeAllTabs();
-
         tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab1_selector)));
         tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab2_selector)));
         tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab3_selector)));
@@ -93,12 +91,11 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
-        if(id == R.id.action_noti) {
+        if (id == R.id.action_noti) {
             Intent intent = new Intent(MainActivity.this, NoticeMainActivity.class);
             startActivity(intent);
-        } else if(id == R.id.action_search) {
+        } else if (id == R.id.action_search) {
             Intent intent = new Intent(MainActivity.this, UnifiedSearchActivity.class);
             startActivity(intent);
         }
@@ -139,11 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        TextView titleView = (TextView)findViewById(R.id.toolbar_title);
-        titleView.setText("atto");
-
         setSupportActionBar(toolbar);
-
         toolbar.setNavigationIcon(R.drawable.ic_account_circle_black);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

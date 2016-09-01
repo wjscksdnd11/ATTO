@@ -79,10 +79,10 @@ public class MakerFragment extends Fragment {
 
     private void initData() {
 
+        mAdapter.clear();
         Random r = new Random();
         for (int i = 0; i < 20; i++) {
             MakerData makerData = new MakerData();
-
             KeywordList keywordList = new KeywordList();
             keywordList.setKey_word_1("keyword : " + i);
             makerData.setMaker_score(r.nextInt(5) + "");

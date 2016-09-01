@@ -9,16 +9,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.atto.developers.atto.AddTradeActivity;
 import com.atto.developers.atto.DetailTradeActivity;
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.adapter.RecyclerRealTimeTradeAdapter;
-import com.atto.developers.atto.networkdata.listdata.KeywordList;
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
-import com.atto.developers.atto.networkdata.userdata.Member_info;
+import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.request.TradeListRequest;
 
-import java.util.Random;
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,10 +66,13 @@ public class RealTimeTradeFragment extends Fragment {
             }
         });
 
+
         initData();
 
         return view;
     }
+
+
 
     @OnClick(R.id.btn_trade_add)
     void onAddTrade() {
@@ -82,7 +88,24 @@ public class RealTimeTradeFragment extends Fragment {
 
     private void initData() {
 
-        Random r = new Random();
+        TradeListRequest request  = new TradeListRequest("10","10");
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
+            @Override
+            public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
+
+                TradeData[] data =  result.getData();
+                Toast.makeText(getContext(),"성공 : "+data[0].getTrade_id(),Toast.LENGTH_SHORT).show();
+                mAdapter.addAll(Arrays.asList(data));
+
+            }
+
+            @Override
+            public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(getContext(),"실패 : "+errorCode,Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        /*Random r = new Random();
         for (int i = 0; i < 20; i++) {
             TradeData tradeData = new TradeData();
             Member_info member_info = new Member_info();
@@ -97,7 +120,7 @@ public class RealTimeTradeFragment extends Fragment {
             tradeData.setTrade_dtime("2016년 8월" + r.nextInt(30) + "일");
             tradeData.setTrade_dday("D-" + i);
             mAdapter.add(tradeData);
-        }
+        }*/
 
     }
 }

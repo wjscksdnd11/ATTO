@@ -21,7 +21,6 @@ public class TradeListRequest extends AbstractRequest<TradeListData<TradeData>> 
     private final static String PAGE_NO="pageNo";
     private final static String ROW_COUNT="rowCount";
 
-
     public TradeListRequest(String page_no,String row_count) {
 
         HttpUrl url = getBaseUrlBuilder()

@@ -9,13 +9,11 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="220dp"
-        android:layout_height="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
         android:layout_gravity="center"
-        android:layout_marginRight="16dp"
         android:layout_marginTop="40dp"
-        android:src="@drawable/atto_logo" />
-
+        android:src="@drawable/atto_logo_white" />
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/edit_login_email"

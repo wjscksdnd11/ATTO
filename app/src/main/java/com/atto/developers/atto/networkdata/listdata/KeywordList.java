@@ -29,4 +29,6 @@ public class KeywordList implements java.io.Serializable {
     public void setKey_word_2(String key_word_2) {
         this.key_word_2 = key_word_2;
     }
+
+
 }

@@ -39,11 +39,7 @@ public class MyProfileRequest extends AbstractRequest<MyProfile> {
 
         Log.i("URL", mRequest.url().toString());
 
-
     }
-
-
-
 
     @Override
     public Request getRequest() {

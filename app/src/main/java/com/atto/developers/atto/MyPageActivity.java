@@ -117,9 +117,7 @@ public class MyPageActivity extends AppCompatActivity {
             @Override
             public void onSuccess(NetworkRequest<MyProfile> request, MyProfile result) {
 
-
                 String nickname = result.getData().getMember_alias();
-
                 nickNameView.setText(nickname);
                 Toast.makeText(MyPageActivity.this, "success",Toast.LENGTH_SHORT).show();
 
