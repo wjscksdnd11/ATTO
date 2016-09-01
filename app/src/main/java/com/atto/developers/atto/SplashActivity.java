@@ -34,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.splash_scale);
         textView.startAnimation(animation);*/
         mHandler = new Handler(Looper.getMainLooper());
-        moveMainActivity();
+        moveLoginActivity();
 
     }
 

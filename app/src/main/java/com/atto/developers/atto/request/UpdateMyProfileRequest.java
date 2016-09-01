@@ -26,32 +26,31 @@ import okhttp3.RequestBody;
 
 public class UpdateMyProfileRequest extends AbstractRequest<ResultMessage> {
 
-
     Request mRequest;
 
     private final static String MEMBERS = "members";
-    private final static String ME ="me";
+    private final static String ME = "me";
 
-    final static String ZIP_CODE="member_zipcode_1";
-    final static String ADRESS="member_address_1";
-    final static String PHONE_NUM="member_phone";
-    final static String NICKNAME ="alias";
-    final static String PROFILE_IMG="member_profile_img";
+    final static String ZIP_CODE = "member_zipcode_1";
+    final static String ADRESS = "member_address_1";
+    final static String PHONE_NUM = "member_phone";
+    final static String NICKNAME = "alias";
+    final static String PROFILE_IMG = "member_profile_img";
     final static String GENDER = "member_gender";
 
 
-    public UpdateMyProfileRequest(Context context, String member_phone, String member_zipcode_1, String member_address_1, String alias, String member_profile_img, String member_gender ) {
+    public UpdateMyProfileRequest(Context context, String member_phone, String member_zipcode_1, String member_address_1, String alias, String member_profile_img, String member_gender) {
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment(MEMBERS)
                 .addPathSegment(ME)
                 .build();
         RequestBody body = new FormBody.Builder()
-                .add(PHONE_NUM,member_phone)
-                .add(ZIP_CODE,member_zipcode_1)
-                .add(ADRESS,member_address_1)
-                .add(NICKNAME,alias)
-                .add(GENDER,member_gender)
-                .add(PROFILE_IMG,member_gender)
+                .add(PHONE_NUM, member_phone)
+                .add(ZIP_CODE, member_zipcode_1)
+                .add(ADRESS, member_address_1)
+                .add(NICKNAME, alias)
+                .add(GENDER, member_gender)
+                .add(PROFILE_IMG, member_gender)
                 .build();
 
         mRequest = new Request.Builder()
@@ -61,12 +60,12 @@ public class UpdateMyProfileRequest extends AbstractRequest<ResultMessage> {
                 .build();
 
 
-
     }
 
     @Override
     protected Type getType() {
-        return new TypeToken<ResultMessage>(){}.getType();
+        return new TypeToken<ResultMessage>() {
+        }.getType();
     }
 
     @Override

@@ -17,7 +17,6 @@ import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
 import com.atto.developers.atto.networkdata.listdata.KeywordList;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
 
-
 import java.util.Random;
 
 

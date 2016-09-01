@@ -26,7 +26,7 @@ public class NewPasswordRequest extends AbstractRequest<ResultMessage> {
 
     Request mRequest;
 
-    public NewPasswordRequest(Context context,String password, String new_password) {
+    public NewPasswordRequest(Context context, String password, String new_password) {
         HttpUrl url  = getBaseUrlHttpsBuilder()
                 .addPathSegment(MEMBERS)
                 .addPathSegment(ME)

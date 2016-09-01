@@ -26,7 +26,7 @@ public class TradeData implements java.io.Serializable {
         this.trade_key_word_info = trade_key_word_info;
     }
 
-    private String [] trade_key_word_info;
+    private String[] trade_key_word_info;
     private String trade_status;
     private Member_info member_info;
 
@@ -45,6 +45,7 @@ public class TradeData implements java.io.Serializable {
     public void setTrade_dday(String trade_dday) {
         this.trade_dday = trade_dday;
     }
+
     public String getTrade_id() {
         return this.trade_id;
     }
@@ -101,6 +102,7 @@ public class TradeData implements java.io.Serializable {
     public void setMember_info(Member_info member_info) {
         this.member_info = member_info;
     }
+
     public String getTrade_product_category_2() {
         return trade_product_category_2;
     }

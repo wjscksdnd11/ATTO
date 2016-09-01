@@ -26,6 +26,7 @@ public class FacebookLoginRequest extends AbstractRequest<ResultMessage> {
     private final static String FACEBOOK ="facebook";
     private final static String TOKEN = "token";
     private final static String ACCESS_TOKEN = "access_token";
+
     public FacebookLoginRequest(Context context, String access_token) {
 
         HttpUrl url = getBaseUrlHttpsBuilder()

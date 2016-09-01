@@ -22,6 +22,7 @@ public class SearchListRequest extends AbstractRequest<TradeListData<TradeData>>
     private final static String ROW_COUNT = "rowCount";
     private final static String ACTION = "action";
     private final static String KEY_WORD_ID="key_word_id";
+
     public SearchListRequest(Context context ,String page_no, String row_count, String keyword, String key_word_id)  {
 
         HttpUrl url = getBaseUrlBuilder()

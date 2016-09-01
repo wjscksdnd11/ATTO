@@ -65,13 +65,8 @@ public class RealTimeTradeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-        initData();
-
         return view;
     }
-
 
 
     @OnClick(R.id.btn_trade_add)
@@ -89,7 +84,7 @@ public class RealTimeTradeFragment extends Fragment {
     private void initData() {
 
         mAdapter.clear();
-        TradeListRequest request  = new TradeListRequest("10","10");
+        TradeListRequest request  = new TradeListRequest(getContext(), "10","10");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
             @Override
             public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {

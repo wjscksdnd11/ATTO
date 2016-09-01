@@ -38,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_complete_signup)
     public void completeSignUp() {
-        SignUpRequest request = new SignUpRequest(email, password, name, zipcode, adress_1, phone, registration_token);
+        SignUpRequest request = new SignUpRequest(this, email, password, name, zipcode, adress_1, phone, registration_token);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
 
             @Override

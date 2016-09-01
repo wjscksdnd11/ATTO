@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.networkdata.listdata.KeywordList;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.bumptech.glide.Glide;
 
@@ -82,7 +81,11 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
     public void setTradeData(TradeData tradeData) {
         this.tradeData = tradeData;
-        KeywordList keywordList = tradeData.getTrade_key_word_lists();
+
+        if (tradeData.getTrade_key_word_info() != null) {
+            String[] keywordList = tradeData.getTrade_key_word_info();
+            checkKeywordList(keywordList);
+        }
         //realtime_photo.setImageDrawable(tradeData.getTrad_ );
         //trade_profile.setImageDrawable(tradeData.);
 
@@ -94,8 +97,6 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         trade_dday.setText(tradeData.getTrade_dday());
         trade_nickname.setText(tradeData.getMember_info().getMember_alias());
         trade_limit_date.setText(tradeData.getTrade_dtime());
-        checkKeywordList(keywordList);
-
 
     }
 
@@ -115,22 +116,16 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    private void checkKeywordList(KeywordList keywordList) {
+    TextView[] keywordView = {trade_keyword_one, trade_keyword_two, trade_keyword_three};
 
-        if (keywordList.getKey_word_1() != null) {
-            trade_keyword_one.setText(keywordList.getKey_word_1());
-        } else {
-            trade_keyword_one.setVisibility(View.GONE);
-        }
-        if (keywordList.getKey_word_2() != null) {
-            trade_keyword_two.setText(keywordList.getKey_word_2());
-        } else {
-            trade_keyword_two.setVisibility(View.GONE);
-        }
-        if (keywordList.getKey_word_3() != null) {
-            trade_keyword_three.setText(keywordList.getKey_word_3());
-        } else {
-            trade_keyword_three.setVisibility(View.GONE);
+    private void checkKeywordList(String[] keywordList) {
+
+        for (int i = 0; i < keywordList.length; i++) {
+            if (keywordList[i] != null) {
+                keywordView[i].setText(keywordList[i]);
+            } else {
+                keywordView[i].setVisibility(View.GONE);
+            }
         }
     }
 

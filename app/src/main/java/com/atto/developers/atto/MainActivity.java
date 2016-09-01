@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         initToolBar();
 
         mAdapter = new MyPagerAdapter(getSupportFragmentManager());
+
 /*
 
         tabHost = (FragmentTabHost) findViewById(R.id.tabhost);

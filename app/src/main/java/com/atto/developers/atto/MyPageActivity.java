@@ -116,7 +116,7 @@ public class MyPageActivity extends AppCompatActivity {
         final ProgressDialogFragment dialogFragment = new ProgressDialogFragment();
         dialogFragment.show(getSupportFragmentManager(), "progress");
 
-        MyProfileRequest request = new MyProfileRequest();
+        MyProfileRequest request = new MyProfileRequest(this);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MyProfile>() {
             @Override
             public void onSuccess(NetworkRequest<MyProfile> request, MyProfile result) {
