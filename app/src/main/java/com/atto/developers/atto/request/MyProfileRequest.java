@@ -1,5 +1,6 @@
 package com.atto.developers.atto.request;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.atto.developers.atto.networkdata.userdata.MyProfile;
@@ -25,7 +26,7 @@ public class MyProfileRequest extends AbstractRequest<MyProfile> {
     Request mRequest;
 
 
-    public MyProfileRequest() { //내 프로필 조회
+    public MyProfileRequest(Context context) { //내 프로필 조회
 
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(MEMBERS)
@@ -34,6 +35,7 @@ public class MyProfileRequest extends AbstractRequest<MyProfile> {
 
         mRequest = new Request.Builder()
                 .url(url)
+                .tag(context)
                 .build();
 
 

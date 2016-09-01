@@ -1,5 +1,7 @@
 package com.atto.developers.atto.request;
 
+import android.content.Context;
+
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
@@ -17,7 +19,7 @@ public class LogoutRequest extends AbstractRequest<ResultMessage> {
     Request mRequest;
     private final static String AUTH = "auth";
     private final static String LOGOUT = "logout";
-    public LogoutRequest() {
+    public LogoutRequest(Context context) {
 
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(AUTH)
@@ -26,7 +28,7 @@ public class LogoutRequest extends AbstractRequest<ResultMessage> {
 
         mRequest = new Request.Builder()
                 .url(url)
-
+                .tag(context)
                 .build();
     }
     @Override

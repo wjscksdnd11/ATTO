@@ -1,5 +1,6 @@
 package com.atto.developers.atto.request;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.atto.developers.atto.networkdata.ResultMessage;
@@ -39,7 +40,7 @@ public class SignUpRequest extends AbstractRequest<ResultMessage> {
      final static String ADRESS="member_address_1";
      final static String PHONE_NUM="member_phone";
      final static String TOKEN = "registration_token";
-    public SignUpRequest(String email, String password, String name, String zipcode, String adress_1, String phone, String registration_token) {
+    public SignUpRequest(Context context,String email, String password, String name, String zipcode, String adress_1, String phone, String registration_token) {
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment(MEMBERS)
                 .build();
@@ -57,6 +58,7 @@ public class SignUpRequest extends AbstractRequest<ResultMessage> {
         mRequest = new Request.Builder()
                 .url(url)
                 .post(body)
+                .tag(context)
                 .build();
 
         Log.i("URL", mRequest.url().toString());

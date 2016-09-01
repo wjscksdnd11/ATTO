@@ -1,5 +1,6 @@
 package com.atto.developers.atto.request;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.atto.developers.atto.networkdata.ResultMessage;
@@ -25,7 +26,7 @@ public class FacebookLoginRequest extends AbstractRequest<ResultMessage> {
     private final static String FACEBOOK ="facebook";
     private final static String TOKEN = "token";
     private final static String ACCESS_TOKEN = "access_token";
-    public FacebookLoginRequest(String access_token) {
+    public FacebookLoginRequest(Context context, String access_token) {
 
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment(AUTH)
@@ -40,6 +41,7 @@ public class FacebookLoginRequest extends AbstractRequest<ResultMessage> {
         mRequest = new Request.Builder()
                 .url(url)
                 .post(body)
+                .tag(context)
                 .build();
 
         Log.i("URL", mRequest.url().toString());
