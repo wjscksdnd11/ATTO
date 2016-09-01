@@ -22,7 +22,6 @@ public class NewPasswordRequest extends AbstractRequest<ResultMessage> {
     private final static String PASSWORD = "member_password";
     private final static String NEW_PASSWORD ="member_newpassword";
 
-
     Request mRequest;
 
     public NewPasswordRequest(String password, String new_password) {

@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setNavigationIcon(R.drawable.ic_account_circle_black);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

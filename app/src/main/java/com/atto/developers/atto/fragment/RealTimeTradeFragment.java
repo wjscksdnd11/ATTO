@@ -88,17 +88,15 @@ public class RealTimeTradeFragment extends Fragment {
 
     private void initData() {
 
+        mAdapter.clear();
         TradeListRequest request  = new TradeListRequest("10","10");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
             @Override
             public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
-
                 TradeData[] data =  result.getData();
                 Toast.makeText(getContext(),"성공 : "+data[0].getTrade_id(),Toast.LENGTH_SHORT).show();
                 mAdapter.addAll(Arrays.asList(data));
-
             }
-
             @Override
             public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
                 Toast.makeText(getContext(),"실패 : "+errorCode,Toast.LENGTH_SHORT).show();

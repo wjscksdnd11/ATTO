@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.networkdata.makerdata.MakerData;
 import com.atto.developers.atto.networkdata.negodata.NegoListData;
 import com.atto.developers.atto.viewholder.DetailTradeHeaderViewHolder;
 import com.atto.developers.atto.viewholder.DetailTradeViewHolder;
@@ -30,6 +29,19 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
         items.add(negoListData);
         notifyDataSetChanged();
     }
+
+
+    public void addAll(List<NegoListData> list) {
+        items.addAll(list);
+        notifyDataSetChanged();
+    }
+
+
+    public void clear() {
+        items.clear();
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getItemViewType(int position) {

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.atto.developers.atto.fragment.ProgressDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.userdata.MyProfile;
@@ -112,6 +113,9 @@ public class MyPageActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        final ProgressDialogFragment dialogFragment = new ProgressDialogFragment();
+        dialogFragment.show(getSupportFragmentManager(), "progress");
+
         MyProfileRequest request = new MyProfileRequest();
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MyProfile>() {
             @Override
@@ -119,8 +123,8 @@ public class MyPageActivity extends AppCompatActivity {
 
                 String nickname = result.getData().getMember_alias();
                 nickNameView.setText(nickname);
-                Toast.makeText(MyPageActivity.this, "success",Toast.LENGTH_SHORT).show();
-
+                dialogFragment.dismiss();
+                Toast.makeText(MyPageActivity.this, "success", Toast.LENGTH_SHORT).show();
 
             }
 
@@ -128,10 +132,9 @@ public class MyPageActivity extends AppCompatActivity {
             public void onFail(NetworkRequest<MyProfile> request, int errorCode, String errorMessage, Throwable e) {
                 Log.e("error", request + " , " + errorCode + " , " + errorMessage);
 
+                dialogFragment.dismiss();
                 Toast.makeText(MyPageActivity.this, "fail" + errorCode, Toast.LENGTH_SHORT).show();
             }
-
-
 
 
         });

@@ -47,4 +47,6 @@ dependencies {
     compile 'hanks.xyz:htextview-library:0.1.5'
     compile 'com.prolificinteractive:material-calendarview:1.4.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
+
+    compile 'com.github.rahatarmanahmed:circularprogressview:2.5.0'
 }

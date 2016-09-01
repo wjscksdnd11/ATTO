@@ -18,27 +18,27 @@ public class TradeListRequest extends AbstractRequest<TradeListData<TradeData>> 
     Request mRequest;
 
     private final static String TRADES = "trades";
-    private final static String PAGE_NO="pageNo";
-    private final static String ROW_COUNT="rowCount";
+    private final static String PAGE_NO = "pageNo";
+    private final static String ROW_COUNT = "rowCount";
 
-    public TradeListRequest(String page_no,String row_count) {
+    public TradeListRequest(String page_no, String row_count) {
 
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADES)
-                .addQueryParameter(PAGE_NO,page_no)
-                .addQueryParameter(ROW_COUNT,row_count)
+                .addQueryParameter(PAGE_NO, page_no)
+                .addQueryParameter(ROW_COUNT, row_count)
                 .build();
         mRequest = new Request.Builder()
                 .url(url)
                 .build();
-        Log.i("url",url.toString());
+        Log.i("url", url.toString());
     }
-
 
 
     @Override
     protected Type getType() {
-        return new TypeToken<TradeListData<TradeData>>(){}.getType();
+        return new TypeToken<TradeListData<TradeData>>() {
+        }.getType();
     }
 
     @Override

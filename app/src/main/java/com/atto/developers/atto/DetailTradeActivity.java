@@ -11,12 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.atto.developers.atto.adapter.RecyclerDetailTradeAdapter;
-import com.atto.developers.atto.networkdata.makerdata.MakerData;
-import com.atto.developers.atto.networkdata.negodata.NegoData;
-import com.atto.developers.atto.networkdata.negodata.NegoDataMaker_info;
 import com.atto.developers.atto.networkdata.negodata.NegoListData;
-
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +28,6 @@ public class DetailTradeActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 
 
     private void initToolBar() {
@@ -61,7 +55,7 @@ public class DetailTradeActivity extends AppCompatActivity {
         listView.setAdapter(mAdapter);
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         listView.setLayoutManager(manager);
-        mAdapter.setOnAdapterItemClickListener(new RecyclerDetailTradeAdapter.OnAdapterItemClickListener(){
+        mAdapter.setOnAdapterItemClickListener(new RecyclerDetailTradeAdapter.OnAdapterItemClickListener() {
 
             @Override
             public void onAdapterItemClick(View view, NegoListData negoListData, int position) {
@@ -72,11 +66,26 @@ public class DetailTradeActivity extends AppCompatActivity {
     }
 
 
-    private void initData(){
+    private void initData() {
+
+        mAdapter.clear();
+        /*TradeListRequest request  = new TradeListRequest("10","10");
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
+            @Override
+            public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
+                TradeData[] data =  result.getData();
+                Toast.makeText(DetailTradeActivity.this ,"성공 : "+data[0].getTrade_id(),Toast.LENGTH_SHORT).show();
+                mAdapter.addAll(Arrays.asList(data));
+            }
+            @Override
+            public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(DetailTradeActivity.this,"실패 : "+errorCode,Toast.LENGTH_SHORT).show();
+            }
+        });*/
         for (int i = 0; i < 3; i++) {
             NegoListData negoListData = new NegoListData();
 
         }
     }
 
-    }
+}
