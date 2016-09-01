@@ -90,7 +90,6 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         //trade_profile.setImageDrawable(tradeData.);
 
         checkImageData();
-
         trade_status.setText(tradeData.getTrade_status());
         trade_title.setText(tradeData.getTrade_title());
         trade_price.setText(tradeData.getTrade_price() + "원");
