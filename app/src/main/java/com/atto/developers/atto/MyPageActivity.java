@@ -116,25 +116,26 @@ public class MyPageActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MyProfile>() {
             @Override
             public void onSuccess(NetworkRequest<MyProfile> request, MyProfile result) {
-                String message = result.getMessage();
+
+
                 String nickname = result.getData().getMember_alias();
-                String adress = result.getData().getMember_address_1();
-                String phone = result.getData().getMember_phone();
-                String zipcode = result.getData().getMember_zipcode_1();
-                String profile_img = result.getData().getMember_profile_img();
 
                 nickNameView.setText(nickname);
-                Toast.makeText(MyPageActivity.this, "MyProfile Result : " + message + "," + nickname + "," + adress + "," + phone + "," + zipcode + " , " + profile_img, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyPageActivity.this, "success",Toast.LENGTH_SHORT).show();
+
+
             }
 
             @Override
             public void onFail(NetworkRequest<MyProfile> request, int errorCode, String errorMessage, Throwable e) {
                 Log.e("error", request + " , " + errorCode + " , " + errorMessage);
 
-                Toast.makeText(MyPageActivity.this, "MyProfile Result : " + errorCode, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyPageActivity.this, "fail" + errorCode, Toast.LENGTH_SHORT).show();
             }
+
+
+
+
         });
     }
-
-
 }

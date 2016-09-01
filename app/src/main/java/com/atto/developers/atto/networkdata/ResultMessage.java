@@ -7,6 +7,17 @@ import java.io.Serializable;
 public class ResultMessage implements Serializable {
 
     private String message;
+    private int code;
+
+
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
 
     public String getMessage() {
         return this.message;

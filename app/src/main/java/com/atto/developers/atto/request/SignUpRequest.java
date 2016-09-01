@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -30,17 +31,17 @@ import okhttp3.ResponseBody;
 public class SignUpRequest extends AbstractRequest<ResultMessage> {
     Request mRequest;
 
-
+    final  static String MEMBERS = "members";
      final static String E_MAIL ="member_email";
      final static String PASSWORD ="member_password";
      final static String NAME = "member_name";
-     final static String ZIP_CODE="member_zipcode";
+     final static String ZIP_CODE="member_zipcode_1";
      final static String ADRESS="member_address_1";
      final static String PHONE_NUM="member_phone";
      final static String TOKEN = "registration_token";
     public SignUpRequest(String email, String password, String name, String zipcode, String adress_1, String phone, String registration_token) {
         HttpUrl url = getBaseUrlHttpsBuilder()
-                .addPathSegment("members")
+                .addPathSegment(MEMBERS)
                 .build();
 
         RequestBody body = new FormBody.Builder()
@@ -70,13 +71,13 @@ public class SignUpRequest extends AbstractRequest<ResultMessage> {
     protected ResultMessage parse(ResponseBody body) throws IOException {
         String text = body.string();
         Gson gson = new Gson();
-        ResultMessage temp = gson.fromJson(text, ResultMessage.class);
+        ResultMessage temp = gson.fromJson(text, getType());
         Log.i("result", text);
         return temp;
     }
 
     @Override
     protected Type getType() {
-        return null;
+        return new TypeToken<ResultMessage>(){}.getType();
     }
 }
