@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="4dp"
-        android:background="@drawable/atto_bg">
+        android:background="@drawable/toolbar_underline_background">
 
         <TextView
             android:layout_width="match_parent"

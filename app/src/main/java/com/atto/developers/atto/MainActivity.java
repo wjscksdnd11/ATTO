@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,9 +71,9 @@ public class MainActivity extends AppCompatActivity {
         tabs.setupWithViewPager(pager);
         tabs.removeAllTabs();
 
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_one))));
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_realtrade))));
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_maker))));
+        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab1_selector)));
+        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab2_selector)));
+        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab3_selector)));
 
 /*        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_one))));
         tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_realtrade))));
@@ -118,11 +119,21 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
-
-    private View getTabIndicator(Context context, String title) {
+/*
+    private View getTabIndicator(Context context, String title, int res) {
         View view = LayoutInflater.from(context).inflate(R.layout.tab_layout, null);
         TextView textView = (TextView) view.findViewById(R.id.textView);
         textView.setText(title);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        imageView.setBackgroundResource(res);
+        return view;
+    }
+    */
+
+    private View getTabIndicator(Context context, int res) {
+        View view = LayoutInflater.from(context).inflate(R.layout.tab_layout, null);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        imageView.setBackgroundResource(res);
         return view;
     }
 
@@ -133,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_account_circle_white);
+        toolbar.setNavigationIcon(R.drawable.ic_account_circle_black);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

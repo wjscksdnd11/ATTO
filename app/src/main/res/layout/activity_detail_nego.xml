@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.atto.developers.atto.DetailNegoActivity">
 
+
     <Button
 
         android:id="@+id/btn_trade_approve_request"
@@ -16,7 +17,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:background="@color/color_btn"
-
         android:text="@string/btn_accept_request"
         android:textColor="@color/white" />
 </RelativeLayout>
