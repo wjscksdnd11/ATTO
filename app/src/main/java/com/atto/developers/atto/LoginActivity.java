@@ -1,46 +1,31 @@
 package com.atto.developers.atto;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
 
+    @BindView(R.id.text_login_signup)
+    TextView signUpView;
+    @BindView(R.id.text_login_guest)
+    TextView loginGuestView;
+    @BindView(R.id.text_search_password)
+    TextView searchPasswordView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
 
-        Button btn_local_login = (Button)findViewById(R.id.btn_local_login);
-        Button btn_kakao_login = (Button)findViewById(R.id.btn_kakao_login);
-        TextView text_login_signup = (TextView)findViewById(R.id.text_login_signup);
-        TextView text_login_guest = (TextView)findViewById(R.id.text_login_guest);;
-        TextView text_search_password = (TextView)findViewById(R.id.text_search_password);;
-
-        btn_local_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        btn_kakao_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-
-            }
-        });
-
-        text_login_signup.setOnClickListener(new View.OnClickListener() {
+        signUpView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
@@ -48,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-        text_login_guest.setOnClickListener(new View.OnClickListener() {
+        loginGuestView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -57,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-        text_search_password.setOnClickListener(new View.OnClickListener() {
+        searchPasswordView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, FindPasswordActivity.class);
@@ -65,6 +50,20 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @OnClick(R.id.btn_local_login)
+    public void onLocalLogin() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @OnClick(R.id.btn_kakao_login)
+    public void onKaKaoLogin() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }

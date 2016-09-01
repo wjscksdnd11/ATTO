@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorBlack">#000</color>
     <color name="colorBackg">#FFD5D5D5</color>
+    <color name="fontColor">#262626</color>
 
     <color name="color_layout">#ffe0e0e0</color>
 
@@ -14,7 +15,10 @@
     <color name="color_btn">#ff3b7b</color>
 
     <color name="color_atto_main">#ff3b7b</color>
+    <color name="color_atto_main_opa">#ccff3b7b</color>
+
     <color name="color_atto_sub">#f8b895</color>
+    <color name="color_atto_sub_opa">#ccf8b895</color>
 
     <color name="color_trade_status_text_bg">#9A59B5</color>
     <color name="color_trade_status_layout_bg">#E0E0E0</color>
@@ -23,4 +27,6 @@
     <color name="color_add_form_bg">#E5E5E5</color>
 
     <color name="color_rating_bg">#5F5F5F</color>
+
+    <color name="color_hint">#80ffffff</color>
 </resources>
