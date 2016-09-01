@@ -31,4 +31,6 @@ public class NegoListData implements java.io.Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
+
+
 }

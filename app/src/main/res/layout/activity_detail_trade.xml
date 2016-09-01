@@ -28,7 +28,7 @@
         android:textColor="@color/white" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/view5"
+        android:id="@+id/re_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_move_nego_register"
