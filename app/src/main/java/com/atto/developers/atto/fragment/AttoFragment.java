@@ -16,6 +16,11 @@ import com.atto.developers.atto.asymmetricgridview.DefaultListAdapter;
 import com.atto.developers.atto.asymmetricgridview.DemoAdapter;
 import com.atto.developers.atto.asymmetricgridview.DemoItem;
 import com.atto.developers.atto.asymmetricgridview.DemoUtils;
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
+import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.request.TradeListRequest;
 import com.felipecsl.asymmetricgridview.library.Utils;
 import com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridView;
 import com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridViewAdapter;
@@ -62,6 +67,23 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
         adapter.setItems(items);
 
         init();
+
+
+        TradeListRequest request  = new TradeListRequest("10","10");
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
+            @Override
+            public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
+
+
+                TradeData[] data =  result.getData();
+                Toast.makeText(getContext(),"성공 : "+data[0].getTrade_id(),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(getContext(),"실패 : "+errorCode,Toast.LENGTH_SHORT).show();
+            }
+        });
         return view;
     }
 
@@ -92,6 +114,8 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
         listView.determineColumns();
         listView.setAdapter(getNewAdapter());
     }
+
+
 
     @Override
     public void onItemClick(@NotNull AdapterView<?> parent, @NotNull View view, int position, long id) {

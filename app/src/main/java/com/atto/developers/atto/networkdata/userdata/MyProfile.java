@@ -9,6 +9,16 @@ public class MyProfile  implements Serializable {
     private MyProfileData data;
     private String message;
 
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    private int code;
+
     public MyProfileData getData() {
         return this.data;
     }

@@ -3,17 +3,26 @@ package com.atto.developers.atto.networkdata.tradedata;
 
 import com.atto.developers.atto.networkdata.listdata.PagingData;
 
-public class TradeListData implements java.io.Serializable {
+public class TradeListData<T> implements java.io.Serializable {
     private static final long serialVersionUID = 4222295191657793439L;
-    private TradeData[] data;
+    private T [] data;
     private PagingData paging;
     private String message;
+    private int code;
 
-    public TradeData[] getData() {
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public T [] getData() {
         return this.data;
     }
 
-    public void setData(TradeData[] data) {
+    public void setData(T [] data) {
         this.data = data;
     }
 

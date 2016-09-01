@@ -2,7 +2,6 @@ package com.atto.developers.atto.request;
 
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -39,9 +38,7 @@ public abstract class AbstractRequest<T> extends NetworkRequest<T> {
     protected T parse(ResponseBody body) throws IOException {
         String text = body.string();
         Gson gson = new Gson();
-        Type type = new TypeToken<T>(){}.getType();
-
-        T  temp = gson.fromJson(text,type );
+        T  temp = gson.fromJson(text,getType() );
         return temp;
     }
 
