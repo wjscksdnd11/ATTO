@@ -38,3 +38,17 @@
             /trades/1?action=productorder
 
 }
+
+{
+ 협상카드 등록, 등록
+ AddNegoRequest
+ HTTP POST
+tid : 현재 거래글의 ID(number)
+negotiation_price : 협상카드에 등록할 가격(number)
+negotiation_dtime : 협상카드에 등록할 거래 마감일
+negotiation_product_contents : 협상카드에 등록할 상세정보
+negotiation_product_imges : 협상카드에 등록할 이미지들
+
+예시) /trades/1/negotiations
+
+}

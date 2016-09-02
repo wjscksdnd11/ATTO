@@ -50,12 +50,12 @@ public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
 
     MediaType jpeg = MediaType.parse("image/jpeg");
     public AddTradeRequest(Context context, String trade_title, String trade_product_category_1, String trade_product_category_2, String trade_price,
-                           String trade_dtime, String trade_product_contents, String[] trade_key_words, File[] trade_product_imges) {
+                           String trade_dtime, String trade_product_contents, String[] trade_key_words, File[] trade_product_imges_info) {
 
 //        거래글 등록
 
 
-        HttpUrl url = getBaseUrlHttpsBuilder()
+        HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADE)
                 .build();
 
@@ -76,8 +76,8 @@ public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
             body.addFormDataPart(KEYWORDS,"");
         }
 
-        if (trade_product_imges.length != 0) {
-            for (File trade_product_img : trade_product_imges) {
+        if (trade_product_imges_info.length != 0) {
+            for (File trade_product_img : trade_product_imges_info) {
                 if (trade_product_img != null) {
                     body.addFormDataPart(IMAGES, trade_product_img.getName(),
                             RequestBody.create(jpeg, trade_product_img));

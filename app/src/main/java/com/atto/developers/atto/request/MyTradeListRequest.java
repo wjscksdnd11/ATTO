@@ -3,55 +3,51 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
+import com.atto.developers.atto.networkdata.tradedata.TradeListData;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 
-import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.Request;
-import okhttp3.RequestBody;
 
 /**
  * Created by Tacademy on 2016-09-02.
  */
-public class ChoicePickupDate  extends AbstractRequest<ResultMessage>{
-
+public class MyTradeListRequest  extends AbstractRequest<TradeListData<TradeData>>{
     Request mRequest;
     private final static String TRADES = "trades";
-
+    private final static String PAGE_NO = "pageNo";
+    private final static String ROW_COUNT = "rowCount";
     private final static String ACTION = "action";
-    private final static String ACTION_VAlUE = "frequency";
-    private final static String FREQUENCY = "frequency_dtime";
+    private final static String ACTION_VAlUE = "self";
 
-    public ChoicePickupDate(Context context, String tid, String frequency_dtime ) {
 
+    public MyTradeListRequest(Context context , String page_no, String row_count)  {
+//14. 자신의 거래글 검색
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADES)
-                .addPathSegment(tid)
+                .addQueryParameter(ACTION, ACTION_VAlUE)
+                .addQueryParameter(PAGE_NO, page_no)
+                .addQueryParameter(ROW_COUNT, row_count)
                 .build();
-        RequestBody body = new FormBody.Builder()
-                .add(ACTION, ACTION_VAlUE)
-                .add(FREQUENCY, frequency_dtime )
-                .build();
+
 
         mRequest = new Request.Builder()
                 .url(url)
                 .tag(context)
-                .put(body)
                 .build();
         Log.i("url", url.toString());
     }
 
     @Override
     protected Type getType() {
-        return new TypeToken<ResultMessage>(){}.getType();
+        return new TypeToken<TradeListData<TradeData>>(){}.getType();
     }
 
     @Override
     public Request getRequest() {
         return mRequest;
     }
-
 }
