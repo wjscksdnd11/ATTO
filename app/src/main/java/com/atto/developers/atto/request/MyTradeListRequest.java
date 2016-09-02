@@ -13,22 +13,26 @@ import okhttp3.HttpUrl;
 import okhttp3.Request;
 
 /**
- * Created by Tacademy on 2016-08-31.
+ * Created by Tacademy on 2016-09-02.
  */
-public class TradeListRequest extends AbstractRequest<TradeListData<TradeData>> {
+public class MyTradeListRequest  extends AbstractRequest<TradeListData<TradeData>>{
     Request mRequest;
-
     private final static String TRADES = "trades";
     private final static String PAGE_NO = "pageNo";
     private final static String ROW_COUNT = "rowCount";
+    private final static String ACTION = "action";
+    private final static String ACTION_VAlUE = "self";
 
-    public TradeListRequest(Context context, String page_no, String row_count) {
-//거래글 리스트
+
+    public MyTradeListRequest(Context context , String page_no, String row_count)  {
+//14. 자신의 거래글 검색
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADES)
+                .addQueryParameter(ACTION, ACTION_VAlUE)
                 .addQueryParameter(PAGE_NO, page_no)
                 .addQueryParameter(ROW_COUNT, row_count)
                 .build();
+
 
         mRequest = new Request.Builder()
                 .url(url)
@@ -37,11 +41,9 @@ public class TradeListRequest extends AbstractRequest<TradeListData<TradeData>> 
         Log.i("url", url.toString());
     }
 
-
     @Override
     protected Type getType() {
-        return new TypeToken<TradeListData<TradeData>>() {
-        }.getType();
+        return new TypeToken<TradeListData<TradeData>>(){}.getType();
     }
 
     @Override

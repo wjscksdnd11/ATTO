@@ -3,7 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.tradedata.TradeListItemData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
@@ -16,27 +16,21 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
- * Created by Tacademy on 2016-09-01.
+ * Created by Tacademy on 2016-09-02.
  */
+public class UpdateTradeRequest  extends AbstractRequest<ResultMessage> {
+
+    Request mRequest;
+
+    MediaType jpeg = MediaType.parse("image/jpeg");
+
+    private final static String TRADES = "trades";
 
 
-/*
-        trade_title : 거래글 제목 (필수)
-        trade_product_category_1 : 거래글 제품 카테고리 (필수, 대분류)(number)
-        trade_product_category_2 : 거래글 제품 카테고리 (필수, 소분류)(number)
-        trade_price : 거래글 가격 (필수)(number)
-        trade_dtime : 거래글 거래 마감일 (필수)
-        trade_product_contents : 거래글 거래 상세 정보
-        trade_key_words : 거래글 키워드들 (3개 까지)(number)
-        trade_product_imges : 거래글 이미지들 (제한 없음)
+//    private final static String ZIP_CODE = "member_zipcode_1";
 
-        예시) /trades
-*/
-
-public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
-
-
-    private final static String TITLE = "trade_title";
+    private final static String ACTION = "action";
+    private final static String ACTION_VAlUE = "modify";
     private final static String MAIN_CATEGORY = "trade_product_category_1";
     private final static String SUB_CATEGORY = "trade_product_category_2";
     private final static String PRICE = "trade_price";
@@ -45,23 +39,18 @@ public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
     private final static String KEYWORDS = "trade_key_words";
     private final static String IMAGES = "trade_product_imges_info";
 
-    private final static String TRADE = "trades";
-    Request mRequest;
+    public UpdateTradeRequest(Context context,String tid, String trade_product_category_1, String trade_product_category_2, String trade_price,
+                                  String trade_dtime, String trade_product_contents, String[] trade_key_words, File[] trade_product_imges) {
 
-    MediaType jpeg = MediaType.parse("image/jpeg");
-    public AddTradeRequest(Context context, String trade_title, String trade_product_category_1, String trade_product_category_2, String trade_price,
-                           String trade_dtime, String trade_product_contents, String[] trade_key_words, File[] trade_product_imges_info) {
+//        거래글 수정
 
-//        거래글 등록
-
-
-        HttpUrl url = getBaseUrlBuilder()
-                .addPathSegment(TRADE)
+        HttpUrl url = getBaseUrlHttpsBuilder()
+                .addPathSegment(TRADES)
+                .addPathSegment(tid)
                 .build();
-
         MultipartBody.Builder body = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart(TITLE, trade_title)
+                .addFormDataPart(ACTION,ACTION_VAlUE)
                 .addFormDataPart(MAIN_CATEGORY, trade_product_category_1)
                 .addFormDataPart(SUB_CATEGORY, trade_product_category_2)
                 .addFormDataPart(PRICE, trade_price)
@@ -76,8 +65,8 @@ public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
             body.addFormDataPart(KEYWORDS,"");
         }
 
-        if (trade_product_imges_info.length != 0) {
-            for (File trade_product_img : trade_product_imges_info) {
+        if (trade_product_imges.length != 0) {
+            for (File trade_product_img : trade_product_imges) {
                 if (trade_product_img != null) {
                     body.addFormDataPart(IMAGES, trade_product_img.getName(),
                             RequestBody.create(jpeg, trade_product_img));
@@ -91,22 +80,21 @@ public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
 
         mRequest = new Request.Builder()
                 .url(url)
-                .post(requestbody)
+                .put(requestbody)
                 .tag(context)
                 .build();
-
-        Log.i("url", body.toString());
+        Log.i("url", mRequest.url().toString());
 
     }
 
     @Override
     protected Type getType() {
-        return new TypeToken<TradeListItemData>() {
+        return new TypeToken<ResultMessage>() {
         }.getType();
     }
 
     @Override
     public Request getRequest() {
-        return null;
+        return mRequest;
     }
 }

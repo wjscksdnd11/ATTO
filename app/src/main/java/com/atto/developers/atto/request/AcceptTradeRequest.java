@@ -1,6 +1,7 @@
 package com.atto.developers.atto.request;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
@@ -41,6 +42,7 @@ public class AcceptTradeRequest extends AbstractRequest<ResultMessage> {
                 .tag(context)
                 .put(body)
                 .build();
+        Log.i("url", url.toString());
 
     }
 

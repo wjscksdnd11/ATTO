@@ -15,7 +15,7 @@ import okhttp3.Request;
  * Created by Tacademy on 2016-08-30.
  */
 public class MyProfileRequest extends AbstractRequest<MyProfile> {
-
+//    내 프로필 조회
     private final static String MEMBERS = "members";
     private final static String ME = "me";
 
@@ -35,7 +35,7 @@ public class MyProfileRequest extends AbstractRequest<MyProfile> {
                 .build();
 
 
-        Log.i("URL", mRequest.url().toString());
+        Log.i("url", mRequest.url().toString());
 
     }
 

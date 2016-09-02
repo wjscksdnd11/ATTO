@@ -3,7 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.tradedata.TradeData;
+import com.atto.developers.atto.networkdata.negodata.NegoData;
 import com.atto.developers.atto.networkdata.tradedata.TradeListData;
 import com.google.gson.reflect.TypeToken;
 
@@ -13,23 +13,26 @@ import okhttp3.HttpUrl;
 import okhttp3.Request;
 
 /**
- * Created by Tacademy on 2016-08-31.
+ * Created by Tacademy on 2016-09-02.
  */
-public class TradeListRequest extends AbstractRequest<TradeListData<TradeData>> {
+public class MyNegoCardListRequest extends AbstractRequest<TradeListData<NegoData>> {
+//    20. 자신의 협상카드 검색
     Request mRequest;
-
     private final static String TRADES = "trades";
     private final static String PAGE_NO = "pageNo";
     private final static String ROW_COUNT = "rowCount";
-
-    public TradeListRequest(Context context, String page_no, String row_count) {
-//거래글 리스트
+    private final static String ACTION = "action";
+    private final static String ACTION_VAlUE = "self";
+    private final static String NEGOTIATION = "negotiations";
+    public MyNegoCardListRequest (Context context, String tid, String nid, String page_no, String row_count) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADES)
+                .addPathSegment(tid)
+                .addPathSegment(NEGOTIATION)
+                .addQueryParameter(ACTION, ACTION_VAlUE)
                 .addQueryParameter(PAGE_NO, page_no)
                 .addQueryParameter(ROW_COUNT, row_count)
                 .build();
-
         mRequest = new Request.Builder()
                 .url(url)
                 .tag(context)
@@ -37,11 +40,9 @@ public class TradeListRequest extends AbstractRequest<TradeListData<TradeData>> 
         Log.i("url", url.toString());
     }
 
-
     @Override
     protected Type getType() {
-        return new TypeToken<TradeListData<TradeData>>() {
-        }.getType();
+        return new TypeToken<TradeListData<NegoData>>(){}.getType();
     }
 
     @Override
