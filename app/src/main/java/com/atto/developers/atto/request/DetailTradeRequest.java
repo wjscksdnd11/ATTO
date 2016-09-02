@@ -22,12 +22,14 @@ private final static String ACTION = "action";
     private final static String TRADES = "trades";
     private final static String PAGE_NO = "pageNo";
     private final static String ROW_COUNT = "rowCount";
+    private final static String KEYWORD = "key_word_id";
     Request mRequest;
     public DetailTradeRequest(Context context, String tid, String key_word_id,String page_no,String row_count) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADES)
                 .addPathSegment(tid)
                 .addQueryParameter(ACTION,ACTION_VAlUE)
+                .addQueryParameter(KEYWORD,key_word_id)
                 .addQueryParameter(PAGE_NO, page_no)
                 .addQueryParameter(ROW_COUNT, row_count)
                 .build();
