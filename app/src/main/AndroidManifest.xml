@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity" android:theme="@style/LoginAppTheme">
+        <activity android:name=".SplashActivity" android:theme="@style/SplashAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,7 +51,7 @@
         <activity android:name=".FindPasswordActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".AgreementActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity" android:theme="@style/LoginAppTheme"/>
         <activity android:name=".MyPageActivity" />
         <activity android:name=".SearchAddressActivity"></activity>
     </application>
