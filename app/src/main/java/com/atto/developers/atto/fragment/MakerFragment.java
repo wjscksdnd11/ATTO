@@ -5,6 +5,7 @@ package com.atto.developers.atto.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import com.atto.developers.atto.R;
 import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
 import com.atto.developers.atto.networkdata.listdata.KeywordList;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
+import com.atto.developers.atto.view.VerticalSpaceItemDecoration;
 
 import java.util.Random;
 
@@ -28,6 +30,9 @@ public class MakerFragment extends Fragment {
 
     RecyclerView listView;
     RecyclerMakerAdapter mAdapter;
+
+    private static final int VERTICAL_ITEM_SPACE = 48;
+
 
     public MakerFragment() {
         // Required empty public constructor
@@ -47,11 +52,19 @@ public class MakerFragment extends Fragment {
 
         listView = (RecyclerView) view.findViewById(R.id.rv_list);
         mAdapter = new RecyclerMakerAdapter();
-        listView.setAdapter(mAdapter);
-
-        LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
         listView.setLayoutManager(manager);
 
+//        listView.addItemDecoration(new DividerItemDecoration(getActivity()));
+
+        //add ItemDecoration
+        listView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+
+/*        listView.addItemDecoration(
+                new DividerItemDecoration(getContext(), R.drawable.divider));*/
+
+        listView.setItemAnimator(new DefaultItemAnimator());
+        listView.setAdapter(mAdapter);
         mAdapter.setOnAdapterItemClickListener(new RecyclerMakerAdapter.OnAdapterItemClickLIstener() {
 
             @Override

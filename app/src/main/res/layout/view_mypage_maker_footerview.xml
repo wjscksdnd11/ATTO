@@ -28,12 +28,6 @@
             android:gravity="center"
             android:layout_weight="1" />
 
-        <ImageView
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@color/color_edit_line"
-            android:id="@+id/imageView" />
-
         <Button
             android:text="@string/btn_footer_move_maker_nego"
             android:id="@+id/btn_footer_move_maker_nego"
@@ -42,12 +36,6 @@
             android:layout_width="wrap_content"
             android:gravity="center"
             android:layout_weight="1" />
-
-        <ImageView
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@color/color_edit_line"
-            android:id="@+id/imageView2" />
 
         <Button
             android:text="@string/btn_footer_move_accept_wait"
