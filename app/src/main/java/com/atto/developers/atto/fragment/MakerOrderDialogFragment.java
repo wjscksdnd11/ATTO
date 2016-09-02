@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.atto.developers.atto.MakeOrderActivity;
 import com.atto.developers.atto.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -36,6 +37,8 @@ public class MakerOrderDialogFragment extends DialogFragment {
         return view;
 
     }
+
+
         @OnClick(R.id.btn_positive)
         public void onPositive(){
             Intent intent = new Intent(getContext(), MakeOrderActivity.class);

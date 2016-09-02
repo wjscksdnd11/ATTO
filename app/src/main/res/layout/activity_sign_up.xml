@@ -48,15 +48,16 @@
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="15dp"
-                    android:background="@drawable/login_shape"
-                    android:drawableLeft="@drawable/ic_email"
+
+
                     android:drawablePadding="12dp"
                     android:ems="10"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:nextFocusDown="@+id/edit_signup_password"
                     android:textColor="@color/white"
-                    android:theme="@style/TextLabel" />
+                    android:theme="@style/TextLabel"
+                    android:gravity="center" />
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/edit_signup_password"
@@ -64,16 +65,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/login_shape"
-                    android:drawableLeft="@drawable/ic_lock"
+                    android:layout_marginTop="15dp"
+
+
                     android:drawablePadding="12dp"
                     android:hint="비밀번호"
                     android:inputType="textPassword"
                     android:maxLength="12"
                     android:nextFocusDown="@+id/edit_signup_check_password"
                     android:textColorHighlight="@color/color_edit_line"
-                    android:theme="@style/TextLabel" />
+                    android:theme="@style/TextLabel"
+                    android:gravity="center" />
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/edit_signup_check_password_layout"
@@ -81,15 +83,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/login_shape"
-                    android:drawableLeft="@drawable/ic_lock"
+                    android:layout_marginTop="15dp"
+
+
                     android:drawablePadding="12dp"
                     android:hint="비밀번호 확인"
                     android:inputType="textPassword"
                     android:maxLength="12"
                     android:nextFocusDown="@+id/edit_signup_name"
-                    android:theme="@style/TextLabel" />
+                    android:theme="@style/TextLabel"
+                    android:gravity="center" />
 
 
                 <android.support.v7.widget.AppCompatEditText
@@ -98,14 +101,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/login_shape"
+                    android:layout_marginTop="15dp"
+
                     android:drawablePadding="12dp"
                     android:hint="닉네임"
                     android:inputType="text"
                     android:maxLength="6"
                     android:nextFocusDown="@+id/edit_signup_phonenumber"
-                    android:theme="@style/TextLabel" />
+                    android:theme="@style/TextLabel"
+                    android:gravity="center" />
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/edit_signup_phonenumber"
@@ -113,14 +117,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/login_shape"
+                    android:layout_marginTop="15dp"
+
                     android:drawablePadding="12dp"
                     android:hint="핸드폰"
                     android:inputType="phone"
                     android:maxLength="11"
                     android:nextFocusDown="@+id/edit_signup_address"
-                    android:theme="@style/TextLabel" />
+                    android:theme="@style/TextLabel"
+                    android:gravity="center" />
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/edit_signup_address"
@@ -128,12 +133,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/login_shape"
+                    android:layout_marginTop="15dp"
+
                     android:drawablePadding="12dp"
                     android:hint="주소"
                     android:inputType="text"
-                    android:theme="@style/TextLabel" />
+                    android:theme="@style/TextLabel"
+                    android:gravity="center" />
             </LinearLayout>
 
             <TextView
@@ -149,7 +155,7 @@
                 android:text="@string/text_check_agreement"
                 android:textColor="@color/white"
                 android:textIsSelectable="false"
-
+                android:textStyle="bold"
                 android:textSize="14sp" />
 
             <Button
@@ -160,6 +166,7 @@
                 android:layout_centerHorizontal="true"
                 android:background="@color/color_btn"
                 android:text="@string/btn_complete_signup"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 

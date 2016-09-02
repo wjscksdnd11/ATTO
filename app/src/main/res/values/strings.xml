@@ -124,7 +124,7 @@
     <string name="text_add_trade_register_trade">거래 작성하기</string>
     <string name="btn_setting_price">가격 설정하기</string>
     <string name="btn_accept_request">승인 및 수락 요청하기</string>
-    <string name="text_maker_order_dialog">협상 카드 등록이 마감됩니다. 제작 주문서 작성페이지로 이동합니다.</string>
+    <string name="text_maker_order_dialog">협상 카드 등록이 마감됩니다.제작 주문서 작성페이지로 이동합니다.</string>
     <string name="btn_detail_port_move_trade">거래 작성하러 가기</string>
     <string name="btn_final_accept_request">제작자에게 최종수락 요청</string>
     <string name="btn_update_order">수정하기</string>

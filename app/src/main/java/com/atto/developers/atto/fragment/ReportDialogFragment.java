@@ -1,6 +1,7 @@
 package com.atto.developers.atto.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -38,10 +39,10 @@ public class ReportDialogFragment extends DialogFragment {
     @OnClick(R.id.btn_check_complete)
     public void onCheckComplete() {
 
-        DetailTradeActivity callerActivity = (DetailTradeActivity) getActivity();
+        Intent intent = new Intent(getActivity(), DetailTradeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
         dismiss();
-        callerActivity.startIntent();
-        Toast.makeText(getContext(), "Complete", Toast.LENGTH_SHORT).show();
     }
 
     @OnClick(R.id.btn_cancel)
