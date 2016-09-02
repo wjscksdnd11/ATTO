@@ -2,16 +2,16 @@
     <!-- full star is name of image file of full star-->
     <item android:state_focused="true"
         android:state_window_focused="true"
-        android:drawable="@drawable/full_star"/>
+        android:drawable="@drawable/full_star_16"/>
 
     <item android:state_selected="true"
         android:state_window_focused="true"
-        android:drawable="@drawable/full_star"/>
+        android:drawable="@drawable/full_star_16"/>
 
-    <item android:drawable="@drawable/full_star" />
+    <item android:drawable="@drawable/full_star_16" />
 
     <item android:state_pressed="true"
         android:state_window_focused="true"
-        android:drawable="@drawable/full_star"/>
+        android:drawable="@drawable/full_star_16"/>
 
 </selector>

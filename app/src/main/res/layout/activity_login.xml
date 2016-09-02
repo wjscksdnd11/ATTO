@@ -112,7 +112,7 @@
         <TextView
             android:id="@+id/text_login_signup"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:background="@color/color_atto_sub_opa"
             android:text="New Here? Sign up !"
