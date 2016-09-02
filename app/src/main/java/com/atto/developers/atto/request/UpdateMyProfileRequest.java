@@ -50,8 +50,6 @@ public class UpdateMyProfileRequest extends AbstractRequest<ResultMessage> {
     public UpdateMyProfileRequest(Context context,String tid, String trade_product_category_1, String trade_product_category_2, String trade_price,
                                   String trade_dtime, String trade_product_contents, String[] trade_key_words, File[] trade_product_imges) {
 
-
-
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment(TRADE)
                 .addPathSegment(tid)

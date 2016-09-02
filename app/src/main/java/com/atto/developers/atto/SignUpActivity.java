@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atto.developers.atto.manager.NetworkManager;
@@ -13,10 +14,13 @@ import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.atto.developers.atto.request.SignUpRequest;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SignUpActivity extends AppCompatActivity {
+
+    private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
 
     String email = "gsd";
     String password = "SDfdsf";
@@ -26,6 +30,11 @@ public class SignUpActivity extends AppCompatActivity {
     String phone = "sdf";
     String registration_token = "sdf";
 
+    @BindView(R.id.text_signup_set_address)
+    TextView addressView;
+
+    @BindView(R.id.text_signup_set_postcode)
+    TextView postCodeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +67,13 @@ public class SignUpActivity extends AppCompatActivity {
         finish();
     }
 
+    @OnClick(R.id.btn_img_address)
+    public void onSearchAddress() {
+        Intent i = new Intent(SignUpActivity.this, SearchAddressActivity.class);
+        startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
+    }
+
+
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_signup);
@@ -71,5 +87,24 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        String[] strList;
+        switch (requestCode) {
+            case SEARCH_ADDRESS_ACTIVITY:
+                if (resultCode == RESULT_OK) {
+                    String data = intent.getExtras().getString("data");
+                    if (data != null) {
+                        strList = new String(data).split(",");
+                        postCodeView.setText(strList[0]);
+                        addressView.setText(strList[1]);
+                    }
+                }
+                break;
+        }
     }
 }

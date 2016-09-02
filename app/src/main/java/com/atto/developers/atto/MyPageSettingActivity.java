@@ -6,8 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.atto.developers.atto.fragment.CheckLogoutDialogFragment;
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.request.MemberLeaveRequest;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -35,26 +40,42 @@ public class MyPageSettingActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.key_change_address)
-    public void onChangeAddress(){
-       Intent intent = new Intent(MyPageSettingActivity.this, SearchAddressActivity.class);
+    public void onChangeAddress() {
+        Intent intent = new Intent(MyPageSettingActivity.this, SearchAddressActivity.class);
         startActivity(intent);
     }
 
     @OnClick(R.id.key_alert_setting)
-    public void onAlertSetting(){
+    public void onAlertSetting() {
 
     }
 
     @OnClick(R.id.key_register_maker)
-    public void onRegisterMaker(){
+    public void onRegisterMaker() {
         Intent intent = new Intent(MyPageSettingActivity.this, RegisterMakerActivity.class);
         startActivity(intent);
     }
 
     @OnClick(R.id.key_leave_atto)
-    public void onLeaveAtto(){
+    public void onLeaveAtto() {
         Intent intent = new Intent(MyPageSettingActivity.this, AccountLeaveActivity.class);
         startActivity(intent);
+
+        MemberLeaveRequest request = new MemberLeaveRequest(this);
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
+            @Override
+            public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
+                Toast.makeText(MyPageSettingActivity.this, "성공", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(MyPageSettingActivity.this, "실패" + errorCode, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
     }
 
     @OnClick(R.id.key_logout)
@@ -63,7 +84,6 @@ public class MyPageSettingActivity extends AppCompatActivity {
         CheckLogoutDialogFragment dialogFragment = new CheckLogoutDialogFragment();
         dialogFragment.show(getSupportFragmentManager(), "logout");
     }
-
 
 
     private void initToolBar() {

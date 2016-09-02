@@ -18,6 +18,7 @@ public class MemberLeaveRequest extends AbstractRequest<ResultMessage> {
 
     private final static String MEMBERS = "members";
     private final static String ME ="me";
+
     public MemberLeaveRequest(Context context) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(MEMBERS)
