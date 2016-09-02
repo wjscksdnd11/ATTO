@@ -15,20 +15,16 @@ import okhttp3.RequestBody;
 /**
  * Created by Tacademy on 2016-09-02.
  */
+public class ChoicePickupDate  extends AbstractRequest<ResultMessage>{
 
-//    action n_accept  일때
-//    accept  : 협상 수락 정보(number) 0 - 미수락 / 1 - 수락
-
-public class UpdateAcceptRequest extends AbstractRequest<ResultMessage>{
-
-Request mRequest;
+    Request mRequest;
     private final static String TRADES = "trades";
 
     private final static String ACTION = "action";
-    private final static String ACTION_VAlUE = "n_accept";
-    private final static String ACCEPT = "accept";
+    private final static String ACTION_VAlUE = "frequency";
+    private final static String FREQUENCY = "frequency_dtime";
 
-    public UpdateAcceptRequest(Context context,String tid, String accept) {
+    public ChoicePickupDate(Context context, String tid, String frequency_dtime ) {
 
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADES)
@@ -36,7 +32,7 @@ Request mRequest;
                 .build();
         RequestBody body = new FormBody.Builder()
                 .add(ACTION, ACTION_VAlUE)
-                .add(ACCEPT, accept)
+                .add(FREQUENCY, frequency_dtime )
                 .build();
 
         mRequest = new Request.Builder()
