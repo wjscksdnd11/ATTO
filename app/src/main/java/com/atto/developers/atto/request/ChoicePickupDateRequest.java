@@ -16,7 +16,7 @@ import okhttp3.RequestBody;
 /**
  * Created by Tacademy on 2016-09-02.
  */
-public class ChoicePickupDate  extends AbstractRequest<ResultMessage>{
+public class ChoicePickupDateRequest extends AbstractRequest<ResultMessage>{
 
     Request mRequest;
     private final static String TRADES = "trades";
@@ -25,7 +25,7 @@ public class ChoicePickupDate  extends AbstractRequest<ResultMessage>{
     private final static String ACTION_VAlUE = "frequency";
     private final static String FREQUENCY = "frequency_dtime";
 
-    public ChoicePickupDate(Context context, String tid, String frequency_dtime ) {
+    public ChoicePickupDateRequest(Context context, String tid, String frequency_dtime ) {
 
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADES)
