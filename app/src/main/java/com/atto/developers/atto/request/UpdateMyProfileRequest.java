@@ -32,56 +32,43 @@ public class UpdateMyProfileRequest extends AbstractRequest<ResultMessage> {
 
     MediaType jpeg = MediaType.parse("image/jpeg");
 
-    private final static String TRADE = "trades";
-//    private final static String ME = "me";
+    private final static String MEMBERS = "members";
+    private final static String ME = "me";
 
-//    final static String ZIP_CODE = "member_zipcode_1";
+    final static String ZIP_CODE = "member_zipcode_1";
 
     private final static String ACTION = "action";
     private final static String ACTION_VAlUE = "modify";
-    private final static String MAIN_CATEGORY = "trade_product_category_1";
-    private final static String SUB_CATEGORY = "trade_product_category_2";
-    private final static String PRICE = "trade_price";
-    private final static String DDATE = "trade_dtime";
-    private final static String CONTENTS = "trade_product_contents";
-    private final static String KEYWORDS = "trade_key_words";
-    private final static String IMAGES = "trade_product_imges_info";
+    private final static String PHONE = "member_phone";
+    private final static String ADRESS = "member_address_1";
+    private final static String PROFILE_IMG = "member_profile_img";
+    private final static String NICKNAME = "member_alias";
 
-    public UpdateMyProfileRequest(Context context,String tid, String trade_product_category_1, String trade_product_category_2, String trade_price,
-                                  String trade_dtime, String trade_product_contents, String[] trade_key_words, File[] trade_product_imges) {
+    public UpdateMyProfileRequest(Context context, String member_zipcode_1, String member_phone, String member_address_1,
+                                  String member_alias, File member_profile_img) {
 
 
 
         HttpUrl url = getBaseUrlHttpsBuilder()
-                .addPathSegment(TRADE)
-                .addPathSegment(tid)
+                .addPathSegment(MEMBERS)
+                .addPathSegment(ME)
                 .build();
         MultipartBody.Builder body = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart(ACTION,ACTION_VAlUE)
-                .addFormDataPart(MAIN_CATEGORY, trade_product_category_1)
-                .addFormDataPart(SUB_CATEGORY, trade_product_category_2)
-                .addFormDataPart(PRICE, trade_price)
-                .addFormDataPart(DDATE, trade_dtime)
-                .addFormDataPart(CONTENTS, trade_product_contents);
+                .addFormDataPart(PHONE, member_zipcode_1)
+                .addFormDataPart(ADRESS, member_phone)
+                .addFormDataPart(PROFILE_IMG, member_address_1)
+                .addFormDataPart(NICKNAME, member_alias);
 
-        if(trade_key_words.length!=0) {
-            for (String trade_keywords : trade_key_words) {
-                body.addFormDataPart(KEYWORDS, trade_keywords);
-            }
-        }else{
-            body.addFormDataPart(KEYWORDS,"");
-        }
 
-        if (trade_product_imges.length != 0) {
-            for (File trade_product_img : trade_product_imges) {
-                if (trade_product_img != null) {
-                    body.addFormDataPart(IMAGES, trade_product_img.getName(),
-                            RequestBody.create(jpeg, trade_product_img));
-                }
-            }
-        }else{
-            body.addFormDataPart(IMAGES,"");
+
+
+                if (member_profile_img != null) {
+                    body.addFormDataPart(PROFILE_IMG, member_profile_img.getName(),
+                            RequestBody.create(jpeg, member_profile_img));
+                } else{
+            body.addFormDataPart(PROFILE_IMG,"");
         }
         MultipartBody requestbody = body.build();
 
