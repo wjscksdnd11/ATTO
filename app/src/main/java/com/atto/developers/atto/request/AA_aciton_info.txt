@@ -1,0 +1,23 @@
+{
+    /trades/:tid
+
+    HTTP PUT
+
+    tid: 거래글 ID (number)
+    action:{
+        modify 일때 수정,
+            t_accept 일때 거래글 수락,
+            n_accept 일때 협상 수락 정보 수정,
+            frequency 일때 수거일 선택
+
+        t_accept 일때
+            nid : 협상카드 ID (number)
+
+        n_accept  일때
+            accept  : 협상 수락 정보(number) 0 - 미수락 / 1 - 수락
+
+        frequency 일때 수거일 선택
+            frequency_dtime : 수거일
+
+            }
+}
