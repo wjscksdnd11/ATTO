@@ -3,6 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 
 import com.atto.developers.atto.networkdata.ResultMessage;
+import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 
@@ -45,11 +46,11 @@ public class AcceptTradeRequest extends AbstractRequest<ResultMessage> {
 
     @Override
     protected Type getType() {
-        return null;
+        return  new TypeToken<ResultMessage>(){}.getType();
     }
 
     @Override
     public Request getRequest() {
-        return null;
+        return mRequest;
     }
 }
