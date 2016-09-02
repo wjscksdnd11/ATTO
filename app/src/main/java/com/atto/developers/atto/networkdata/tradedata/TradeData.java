@@ -6,9 +6,9 @@ import com.atto.developers.atto.networkdata.userdata.Member_info;
 // // TODO: 2016-08-24  이미지 배열이랑, 이미지 만 받는거 둘 중 하나는 null 이 올 수 있음 .
 public class TradeData implements java.io.Serializable {
     private static final long serialVersionUID = -7123457291554300083L;
-    private String trade_id;
+    private int trade_id;
     private String trade_title;
-    private String trade_price;
+    private int trade_price;
     private String trade_dtime;
     private String trade_dday;
     private String[] trade_product_imges_info;// null 가능
@@ -47,11 +47,11 @@ public class TradeData implements java.io.Serializable {
         this.trade_dday = trade_dday;
     }
 
-    public String getTrade_id() {
+    public int getTrade_id() {
         return this.trade_id;
     }
 
-    public void setTrade_id(String trade_id) {
+    public void setTrade_id(int trade_id) {
         this.trade_id = trade_id;
     }
 
@@ -63,11 +63,11 @@ public class TradeData implements java.io.Serializable {
         this.trade_title = trade_title;
     }
 
-    public String getTrade_price() {
+    public int getTrade_price() {
         return this.trade_price;
     }
 
-    public void setTrade_price(String trade_price) {
+    public void setTrade_price(int trade_price) {
         this.trade_price = trade_price;
     }
 

@@ -5,17 +5,17 @@ public class NegoData implements java.io.Serializable {
 
 
     int code;
-    private String negotiation_id;
+    private int negotiation_id;
     private NegoDataMaker_info maker_info;
-    private String negotiation_price;
+    private int negotiation_price;
     private String negotiation_dtime;
     private String[] negotiation_product_imges_info;// null 가능
 
-    public String getNegotiation_id() {
+    public int getNegotiation_id() {
         return this.negotiation_id;
     }
 
-    public void setNegotiation_id(String negotiation_id) {
+    public void setNegotiation_id(int negotiation_id) {
         this.negotiation_id = negotiation_id;
     }
 
@@ -27,11 +27,11 @@ public class NegoData implements java.io.Serializable {
         this.maker_info = maker_info;
     }
 
-    public String getNegotiation_price() {
+    public int getNegotiation_price() {
         return this.negotiation_price;
     }
 
-    public void setNegotiation_price(String negotiation_price) {
+    public void setNegotiation_price(int negotiation_price) {
         this.negotiation_price = negotiation_price;
     }
 

@@ -16,12 +16,12 @@ import okhttp3.Request;
  */
 public class DetailNegoRequest extends AbstractRequest<ResultMessage> {
     Request mRequest;
-    private final static String TRADE = "trades";
+    private final static String TRADES = "trades";
     private final static String NEGTIATION = "negotiations";
 
     public DetailNegoRequest(Context context, String tid, String nid) {
         HttpUrl url = getBaseUrlBuilder()
-                .addPathSegment(TRADE)
+                .addPathSegment(TRADES)
                 .addPathSegment(tid)
                 .addPathSegment(NEGTIATION)
                 .addPathSegment(nid)
