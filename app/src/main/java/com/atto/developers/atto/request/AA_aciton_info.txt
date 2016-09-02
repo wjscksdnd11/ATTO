@@ -1,0 +1,5 @@
+
+action : modify 일때 수정,
+            t_accept 일때 거래글 수락,
+            n_accept 일때 협상 수락 정보 수정,
+            frequency 일때 수거일 선택
