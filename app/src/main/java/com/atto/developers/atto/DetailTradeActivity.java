@@ -36,7 +36,7 @@ public class DetailTradeActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_grey);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,24 +68,9 @@ public class DetailTradeActivity extends AppCompatActivity {
 
     private void initData() {
 
-        mAdapter.clear();
-        /*TradeListRequest request  = new TradeListRequest("10","10");
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
-            @Override
-            public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
-                TradeData[] data =  result.getData();
-                Toast.makeText(DetailTradeActivity.this ,"성공 : "+data[0].getTrade_id(),Toast.LENGTH_SHORT).show();
-                mAdapter.addAll(Arrays.asList(data));
-            }
-            @Override
-            public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(DetailTradeActivity.this,"실패 : "+errorCode,Toast.LENGTH_SHORT).show();
-            }
-        });*/
-        for (int i = 0; i < 3; i++) {
-            NegoListData negoListData = new NegoListData();
-
-        }
     }
 
+    public void startIntent() {
+
+    }
 }

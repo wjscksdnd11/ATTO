@@ -10,8 +10,10 @@
         android:layout_height="wrap_content"
         android:text="@string/text_maker_order_dialog"
         android:layout_gravity="left|top"
-        android:gravity="center"
-        android:id="@+id/text_order_content" />
+        android:id="@+id/text_order_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center" />
 
     <LinearLayout
         android:layout_margin="@dimen/activity_horizontal_margin"

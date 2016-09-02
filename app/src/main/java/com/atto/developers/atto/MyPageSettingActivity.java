@@ -71,7 +71,7 @@ public class MyPageSettingActivity extends AppCompatActivity {
         toolbar.setTitle(R.string.activity_mypage_setting);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_grey);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,182 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.atto.developers.atto.SignUpActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/main_toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/atto_bg">
-    </android.support.v7.widget.Toolbar>
+    android:fitsSystemWindows="true">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/main_toolbar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:background="@color/color_layout">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.design.widget.TextInputLayout
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_find_email_layout"
-            android:textColorHint="@color/color_edit_line"
-            android:hint="이메일"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/edit_find_email"
+            android:theme="@style/SignUpAppTheme">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/main_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:nextFocusDown="@+id/edit_find_password"
-                android:background="@drawable/edit_shape"/>
-        </android.support.design.widget.TextInputLayout>
+                android:background="@drawable/toolbar_underline_background"
+                android:minHeight="?attr/actionBarSize" />
 
-        <android.support.design.widget.TextInputLayout
+        </android.support.design.widget.AppBarLayout>
+
+        <!-- your activity content here-->
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/edit_find_password_layout"
-            android:textColorHint="@color/color_edit_line"
-            android:hint="비밀번호 - 12자리를 입력하세요"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:layout_marginTop="10dp">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/edit_find_password"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            tools:context="com.atto.developers.atto.SignUpActivity">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="12"
-                android:inputType="textPassword"
-                android:nextFocusDown="@+id/edit_find_check_password"
-                android:background="@drawable/edit_shape"/>
-        </android.support.design.widget.TextInputLayout>
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_find_check_password_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/color_edit_line"
-            android:hint="비밀번호 확인"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/edit_find_check_password"
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edit_signup_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/login_shape"
+                    android:drawableLeft="@drawable/ic_email"
+                    android:drawablePadding="12dp"
+                    android:ems="10"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:nextFocusDown="@+id/edit_signup_password"
+                    android:textColor="@color/white"
+                    android:theme="@style/TextLabel" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edit_signup_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_shape"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:drawablePadding="12dp"
+                    android:hint="비밀번호"
+                    android:inputType="textPassword"
+                    android:maxLength="12"
+                    android:nextFocusDown="@+id/edit_signup_check_password"
+                    android:textColorHighlight="@color/color_edit_line"
+                    android:theme="@style/TextLabel" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edit_signup_check_password_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_shape"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:drawablePadding="12dp"
+                    android:hint="비밀번호 확인"
+                    android:inputType="textPassword"
+                    android:maxLength="12"
+                    android:nextFocusDown="@+id/edit_signup_name"
+                    android:theme="@style/TextLabel" />
+
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edit_signup_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_shape"
+                    android:drawablePadding="12dp"
+                    android:hint="닉네임"
+                    android:inputType="text"
+                    android:maxLength="6"
+                    android:nextFocusDown="@+id/edit_signup_phonenumber"
+                    android:theme="@style/TextLabel" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edit_signup_phonenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_shape"
+                    android:drawablePadding="12dp"
+                    android:hint="핸드폰"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:nextFocusDown="@+id/edit_signup_address"
+                    android:theme="@style/TextLabel" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/edit_signup_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_shape"
+                    android:drawablePadding="12dp"
+                    android:hint="주소"
+                    android:inputType="text"
+                    android:theme="@style/TextLabel" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_check_agreement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="12"
-                android:inputType="textPassword"
-                android:nextFocusDown="@+id/edit_find_name"
-                android:background="@drawable/edit_shape"/>
-        </android.support.design.widget.TextInputLayout>
+                android:layout_above="@+id/btn_complete_signup"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:gravity="center"
+                android:text="@string/text_check_agreement"
+                android:textColor="@color/white"
+                android:textIsSelectable="false"
 
+                android:textSize="14sp" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_find_name_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/color_edit_line"
-            android:hint="닉네임"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/edit_find_name"
+            <Button
+                android:id="@+id/btn_complete_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="6"
-                android:inputType="text"
-                android:nextFocusDown="@+id/edit_find_phonenumber"
-                android:background="@drawable/edit_shape"/>
-        </android.support.design.widget.TextInputLayout>
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:background="@color/color_btn"
+                android:text="@string/btn_complete_signup"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_find_phonenumber_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/color_edit_line"
-            android:hint="핸드폰"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/edit_find_phonenumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+        </RelativeLayout>
 
-                android:maxLength="11"
-                android:inputType="phone"
-                android:nextFocusDown="@+id/edit_find_address"
-                android:background="@drawable/edit_shape"/>
-        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_find_address_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/color_edit_line"
-            android:hint="주소"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:transitionGroup="false"
-            android:touchscreenBlocksFocus="false"
-            android:nestedScrollingEnabled="false"
-            android:longClickable="false">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/edit_find_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:background="@drawable/edit_shape" />
-
-        </android.support.design.widget.TextInputLayout>
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/text_check_agreement"
-        android:id="@+id/text_check_agreement"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:layout_above="@+id/btn_complete_signup"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="15dp"
-        android:textIsSelectable="false"
-        android:layout_marginBottom="5dp" />
-
-    <Button
-        android:background="@color/color_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_complete_signup"
-        android:textColor="@color/white"
-        android:id="@+id/btn_complete_signup"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="20dp" />
-
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

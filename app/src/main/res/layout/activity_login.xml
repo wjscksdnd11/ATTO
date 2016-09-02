@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/atto_bg"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context="com.atto.developers.atto.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="180dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:src="@drawable/atto_logo_white" />
@@ -52,6 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="4dp"
         android:layout_margin="8dp">
         <TextView
             android:layout_marginLeft="8dp"
@@ -61,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="left"
-            android:text="@string/text_login_guest"
+            android:text="guest"
             android:textColor="@color/white" />
 
         <TextView
@@ -72,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="right"
-            android:text="@string/text_login_search"
+            android:text="Forgot password?"
             android:textColor="@color/white" />
 
     </LinearLayout>
@@ -81,12 +82,13 @@
         android:id="@+id/btn_local_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:background="@drawable/login_stroke_shape"
-        android:text="@string/btn_local_login"
+        android:text="Login"
         android:textColor="@color/color_hint"
-        android:textSize="12dp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/btn_kakao_login"
@@ -99,7 +101,7 @@
         android:gravity="center"
         android:text="Login with Facebook"
         android:textColor="@color/white"
-        android:textSize="12dp"
+        android:textSize="14dp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -107,14 +109,17 @@
         android:layout_height="match_parent"
         android:gravity="bottom"
         android:orientation="vertical">
-        <Button
+        <TextView
             android:id="@+id/text_login_signup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="bottom"
             android:background="@color/color_atto_sub_opa"
-            android:text="@string/text_login_signup"
-            android:textColor="@color/white" />
+            android:text="New Here? Sign up !"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:gravity="center"
+            style="@android:style/Widget.Button"/>
     </LinearLayout>
 
 

@@ -6,14 +6,14 @@
         android:id="@+id/action_noti"
         android:orderInCategory="200"
         android:title="User"
-        android:icon="@drawable/ic_notifications_black"
+        android:icon="@drawable/ic_notification_grey"
         app:showAsAction="ifRoom"></item>
 
     <item
         android:id="@+id/action_search"
         android:orderInCategory="300"
         android:title="Search"
-        android:icon="@drawable/ic_search_black"
+        android:icon="@drawable/ic_search_grey"
         app:showAsAction="ifRoom"
         ></item>
 

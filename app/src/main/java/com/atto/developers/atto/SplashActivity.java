@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
 import com.atto.developers.atto.manager.FontManager;
 import com.hanks.htextview.HTextView;
@@ -14,10 +13,7 @@ import com.hanks.htextview.HTextViewType;
 public class SplashActivity extends AppCompatActivity {
 
     Handler mHandler;
-
     HTextView hTextView;
-
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

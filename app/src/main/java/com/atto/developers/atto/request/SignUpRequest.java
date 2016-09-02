@@ -32,15 +32,16 @@ import okhttp3.ResponseBody;
 public class SignUpRequest extends AbstractRequest<ResultMessage> {
     Request mRequest;
 
-    final  static String MEMBERS = "members";
-     final static String E_MAIL ="member_email";
-     final static String PASSWORD ="member_password";
-     final static String NAME = "member_name";
-     final static String ZIP_CODE="member_zipcode_1";
-     final static String ADRESS="member_address_1";
-     final static String PHONE_NUM="member_phone";
-     final static String TOKEN = "registration_token";
-    public SignUpRequest(Context context,String email, String password, String name, String zipcode, String adress_1, String phone, String registration_token) {
+    final static String MEMBERS = "members";
+    final static String E_MAIL = "member_email";
+    final static String PASSWORD = "member_password";
+    final static String NAME = "member_name";
+    final static String ZIP_CODE = "member_zipcode_1";
+    final static String ADRESS = "member_address_1";
+    final static String PHONE_NUM = "member_phone";
+    final static String TOKEN = "registration_token";
+
+    public SignUpRequest(Context context, String email, String password, String name, String zipcode, String adress_1, String phone, String registration_token) {
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment(MEMBERS)
                 .build();
@@ -48,11 +49,11 @@ public class SignUpRequest extends AbstractRequest<ResultMessage> {
         RequestBody body = new FormBody.Builder()
                 .add(E_MAIL, email)
                 .add(PASSWORD, password)
-                .add(NAME,name)
-                .add(ZIP_CODE,zipcode)
+                .add(NAME, name)
+                .add(ZIP_CODE, zipcode)
                 .add(ADRESS, adress_1)
-                .add(PHONE_NUM,phone)
-                .add(TOKEN,registration_token)
+                .add(PHONE_NUM, phone)
+                .add(TOKEN, registration_token)
                 .build();
 
         mRequest = new Request.Builder()
@@ -80,6 +81,7 @@ public class SignUpRequest extends AbstractRequest<ResultMessage> {
 
     @Override
     protected Type getType() {
-        return new TypeToken<ResultMessage>(){}.getType();
+        return new TypeToken<ResultMessage>() {
+        }.getType();
     }
 }
