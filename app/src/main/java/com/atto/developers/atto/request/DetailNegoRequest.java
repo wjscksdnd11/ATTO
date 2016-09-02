@@ -12,19 +12,19 @@ import okhttp3.HttpUrl;
 import okhttp3.Request;
 
 /**
- * Created by Tacademy on 2016-09-01.
+ * Created by Tacademy on 2016-09-02.
  */
-//   /auth/logout
-public class LogoutRequest extends AbstractRequest<ResultMessage> {
-
+public class DetailNegoRequest extends AbstractRequest<ResultMessage> {
     Request mRequest;
-    private final static String AUTH = "auth";
-    private final static String LOGOUT = "logout";
-    public LogoutRequest(Context context) {
+    private final static String TRADE = "trades";
+    private final static String NEGTIATION = "negotiations";
 
+    public DetailNegoRequest(Context context, String tid, String nid) {
         HttpUrl url = getBaseUrlBuilder()
-                .addPathSegment(AUTH)
-                .addPathSegment(LOGOUT)
+                .addPathSegment(TRADE)
+                .addPathSegment(tid)
+                .addPathSegment(NEGTIATION)
+                .addPathSegment(nid)
                 .build();
 
         mRequest = new Request.Builder()
@@ -33,6 +33,7 @@ public class LogoutRequest extends AbstractRequest<ResultMessage> {
                 .build();
         Log.i("url", mRequest.url().toString());
     }
+
     @Override
     protected Type getType() {
         return new TypeToken<ResultMessage>(){}.getType();
@@ -40,8 +41,6 @@ public class LogoutRequest extends AbstractRequest<ResultMessage> {
 
     @Override
     public Request getRequest() {
-        return null;
+        return mRequest;
     }
-
-
 }
