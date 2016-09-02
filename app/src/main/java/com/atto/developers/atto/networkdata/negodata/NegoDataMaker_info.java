@@ -4,7 +4,7 @@ public class NegoDataMaker_info implements java.io.Serializable {
     private static final long serialVersionUID = -2961397907002658023L;
     private String maker_profile_img;
     private String maker_name;
-    private int maker_score;
+    private float maker_score;
     private int maker_id;
 
     public String getMaker_profile_img() {
@@ -23,11 +23,11 @@ public class NegoDataMaker_info implements java.io.Serializable {
         this.maker_name = maker_name;
     }
 
-    public int getMaker_score() {
+    public float getMaker_score() {
         return this.maker_score;
     }
 
-    public void setMaker_score(int maker_score) {
+    public void setMaker_score(float maker_score) {
         this.maker_score = maker_score;
     }
 

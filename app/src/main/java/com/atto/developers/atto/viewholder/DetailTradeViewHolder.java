@@ -1,6 +1,5 @@
 package com.atto.developers.atto.viewholder;
 
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,8 +7,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.atto.developers.atto.R;
-
 import com.atto.developers.atto.networkdata.negodata.NegoListData;
+
 import butterknife.ButterKnife;
 
 /**
@@ -63,7 +62,7 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
             text_trade_dday.setText("D-" + negoListData.getData()[i].getNegotiation_dtime());
             limit_date.setText(negoListData.getData()[i].getNegotiation_dtime());
             text_trade_remain_time.setText(negoListData.getData()[i].getNegotiation_dtime());
-            ratingbar_maker_grade.setRating(Float.parseFloat(negoListData.getData()[i].getMaker_info().getMaker_score()));
+            ratingbar_maker_grade.setRating(negoListData.getData()[i].getMaker_info().getMaker_score());
         }
 
     }
