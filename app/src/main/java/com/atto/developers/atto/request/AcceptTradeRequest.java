@@ -29,9 +29,10 @@ public class AcceptTradeRequest extends AbstractRequest<ResultMessage> {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADES)
                 .addPathSegment(tid)
-                .addQueryParameter(ACTION, ACTION_VAlUE)
+
                 .build();
         RequestBody body = new FormBody.Builder()
+                .add(ACTION, ACTION_VAlUE)
                 .add(NID, nid)
                 .build();
 
