@@ -1,9 +1,9 @@
-<TextView
+<ImageView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/textview"
+    android:background="@color/white"
+    android:src="@drawable/image_sample02"
+    android:id="@+id/imageView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/text_view_background_selector"
     android:gravity="center"
-    android:textColor="#fff"
-    android:textSize="18sp" />
+    android:scaleType="centerCrop" />
