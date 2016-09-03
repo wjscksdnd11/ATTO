@@ -1,6 +1,7 @@
 package com.atto.developers.atto.request;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
@@ -42,7 +43,7 @@ public class NewPasswordRequest extends AbstractRequest<ResultMessage> {
                 .tag(context)
                 .build();
 
-
+        Log.i("url", mRequest.url().toString());
     }
     @Override
     protected Type getType() {

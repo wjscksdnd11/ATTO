@@ -1,6 +1,7 @@
 package com.atto.developers.atto.request;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
@@ -15,7 +16,7 @@ import okhttp3.RequestBody;
 /**
  * Created by Tacademy on 2016-09-02.
  */
-public class ChoicePickupDate  extends AbstractRequest<ResultMessage>{
+public class ChoicePickupDateRequest extends AbstractRequest<ResultMessage>{
 
     Request mRequest;
     private final static String TRADES = "trades";
@@ -24,7 +25,7 @@ public class ChoicePickupDate  extends AbstractRequest<ResultMessage>{
     private final static String ACTION_VAlUE = "frequency";
     private final static String FREQUENCY = "frequency_dtime";
 
-    public ChoicePickupDate(Context context, String tid, String frequency_dtime ) {
+    public ChoicePickupDateRequest(Context context, String tid, String frequency_dtime ) {
 
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADES)
@@ -40,6 +41,7 @@ public class ChoicePickupDate  extends AbstractRequest<ResultMessage>{
                 .tag(context)
                 .put(body)
                 .build();
+        Log.i("url", url.toString());
     }
 
     @Override

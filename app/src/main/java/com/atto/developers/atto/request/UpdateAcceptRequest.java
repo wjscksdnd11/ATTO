@@ -1,6 +1,7 @@
 package com.atto.developers.atto.request;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
@@ -44,6 +45,7 @@ Request mRequest;
                 .tag(context)
                 .put(body)
                 .build();
+        Log.i("url", mRequest.url().toString());
     }
 
     @Override

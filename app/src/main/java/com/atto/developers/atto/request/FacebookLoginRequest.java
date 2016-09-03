@@ -45,7 +45,7 @@ public class FacebookLoginRequest extends AbstractRequest<ResultMessage> {
                 .tag(context)
                 .build();
 
-        Log.i("URL", mRequest.url().toString());
+        Log.i("url", mRequest.url().toString());
     }
 
     @Override
