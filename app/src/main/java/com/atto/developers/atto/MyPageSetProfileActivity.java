@@ -78,18 +78,13 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
     @OnClick(R.id.btn_complete_update)
     public void onCompleteUpdate() {
 
-        String tid = "aaa";
-        String category_1 = "aaa";
-        String category_2 = "aaa";
-        String trade_price = "aaa";
-        String trade_dtime = "aaa";
-        String trade_product_contents = "aaa";
-        String[] trade_key_words = {"aaa", "bbb"};
-        File[] trade_product_images = {new File("dsf"), new File("dsf")};
 
-
-        UpdateMyProfileRequest request = new UpdateMyProfileRequest(this, tid, category_1, category_2, trade_price, trade_dtime, trade_product_contents,
-                trade_key_words, trade_product_images);
+        String member_zipconde_1 = "a";
+        String member_phone = "a";
+        String member_address_1 = "a";
+        String member_alias = "a";
+        File member_profile_img = new File("a");
+        UpdateMyProfileRequest request = new UpdateMyProfileRequest(this, member_zipconde_1, member_phone, member_address_1, member_alias, member_profile_img) ;
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
             @Override
             public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
