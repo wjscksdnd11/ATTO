@@ -95,7 +95,6 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
     }
 
 
-
     @Override
     public void onItemClick(@NotNull AdapterView<?> parent, @NotNull View view, int position, long id) {
         Toast.makeText(getContext(), "item : " + position, Toast.LENGTH_SHORT).show();

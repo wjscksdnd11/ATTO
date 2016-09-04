@@ -16,17 +16,51 @@
         </android.support.v7.widget.Toolbar>
 
         <include
-            android:layout_below="@+id/main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             layout="@layout/view_mypage_header"
-            android:id="@+id/mypage_header" />
+            android:id="@+id/mypage_header"
+            android:layout_below="@+id/main_toolbar" />
+
+        <LinearLayout
+            android:id="@+id/more_trade_layout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/include4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/mypage_header">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="@string/text_my_trade"
+                    android:textColor="@color/colorAccent"
+                    android:id="@+id/text_my_trade"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:gravity="left" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_mypage_more_trade"
+                    android:id="@+id/text_mypage_more_trade"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:layout_marginRight="15dp" />
+        </LinearLayout>
 
         <include
-            android:layout_below="@+id/mypage_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            layout="@layout/view_item_mypage" />
+            layout="@layout/view_item_mypage"
+            android:id="@+id/include4"
+            android:layout_above="@+id/view_mypage_maker_footerview"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <include
             android:layout_width="match_parent"

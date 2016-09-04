@@ -68,7 +68,6 @@ public class MakerFragment extends Fragment {
 
             @Override
             public void onAdapterItemClick(View view, MakerData makerItemData, int position) {
-
                 Intent intent = new Intent(getContext(), DetailMakerActivity.class);
                 startActivity(intent);
             }

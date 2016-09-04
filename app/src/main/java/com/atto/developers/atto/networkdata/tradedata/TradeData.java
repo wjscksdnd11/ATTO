@@ -19,9 +19,6 @@ public class TradeData implements java.io.Serializable {
     private String trade_status;
     private Member_info member_info;
 
-
-
-
     public String[] getTrade_key_word_info() {
         return trade_key_word_info;
     }
