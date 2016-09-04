@@ -15,6 +15,7 @@ public class SplashActivity extends AppCompatActivity {
     Handler mHandler;
     HTextView hTextView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

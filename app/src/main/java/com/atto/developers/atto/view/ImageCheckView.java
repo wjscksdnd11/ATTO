@@ -12,6 +12,7 @@ import com.atto.developers.atto.R;
  * Created by goodn on 2016-08-31.
  */
 public class ImageCheckView extends FrameLayout implements Checkable {
+
     public ImageCheckView(Context context) {
         super(context);
         init();
@@ -31,9 +32,9 @@ public class ImageCheckView extends FrameLayout implements Checkable {
     boolean isChecked = false;
     private void drawCheck() {
         if (isChecked) {
-            checkView.setImageResource(android.R.drawable.checkbox_on_background);
+            checkView.setImageResource(R.drawable.ic_checkbox_on);
         } else {
-            checkView.setImageResource(android.R.drawable.checkbox_off_background);
+            checkView.setImageResource(R.drawable.ic_checkbox_off);
         }
     }
 

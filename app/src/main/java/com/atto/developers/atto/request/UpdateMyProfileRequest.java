@@ -48,8 +48,6 @@ public class UpdateMyProfileRequest extends AbstractRequest<ResultMessage> {
     public UpdateMyProfileRequest(Context context, String member_zipcode_1, String member_phone, String member_address_1,
                                   String member_alias, File member_profile_img) {
 
-
-
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment(MEMBERS)
                 .addPathSegment(ME)

@@ -64,10 +64,6 @@ public class DetailMakerActivity extends AppCompatActivity {
             MakerData makerData = new MakerData();
             makerData.setMader_representation_img("http://cfile227.uf.daum.net/image/251FB64752FA49772D6348");
             mAdapter.add(makerData);
-
-
-
-
         }
     }
 
@@ -78,7 +74,7 @@ public class DetailMakerActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_grey);
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

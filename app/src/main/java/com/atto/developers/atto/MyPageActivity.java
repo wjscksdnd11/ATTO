@@ -1,7 +1,6 @@
 package com.atto.developers.atto;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -39,8 +38,7 @@ public class MyPageActivity extends AppCompatActivity {
         initToolBar();
 
     }
-
-
+    
     @OnClick(R.id.text_mypage_more_trade)
     void onTradeViewClick() {
         Intent intent = new Intent(MyPageActivity.this, MyPageMoreTradeActivity.class);
@@ -99,10 +97,9 @@ public class MyPageActivity extends AppCompatActivity {
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_my_page);
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_grey);
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

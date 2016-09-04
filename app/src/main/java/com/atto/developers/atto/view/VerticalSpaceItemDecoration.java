@@ -19,7 +19,6 @@ public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent,
                                RecyclerView.State state) {
         outRect.bottom = mVerticalSpaceHeight;
-
         // 마지막 아이템 줄 생략을 원한다면,
         if (parent.getChildAdapterPosition(view) != parent.getAdapter().getItemCount() - 1) {
             outRect.bottom = mVerticalSpaceHeight;

@@ -15,20 +15,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="17sp"
             android:text="Large Text"
             android:id="@+id/my_page_text_trade_title"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="25dp" />
-
+            android:layout_marginTop="@dimen/activity_horizontal_margin" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -36,9 +34,7 @@
                 android:text="New Text"
                 android:id="@+id/my_page_text_trade_keyword"
                 android:background="@drawable/keyword_shapes"
-                android:layout_below="@+id/textView13"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:textSize="13sp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1" />
 
@@ -48,9 +44,7 @@
                 android:text="New Text"
                 android:id="@+id/my_page_text_trade_keyword_b"
                 android:background="@drawable/keyword_shapes"
-                android:layout_below="@+id/textView13"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
+                android:textSize="13sp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:layout_marginLeft="5dp" />
@@ -61,13 +55,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
+                android:textStyle="bold"
                 android:id="@+id/my_page_text_trade_price" />
 
             <LinearLayout
@@ -102,13 +97,14 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/my_page_img_trade_profile"
-                android:background="@drawable/image_shape"/>
+                android:src="@drawable/sample_profile" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -118,13 +114,13 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp" />
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:id="@+id/btn_chat"
-                android:background="@color/color_btn"
                 android:layout_marginLeft="10dp"
-                />
+                android:src="@drawable/chat"
+                android:layout_gravity="center" />
         </LinearLayout>
 
     </LinearLayout>
@@ -132,16 +128,14 @@
     <TextView
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="adfaiofha"
         android:textColor="@color/white"
         android:id="@+id/my_page_text_trade_staus"
         android:background="@drawable/staus_shape"
-
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:gravity="center" />
 
 </RelativeLayout>

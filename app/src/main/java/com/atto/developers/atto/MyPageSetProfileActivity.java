@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -14,10 +13,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.request.UpdateMyProfileRequest;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
@@ -38,6 +42,15 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
     @BindView(R.id.img_mypage_set_profile)
     ImageView profileView;
 
+    @BindView(R.id.edit_profile_nickname)
+    EditText inputProfileView;
+
+    @BindView(R.id.edit_phone_number)
+    EditText inputPhoneNumberView;
+
+    @BindView(R.id.text_profile_set_postcode)
+    TextView postCodeView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +58,7 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mypage_set_profile);
         ButterKnife.bind(this);
         initToolBar();
+//        initData();
 
         checkPermission();
 
@@ -56,8 +70,34 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
         startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
     }
 
+    @OnClick(R.id.btn_camera)
+    public void onCaptureProfile() {
+
+    }
+
     @OnClick(R.id.btn_complete_update)
     public void onCompleteUpdate() {
+
+
+        String member_zipconde_1 = "a";
+        String member_phone = "a";
+        String member_address_1 = "a";
+        String member_alias = "a";
+        File member_profile_img = new File("a");
+        UpdateMyProfileRequest request = new UpdateMyProfileRequest(this, member_zipconde_1, member_phone, member_address_1, member_alias, member_profile_img) ;
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
+            @Override
+            public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
+                Toast.makeText(MyPageSetProfileActivity.this, "성공", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(MyPageSetProfileActivity.this, "실패", Toast.LENGTH_LONG).show();
+
+
+            }
+        });
         finish();
     }
 
@@ -72,12 +112,17 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
 
+        String[] strList;
         switch (requestCode) {
             case SEARCH_ADDRESS_ACTIVITY:
                 if (resultCode == RESULT_OK) {
                     String data = intent.getExtras().getString("data");
-                    if (data != null)
-                        addressView.setText(data);
+                    if (data != null) {
+                        strList = new String(data).split(",");
+                        postCodeView.setText(strList[0]);
+                        addressView.setText(strList[1]);
+                    }
+
                 }
                 break;
             case RC_GET_IMAGE:
@@ -98,10 +143,9 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_my_page_set_profile);
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_grey);
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -7,9 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.atto.developers.atto.MyPageSettingActivity;
 import com.atto.developers.atto.R;
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.request.LogoutRequest;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -38,9 +43,22 @@ public class CheckLogoutDialogFragment extends DialogFragment {
     @OnClick(R.id.btn_check_complete)
     public void onCheckComplete() {
 
-        MyPageSettingActivity callerActivity = (MyPageSettingActivity)getActivity();
-        dismiss();
-        callerActivity.startIntent();
+        LogoutRequest request = new LogoutRequest(getContext());
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
+            @Override
+            public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
+                MyPageSettingActivity callerActivity = (MyPageSettingActivity)getActivity();
+                dismiss();
+                callerActivity.startIntent();
+                Toast.makeText(getContext(), "성공", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(getContext(), "실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
     }
 

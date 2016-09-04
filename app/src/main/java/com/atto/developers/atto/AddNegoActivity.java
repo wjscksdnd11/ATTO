@@ -1,7 +1,6 @@
 package com.atto.developers.atto;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -36,9 +35,8 @@ public class AddNegoActivity extends AppCompatActivity {
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_add_nego);
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_grey);
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
