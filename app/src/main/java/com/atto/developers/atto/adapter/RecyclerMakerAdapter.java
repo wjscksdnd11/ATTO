@@ -1,20 +1,9 @@
-package com.atto.developers.atto.adapter;
-
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.atto.developers.atto.R;
-import com.atto.developers.atto.networkdata.makerdata.MakerData;
-import com.atto.developers.atto.viewholder.RecyclerMakerViewHolder;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.atto.developers.atto.Adapter;
 
 /**
  * Created by Tacademy on 2016-08-26.
  */
+<<<<<<< Updated upstream
 public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerViewHolder> implements RecyclerMakerViewHolder.OnMakerItemClickListener {
 
     List<MakerData> items = new ArrayList<>();
@@ -68,4 +57,7 @@ public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerView
         }
 
     }
+=======
+public class RecyclerMakerAdapter {
+>>>>>>> Stashed changes
 }

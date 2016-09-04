@@ -1,20 +1,9 @@
-package com.atto.developers.atto.adapter;
-
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.atto.developers.atto.R;
-import com.atto.developers.atto.networkdata.tradedata.TradeData;
-import com.atto.developers.atto.viewholder.RealTimeTradeViewHolder;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.atto.developers.atto.Adapter;
 
 /**
  * Created by Tacademy on 2016-08-26.
  */
+<<<<<<< Updated upstream
 public class RecyclerRealTimeTradeAdapter extends RecyclerView.Adapter<RealTimeTradeViewHolder> implements RealTimeTradeViewHolder.OnTradeItemClickListener {
 
     List<TradeData> items = new ArrayList<>();
@@ -74,5 +63,7 @@ public class RecyclerRealTimeTradeAdapter extends RecyclerView.Adapter<RealTimeT
     }
 
 
+=======
+public class RecyclerRealTimeTradeAdapter {
+>>>>>>> Stashed changes
 }
-
