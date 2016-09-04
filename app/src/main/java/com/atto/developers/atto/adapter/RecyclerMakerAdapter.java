@@ -16,7 +16,10 @@ import com.atto.developers.atto.viewholder.RecyclerMakerViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerViewHolder> implements RecyclerMakerViewHolder.OnMakerItemClickListener {
 
     List<MakerData> items = new ArrayList<>();
@@ -70,5 +73,8 @@ public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerView
         }
 
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 }

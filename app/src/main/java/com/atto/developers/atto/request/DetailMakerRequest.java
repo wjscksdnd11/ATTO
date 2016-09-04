@@ -3,6 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 
 import com.atto.developers.atto.networkdata.makerdata.MakerListItemData;
+import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 
@@ -15,28 +16,31 @@ import okhttp3.Request;
  */
 public class DetailMakerRequest extends AbstractRequest<MakerListItemData> {
     Request mRequest;
-//제작자 등록
+//제작자 상세
 
     MediaType jpeg = MediaType.parse("image/jpeg");
     private final static String MAKER = "makers";
-    private final static String LINE_TAG = "line_tag";
-    private final static String REPRESETATION_IMG = "representation_img";
 
 
-    public DetailMakerRequest(Context context, String line_tag) {
+    public DetailMakerRequest(Context context, String tid) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(MAKER)
+                .addPathSegment(tid)
+                .build();
+        mRequest = new Request.Builder()
+                .tag(context)
                 .build();
 
     }
 
     @Override
     protected Type getType() {
-        return null;
+        return new TypeToken<MakerListItemData>(){}.getType();
+
     }
 
     @Override
     public Request getRequest() {
-        return null;
+        return mRequest;
     }
 }

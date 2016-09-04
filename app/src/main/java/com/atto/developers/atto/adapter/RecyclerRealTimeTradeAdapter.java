@@ -15,6 +15,10 @@ import java.util.List;
 /**
  * Created by Tacademy on 2016-08-26.
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 public class RecyclerRealTimeTradeAdapter extends RecyclerView.Adapter<RealTimeTradeViewHolder> implements RealTimeTradeViewHolder.OnTradeItemClickListener {
 
     List<TradeData> items = new ArrayList<>();
@@ -73,4 +77,8 @@ public class RecyclerRealTimeTradeAdapter extends RecyclerView.Adapter<RealTimeT
         return items.size();
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 }
