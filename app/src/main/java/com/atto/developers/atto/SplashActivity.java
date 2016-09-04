@@ -5,20 +5,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
-import android.view.animation.Animation;
-import android.widget.TextView;
 
 import com.atto.developers.atto.manager.FontManager;
 import com.hanks.htextview.HTextView;
 import com.hanks.htextview.HTextViewType;
 
-public class SplashActivity extends AppCompatActivity implements Animation.AnimationListener {
+public class SplashActivity extends AppCompatActivity {
 
     Handler mHandler;
-
     HTextView hTextView;
 
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +36,14 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
     }
 
     private void moveMainActivity() {
+
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
+
             }
         }, 2000);
     }
@@ -59,22 +57,6 @@ public class SplashActivity extends AppCompatActivity implements Animation.Anima
                 finish();
             }
         }, 2000);
-
-    }
-
-    @Override
-    public void onAnimationStart(Animation animation) {
-
-    }
-
-    @Override
-    public void onAnimationEnd(Animation animation) {
-        moveMainActivity();
-
-    }
-
-    @Override
-    public void onAnimationRepeat(Animation animation) {
 
     }
 }

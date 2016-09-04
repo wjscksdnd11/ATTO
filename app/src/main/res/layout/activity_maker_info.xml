@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/atto_bg"
+    android:background="@drawable/toolbar_underline_background"
     tools:context="com.atto.developers.atto.MakerInfoActivity" >
 
     <android.support.v7.widget.Toolbar
@@ -12,7 +12,7 @@
         android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/atto_bg">
+        android:background="@drawable/toolbar_underline_background">
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout

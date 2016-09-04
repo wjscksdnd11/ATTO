@@ -1,7 +1,6 @@
 package com.atto.developers.atto;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.atto.developers.atto.fragment.ProgressDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.userdata.MyProfile;
@@ -36,12 +36,9 @@ public class MyPageActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initData();
         initToolBar();
-        getRequestData();
-
 
     }
-
-
+    
     @OnClick(R.id.text_mypage_more_trade)
     void onTradeViewClick() {
         Intent intent = new Intent(MyPageActivity.this, MyPageMoreTradeActivity.class);
@@ -55,7 +52,8 @@ public class MyPageActivity extends AppCompatActivity {
     }
 
     Intent intent;
-    // 제작자 일대만 생기는 페이지
+
+    // 제작자일 때만 생기는 페이지
     @OnClick({R.id.btn_footer_move_maker_info, R.id.btn_footer_move_maker_nego, R.id.btn_footer_move_accept_wait})
     void onMovePage(View view) {
         switch (view.getId()) {
@@ -96,12 +94,9 @@ public class MyPageActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_my_page);
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
@@ -114,36 +109,31 @@ public class MyPageActivity extends AppCompatActivity {
 
     }
 
-    private void getRequestData() {
-        MyProfileRequest request = new MyProfileRequest();
+    private void initData() {
+        final ProgressDialogFragment dialogFragment = new ProgressDialogFragment();
+        dialogFragment.show(getSupportFragmentManager(), "progress");
 
-
-
-    }
-    private void initData(){
-        MyProfileRequest request = new MyProfileRequest();
+        MyProfileRequest request = new MyProfileRequest(this);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MyProfile>() {
             @Override
             public void onSuccess(NetworkRequest<MyProfile> request, MyProfile result) {
-                String message = result.getMessage();
-                String nickname = result.getData().getMember_alias();
-                String adress = result.getData().getMember_address_1();
-                String phone = result.getData().getMember_phone();
-                String zipcode = result.getData().getMember_zipcode_1();
-                String profile_img = result.getData().getMember_profile_img();
 
+                String nickname = result.getData().getMember_alias();
                 nickNameView.setText(nickname);
-                Toast.makeText(MyPageActivity.this, "MyProfile Result : " + message + "," + nickname + "," + adress + "," + phone + "," + zipcode + " , " + profile_img, Toast.LENGTH_SHORT).show();
+                dialogFragment.dismiss();
+                Toast.makeText(MyPageActivity.this, "success", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
             public void onFail(NetworkRequest<MyProfile> request, int errorCode, String errorMessage, Throwable e) {
                 Log.e("error", request + " , " + errorCode + " , " + errorMessage);
 
-                Toast.makeText(MyPageActivity.this, "MyProfile Result : "+errorCode,Toast.LENGTH_SHORT).show();
+                dialogFragment.dismiss();
+                Toast.makeText(MyPageActivity.this, "fail" + errorCode, Toast.LENGTH_SHORT).show();
             }
+
+
         });
     }
-
-
 }

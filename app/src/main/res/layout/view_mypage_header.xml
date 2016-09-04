@@ -8,9 +8,9 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/img_mypage_profile"
-        android:background="@drawable/image_shape"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="7dp" />
+        android:layout_marginTop="7dp"
+        android:src="@drawable/sample_profile" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_mypage_setting_myprofile"
         android:id="@+id/btn_mypage_setting_myprofile"
-        android:background="@color/color_btn"
+        android:background="@color/color_atto_main"
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp" />
@@ -40,7 +40,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="16sp"
             android:text="@string/text_my_trade"
             android:textColor="@color/colorAccent"
             android:id="@+id/text_my_trade"

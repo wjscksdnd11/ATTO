@@ -11,11 +11,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.atto.developers.atto.adapter.MyPagerAdapter;
-import com.atto.developers.atto.networkdata.ResultMessage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,13 +22,14 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-//    FragmentTabHost tabHost;
-    ResultMessage rm;
 
-    @BindView(R.id.tabs) TabLayout tabs;
-    @BindView(R.id.pager) ViewPager pager;
+    @BindView(R.id.tabs)
+    TabLayout tabs;
+    @BindView(R.id.pager)
+    ViewPager pager;
 
     MyPagerAdapter mAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         initToolBar();
 
         mAdapter = new MyPagerAdapter(getSupportFragmentManager());
+
 /*
 
         tabHost = (FragmentTabHost) findViewById(R.id.tabhost);
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
 
+                Toast.makeText(MainActivity.this, "position : " + position, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -69,10 +71,9 @@ public class MainActivity extends AppCompatActivity {
         pager.setAdapter(mAdapter);
         tabs.setupWithViewPager(pager);
         tabs.removeAllTabs();
-
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_one))));
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_realtrade))));
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_maker))));
+        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab1_selector)));
+        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab2_selector)));
+        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab3_selector)));
 
 /*        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_one))));
         tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_realtrade))));
@@ -92,12 +93,11 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
-        if(id == R.id.action_noti) {
+        if (id == R.id.action_noti) {
             Intent intent = new Intent(MainActivity.this, NoticeMainActivity.class);
             startActivity(intent);
-        } else if(id == R.id.action_search) {
+        } else if (id == R.id.action_search) {
             Intent intent = new Intent(MainActivity.this, UnifiedSearchActivity.class);
             startActivity(intent);
         }
@@ -118,21 +118,28 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
     }
-
-    private View getTabIndicator(Context context, String title) {
+/*
+    private View getTabIndicator(Context context, String title, int res) {
         View view = LayoutInflater.from(context).inflate(R.layout.tab_layout, null);
         TextView textView = (TextView) view.findViewById(R.id.textView);
         textView.setText(title);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        imageView.setBackgroundResource(res);
+        return view;
+    }
+    */
+
+    private View getTabIndicator(Context context, int res) {
+        View view = LayoutInflater.from(context).inflate(R.layout.tab_layout, null);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        imageView.setBackgroundResource(res);
         return view;
     }
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        TextView titleView = (TextView)findViewById(R.id.toolbar_title);
-        titleView.setText("atto");
-
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setNavigationIcon(R.drawable.ic_account_circle_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

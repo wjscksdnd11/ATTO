@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,132 +8,143 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/main_toolbar"
-        android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/atto_bg">
+        android:background="@drawable/toolbar_underline_background"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ToolBarStyle">
+
     </android.support.v7.widget.Toolbar>
 
+    <RelativeLayout
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView9"
-        android:background="@drawable/atto_bg"
-        android:layout_alignLeft="@+id/main_toolbar"
-        android:layout_alignStart="@+id/main_toolbar"
-        android:layout_below="@+id/img_mypage_set_profile"
-        android:layout_alignParentBottom="true" />
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:id="@+id/img_mypage_set_profile"
-        android:background="@color/color_trade_status_text_bg"
-        android:layout_below="@+id/main_toolbar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="-75dp" />
-
-    <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView9"
-        android:layout_alignStart="@+id/imageView9"
+        android:layout_below="@+id/main_toolbar"
+        android:background="@drawable/profile_set_background">
+
+        <ImageView
+            android:id="@+id/img_mypage_set_profile"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/sample_profile" />
+
+        <ImageView
+            android:id="@+id/btn_camera"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignBottom="@+id/img_mypage_set_profile"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="100dp"
+            android:src="@drawable/ic_camera" />
+    </RelativeLayout>
+    <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_above="@+id/button"
-        android:layout_below="@+id/imageView10">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout"
+        android:background="@drawable/background"
+        android:orientation="vertical">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <android.support.v7.widget.AppCompatEditText
             android:id="@+id/edit_profile_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="16dp"
+            android:drawableLeft="@drawable/ic_nickname"
+            android:drawablePadding="12dp"
+            android:hint="@string/edit_name_hint"
             android:inputType="text"
-            android:hint="@string/edit_name"
-            android:textColorHint="@color/white"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="40dp" />
+            android:theme="@style/TextLabel" />
 
-        <EditText
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edit_phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edit_profile_sex"
-            android:inputType="text"
-            android:hint="@string/edit_sex"
-            android:textColorHint="@color/white"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp">
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/edit_phone_number"
-                android:hint="@string/edit_phone"
-                android:textColorHint="@color/white"
-                android:layout_weight="1" />
-            <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/btn_img_phone" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_phone"
+            android:drawablePadding="12dp"
+            android:hint="@string/edit_phone_hint"
+            android:inputType="phone"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:theme="@style/TextLabel" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:layout_marginRight="15dp"
-            android:gravity="center">
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/text_address"
-                android:textColor="@color/white"
                 android:id="@+id/text_profile_set_address"
-                android:layout_weight="1"
-                android:paddingLeft="5dp" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingLeft="8dp"
+                android:text="@string/edit_address_hint"
+                android:textColor="@color/white" />
 
-            <ImageButton
-                android:layout_width="30dp"
+            <Button
+                android:id="@+id/btn_img_address"
+                android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:id="@+id/btn_img_address" />
+                android:layout_weight="1"
+                android:background="@drawable/edit_shape"
+                android:text="@string/btn_img_address"
+                android:textColor="@color/color_hint" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_profile_set_postcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="8dp"
+            android:text="우편번호"
+            android:textColor="@color/white" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/edit_detail_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="12dp"
+            android:hint="@string/edit_detail_address"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:theme="@style/TextLabel" />
+
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/imageView10"
-        android:layout_alignBottom="@+id/img_mypage_set_profile"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@color/colorPrimary"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="-15dp" />
-
     <Button
+        android:id="@+id/btn_complete_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_complete_update"
-        android:id="@+id/btn_complete_update"
-        android:background="@drawable/btn_shape"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/white"/>
+        android:layout_alignParentRight="true"
+        android:background="@color/color_atto_sub_opa"
+        android:text="@string/btn_complete_update"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

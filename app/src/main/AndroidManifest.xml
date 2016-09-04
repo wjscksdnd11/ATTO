@@ -2,18 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.atto.developers.atto">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:name=".MyApplication"
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity" android:theme="@style/SplashAppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,10 +30,7 @@
         <activity android:name=".DetailMakerActivity" />
         <activity android:name=".DetailPortActivity" />
         <activity android:name=".AddPortActivity" />
-
-        <activity android:name=".MypageSetPorfileActivity" />
-
-
+        <activity android:name=".MyPageSetProfileActivity" />
         <activity android:name=".ChangeAddressActivity" />
         <activity android:name=".MyTradeActivity" />
         <activity android:name=".AddMakeOrderActivity" />
@@ -46,20 +44,16 @@
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".AboutAttoActivity" />
         <activity android:name=".AccountLeaveActivity" />
-        <activity android:name=".RegsiterMakerActivity" />
+        <activity android:name=".RegisterMakerActivity" />
         <activity android:name=".UnifiedSearchActivity" />
         <activity android:name=".NoticeMainActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".FindPasswordActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".AgreementActivity" />
-
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MyPageActivity"></activity>
-
-
+        <activity android:name=".LoginActivity" android:theme="@style/LoginAppTheme"/>
+        <activity android:name=".MyPageActivity" />
         <activity android:name=".SearchAddressActivity"></activity>
-
     </application>
 
 </manifest>

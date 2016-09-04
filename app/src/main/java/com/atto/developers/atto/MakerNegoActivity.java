@@ -10,8 +10,6 @@ import butterknife.ButterKnife;
 
 public class MakerNegoActivity extends AppCompatActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

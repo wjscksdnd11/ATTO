@@ -24,6 +24,16 @@ public class RecyclerRealTimeTradeAdapter extends RecyclerView.Adapter<RealTimeT
         notifyDataSetChanged();
     }
 
+    public void clear() {
+        items.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<TradeData> list) {
+        items.addAll(list);
+        notifyDataSetChanged();
+    }
+
     @Override
     public RealTimeTradeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item_realtime_trade, parent, false);

@@ -5,16 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AcceptWaitActivity extends AppCompatActivity {
-
-    @BindView(R.id.text_title)
-    TextView titleView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +16,8 @@ public class AcceptWaitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_accept_wait);
         ButterKnife.bind(this);
         initToolBar();
-
-
     }
-
+    
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_accept_wait);

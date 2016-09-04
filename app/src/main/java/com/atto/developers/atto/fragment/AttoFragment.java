@@ -62,6 +62,7 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
         adapter.setItems(items);
 
         init();
+
         return view;
     }
 
@@ -92,6 +93,8 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
         listView.determineColumns();
         listView.setAdapter(getNewAdapter());
     }
+
+
 
     @Override
     public void onItemClick(@NotNull AdapterView<?> parent, @NotNull View view, int position, long id) {
