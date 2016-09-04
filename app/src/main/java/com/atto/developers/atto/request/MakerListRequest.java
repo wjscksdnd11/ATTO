@@ -1,6 +1,7 @@
 package com.atto.developers.atto.request;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
 import com.atto.developers.atto.networkdata.tradedata.TradeListData;
@@ -16,7 +17,7 @@ import okhttp3.Request;
  */
 
 public class MakerListRequest extends AbstractRequest<TradeListData<MakerData>> {
-
+//제작자 리스트 요청 - makerfragment
     Request mRequest;
 
     private final static String MAKERS = "makers";
@@ -35,7 +36,7 @@ public class MakerListRequest extends AbstractRequest<TradeListData<MakerData>> 
                 .tag(context)
                 .build();
 
-
+        Log.i("url", mRequest.url().toString());
 
     }
 
