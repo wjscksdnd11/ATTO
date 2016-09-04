@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
+import com.atto.developers.atto.networkdata.negodata.NegoData;
 import com.atto.developers.atto.networkdata.negodata.NegoListData;
 import com.atto.developers.atto.viewholder.DetailTradeHeaderViewHolder;
 import com.atto.developers.atto.viewholder.DetailTradeViewHolder;
@@ -18,20 +19,20 @@ import java.util.List;
  */
 public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements DetailTradeViewHolder.OnMakerImageItemClickListener {
 
-    List<NegoListData> items = new ArrayList<>();
+    List<NegoData> items = new ArrayList<>();
 
 
     public boolean isHeader(int position) {
         return position == 0;
     }
 
-    public void add(NegoListData negoListData) {
-        items.add(negoListData);
+    public void add(NegoData negoData) {
+        items.add(negoData);
         notifyDataSetChanged();
     }
 
 
-    public void addAll(List<NegoListData> list) {
+    public void addAll(List<NegoData> list) {
         items.addAll(list);
         notifyDataSetChanged();
     }
@@ -42,6 +43,8 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
         notifyDataSetChanged();
     }
 
+    private static final int VIEW_TYPE_HEADER = 100;
+    private static final int VIEW_TYPE_GROUP = 200;
 
     @Override
     public int getItemViewType(int position) {
@@ -53,9 +56,6 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
         }
         throw new IllegalArgumentException("invalid position");
     }
-
-    private static final int VIEW_TYPE_HEADER = 100;
-    private static final int VIEW_TYPE_GROUP = 200;
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -69,6 +69,7 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_img_detail_trade, parent, false);
                 DetailTradeViewHolder holder = new DetailTradeViewHolder(view);
+                holder.setOnMakerImageItemClickListener(this);
                 return holder;
             }
 
@@ -79,24 +80,28 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (position == 0) {
-            DetailTradeHeaderViewHolder hvh = (DetailTradeHeaderViewHolder)holder;
+            DetailTradeHeaderViewHolder hvh = (DetailTradeHeaderViewHolder) holder;
             return;
         }
         position--;
         for (int i = 0; i < items.size(); i++) {
-            if (holder.getItemViewType() != VIEW_TYPE_GROUP) {
+            if (position == 0){
+                if (holder.getItemViewType() != VIEW_TYPE_GROUP) {
                 throw new IllegalArgumentException("invalid view holder");
             }
             DetailTradeViewHolder gvh = (DetailTradeViewHolder) holder;
-            gvh.setNegoListData(items.get(i));
+            gvh.setNegoData(items.get(i));
             return;
         }
         position--;
     }
+    throw new IllegalArgumentException("invalid position");
+    }
+
 
 
     public interface OnAdapterItemClickListener {
-        public void onAdapterItemClick(View view, NegoListData negoListData, int position );
+        public void onAdapterItemClick(View view, NegoData negoData, int position );
     }
 
     OnAdapterItemClickListener listener;
@@ -116,9 +121,9 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
         @Override
-        public void onMakerImageItemClick(View view, NegoListData negoListData, int position) {
+        public void onMakerImageItemClick(View view, NegoData negoData, int position) {
             if (listener != null) {
-                listener.onAdapterItemClick(view, negoListData, position);
+                listener.onAdapterItemClick(view, negoData, position);
             }
         }
 }

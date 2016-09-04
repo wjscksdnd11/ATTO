@@ -33,4 +33,5 @@ public class NegoListData implements java.io.Serializable {
     }
 
 
+
 }

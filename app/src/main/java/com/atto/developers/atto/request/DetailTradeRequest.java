@@ -24,7 +24,7 @@ private final static String ACTION = "action";
     private final static String ROW_COUNT = "rowCount";
     private final static String KEYWORD = "key_word_id";
     Request mRequest;
-    public DetailTradeRequest(Context context, String tid, String key_word_id,String page_no,String row_count) {
+    public DetailTradeRequest(Context context, String tid, String key_word_id, String page_no, String row_count) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADES)
                 .addPathSegment(tid)

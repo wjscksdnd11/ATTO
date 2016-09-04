@@ -38,7 +38,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical"
-                android:paddingBottom="15dp"
                 android:paddingTop="15dp">
 
                 <android.support.v7.widget.AppCompatEditText
@@ -105,7 +104,6 @@
                     android:hint="닉네임"
                     android:inputType="text"
                     android:maxLength="6"
-
                     android:nextFocusDown="@+id/edit_signup_phonenumber"
                     android:theme="@style/TextLabel" />
 

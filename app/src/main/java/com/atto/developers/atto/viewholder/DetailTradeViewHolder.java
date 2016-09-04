@@ -1,5 +1,6 @@
 package com.atto.developers.atto.viewholder;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -7,23 +8,40 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.networkdata.negodata.NegoListData;
 
+import com.atto.developers.atto.networkdata.negodata.NegoListData;
 import butterknife.ButterKnife;
 
 /**
  * Created by Tacademy on 2016-09-01.
  */
 public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
-    NegoListData negoListData;
-    ImageView img_maker_profile;
-    TextView text_trade_profile_nickname, offer_pice, text_trade_dday, limit_date, text_trade_remain_time;
+
+    @BindView(R.id.img_trade_profile)
+    ImageView trade_profile;
+
+    @BindView(R.id.text_trade_nickname)
+    TextView trade_nickname;
+
+    @BindView(R.id.offer_pice)
+    TextView offer_pice;
+
+    @BindView(R.id.text_trade_dday)
+    TextView trade_dday;
+
+    @BindView(R.id.limit_date)
+    TextView limit_date;
+
+    @BindView(R.id.text_trade_remain_time)
+    TextView trade_remain_time;
+
+    @BindView(R.id.ratingbar_maker_grade)
     RatingBar ratingbar_maker_grade;
 
-
+    NegoData negoData;
 
     public interface OnMakerImageItemClickListener{
-        public void onMakerImageItemClick(View view, NegoListData negoListData, int position);
+        public void onMakerImageItemClick(View view, NegoData negoData, int position);
 
     }
     OnMakerImageItemClickListener listener;
@@ -39,31 +57,59 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 if (listener == null) {
-                    listener.onMakerImageItemClick(view, negoListData, getAdapterPosition());
+                    listener.onMakerImageItemClick(view, negoData, getAdapterPosition());
                 }
             }
         });
 
-        img_maker_profile = (ImageView) itemView.findViewById(R.id.img_maker_profile);
-        text_trade_profile_nickname = (TextView) itemView.findViewById(R.id.text_trade_profile_nickname);
-        offer_pice = (TextView) itemView.findViewById(R.id.offer_pice);
-        text_trade_dday = (TextView) itemView.findViewById(R.id.text_trade_dday);
-        limit_date = (TextView) itemView.findViewById(R.id.limit_date);
-        text_trade_remain_time = (TextView) itemView.findViewById(R.id.text_trade_remain_time);
-        ratingbar_maker_grade = (RatingBar)itemView.findViewById(R.id.ratingbar_maker_grade);
     }
 
-    public void setNegoListData(NegoListData negoListData){
-        this.negoListData = negoListData;
-        for(int i = 0; i<3; i++) {
-            //img_maker_profile.setImageDrawable(Drawable.createFromPath(negoListData.getData()[0].getMaker_info().getMaker_profile_img()));
-            text_trade_profile_nickname.setText(negoListData.getData()[i].getMaker_info().getMaker_name());
-            offer_pice.setText(negoListData.getData()[i].getNegotiation_price() + "원");
-            text_trade_dday.setText("D-" + negoListData.getData()[i].getNegotiation_dtime());
-            limit_date.setText(negoListData.getData()[i].getNegotiation_dtime());
-            text_trade_remain_time.setText(negoListData.getData()[i].getNegotiation_dtime());
-            ratingbar_maker_grade.setRating(negoListData.getData()[i].getMaker_info().getMaker_score());
+    public void setNegoData(NegoData negoData){
+        this.negoData = negoData;
+
+        checkImageData();
+        trade_nickname.setText(negoData.getMaker_info().getMaker_name());
+        offer_pice.setText(negoData.getNegotiation_price());
+        //checkDday();
+        limit_date.setText(negoData.getNegotiation_dtime());
+        //checkRemainTime(); //24시간 시간계산
+        trade_remain_time.setText(negoData.getNegotiation_dtime());
+        ratingbar_maker_grade.setRating(Float.parseFloat(negoData.getMaker_info().getMaker_score()));
+
+
+//        for(int i = 0; i<3; i++) {
+//            //img_maker_profile.setImageDrawable(Drawable.createFromPath(negoListData.getData()[0].getMaker_info().getMaker_profile_img()));
+//            text_trade_profile_nickname.setText(negoListData.getData()[i].getMaker_info().getMaker_name());
+//            offer_pice.setText(negoListData.getData()[i].getNegotiation_price() + "원");
+//            text_trade_dday.setText("D-" + negoListData.getData()[i].getNegotiation_dtime());
+//            limit_date.setText(negoListData.getData()[i].getNegotiation_dtime());
+//            text_trade_remain_time.setText(negoListData.getData()[i].getNegotiation_dtime());
+//            ratingbar_maker_grade.setRating(Float.parseFloat(negoListData.getData()[i].getMaker_info().getMaker_score()));
+        }
+
+    private void checkImageData() {
+
+        if (negoData.getMaker_info().getMaker_profile_img() != null) {
+            trade_profile.setImageResource(Integer.parseInt(negoData.getMaker_info().getMaker_profile_img()));
         }
 
     }
+
+
+    private void checkDday(){
+
+    }
+
+
+
+//
+//    private  void checkRemainTime(){
+//
+//
+//    }
+
+
+
+
+
 }
