@@ -16,8 +16,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="12dp"
-            android:background="@color/colorPrimary"
-            android:scaleType="centerCrop" />
+            android:background="@color/white" />
 
         <TextView
             android:id="@+id/text_trade_status"

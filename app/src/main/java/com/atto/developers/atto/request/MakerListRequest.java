@@ -24,8 +24,6 @@ public class MakerListRequest extends AbstractRequest<TradeListData<MakerData>> 
     private final static String PAGE ="pageNo";
     private final static String COUNT = "count";
 
-
-
     public MakerListRequest(Context context,String pageNo, String count) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(MAKERS)
