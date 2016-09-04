@@ -16,18 +16,19 @@ import com.atto.developers.atto.viewholder.RecyclerMakerViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerViewHolder> implements RecyclerMakerViewHolder.OnMakerItemClickListener {
 
     List<MakerData> items = new ArrayList<>();
 
-
     public void add(MakerData makerData) {
         items.add(makerData);
         notifyDataSetChanged();
+    }
+
+    public void addAll(List<MakerData> list) {
+        items.addAll(list);
+        notifyDataSetChanged();
+
     }
 
     public void clear() {
@@ -48,6 +49,7 @@ public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerView
         holder.setMakerData(items.get(position));
 
     }
+
 
     public interface OnAdapterItemClickLIstener {
         public void onAdapterItemClick(View view, MakerData makerData, int position);
@@ -73,8 +75,5 @@ public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerView
         }
 
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 }
+
