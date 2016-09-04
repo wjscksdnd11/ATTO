@@ -22,28 +22,6 @@ public class DetailTradeActivity extends AppCompatActivity {
     RecyclerView listView;
     RecyclerDetailTradeAdapter mAdapter;
 
-    @OnClick(R.id.btn_move_nego_register)
-    public void onMoveAddNego() {
-        Intent intent = new Intent(DetailTradeActivity.this, AddNegoActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-
-    private void initToolBar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        toolbar.setTitle(R.string.activity_detail_trade);
-        toolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbar);
-
-        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_grey);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +41,29 @@ public class DetailTradeActivity extends AppCompatActivity {
             }
         });
         initData();
+    }
+
+    @OnClick(R.id.btn_move_nego_register)
+    public void onMoveAddNego() {
+        Intent intent = new Intent(DetailTradeActivity.this, AddNegoActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+    private void initToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        toolbar.setTitle(R.string.activity_detail_trade);
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
 

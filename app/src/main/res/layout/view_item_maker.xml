@@ -1,7 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
     android:background="@color/white"
     android:orientation="horizontal">
 
@@ -16,6 +15,7 @@
             android:layout_height="72dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:src="@drawable/sample_profile" />
 
     </LinearLayout>
@@ -36,7 +36,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <LinearLayout
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -62,15 +61,15 @@
                 android:text="#간식" />
         </LinearLayout>
 
-        <!--<RatingBar
+        <RatingBar
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:id="@+id/ratingbar_maker_grade"
             style="@style/myrating"
             android:isIndicator="false"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="17dp"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp" />-->
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 
 </LinearLayout>

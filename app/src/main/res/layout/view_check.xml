@@ -4,15 +4,23 @@
     android:layout_height="match_parent">
 
     <include
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         layout="@layout/view_image"
-        android:layout_gravity="left|top" />
+        android:layout_gravity="left|top"
+        android:id="@+id/include3"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/image_check"
-        android:src="@android:drawable/checkbox_off_background"
-        android:layout_gravity="right|bottom" />
+        android:src="@drawable/ic_checkbox_off"
+        android:layout_gravity="right|top"
+        android:layout_alignTop="@+id/include3"
+        android:layout_alignRight="@+id/include3"
+        android:layout_alignEnd="@+id/include3"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp" />
 </merge>

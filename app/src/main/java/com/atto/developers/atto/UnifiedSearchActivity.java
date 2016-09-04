@@ -52,10 +52,9 @@ public class UnifiedSearchActivity extends AppCompatActivity {
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_unified_search);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.color_atto_main));
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_grey);
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -3,7 +3,6 @@ package com.atto.developers.atto;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.LoaderManager;
@@ -41,9 +40,12 @@ public class AddImageActivity extends AppCompatActivity implements LoaderManager
         initToolBar();
 
         gridView = (GridView) findViewById(R.id.gridView);
-        String[] from = {MediaStore.Images.Media.DISPLAY_NAME,
-                MediaStore.Images.Media.DATA};
-        int[] to = {R.id.text_name, R.id.image_icon};
+//        String[] from = {MediaStore.Images.Media.DISPLAY_NAME,
+//                MediaStore.Images.Media.DATA};
+
+        String[] from = {MediaStore.Images.Media.DATA};
+//        int[] to = {R.id.text_name, R.id.image_icon};
+        int[] to = {R.id.image_icon};
         mAdapter = new SimpleCursorAdapter(this, R.layout.view_image_check, null, from, to, 0);
         mAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
             @Override
@@ -114,10 +116,9 @@ public class AddImageActivity extends AppCompatActivity implements LoaderManager
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_add_image);
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_grey);
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

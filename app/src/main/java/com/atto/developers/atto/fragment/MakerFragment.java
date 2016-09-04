@@ -17,7 +17,7 @@ import com.atto.developers.atto.R;
 import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
 import com.atto.developers.atto.networkdata.listdata.KeywordList;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
-import com.atto.developers.atto.view.VerticalSpaceItemDecoration;
+import com.atto.developers.atto.view.DividerItemDecoration;
 
 import java.util.Random;
 
@@ -31,7 +31,7 @@ public class MakerFragment extends Fragment {
     RecyclerView listView;
     RecyclerMakerAdapter mAdapter;
 
-    private static final int VERTICAL_ITEM_SPACE = 48;
+    private static final int VERTICAL_ITEM_SPACE = 6;
 
 
     public MakerFragment() {
@@ -52,19 +52,18 @@ public class MakerFragment extends Fragment {
 
         listView = (RecyclerView) view.findViewById(R.id.rv_list);
         mAdapter = new RecyclerMakerAdapter();
-        LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        listView.setLayoutManager(manager);
-
-//        listView.addItemDecoration(new DividerItemDecoration(getActivity()));
-
-        //add ItemDecoration
-        listView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
-
-/*        listView.addItemDecoration(
-                new DividerItemDecoration(getContext(), R.drawable.divider));*/
-
-        listView.setItemAnimator(new DefaultItemAnimator());
         listView.setAdapter(mAdapter);
+
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+//        listView.addItemDecoration(new DividerItemDecoration(getActivity()));
+        //add ItemDecoration
+        //listView.addItemDecoration(new VerticalSpaceItemDecoration(VERTICAL_ITEM_SPACE));
+//        ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(getContext(), R.dimen.item_offset);
+//        listView.addItemDecoration(itemDecoration);
+        listView.setLayoutManager(manager);
+        listView.addItemDecoration(
+                new DividerItemDecoration(getContext(), R.drawable.divider));
+        listView.setItemAnimator(new DefaultItemAnimator());
         mAdapter.setOnAdapterItemClickListener(new RecyclerMakerAdapter.OnAdapterItemClickLIstener() {
 
             @Override
@@ -104,7 +103,7 @@ public class MakerFragment extends Fragment {
             makerData.setMaker_product_category("category 1 ");
             makerData.setMaker_product_category_1("category 2");
             makerData.setMaker_product_category_2("category 3");
-
+            makerData.setMaker_score(r.nextInt(5) + "");
             mAdapter.add(makerData);
 
         }
