@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.negodata.NegoData;
+import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +21,7 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
 	@BindView(R.id.img_trade_profile)
 	ImageView trade_profile;
 
-	@BindView(R.id.text_trade_nickname)
+	@BindView(R.id.text_trade_profile_nickname)
 	TextView trade_nickname;
 
 	@BindView(R.id.offer_pice)
@@ -68,13 +69,22 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
 
 
 	public void setNegoData(NegoData negoData) {
-
-	}
-
-	private void checkImageData() {
-		if (negoData.getMaker_info().getMaker_profile_img() != null) {
-			trade_profile.setImageResource(Integer.parseInt(negoData.getMaker_info().getMaker_profile_img()));
+		this.negoData = negoData;
+		checkImageData(negoData);	//trade_profile;
+		trade_nickname.setText(negoData.getMaker_info().getMaker_name());
+		//ratingbar_maker_grade.setRating(negoData.getMaker_info().getMaker_score());
+		offer_pice.setText(negoData.getNegotiation_price()+ "");
+		limit_date.setText(negoData.getNegotiation_dtime()); //yyyy-mm-dd까지
+		//trade_dday.setText(negoData.getNegotiation_dtime()); // D-?
+		//trade_remain_time; //24시간 알림
 		}
 
+	private void checkImageData(NegoData negoData) {
+		if (negoData.getMaker_info().getMaker_profile_img() != null) {
+
+
+			Glide.with(itemView.getContext()).load(negoData.getMaker_info().getMaker_profile_img()).into(trade_profile);
+
+		}
 	}
 }

@@ -19,25 +19,30 @@ import java.util.List;
  * Created by Tacademy on 2016-09-01.
  */
 public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements DetailTradeViewHolder.OnMakerImageItemClickListener {
-	TradeData mTradeData = new TradeData();
-	List<NegoData> mNegoDatas = new ArrayList<>();
+	//TradeData mTradeData = new TradeData();
+	List<TradeData> trade_items = new ArrayList<>();
+	List<NegoData> nego_items = new ArrayList<>();
 
 	public boolean isHeader(int position) {
 		return position == 0;
 	}
 
-	public void addAll(List<NegoData> list) {
-		if (!mNegoDatas.isEmpty())
-			mNegoDatas.clear();
-		mNegoDatas.addAll(list);
+
+	public void addAll(List<TradeData> list){
+		trade_items.addAll(list);
 		notifyDataSetChanged();
 	}
 
+	public void addNego(List<NegoData> list){
+		nego_items.addAll(list);
+		notifyDataSetChanged();
+	}
 
 	public void clear() {
-		mNegoDatas.clear();
+		nego_items.clear();
 		notifyDataSetChanged();
 	}
+
 
 	private static final int VIEW_TYPE_HEADER = 100;
 	private static final int VIEW_TYPE_GROUP = 200;
@@ -45,23 +50,17 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 
 	@Override
 	public int getItemViewType(int position) {
-		return position == 0 ? VIEW_TYPE_HEADER : VIEW_TYPE_GROUP;
-//        if (position == 0)
-//
-//            return VIEW_TYPE_HEADER;
-//        position--;
-//
-//        for (int i = 0; i < mNegoDatas.size(); i++) {
-//            if (position == 0)
-//                return VIEW_TYPE_GROUP;
-//            position--;
-//        }
-//        throw new IllegalArgumentException("invalid position");
-	}
+        if (position == 0)
 
-	public void setHeaderData(TradeData data) {
-		this.mTradeData = data;
-		notifyDataSetChanged();
+            return VIEW_TYPE_HEADER;
+        position--;
+
+        for (int i = 0; i < nego_items.size(); i++) {
+            if (position == 0)
+                return VIEW_TYPE_GROUP;
+            position--;
+        }
+        throw new IllegalArgumentException("invalid position");
 	}
 
 	@Override
@@ -86,41 +85,32 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 
 	@Override
 	public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-		// Header
-		if (holder instanceof DetailTradeHeaderViewHolder) {
-			DetailTradeHeaderViewHolder hvh = (DetailTradeHeaderViewHolder) holder;
-			hvh.setTradeData(mTradeData);
-			Log.e("TEST", "onBindViewHolder header mTradeData : " + mTradeData);
-		}
-		// Item
-		else {
-			NegoData data = mNegoDatas.get(position - 1);
-			if (data != null) {
-				DetailTradeViewHolder gvh = (DetailTradeViewHolder) holder;
-				gvh.setNegoData(data);
 
-				Log.e("TEST", "onBindViewHolder item data : " + data);
+
+		if(trade_items.size() > 0) {
+			if (position == 0) {
+				DetailTradeHeaderViewHolder hvh = (DetailTradeHeaderViewHolder) holder;
+				hvh.setTradeData(trade_items.get(0));
+				Log.e("TEST", "onBindViewHolder header mTradeData : " + trade_items.get(0));
+				return;
 			}
+			position--;
+			for (int i = 0; i < nego_items.size(); i++) {
+				if (position == 0) {
+					if (holder.getItemViewType() != VIEW_TYPE_GROUP) {
+						throw new IllegalArgumentException("invalid view holder");
+					}
+					DetailTradeViewHolder gvh = (DetailTradeViewHolder) holder;
+					gvh.setNegoData(nego_items.get(i));
+					return;
+				}
+				position--;
+			}
+
+			throw new IllegalArgumentException("invalid position");
+
 		}
-//        if (position == 0) {
-//            DetailTradeHeaderViewHolder hvh = (DetailTradeHeaderViewHolder) holder;
-//            hvh.setTradeData(mNegoDatas);
-//            return;
-//        }
-//        position--;
-//        for (int i = 0; i < mNegoDatas.size(); i++) {
-//            if (position == 0) {
-//                if (holder.getItemViewType() != VIEW_TYPE_GROUP) {
-//                    throw new IllegalArgumentException("invalid view holder");
-//                }
-//                DetailTradeViewHolder gvh = (DetailTradeViewHolder) holder;
-//                gvh.setNegoData(mNegoDatas.get(i));
-//                return;
-//            }
-//            position--;
-//        }
-//
-//        throw new IllegalArgumentException("invalid position");
+
 	}
 
 
@@ -136,13 +126,12 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 
 	@Override
 	public int getItemCount() {
-		return mTradeData == null || mNegoDatas == null || mNegoDatas.isEmpty() ? 0 : mNegoDatas.size() + 1;
-//		int count = 0;
-//		count++;
-//		for (int i = 0; i < mNegoDatas.size(); i++) {
-//			count++;
-//		}
-//		return count;
+		int count = 0;
+		count++;
+		for (int i = 0; i < nego_items.size(); i++) {
+			count++;
+		}
+		return count;
 	}
 
 	@Override

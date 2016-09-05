@@ -56,7 +56,7 @@ public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
             // maker_profile.setImageDrawable(makerdata.getMader_representation_img());
 //            ratingbar_maker_grade.setRating(score);
 //            trade_keyword.setText(makerData.getMaker_key_word_lists().getKey_word_1());
-            trade_nickname.setText(makerData.getMaker_id());
+          //  trade_nickname.setText(makerData.getMaker_id());
 
     }
 }

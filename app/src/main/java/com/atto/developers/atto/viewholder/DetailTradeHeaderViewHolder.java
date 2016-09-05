@@ -24,7 +24,7 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 	@BindView(R.id.img_realtime_photo)
 	ImageView realtime_photo;
 
-	@BindView(R.id.img_maker_profile)
+	@BindView(R.id.img_trade_profile)
 	ImageView trade_profile;
 
     @BindView(R.id.text_trade_status)
@@ -45,7 +45,7 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 	@BindView(R.id.text_trade_limit_date)
 	TextView trade_limit_date;
 
-	@BindView(R.id.text_trade_keyword_a)
+	@BindView( R.id.text_trade_keyword_a)
 	TextView trade_keyword_one;
 
 	@BindView(R.id.text_trade_keyword_b)
@@ -57,16 +57,15 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 	TradeData tradeData;
 
 
+
 	private static final String TAG = "HeaderViewHolder";
 
 	public DetailTradeHeaderViewHolder(View itemView) {
 		super(itemView);
 		ButterKnife.bind(this, itemView);
-
 		keywordView[0] = (TextView) itemView.findViewById(R.id.text_trade_keyword_a);
 		keywordView[1] = (TextView) itemView.findViewById(R.id.text_trade_keyword_b);
 		keywordView[2] = (TextView) itemView.findViewById(R.id.text_trade_keyword_c);
-
 	}
 
 
@@ -77,35 +76,17 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 			int[] keywordList = tradeData.getTrade_key_word_info();
 			checkKeywordList(keywordList);
 		}
-			//realtime_photo.setImageDrawable(tradeData.getTrad_ );
-			//trade_profile.setImageDrawable(tradeData.);
-//        trade_status.setText(tradeData.getTrade_status());
-			trade_title.setText(tradeData.getTrade_title());
-			trade_price.setText(tradeData.getTrade_price() + "원");
-			trade_dday.setText(tradeData.getTrade_dday());
-			trade_nickname.setText(tradeData.getMember_info().getMember_alias());
-			trade_limit_date.setText(tradeData.getTrade_dtime());
-			checkImageData(tradeData);
+		checkImageData(tradeData);
+		trade_status.setText(tradeData.getTrade_status()+"");
+		trade_title.setText(tradeData.getTrade_title());
+		trade_price.setText(tradeData.getTrade_price() + "원");
+		trade_dday.setText(tradeData.getTrade_dday());
+		trade_nickname.setText(tradeData.getMember_info().getMember_alias());
+		trade_limit_date.setText(tradeData.getTrade_dtime());
 
 		}
 
 
-//    public void setTradeData(TradeData tradeData) {
-//        this.tradeData = tradeData;
-//        if (tradeData.getTrade_key_word_info() != null) {
-//            String[] keywordList = tradeData.getTrade_key_word_info();
-//            checkKeywordList(keywordList);
-//        }
-//        //realtime_photo.setImageDrawable(tradeData.getTrad_ );
-//        //trade_profile.setImageDrawable(tradeData.);
-//        checkImageData();
-//      //  trade_status.setText(tradeData.getTrade_status());
-//        trade_title.setText(tradeData.getTrade_title());
-//        trade_price.setText(tradeData.getTrade_price() + "원");
-//        trade_dday.setText(tradeData.getTrade_dday());
-//        trade_nickname.setText(tradeData.getMember_info().getMember_alias());
-//        trade_limit_date.setText(tradeData.getTrade_dtime());
-//    }
 
 		private void checkImageData (TradeData tradeData){
 
@@ -146,6 +127,7 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 			}
 		}
 	}
+
 
 
 }

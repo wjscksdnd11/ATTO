@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,9 +28,9 @@ import butterknife.OnClick;
 
 public class DetailTradeActivity extends AppCompatActivity {
 
-    @BindView(R.id.re_list)
-    RecyclerView listView;
-    RecyclerDetailTradeAdapter mAdapter;
+	@BindView(R.id.re_list)
+	RecyclerView listView;
+	RecyclerDetailTradeAdapter mAdapter;
 
 	@OnClick(R.id.btn_move_nego_register)
 	public void onMoveAddNego() {
@@ -60,6 +61,7 @@ public class DetailTradeActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_detail_trade);
 		ButterKnife.bind(this);
 		initToolBar();
+
 		mAdapter = new RecyclerDetailTradeAdapter();
 		listView.setAdapter(mAdapter);
 		LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -75,12 +77,20 @@ public class DetailTradeActivity extends AppCompatActivity {
 	}
 
 	private void initData() {
-		TradeListRequest request = new TradeListRequest(getApplicationContext(), "10", "10");
+		checkTradeData();
+		checkNegoData();
+
+	}
+
+	private void checkTradeData() {
+		TradeListRequest request = new TradeListRequest(this, "10", "10");
 		NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
 			@Override
 			public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
-				mAdapter.setHeaderData(result.getData()[0]);
-				init();
+				TradeData[] data = result.getData();
+				mAdapter.addAll(Arrays.asList(data));
+				Log.d("DetailTradeActivity", " 	성공 : " + data[0].getTrade_id());
+
 			}
 
 			@Override
@@ -90,60 +100,24 @@ public class DetailTradeActivity extends AppCompatActivity {
 		});
 	}
 
-	private void init() {
-		NegoCardListRequest request = new NegoCardListRequest(getApplicationContext(), "5", "10", "10");
-		NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<NegoData>>() {
-			@Override
-			public void onSuccess(NetworkRequest<TradeListData<NegoData>> request, TradeListData<NegoData> result) {
-				NegoData[] data = result.getData();
-				mAdapter.addAll(Arrays.asList(data));
-			}
+	private void checkNegoData() {
+		for (int i = 0; i < mAdapter.getItemCount(); i++) {
+			NegoCardListRequest request = new NegoCardListRequest(this, "5", "10", "10");
+			NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<NegoData>>() {
+				@Override
+				public void onSuccess(NetworkRequest<TradeListData<NegoData>> request, TradeListData<NegoData> result) {
+					NegoData[] data = result.getData();
+					mAdapter.addNego(Arrays.asList(data));
+					Log.d("DetailTradeActivity", "제작자성공 : " + data[0].getNegotiation_id());
+				}
 
-			@Override
-			public void onFail(NetworkRequest<TradeListData<NegoData>> request, int errorCode, String errorMessage, Throwable e) {
-				Toast.makeText(getApplicationContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
-			}
-		});
+				@Override
+				public void onFail(NetworkRequest<TradeListData<NegoData>> request, int errorCode, String errorMessage, Throwable e) {
+					Toast.makeText(getApplicationContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
+				}
+			});
+		}
 	}
 }
-
-//    private void initData() {
-//        mAdapter.clear();
-//        TradeListRequest request = new TradeListRequest(getApplicationContext(), "10", "10");
-//        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeData>() {
-//            @Override
-//            public void onSuccess(NetworkRequest<TradeData> request, TradeData result) {
-//               TradeData data = result.getTrade_id();
-//
-//                Toast.makeText(getApplicationContext(), "성공 : ", Toast.LENGTH_SHORT).show();
-//                mAdapter.addAll(result.getTrade_id());
-//                init();
-//            }
-//
-//            @Override
-//            public void onFail(NetworkRequest<TradeData> request, int errorCode, String errorMessage, Throwable e) {
-//                Toast.makeText(getApplicationContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-//    }
-//    private void init() {
-//        NegoCardListRequest request = new NegoCardListRequest(getApplicationContext(), "1", "2", "10", "10");
-//        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<NegoListData>() {
-//            @Override
-//            public void onSuccess(NetworkRequest<NegoData> request, NegoData result) {
-//                NegoListData [] data = request;
-//                Toast.makeText(getApplicationContext(), "성공 : ", Toast.LENGTH_SHORT).show();
-//                mAdapter.addAll(Arrays.asList(data));
-//
-//            }
-//
-//            @Override
-//            public void onFail(NetworkRequest<NegoData> request, int errorCode, String errorMessage, Throwable e) {
-//                Toast.makeText(getApplicationContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-//	}
 
 
