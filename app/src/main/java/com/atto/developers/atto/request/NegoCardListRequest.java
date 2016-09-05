@@ -27,7 +27,6 @@ public class NegoCardListRequest   extends AbstractRequest<TradeListData<NegoDat
     private final static String ACTION_VAlUE = "self";
     private final static String NEGOTIATION = "negotiations";
 
-
     public NegoCardListRequest(Context context ,String tid, String page_no, String row_count)  {
 //14. 자신의 거래글 검색
         HttpUrl url = getBaseUrlBuilder()

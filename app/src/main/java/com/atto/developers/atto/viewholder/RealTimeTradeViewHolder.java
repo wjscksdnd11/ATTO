@@ -1,6 +1,7 @@
 package com.atto.developers.atto.viewholder;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,8 +17,12 @@ import butterknife.ButterKnife;
  */
 public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
+    private static final int KEYWORD_COUNT = 3;
+    TextView[] keywordView = new TextView[3];
+
     @BindView(R.id.img_realtime_photo)
     ImageView realtime_photo;
+
     @BindView(R.id.img_maker_profile)
     ImageView trade_profile;
 
@@ -38,16 +43,6 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.text_trade_limit_date)
     TextView trade_limit_date;
-
-    @BindView(R.id.text_trade_keyword_a)
-    TextView trade_keyword_one;
-
-    @BindView(R.id.text_trade_keyword_b)
-    TextView trade_keyword_two;
-
-    @BindView(R.id.text_trade_keyword_c)
-    TextView trade_keyword_three;
-
 
     TradeData tradeData;
 
@@ -75,6 +70,10 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
                 }
             }
         });
+        keywordView[0] = (TextView) itemView.findViewById(R.id.text_trade_keyword_a);
+        keywordView[1] = (TextView) itemView.findViewById(R.id.text_trade_keyword_b);
+        keywordView[2] = (TextView) itemView.findViewById(R.id.text_trade_keyword_c);
+
 
     }
 
@@ -85,43 +84,58 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
             int[] keywordList = tradeData.getTrade_key_word_info();
             checkKeywordList(keywordList);
         }
+
         //realtime_photo.setImageDrawable(tradeData.getTrad_ );
         //trade_profile.setImageDrawable(tradeData.);
 
-        //checkImageData();
-        trade_status.setText(tradeData.getTrade_status());
+        checkImageData(tradeData);
+        trade_status.setText(tradeData.getTrade_status() + "");
         trade_title.setText(tradeData.getTrade_title());
         trade_price.setText(tradeData.getTrade_price() + "원");
         trade_dday.setText(tradeData.getTrade_dday());
         trade_nickname.setText(tradeData.getMember_info().getMember_alias());
         trade_limit_date.setText(tradeData.getTrade_dtime());
 
+        int[] keywordList = tradeData.getTrade_key_word_info();
+        checkKeywordList(keywordList);
+
     }
 
-//    private void checkImageData() {
-//
-//        if (tradeData.getTrade_product_img() == null) {
-//            realtime_photo.setImageResource(R.drawable.trade_sample01);
-//        } else {
-//            Glide.with(itemView.getContext()).load(tradeData.getTrade_product_img()).into(realtime_photo);
-//        }
-//
-//        if (tradeData.getMember_info().getMember_profile_img() == null) {
-//            trade_profile.setImageResource(R.drawable.sample_profile);
-//        } else {
-//            Glide.with(itemView.getContext()).load(tradeData.getMember_info().getMember_profile_img()).into(trade_profile);
-//        }
-//
-//    }
+    private void checkImageData(TradeData tradeData) {
 
-    TextView[] keywordView = {trade_keyword_one, trade_keyword_two, trade_keyword_three};
+        if (tradeData.getTrade_product_img() != null) {
+
+            Glide.with(itemView.getContext()).load(tradeData.getTrade_product_img()).centerCrop().into(realtime_photo);
+        } else {
+            realtime_photo.setImageResource(R.drawable.default_image);
+
+        }
+
+        if (tradeData.getMember_info().getMember_profile_img() != null) {
+
+            Glide.with(itemView.getContext()).load(tradeData.getMember_info().getMember_profile_img()).centerCrop().into(trade_profile);
+
+        } else {
+            trade_profile.setImageResource(R.drawable.sample_profile);
+
+        }
+
+    }
+
 
     private void checkKeywordList(int[] keywordList) {
+        if (keywordList != null) {
+            for (int i = 0; i < keywordList.length; i++) {
+                Log.i("realtime", "keywordList : " + keywordList[i]);
+                if (keywordList[i] != 0) {
+                    keywordView[i].setText(keywordList[i] + "");
+                } else {
+                    keywordView[i].setVisibility(View.GONE);
 
-        for (int i = 0; i < keywordList.length; i++) {
-            if (keywordList != null) {
-                keywordView[i].setText(keywordList[i]);
-            } else {
+                }
+            }
+        } else {
+            for (int i = 0; i < KEYWORD_COUNT; i++) {
                 keywordView[i].setVisibility(View.GONE);
             }
         }

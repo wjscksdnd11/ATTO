@@ -33,7 +33,6 @@ public class MyTradeListRequest  extends AbstractRequest<TradeListData<TradeData
                 .addQueryParameter(ROW_COUNT, row_count)
                 .build();
 
-
         mRequest = new Request.Builder()
                 .url(url)
                 .tag(context)

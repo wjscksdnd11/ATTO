@@ -60,14 +60,30 @@ public class DetailMakerActivity extends AppCompatActivity {
 
     private void initData() {
 
+        /*String tid = "1";
+        DetailMakerRequest request = new DetailMakerRequest(this, tid);
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MakerListItemData>() {
+            @Override
+            public void onSuccess(NetworkRequest<MakerListItemData> request, MakerListItemData result) {
+                MakerData data = result.getData();
+                Toast.makeText(DetailMakerActivity.this, "성공 result : " + data.getMaker_id(), Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void onFail(NetworkRequest<MakerListItemData> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(DetailMakerActivity.this, "실패" + errorCode, Toast.LENGTH_LONG).show();
+
+
+            }
+        });*/
+
         for (int i = 0; i < 20; i++) {
             MakerData makerData = new MakerData();
             makerData.setMader_representation_img("http://cfile227.uf.daum.net/image/251FB64752FA49772D6348");
             mAdapter.add(makerData);
         }
     }
-
-
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_detail_maker);

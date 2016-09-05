@@ -8,18 +8,23 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.atto.developers.atto.DetailMakerActivity;
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
-import com.atto.developers.atto.networkdata.listdata.KeywordList;
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
+import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.request.MakerListRequest;
 import com.atto.developers.atto.view.DividerItemDecoration;
 
-import java.util.Random;
+import java.util.Arrays;
 
 
 /**
@@ -68,7 +73,6 @@ public class MakerFragment extends Fragment {
 
             @Override
             public void onAdapterItemClick(View view, MakerData makerItemData, int position) {
-
                 Intent intent = new Intent(getContext(), DetailMakerActivity.class);
                 startActivity(intent);
             }
@@ -90,7 +94,34 @@ public class MakerFragment extends Fragment {
 
     private void initData() {
 
+        final ProgressDialogFragment dialogFragment = new ProgressDialogFragment();
+        dialogFragment.show(getFragmentManager(), "progress");
         mAdapter.clear();
+        MakerListRequest request = new MakerListRequest(getContext(), "1", "10");
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<MakerData>>() {
+            @Override
+            public void onSuccess(NetworkRequest<TradeListData<MakerData>> request, TradeListData<MakerData> result) {
+                MakerData[] data = result.getData();
+                Toast.makeText(getContext(), "성공 : " + data[0].getMaker_score(), Toast.LENGTH_SHORT).show();
+                Log.d("MakerFragment", data[0].getMaker_score());
+                Log.d("MakerFragment", data[0].getMaker_id());
+
+//                Log.d("MakerFragment", data[0].getMaker_product_category());
+//                Log.d("MakerFragment", data[0].getMaker_key_word_lists().getKey_word_1());
+
+                mAdapter.addAll(Arrays.asList(data));
+                dialogFragment.dismiss();
+            }
+
+            @Override
+            public void onFail(NetworkRequest<TradeListData<MakerData>> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(getContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
+
+                dialogFragment.dismiss();
+            }
+        });
+
+        /*mAdapter.clear();
         Random r = new Random();
         for (int i = 0; i < 20; i++) {
             MakerData makerData = new MakerData();
@@ -106,7 +137,7 @@ public class MakerFragment extends Fragment {
             makerData.setMaker_score(r.nextInt(5) + "");
             mAdapter.add(makerData);
 
-        }
+        }*/
 
     }
 

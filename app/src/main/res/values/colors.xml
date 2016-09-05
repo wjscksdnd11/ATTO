@@ -8,6 +8,7 @@
     <color name="fontColor">#262626</color>
 
     <color name="color_layout">#ffe0e0e0</color>
+    <color name="color_edit_layout">#a1a1a1</color>
 
     <color name="color_edit_line">#FFAAB0F5</color>
 
@@ -16,7 +17,8 @@
 
     <color name="color_btn">#ff3b7b</color>
 
-    <color name="color_atto_main">#ff3b7b</color>
+    <!--<color name="color_atto_main">#ff3b7b</color>-->
+    <color name="color_atto_main">#fbfb6e70</color>
     <color name="color_atto_main_opa">#33ff3b7b</color>
 
     <color name="color_atto_sub">#f8b895</color>

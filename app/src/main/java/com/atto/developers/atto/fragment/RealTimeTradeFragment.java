@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,18 +84,23 @@ public class RealTimeTradeFragment extends Fragment {
 
     private void initData() {
 
+        final ProgressDialogFragment dialogFragment = new ProgressDialogFragment();
+        dialogFragment.show(getFragmentManager(), "progress");
         mAdapter.clear();
-        TradeListRequest request  = new TradeListRequest(getContext(), "10","10");
+        TradeListRequest request = new TradeListRequest(getContext(), "10", "10");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
             @Override
             public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
-                TradeData[] data =  result.getData();
-                Toast.makeText(getContext(),"성공 : "+data[0].getTrade_id(),Toast.LENGTH_SHORT).show();
+                TradeData[] data = result.getData();
+                Toast.makeText(getContext(), "성공 : " + data[0].getTrade_product_img(), Toast.LENGTH_SHORT).show();
                 mAdapter.addAll(Arrays.asList(data));
+                dialogFragment.dismiss();
             }
+
             @Override
             public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(getContext(),"실패 : "+errorCode,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
+                dialogFragment.dismiss();
             }
         });
 

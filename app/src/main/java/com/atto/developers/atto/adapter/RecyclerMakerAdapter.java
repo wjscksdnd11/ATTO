@@ -30,6 +30,11 @@ public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerView
         notifyDataSetChanged();
     }
 
+    public void addAll(List<MakerData> list) {
+        items.addAll(list);
+        notifyDataSetChanged();
+    }
+
     @Override
     public RecyclerMakerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item_maker, parent, false);

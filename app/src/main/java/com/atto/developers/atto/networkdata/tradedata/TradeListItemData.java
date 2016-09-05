@@ -3,6 +3,7 @@ package com.atto.developers.atto.networkdata.tradedata;
 
 public class TradeListItemData implements java.io.Serializable {
     private static final long serialVersionUID = 3311847018150535221L;
+
     private TradeData data;
     private String message;
 

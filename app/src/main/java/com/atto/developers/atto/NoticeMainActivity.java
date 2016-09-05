@@ -19,7 +19,6 @@ public class NoticeMainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_notice);
         setSupportActionBar(toolbar);
-
         toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

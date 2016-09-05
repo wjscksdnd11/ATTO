@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="@color/color_atto_main_opa"/>
     <stroke android:width="2dp"
-        android:color="@color/color_atto_main"/>
+        android:color="@color/white"/>
         <gradient
         android:angle="0"
         android:centerColor="#d676b6"
