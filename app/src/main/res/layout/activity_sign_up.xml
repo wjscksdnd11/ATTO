@@ -76,7 +76,7 @@
                     android:theme="@style/TextLabel" />
 
                 <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/edit_signup_check_password_layout"
+                    android:id="@+id/edit_signup_check_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"

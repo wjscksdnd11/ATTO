@@ -3,14 +3,17 @@ package com.atto.developers.atto;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.atto.developers.atto.fragment.CompleteDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.manager.PropertyManager;
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.atto.developers.atto.request.SignUpRequest;
 
@@ -22,19 +25,28 @@ public class SignUpActivity extends AppCompatActivity {
 
     private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
 
-    String email = "gsd";
-    String password = "SDfdsf";
-    String name = "sdf";
-    String zipcode = "sdf";
-    String adress_1 = "sdf";
-    String phone = "sdf";
-    String registration_token = "sdf";
+
+    @BindView(R.id.edit_signup_email)
+    AppCompatEditText emailView;
+
+    @BindView(R.id.edit_signup_password)
+    AppCompatEditText passwordView;
+
+    @BindView(R.id.edit_signup_check_password)
+    AppCompatEditText passwordCheckView;
+
+    @BindView(R.id.edit_signup_name)
+    AppCompatEditText nickNameView;
+
+    @BindView(R.id.edit_signup_phonenumber)
+    AppCompatEditText phoneNumberView;
 
     @BindView(R.id.text_signup_set_address)
     TextView addressView;
 
     @BindView(R.id.text_signup_set_postcode)
     TextView postCodeView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +58,15 @@ public class SignUpActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_complete_signup)
     public void completeSignUp() {
+
+        final String email = emailView.getText().toString();
+        final String password = passwordView.getText().toString();
+        String name = nickNameView.getText().toString();
+        String zipcode = postCodeView.getText().toString();
+        String adress_1 = addressView.getText().toString();
+        String phone = phoneNumberView.getText().toString();
+        String registration_token = PropertyManager.getInstance().getRegistrationId();
+
         SignUpRequest request = new SignUpRequest(this, email, password, name, zipcode, adress_1, phone, registration_token);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
 
@@ -53,6 +74,11 @@ public class SignUpActivity extends AppCompatActivity {
             public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
                 Log.i("result", result.getMessage());
                 Toast.makeText(SignUpActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+                PropertyManager.getInstance().setEmail(email);
+                PropertyManager.getInstance().setPassword(password);
+                Toast.makeText(SignUpActivity.this, " 성공 :" + result.getMessage(), Toast.LENGTH_SHORT).show();
+                CompleteDialogFragment dialog = new CompleteDialogFragment();
+                dialog.show(getSupportFragmentManager(), "signup");
             }
 
             @Override
@@ -61,10 +87,6 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.e("error", request + " , " + errorCode + " , " + errorMessage);
             }
         });
-
-        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     @OnClick(R.id.btn_img_address)
