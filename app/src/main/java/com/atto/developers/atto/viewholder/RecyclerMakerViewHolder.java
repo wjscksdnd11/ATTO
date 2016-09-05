@@ -14,6 +14,8 @@ import butterknife.ButterKnife;
 
 public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
 
+
+
     ImageView maker_profile;
     RatingBar ratingbar_maker_grade;
     TextView trade_keyword, trade_nickname, text_detail_maker_intro;
@@ -54,7 +56,7 @@ public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
             // maker_profile.setImageDrawable(makerdata.getMader_representation_img());
 //            ratingbar_maker_grade.setRating(score);
 //            trade_keyword.setText(makerData.getMaker_key_word_lists().getKey_word_1());
-            trade_nickname.setText(makerData.getMaker_id());
+          //  trade_nickname.setText(makerData.getMaker_id());
 
     }
 }

@@ -1,5 +1,6 @@
 package com.atto.developers.atto;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +20,6 @@ public class DetailNegoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_nego);
         ButterKnife.bind(this);
-        initToolBar();
 
     }
 
@@ -37,8 +37,9 @@ public class DetailNegoActivity extends AppCompatActivity {
         }
         @OnClick(R.id.btn_cancel)
         public void onCancel(){
-
-
+            Intent intent = new Intent(DetailNegoActivity.this, DetailTradeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
 
 

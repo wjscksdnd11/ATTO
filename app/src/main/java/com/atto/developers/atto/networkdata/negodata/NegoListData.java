@@ -2,7 +2,7 @@ package com.atto.developers.atto.networkdata.negodata;
 
 import com.atto.developers.atto.networkdata.listdata.PagingData;
 
-public class NegoListData implements java.io.Serializable {
+public class NegoListData<T> implements java.io.Serializable {
     private static final long serialVersionUID = 8180847119468994447L;
     private NegoData[] data;
     private PagingData paging;
@@ -31,6 +31,7 @@ public class NegoListData implements java.io.Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
+
 
 
 }

@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="Large Text"
         android:textColor="@color/white"
-        android:id="@+id/text_trade_staus"
+        android:id="@+id/text_trade_status"
         android:background="@drawable/staus_shape"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/textView16"
+                android:id="@+id/text_trade_keyword_a"
                 android:background="@drawable/keyword_shapes"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1" />
@@ -83,7 +83,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
-                android:id="@+id/textView17"
+                android:id="@+id/text_trade_keyword_b"
+                android:background="@drawable/keyword_shapes"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/text_trade_keyword_c"
                 android:background="@drawable/keyword_shapes"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
@@ -118,7 +128,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/staus_shape"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/my_page_text_trade_dday"
+                    android:id="@+id/text_trade_dday"
                     android:layout_weight="1"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
@@ -144,7 +154,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/img_maker_profile"
+                android:id="@+id/img_trade_profile"
                 android:background="@drawable/image_shape" />
 
             <TextView
@@ -156,13 +166,6 @@
                 android:layout_marginLeft="10dp" />
 
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:id="@+id/imageView5"
-            android:background="@color/color_edit_line"
-            android:layout_marginTop="5dp" />
 
     </LinearLayout>
 

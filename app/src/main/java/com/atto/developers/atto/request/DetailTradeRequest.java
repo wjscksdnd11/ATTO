@@ -41,6 +41,7 @@ public class DetailTradeRequest extends AbstractRequest<TradeData> {
         Log.i("url", url.toString());
 
 
+
     }
 
     @Override
