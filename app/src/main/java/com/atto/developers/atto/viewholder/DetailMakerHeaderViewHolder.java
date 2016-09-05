@@ -59,7 +59,7 @@ public class DetailMakerHeaderViewHolder extends RecyclerView.ViewHolder {
 
         statusView.setText("성사된 거래 " + makerData.getMaker_line_tag());
         Glide.with(itemView.getContext()).load(makerData.getMader_representation_img()).into(profileImageView);
-        nickNameView.setText(makerData.getMaker_id());
+//        nickNameView.setText(makerData.getMaker_id());
 //        ratingBar.setRating(Float.parseFloat(makerData.getMaker_score()));
         introView.setText(makerData.getMaker_line_tag());
         categoryOneView.setText(makerData.getMaker_product_category_1() + "");

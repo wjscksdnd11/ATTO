@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.networkdata.negodata.NegoListData;
+import com.atto.developers.atto.networkdata.negodata.NegoData;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.atto.developers.atto.viewholder.DetailTradeHeaderViewHolder;
 import com.atto.developers.atto.viewholder.DetailTradeViewHolder;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements DetailTradeViewHolder.OnMakerImageItemClickListener {
 
-    List<NegoListData> items = new ArrayList<>();
+    List<NegoData> nego_items = new ArrayList<>();
 
     List<TradeData> trade_items = new ArrayList<>();
 
@@ -29,8 +29,8 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 		return position == 0;
 	}
 
-    public void add(NegoListData negoListData) {
-        items.add(negoListData);
+    public void add(NegoData negoData) {
+		nego_items.add(negoData);
         notifyDataSetChanged();
     }
 
@@ -124,6 +124,13 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 
 	}
 
+	@Override
+	public void onMakerImageItemClick(View view, NegoData negoData, int position) {
+		if (listener != null) {
+			listener.onAdapterItemClick(view, negoData, position);
+		}
+	}
+
 
 	public interface OnAdapterItemClickListener {
 		public void onAdapterItemClick(View view, NegoData negoData, int position);
@@ -144,13 +151,6 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 		}
 		return count;
 	}
-
-    @Override
-    public void onMakerImageItemClick(View view, NegoListData negoListData, int position) {
-        if (listener != null) {
-            listener.onAdapterItemClick(view, negoListData, position);
-        }
-    }
 }
 
 
