@@ -86,14 +86,14 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         //trade_profile.setImageDrawable(tradeData.);
 
         checkImageData(tradeData);
-        trade_status.setText(tradeData.getTrade_status());
+        trade_status.setText(tradeData.getTrade_status() + "");
         trade_title.setText(tradeData.getTrade_title());
         trade_price.setText(tradeData.getTrade_price() + "원");
         trade_dday.setText(tradeData.getTrade_dday());
         trade_nickname.setText(tradeData.getMember_info().getMember_alias());
         trade_limit_date.setText(tradeData.getTrade_dtime());
 
-        String[] keywordList = tradeData.getTrade_key_word_info();
+        int[] keywordList = tradeData.getTrade_key_word_info();
         checkKeywordList(keywordList);
 
     }
@@ -120,12 +120,12 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
     }
 
 
-    private void checkKeywordList(String[] keywordList) {
+    private void checkKeywordList(int[] keywordList) {
         if (keywordList != null) {
             for (int i = 0; i < keywordList.length; i++) {
                 Log.i("realtime", "keywordList : " + keywordList[i]);
-                if (keywordList[i] != null) {
-                    keywordView[i].setText(keywordList[i]);
+                if (keywordList[i] != 0) {
+                    keywordView[i].setText(keywordList[i] + "");
                 } else {
                     keywordView[i].setVisibility(View.GONE);
 

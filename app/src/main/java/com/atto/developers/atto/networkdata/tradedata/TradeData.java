@@ -15,15 +15,15 @@ public class TradeData implements java.io.Serializable {
     private String trade_product_img;// null 가능
     private String trade_product_category_1;// null 가능
     private String trade_product_category_2;// null 가능
-    private String[] trade_key_word_info;
+    private int[] trade_key_word_info;
     private int trade_status;
     private Member_info member_info;
 
-    public String[] getTrade_key_word_info() {
+    public int[] getTrade_key_word_info() {
         return trade_key_word_info;
     }
 
-    public void setTrade_key_word_info(String[] trade_key_word_info) {
+    public void setTrade_key_word_info(int[] trade_key_word_info) {
         this.trade_key_word_info = trade_key_word_info;
     }
 
