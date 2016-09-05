@@ -75,4 +75,6 @@ public class DetailTradeActivity extends AppCompatActivity {
     public void startIntent() {
 
     }
+
+
 }

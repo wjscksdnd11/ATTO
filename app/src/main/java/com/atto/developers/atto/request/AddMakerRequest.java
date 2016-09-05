@@ -34,8 +34,6 @@ public class AddMakerRequest extends AbstractRequest<MakerListItemData> {
     private final static String LINE_TAG="line_tag";
     private final static String REPRESETATION_IMG="representation_img";
 
-
-
     public AddMakerRequest(Context context ,String line_tag, File representation_img) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(MAKER)
