@@ -11,16 +11,21 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.atto.developers.atto.adapter.RecyclerDetailTradeAdapter;
-import com.atto.developers.atto.networkdata.negodata.NegoListData;
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.negodata.NegoData;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
+import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.request.NegoCardListRequest;
+import com.atto.developers.atto.request.TradeListRequest;
+
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DetailTradeActivity extends AppCompatActivity {
-	@BindView(R.id.re_list)
-	RecyclerView listView;
-	RecyclerDetailTradeAdapter mAdapter;
 
     @BindView(R.id.re_list)
     RecyclerView listView;

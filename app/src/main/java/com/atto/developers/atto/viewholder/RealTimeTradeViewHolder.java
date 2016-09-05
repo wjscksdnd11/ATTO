@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
+import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -103,8 +103,8 @@ public class MakerFragment extends Fragment {
             public void onSuccess(NetworkRequest<TradeListData<MakerData>> request, TradeListData<MakerData> result) {
                 MakerData[] data = result.getData();
                 Toast.makeText(getContext(), "성공 : " + data[0].getMaker_score(), Toast.LENGTH_SHORT).show();
-                Log.d("MakerFragment", data[0].getMaker_score());
-                Log.d("MakerFragment", data[0].getMaker_id());
+                Log.d("MakerFragment", String.valueOf(data[0].getMaker_score()));
+                Log.d("MakerFragment", String.valueOf(data[0].getMaker_id()));
 
 //                Log.d("MakerFragment", data[0].getMaker_product_category());
 //                Log.d("MakerFragment", data[0].getMaker_key_word_lists().getKey_word_1());

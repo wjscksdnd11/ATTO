@@ -6,27 +6,24 @@ import com.atto.developers.atto.networkdata.userdata.Member_info;
 // // TODO: 2016-08-24  이미지 배열이랑, 이미지 만 받는거 둘 중 하나는 null 이 올 수 있음 .
 public class TradeData implements java.io.Serializable {
     private static final long serialVersionUID = -7123457291554300083L;
-    private String trade_id;
+    private int trade_id;
     private String trade_title;
     private String trade_price;
     private String trade_dtime;
     private String trade_dday;
-    private String[] trade_product_imges_info;// null 가능
+    private int[] trade_product_imges_info;// null 가능
     private String trade_product_img;// null 가능
     private String trade_product_category_1;// null 가능
     private String trade_product_category_2;// null 가능
-    private String[] trade_key_word_info;
-    private String trade_status;
+    private int[] trade_key_word_info;
+    private int trade_status;
     private Member_info member_info;
 
-
-
-
-    public String[] getTrade_key_word_info() {
+    public int[] getTrade_key_word_info() {
         return trade_key_word_info;
     }
 
-    public void setTrade_key_word_info(String[] trade_key_word_info) {
+    public void setTrade_key_word_info(int[] trade_key_word_info) {
         this.trade_key_word_info = trade_key_word_info;
     }
 
@@ -47,11 +44,11 @@ public class TradeData implements java.io.Serializable {
         this.trade_dday = trade_dday;
     }
 
-    public String getTrade_id() {
+    public int getTrade_id() {
         return this.trade_id;
     }
 
-    public void setTrade_id(String trade_id) {
+    public void setTrade_id(int trade_id) {
         this.trade_id = trade_id;
     }
 
@@ -79,20 +76,20 @@ public class TradeData implements java.io.Serializable {
         this.trade_dtime = trade_dtime;
     }
 
-    public String[] getTrade_product_imges_info() {
+    public int[] getTrade_product_imges_info() {
         return this.trade_product_imges_info;
     }
 
-    public void setTrade_product_imges_info(String[] trade_product_imges_info) {
+    public void setTrade_product_imges_info(int[] trade_product_imges_info) {
         this.trade_product_imges_info = trade_product_imges_info;
     }
 
 
-    public String getTrade_status() {
+    public int getTrade_status() {
         return this.trade_status;
     }
 
-    public void setTrade_status(String trade_status) {
+    public void setTrade_status(int trade_status) {
         this.trade_status = trade_status;
     }
 
