@@ -17,73 +17,64 @@ import butterknife.ButterKnife;
  */
 public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.img_trade_profile)
-    ImageView trade_profile;
+	@BindView(R.id.img_trade_profile)
+	ImageView trade_profile;
 
-    @BindView(R.id.text_trade_nickname)
-    TextView trade_nickname;
+	@BindView(R.id.text_trade_nickname)
+	TextView trade_nickname;
 
-    @BindView(R.id.offer_pice)
-    TextView offer_pice;
+	@BindView(R.id.offer_pice)
+	TextView offer_pice;
 
-    @BindView(R.id.text_trade_dday)
-    TextView trade_dday;
+	@BindView(R.id.text_trade_dday)
+	TextView trade_dday;
 
-    @BindView(R.id.limit_date)
-    TextView limit_date;
+	@BindView(R.id.limit_date)
+	TextView limit_date;
 
-    @BindView(R.id.text_trade_remain_time)
-    TextView trade_remain_time;
+	@BindView(R.id.text_trade_remain_time)
+	TextView trade_remain_time;
 
-    @BindView(R.id.ratingbar_maker_grade)
-    RatingBar ratingbar_maker_grade;
+	@BindView(R.id.ratingbar_maker_grade)
+	RatingBar ratingbar_maker_grade;
 
-    NegoData negoData;
-
-    public void setNegoData(String s) {
-    }
-
-    public interface OnMakerImageItemClickListener{
-        public void onMakerImageItemClick(View view, NegoData negoData, int position);
-
-    }
-    OnMakerImageItemClickListener listener;
-
-    public void setOnMakerImageItemClickListener(OnMakerImageItemClickListener listener){
-        this.listener = listener;
-    }
-
-    public DetailTradeViewHolder(View itemView) {
-        super(itemView);
-        ButterKnife.bind(this, itemView);
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listener == null) {
-                    listener.onMakerImageItemClick(view, negoData, getAdapterPosition());
-                }
-            }
-        });
-    }
+	NegoData negoData;
 
 
-    public void setNegoData(NegoData negoData){
-        this.negoData = negoData;
-        checkImageData();
-        trade_nickname.setText(negoData.getMaker_info().getMaker_name());
-        offer_pice.setText(negoData.getNegotiation_price());
-        //checkDday();
-        limit_date.setText(negoData.getNegotiation_dtime());
-        //checkRemainTime(); //24시간 시간계산
-        trade_remain_time.setText(negoData.getNegotiation_dtime());
-        ratingbar_maker_grade.setRating(negoData.getMaker_info().getMaker_score());
 
-        }
+	public interface OnMakerImageItemClickListener {
+		public void onMakerImageItemClick(View view, NegoData negoData, int position);
 
-    private void checkImageData() {
-        if (negoData.getMaker_info().getMaker_profile_img() != null) {
-            trade_profile.setImageResource(Integer.parseInt(negoData.getMaker_info().getMaker_profile_img()));
-        }
+	}
 
-    }
+	OnMakerImageItemClickListener listener;
+
+	public void setOnMakerImageItemClickListener(OnMakerImageItemClickListener listener) {
+		this.listener = listener;
+	}
+
+	public DetailTradeViewHolder(View itemView) {
+		super(itemView);
+     ButterKnife.bind(this, itemView);
+		itemView.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				if (listener == null) {
+					listener.onMakerImageItemClick(view, negoData, getAdapterPosition());
+				}
+			}
+		});
+	}
+
+
+	public void setNegoData(NegoData negoData) {
+
+	}
+
+	private void checkImageData() {
+		if (negoData.getMaker_info().getMaker_profile_img() != null) {
+			trade_profile.setImageResource(Integer.parseInt(negoData.getMaker_info().getMaker_profile_img()));
+		}
+
+	}
 }

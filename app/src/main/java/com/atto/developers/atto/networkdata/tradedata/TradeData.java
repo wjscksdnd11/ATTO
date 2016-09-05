@@ -1,10 +1,13 @@
 package com.atto.developers.atto.networkdata.tradedata;
 
 
+import com.atto.developers.atto.networkdata.negodata.NegoData;
 import com.atto.developers.atto.networkdata.userdata.Member_info;
 
+import java.util.Arrays;
+
 // // TODO: 2016-08-24  이미지 배열이랑, 이미지 만 받는거 둘 중 하나는 null 이 올 수 있음 .
-public class TradeData implements java.io.Serializable {
+public class TradeData extends NegoData implements java.io.Serializable {
     private static final long serialVersionUID = -7123457291554300083L;
     private String trade_id;
     private String trade_title;
@@ -118,5 +121,23 @@ public class TradeData implements java.io.Serializable {
 
     public void setTrade_product_category_1(String trade_product_category_1) {
         this.trade_product_category_1 = trade_product_category_1;
+    }
+
+    @Override
+    public String toString() {
+        return "TradeData{" +
+                "trade_id='" + trade_id + '\'' +
+                ", trade_title='" + trade_title + '\'' +
+                ", trade_price='" + trade_price + '\'' +
+                ", trade_dtime='" + trade_dtime + '\'' +
+                ", trade_dday='" + trade_dday + '\'' +
+                ", trade_product_imges_info=" + Arrays.toString(trade_product_imges_info) +
+                ", trade_product_img='" + trade_product_img + '\'' +
+                ", trade_product_category_1='" + trade_product_category_1 + '\'' +
+                ", trade_product_category_2='" + trade_product_category_2 + '\'' +
+                ", trade_key_word_info=" + Arrays.toString(trade_key_word_info) +
+                ", trade_status='" + trade_status + '\'' +
+                ", member_info=" + member_info +
+                '}';
     }
 }

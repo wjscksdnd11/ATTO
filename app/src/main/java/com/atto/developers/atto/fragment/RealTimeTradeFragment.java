@@ -98,22 +98,6 @@ public class RealTimeTradeFragment extends Fragment {
             }
         });
 
-        /*Random r = new Random();
-        for (int i = 0; i < 20; i++) {
-            TradeData tradeData = new TradeData();
-            Member_info member_info = new Member_info();
-            member_info.setMember_alias("atto " + i);
-            KeywordList keywordList = new KeywordList();
-            keywordList.setKey_word_1("무방부제");
-            tradeData.setTrade_title("Title " + i);
-            tradeData.setMember_info(member_info);
-            tradeData.setTrade_status(r.nextInt(5) + " 개 협상 진행 중");
-            tradeData.setTrade_price(r.nextInt(15000) + "");
-            tradeData.setTrade_key_word_lists(keywordList);
-            tradeData.setTrade_dtime("2016년 8월" + r.nextInt(30) + "일");
-            tradeData.setTrade_dday("D-" + i);
-            mAdapter.add(tradeData);
-        }*/
 
     }
 }
