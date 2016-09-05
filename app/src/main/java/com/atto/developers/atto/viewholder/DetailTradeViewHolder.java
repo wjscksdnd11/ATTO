@@ -70,7 +70,7 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
 
 	public void setNegoData(NegoData negoData) {
 		this.negoData = negoData;
-		checkImageData(negoData);	//trade_profile;
+		checkImageData(negoData);
 		trade_nickname.setText(negoData.getMaker_info().getMaker_name());
 		//ratingbar_maker_grade.setRating(negoData.getMaker_info().getMaker_score());
 		offer_pice.setText(negoData.getNegotiation_price()+ "");
@@ -81,8 +81,6 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
 
 	private void checkImageData(NegoData negoData) {
 		if (negoData.getMaker_info().getMaker_profile_img() != null) {
-
-
 			Glide.with(itemView.getContext()).load(negoData.getMaker_info().getMaker_profile_img()).into(trade_profile);
 
 		}
