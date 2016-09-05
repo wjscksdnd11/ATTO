@@ -14,9 +14,9 @@ import okhttp3.ResponseBody;
  */
 public abstract class AbstractRequest<T> extends NetworkRequest<T> {
 
-    private  final static String HOST = "ec2-52-78-136-23.ap-northeast-2.compute.amazonaws.com";
-    private  final static int HTTPS_PORT = 443;
-    private final static int HTTP_PORT=80;
+    private final static String HOST = "ec2-52-78-136-23.ap-northeast-2.compute.amazonaws.com";
+    private final static int HTTPS_PORT = 443;
+    private final static int HTTP_PORT = 80;
 
     protected HttpUrl.Builder getBaseUrlHttpsBuilder() {
         HttpUrl.Builder builder = new HttpUrl.Builder();
@@ -26,19 +26,19 @@ public abstract class AbstractRequest<T> extends NetworkRequest<T> {
         return builder;
     }
 
+    protected HttpUrl.Builder getBaseUrlBuilder() {
+        HttpUrl.Builder builder = new HttpUrl.Builder();
+        builder.scheme("http");
+        builder.host(HOST);
+        builder.port(HTTP_PORT);
+        return builder;
+    }
 
-        protected HttpUrl.Builder getBaseUrlBuilder() {
-                HttpUrl.Builder builder = new HttpUrl.Builder();
-                builder.scheme("http");
-                builder.host(HOST);
-                builder.port(HTTP_PORT);
-                return builder;
-        }
     @Override
     protected T parse(ResponseBody body) throws IOException {
         String text = body.string();
         Gson gson = new Gson();
-        T  temp = gson.fromJson(text,getType() );
+        T temp = gson.fromJson(text, getType());
         return temp;
     }
 
