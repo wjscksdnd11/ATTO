@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
-import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -83,13 +82,13 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         this.tradeData = tradeData;
 
         if (tradeData.getTrade_key_word_info() != null) {
-            String[] keywordList = tradeData.getTrade_key_word_info();
+            int[] keywordList = tradeData.getTrade_key_word_info();
             checkKeywordList(keywordList);
         }
         //realtime_photo.setImageDrawable(tradeData.getTrad_ );
         //trade_profile.setImageDrawable(tradeData.);
 
-        checkImageData();
+        //checkImageData();
         trade_status.setText(tradeData.getTrade_status());
         trade_title.setText(tradeData.getTrade_title());
         trade_price.setText(tradeData.getTrade_price() + "원");
@@ -99,28 +98,28 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    private void checkImageData() {
-
-        if (tradeData.getTrade_product_img() == null) {
-            realtime_photo.setImageResource(R.drawable.trade_sample01);
-        } else {
-            Glide.with(itemView.getContext()).load(tradeData.getTrade_product_img()).into(realtime_photo);
-        }
-
-        if (tradeData.getMember_info().getMember_profile_img() == null) {
-            trade_profile.setImageResource(R.drawable.sample_profile);
-        } else {
-            Glide.with(itemView.getContext()).load(tradeData.getMember_info().getMember_profile_img()).into(trade_profile);
-        }
-
-    }
+//    private void checkImageData() {
+//
+//        if (tradeData.getTrade_product_img() == null) {
+//            realtime_photo.setImageResource(R.drawable.trade_sample01);
+//        } else {
+//            Glide.with(itemView.getContext()).load(tradeData.getTrade_product_img()).into(realtime_photo);
+//        }
+//
+//        if (tradeData.getMember_info().getMember_profile_img() == null) {
+//            trade_profile.setImageResource(R.drawable.sample_profile);
+//        } else {
+//            Glide.with(itemView.getContext()).load(tradeData.getMember_info().getMember_profile_img()).into(trade_profile);
+//        }
+//
+//    }
 
     TextView[] keywordView = {trade_keyword_one, trade_keyword_two, trade_keyword_three};
 
-    private void checkKeywordList(String[] keywordList) {
+    private void checkKeywordList(int[] keywordList) {
 
         for (int i = 0; i < keywordList.length; i++) {
-            if (keywordList[i] != null) {
+            if (keywordList != null) {
                 keywordView[i].setText(keywordList[i]);
             } else {
                 keywordView[i].setVisibility(View.GONE);

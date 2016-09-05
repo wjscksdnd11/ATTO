@@ -60,7 +60,7 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 		ButterKnife.bind(this, itemView);
 	}
 //
-//    public void setTradeData(TradeData tradeData) {
+    public void setTradeData(TradeData tradeData) {
 //        this.tradeData = tradeData;
 //        if (tradeData.getTrade_key_word_info() != null) {
 //            String[] keywordList = tradeData.getTrade_key_word_info();
@@ -98,7 +98,7 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 	private void checkKeywordList(int [] keywordList) {
 
 		for (int i = 0; i < keywordList.length; i++) {
-			if (keywordList[i] != null) {
+			if (keywordList != null) {
 				keywordView[i].setText(keywordList[i]);
 			} else {
 				keywordView[i].setVisibility(View.GONE);

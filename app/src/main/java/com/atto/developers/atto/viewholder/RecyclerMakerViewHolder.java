@@ -9,8 +9,13 @@ import android.widget.TextView;
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
+
+
 
     ImageView maker_profile;
     RatingBar ratingbar_maker_grade;
@@ -28,14 +33,15 @@ public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
 
     public RecyclerMakerViewHolder(View itemView) {
         super(itemView);
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listener != null) {
-                    listener.onMakerItemClick(view, makerData, getAdapterPosition());
-                }
-            }
-        });
+        ButterKnife.bind(this, itemView);
+//        itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (listener != null) {
+//                    listener.onMakerItemClick(view, makerData, getAdapterPosition());
+//                }
+//            }
+//        });
         maker_profile = (ImageView) itemView.findViewById(R.id.img_maker_profile);
         ratingbar_maker_grade = (RatingBar) itemView.findViewById(R.id.ratingbar_maker_grade);
         trade_keyword = (TextView) itemView.findViewById(R.id.text_detail_maker_keyword);
