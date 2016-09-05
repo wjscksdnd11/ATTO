@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DetailTradeActivity extends AppCompatActivity {
+
     @BindView(R.id.re_list)
     RecyclerView listView;
     RecyclerDetailTradeAdapter mAdapter;

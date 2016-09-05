@@ -43,13 +43,15 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
     ImageView profileView;
 
     @BindView(R.id.edit_profile_nickname)
-    EditText inputProfileView;
+    EditText inputNickNameView;
 
     @BindView(R.id.edit_phone_number)
     EditText inputPhoneNumberView;
 
     @BindView(R.id.text_profile_set_postcode)
     TextView postCodeView;
+
+    private String img_file_path;
 
 
     @Override
@@ -79,21 +81,21 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
     public void onCompleteUpdate() {
 
 
-        String member_zipconde_1 = "a";
-        String member_phone = "a";
-        String member_address_1 = "a";
-        String member_alias = "a";
-        File member_profile_img = new File("a");
+        String member_zipconde_1 = postCodeView.getText().toString();
+        String member_phone = inputPhoneNumberView.getText().toString();
+        String member_address_1 = addressView.getText().toString();
+        String member_alias = inputNickNameView.getText().toString();
+        File member_profile_img = new File(img_file_path);
         UpdateMyProfileRequest request = new UpdateMyProfileRequest(this, member_zipconde_1, member_phone, member_address_1, member_alias, member_profile_img) ;
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
             @Override
             public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
-                Toast.makeText(MyPageSetProfileActivity.this, "성공", Toast.LENGTH_LONG).show();
+                Toast.makeText(MyPageSetProfileActivity.this, "성공 : " + result.getMessage(), Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(MyPageSetProfileActivity.this, "실패", Toast.LENGTH_LONG).show();
+                Toast.makeText(MyPageSetProfileActivity.this, "실패 : " + errorCode, Toast.LENGTH_LONG).show();
 
 
             }
@@ -136,6 +138,7 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
                     Glide.with(MyPageSetProfileActivity.this)
                             .load(new File(str.toString())).bitmapTransform(new CropCircleTransformation(this))
                             .into(profileView);
+                    img_file_path = str.toString();
                 }
                 break;
         }

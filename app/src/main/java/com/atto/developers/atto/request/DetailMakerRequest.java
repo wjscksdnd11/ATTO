@@ -21,7 +21,6 @@ public class DetailMakerRequest extends AbstractRequest<MakerListItemData> {
     MediaType jpeg = MediaType.parse("image/jpeg");
     private final static String MAKER = "makers";
 
-
     public DetailMakerRequest(Context context, String tid) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(MAKER)

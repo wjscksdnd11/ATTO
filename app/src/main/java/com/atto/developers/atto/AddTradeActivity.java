@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -46,13 +47,31 @@ public class AddTradeActivity extends AppCompatActivity {
     @BindView(R.id.text_trade_preview)
     TextView textPreView;
 
+    @BindView(R.id.edit_trade_title)
+    AppCompatEditText inputTitleView;
+
+    @BindView(R.id.edit_trade_content)
+    AppCompatEditText inputContentView;
+
+    @BindView(R.id.text_pickup_date)
+    AppCompatEditText pickUpDateView;
+
+    @BindView(R.id.edit_keyword_one)
+    AppCompatEditText keywordOneView;
+
+    @BindView(R.id.text_setting_price)
+    AppCompatEditText priceView;
+
+    private String mainCategory;
+    private String subCategory;
+
+    private String file_path;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_trade);
         ButterKnife.bind(this);
-
-
         initToolBar();
 
         MaterialSpinner main_spinner = (MaterialSpinner) findViewById(R.id.spinner_main_category);
@@ -60,8 +79,10 @@ public class AddTradeActivity extends AppCompatActivity {
         main_spinner.setItems("Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow");
         main_spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
                 Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
+                mainCategory = item;
             }
         });
         MaterialSpinner sub_spinner = (MaterialSpinner) findViewById(R.id.spinner_sub_category);
@@ -69,8 +90,10 @@ public class AddTradeActivity extends AppCompatActivity {
         sub_spinner.setItems("Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow");
         sub_spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
                 Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
+                subCategory = item;
             }
         });
         checkPermission();
@@ -97,7 +120,6 @@ public class AddTradeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_addtrade);
         setSupportActionBar(toolbar);
-
         toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,9 +136,17 @@ public class AddTradeActivity extends AppCompatActivity {
 
     public void addData() {
 
-        File[] files = {new File("sdf"), new File("sdf")};
-        String[] str = {"str", "str"};
-        AddTradeRequest request = new AddTradeRequest(this, "10", "10", "10", "10", "10", "10", str, files);
+        String trade_title = inputTitleView.getText().toString();
+        String trade_product_category_1 = mainCategory;
+        String trade_product_category_2 = subCategory;
+        String trade_price = priceView.getText().toString();
+        String trade_dtime = pickUpDateView.getText().toString();
+        String trade_product_contents = inputContentView.getText().toString();
+        File imageFile = new File(file_path);
+        File[] trade_product_images_info = {imageFile};
+        String[] trade_key_words = {keywordOneView.getText().toString()};
+
+        AddTradeRequest request = new AddTradeRequest(this, trade_title, trade_product_category_1, trade_product_category_2, trade_price, trade_dtime, trade_product_contents, trade_key_words, trade_product_images_info);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListItemData>() {
 
             @Override
@@ -157,6 +187,7 @@ public class AddTradeActivity extends AppCompatActivity {
                             .load(new File(str.toString())).fitCenter()
                             .into(imagePreView);
                     textPreView.setVisibility(View.GONE);
+                    file_path = str.toString();
                 }
                 break;
         }

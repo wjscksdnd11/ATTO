@@ -44,16 +44,15 @@ public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
     private final static String CONTENTS = "trade_product_contents";
     private final static String KEYWORDS = "trade_key_words";
     private final static String IMAGES = "trade_product_imges_info";
-
     private final static String TRADE = "trades";
     Request mRequest;
 
     MediaType jpeg = MediaType.parse("image/jpeg");
+
     public AddTradeRequest(Context context, String trade_title, String trade_product_category_1, String trade_product_category_2, String trade_price,
                            String trade_dtime, String trade_product_contents, String[] trade_key_words, File[] trade_product_imges_info) {
 
 //        거래글 등록
-
 
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(TRADE)
@@ -68,12 +67,12 @@ public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
                 .addFormDataPart(DDATE, trade_dtime)
                 .addFormDataPart(CONTENTS, trade_product_contents);
 
-        if(trade_key_words.length!=0) {
+        if (trade_key_words.length != 0) {
             for (String trade_keywords : trade_key_words) {
                 body.addFormDataPart(KEYWORDS, trade_keywords);
             }
-        }else{
-            body.addFormDataPart(KEYWORDS,"");
+        } else {
+            body.addFormDataPart(KEYWORDS, "");
         }
 
         if (trade_product_imges_info.length != 0) {
@@ -83,8 +82,8 @@ public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
                             RequestBody.create(jpeg, trade_product_img));
                 }
             }
-        }else{
-            body.addFormDataPart(IMAGES,"");
+        } else {
+            body.addFormDataPart(IMAGES, "");
         }
         MultipartBody requestbody = body.build();
 

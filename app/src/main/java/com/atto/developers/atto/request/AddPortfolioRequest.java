@@ -23,11 +23,12 @@ file_name : 포트 폴리오 제목
 */
 
 public class AddPortfolioRequest extends AbstractRequest<ResultMessage> {
-Request mRequest;
-// 포트폴리오 등록
+    Request mRequest;
+    // 포트폴리오 등록
     private final static String PORTFOLIO = "portfolioes";
-    private final static String FILE_KEY_WORD_IDS="file_key_word_ids";
+    private final static String FILE_KEY_WORD_IDS = "file_key_word_ids";
     private final static String PORTFOLIO_IMG = "portfolio_img";
+
     public AddPortfolioRequest(Context context) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(PORTFOLIO)
@@ -37,9 +38,11 @@ Request mRequest;
 
         //todo 상익이형한테 키워드랑 이미지 어떻게 올지 물어보고 마무리하면 되겠다.. 등록하고나서 응답부분, 화면 물어보기.
     }
+
     @Override
     protected Type getType() {
-        return new TypeToken<ResultMessage>(){}.getType();
+        return new TypeToken<ResultMessage>() {
+        }.getType();
     }
 
     @Override
