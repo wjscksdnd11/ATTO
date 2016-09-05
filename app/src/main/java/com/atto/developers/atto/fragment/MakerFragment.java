@@ -106,8 +106,8 @@ public class MakerFragment extends Fragment {
                 Log.d("MakerFragment", data[0].getMaker_score());
                 Log.d("MakerFragment", data[0].getMaker_id());
 
-                Log.d("MakerFragment", data[0].getMaker_product_category());
-                Log.d("MakerFragment", data[0].getMaker_key_word_lists().getKey_word_1());
+//                Log.d("MakerFragment", data[0].getMaker_product_category());
+//                Log.d("MakerFragment", data[0].getMaker_key_word_lists().getKey_word_1());
 
                 mAdapter.addAll(Arrays.asList(data));
                 dialogFragment.dismiss();

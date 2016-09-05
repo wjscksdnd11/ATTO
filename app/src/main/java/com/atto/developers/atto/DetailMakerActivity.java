@@ -10,11 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.atto.developers.atto.adapter.RecyclerDetailMakerAdapter;
-import com.atto.developers.atto.manager.NetworkManager;
-import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
-import com.atto.developers.atto.networkdata.makerdata.MakerListItemData;
-import com.atto.developers.atto.request.DetailMakerRequest;
 import com.atto.developers.atto.view.ItemOffsetDecoration;
 
 import butterknife.BindView;
@@ -64,7 +60,7 @@ public class DetailMakerActivity extends AppCompatActivity {
 
     private void initData() {
 
-        String tid = "1";
+        /*String tid = "1";
         DetailMakerRequest request = new DetailMakerRequest(this, tid);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MakerListItemData>() {
             @Override
@@ -80,7 +76,7 @@ public class DetailMakerActivity extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
         for (int i = 0; i < 20; i++) {
             MakerData makerData = new MakerData();
@@ -88,8 +84,6 @@ public class DetailMakerActivity extends AppCompatActivity {
             mAdapter.add(makerData);
         }
     }
-
-
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_detail_maker);
