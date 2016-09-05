@@ -95,7 +95,7 @@ public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
                 .tag(context)
                 .build();
 
-        Log.i("url", body.toString());
+        Log.i("url", url.toString());
 
     }
 
