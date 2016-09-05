@@ -1,9 +1,5 @@
 package com.atto.developers.atto.adapter;
 
-/**
- * Created by Tacademy on 2016-08-26.
- */
-
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,23 +12,26 @@ import com.atto.developers.atto.viewholder.RecyclerMakerViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Tacademy on 2016-08-26.
+ */
 public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerViewHolder> implements RecyclerMakerViewHolder.OnMakerItemClickListener {
 
     List<MakerData> items = new ArrayList<>();
+
 
     public void add(MakerData makerData) {
         items.add(makerData);
         notifyDataSetChanged();
     }
 
-    public void addAll(List<MakerData> list) {
-        items.addAll(list);
-        notifyDataSetChanged();
-
-    }
-
     public void clear() {
         items.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<MakerData> list) {
+        items.addAll(list);
         notifyDataSetChanged();
     }
 
@@ -49,7 +48,6 @@ public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerView
         holder.setMakerData(items.get(position));
 
     }
-
 
     public interface OnAdapterItemClickLIstener {
         public void onAdapterItemClick(View view, MakerData makerData, int position);
@@ -76,4 +74,3 @@ public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerView
 
     }
 }
-
