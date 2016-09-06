@@ -66,10 +66,12 @@ public class DetailTradeActivity extends AppCompatActivity {
 		listView.setAdapter(mAdapter);
 		LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 		listView.setLayoutManager(manager);
-		mAdapter.setOnAdapterItemClickListener(new RecyclerDetailTradeAdapter.OnAdapterItemClickListener() {
 
+		mAdapter.setOnAdapterItemClickListener(new RecyclerDetailTradeAdapter.OnAdapterItemClickListener() {
 			@Override
 			public void onAdapterItemClick(View view, NegoData negoData, int position) {
+				Intent intent = new Intent(DetailTradeActivity.this, DetailNegoActivity.class);
+				startActivity(intent);
 				Toast.makeText(DetailTradeActivity.this, "position : " + position, Toast.LENGTH_SHORT).show();
 			}
 		});
