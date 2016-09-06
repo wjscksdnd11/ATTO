@@ -58,6 +58,7 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
         final List<DemoItem> items = new ArrayList<>();
         // initialize your items array
         adapter = new DefaultListAdapter(getContext(), demoUtils.moarItems(0));
+
         adapter.setItems(items);
 
 
@@ -76,6 +77,7 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
         demoUtils.currentOffset = 0;
         adapter.setItems(demoUtils.moarItems(30));
         adapter.appendItems(demoUtils.moarItems(30));
+        listView.setAllowReordering(true);
         listView.setRequestedColumnCount(3);
         listView.setRequestedHorizontalSpacing(Utils.dpToPx(getContext(), 3));
         listView.setDebugging(true);

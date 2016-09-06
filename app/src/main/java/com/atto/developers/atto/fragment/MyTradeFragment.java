@@ -46,6 +46,9 @@ public class MyTradeFragment extends Fragment {
     @BindView(R.id.my_page_text_trade_nickname)
     TextView nickNameView;
 
+    @BindView(R.id.my_page_text_trade_staus)
+    TextView statusView;
+
     @BindView(R.id.btn_chat)
     ImageView chatButton;
 
@@ -84,9 +87,13 @@ public class MyTradeFragment extends Fragment {
         priceView.setText(tradeData.getTrade_price());
         dDayView.setText(tradeData.getTrade_dday());
         limitDateView.setText(tradeData.getTrade_dtime());
-        Glide.with(this).load(tradeData.getMember_info().getMember_profile_img()).bitmapTransform(new CropCircleTransformation(getContext()))
-                .centerCrop().into(profileImageView);
+        Glide.with(this)
+                .load(tradeData.getMember_info().getMember_profile_img())
+                .bitmapTransform(new CropCircleTransformation(getContext()))
+                .centerCrop()
+                .into(profileImageView);
         nickNameView.setText(tradeData.getMember_info().getMember_alias());
+        statusView.setText(tradeData.getTrade_status() + "");
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
