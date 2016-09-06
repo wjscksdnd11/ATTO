@@ -51,7 +51,6 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 	@Override
 	public int getItemViewType(int position) {
         if (position == 0)
-
             return VIEW_TYPE_HEADER;
         position--;
 

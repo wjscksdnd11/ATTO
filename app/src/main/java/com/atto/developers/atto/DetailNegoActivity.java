@@ -46,7 +46,7 @@ public class DetailNegoActivity extends AppCompatActivity {
     TextView trade_maker_contents;
 
     NegoData negoData;
-    int tYear, tMonth, tDay;           //오늘 연월일 변수
+    //int tYear, tMonth, tDay;           //오늘 연월일 변수
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
@@ -136,7 +136,33 @@ public class DetailNegoActivity extends AppCompatActivity {
 //        }
     }
 
-}
+//    @TargetApi(Build.VERSION_CODES.N)
+//    private int calenderDday(NegoData negoData) {
+//        try {
+//            //TimeZone tz = TimeZone.getTimeZone("Asia/Seoul");
+//            Calendar Day = Calendar.getInstance();
+//            Calendar TradeDay = Calendar.getInstance(TimeZone.getTimeZone(negoData.getNegotiation_dtime()));
+//            //int 값
+//            tYear = Day.get(Calendar.YEAR);
+//            tMonth = Day.get(Calendar.MONTH);
+//            tDay = Day.get(Calendar.DAY_OF_MONTH);
+//
+//            tYear = TradeDay.get
+//
+//
+//            Day.set(tYear, tMonth - 1, tDay);
+//            long Trade_Day = Day.getTimeInMillis() / 86400000;
+//            long Trade_dDay = TradeDay.getTimeInMillis() / 86400000;
+//            long sub = Trade_Day - Trade_dDay;
+//
+//            return(int)  sub + 1;
+//        } catch (Exception e) {
+//
+//            e.printStackTrace();
+//        }
+//        return 0;
+    }
+
 //        String dTradeday = negoData.getNegotiation_dtime();
 //        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd", Locale.KOREA);
 //        Date currentTime = new Date();
