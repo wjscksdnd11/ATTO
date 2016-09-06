@@ -12,6 +12,7 @@ import com.atto.developers.atto.R;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Tacademy on 2016-08-23.
@@ -30,6 +31,12 @@ public class DefaultListAdapter extends ArrayAdapter<DemoItem> implements DemoAd
         layoutInflater = LayoutInflater.from(context);
     }
 
+    int[] images = {R.drawable.sample_rectangle_image1, R.drawable.sample_rectangle_image2, R.drawable.sample_rectangle_image3,
+            R.drawable.sample_rectangle_image4, R.drawable.sample_rectangle_image5, R.drawable.sample_rectangle_image6, R.drawable.sample_rectangle_image7,
+            R.drawable.sample_rectangle_image8, R.drawable.sample_rectangle_image9, R.drawable.sample_rectangle_image10
+            ,R.drawable.sample_rectangle_image11, R.drawable.sample_rectangle_image12};
+
+    Random r = new Random();
     @Override
     public View getView(int position, View convertView, @NotNull ViewGroup parent) {
         View v;
@@ -47,10 +54,12 @@ public class DefaultListAdapter extends ArrayAdapter<DemoItem> implements DemoAd
         ImageView imageView;
         if (isRegular) {
             imageView = (ImageView) v.findViewById(R.id.imageView);
+
         } else {
             imageView = (ImageView) v.findViewById(R.id.imageView_odd);
         }
 
+        imageView.setImageResource(images[r.nextInt(12)]);
         //imageView.setText(String.valueOf(item.getPosition()));
 
         return v;

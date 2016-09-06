@@ -146,7 +146,8 @@ public class AddTradeActivity extends AppCompatActivity {
         File[] trade_product_images_info = {imageFile};
         String[] trade_key_words = {keywordOneView.getText().toString()};
 
-        AddTradeRequest request = new AddTradeRequest(this, trade_title, trade_product_category_1, trade_product_category_2, trade_price, trade_dtime, trade_product_contents, trade_key_words, trade_product_images_info);
+        AddTradeRequest request = new AddTradeRequest(this, trade_title, trade_product_category_1, trade_product_category_2,
+                trade_price, trade_dtime, trade_product_contents, trade_key_words, trade_product_images_info);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListItemData>() {
 
             @Override
