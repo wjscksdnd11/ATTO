@@ -57,7 +57,7 @@ public class UpdateTradeRequest  extends AbstractRequest<ResultMessage> {
                 .addFormDataPart(DDATE, trade_dtime)
                 .addFormDataPart(CONTENTS, trade_product_contents);
 
-        if(trade_key_words.length!=0) {
+        if(trade_key_words.length>0) {
             for (String trade_keywords : trade_key_words) {
                 body.addFormDataPart(KEYWORDS, trade_keywords);
             }
@@ -65,7 +65,7 @@ public class UpdateTradeRequest  extends AbstractRequest<ResultMessage> {
             body.addFormDataPart(KEYWORDS,"");
         }
 
-        if (trade_product_imges.length != 0) {
+        if (trade_product_imges.length >0) {
             for (File trade_product_img : trade_product_imges) {
                 if (trade_product_img != null) {
                     body.addFormDataPart(IMAGES, trade_product_img.getName(),

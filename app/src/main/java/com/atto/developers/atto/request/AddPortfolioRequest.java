@@ -5,10 +5,14 @@ import android.content.Context;
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.lang.reflect.Type;
 
 import okhttp3.HttpUrl;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * Created by jeon on 2016-09-04.
@@ -24,19 +28,41 @@ file_name : 포트 폴리오 제목
 
 public class AddPortfolioRequest extends AbstractRequest<ResultMessage> {
     Request mRequest;
+    MediaType jpeg = MediaType.parse("image/jpeg");
     // 포트폴리오 등록
     private final static String PORTFOLIO = "portfolioes";
     private final static String FILE_KEY_WORD_IDS = "file_key_word_ids";
     private final static String PORTFOLIO_IMG = "portfolio_img";
 
-    public AddPortfolioRequest(Context context) {
+    public AddPortfolioRequest(Context context, String [] file_key_word_ids,File portfolio_img ) {
+
+        //포트폴리오 등록
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(PORTFOLIO)
                 .build();
-//        MultipartBody.Builder body=  new MultipartBody.Builder()
-//                .addFormDataPart()
+        MultipartBody.Builder body=  new MultipartBody.Builder();
+        if(file_key_word_ids.length>0){
+            for(String file_key_word_id:file_key_word_ids){
+                body.addFormDataPart(FILE_KEY_WORD_IDS,file_key_word_id);
+            }
 
-        //todo 상익이형한테 키워드랑 이미지 어떻게 올지 물어보고 마무리하면 되겠다.. 등록하고나서 응답부분, 화면 물어보기.
+        }else{
+            body.addFormDataPart(FILE_KEY_WORD_IDS,"");
+        }
+        if(portfolio_img!=null){
+            body.addFormDataPart(PORTFOLIO_IMG,portfolio_img.getName(), RequestBody.create(jpeg,portfolio_img));
+        }
+        else{
+            body.addFormDataPart(PORTFOLIO_IMG,"");
+        }
+        MultipartBody requestbody = body.build();
+
+        mRequest = new Request.Builder()
+                .url(url)
+                .post(requestbody)
+                .tag(context)
+                .build();
+
     }
 
     @Override
@@ -47,7 +73,7 @@ public class AddPortfolioRequest extends AbstractRequest<ResultMessage> {
 
     @Override
     public Request getRequest() {
-        return null;
+        return mRequest;
     }
 
 
