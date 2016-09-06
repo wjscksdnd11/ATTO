@@ -1,10 +1,12 @@
 package com.atto.developers.atto.manager;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.atto.developers.atto.MyApplication;
+import com.atto.developers.atto.networkdata.dbdata.CategoryKeywordData;
 
 /**
  * Created by Tacademy on 2016-08-23.
@@ -38,6 +40,16 @@ public class DBManager extends SQLiteOpenHelper {
 
     }
 
+
+    public long getCategoryId(long category_Id){
+        String selection = "CREATE TABLE"+ CategoryKeywordData.Cateory._ID+"=?";
+        String [] args = {""+category_Id};
+        String [] columns = {CategoryKeywordData.Cateory._ID};
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor c = db.query(CategoryKeywordData.Cateory.TABLE,columns,selection,args,null,null,null);
+
+        return 0;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int old_version, int new_version) {

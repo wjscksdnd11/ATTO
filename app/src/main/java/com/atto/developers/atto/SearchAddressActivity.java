@@ -63,5 +63,6 @@ public class SearchAddressActivity extends AppCompatActivity {
         //browser.loadUrl("file:///android_asset/daum.html");
         //browser.loadUrl("http://www.daddyface.com/public/daum.html");
         browser.loadUrl("http://cdn.rawgit.com/jolly73-df/DaumPostcodeExample/master/DaumPostcodeExample/app/src/main/assets/daum.html");
+
     }
 }
