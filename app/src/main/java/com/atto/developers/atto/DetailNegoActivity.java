@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -45,6 +46,7 @@ public class DetailNegoActivity extends AppCompatActivity {
     TextView trade_maker_contents;
 
     NegoData negoData;
+    int tYear, tMonth, tDay;           //오늘 연월일 변수
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
@@ -60,25 +62,6 @@ public class DetailNegoActivity extends AppCompatActivity {
         });
     }
 
-    @OnClick(R.id.img_btn_Report)
-    public void onReport(){
-        ReportDialogFragment dialogFragment = new ReportDialogFragment();
-        dialogFragment.show(getSupportFragmentManager(), "report");
-    }
-
-    @OnClick(R.id.btn_check_complete)
-    public void onCustomDialog() {
-        MakerOrderDialogFragment dialogFragment = new MakerOrderDialogFragment();
-        dialogFragment.show(getSupportFragmentManager(), "custom");
-    }
-    @OnClick(R.id.btn_cancel)
-    public void onCancel(){
-        Intent intent = new Intent(DetailNegoActivity.this, DetailTradeActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,15 +71,34 @@ public class DetailNegoActivity extends AppCompatActivity {
         initData();
     }
 
+    @OnClick(R.id.img_btn_Report)
+    public void onReport() {
+        ReportDialogFragment dialogFragment = new ReportDialogFragment();
+        dialogFragment.show(getSupportFragmentManager(), "report");
+    }
 
-    private void initData(){
-        NegoCardListRequest request = new NegoCardListRequest(this, "10","10", "10");
+    @OnClick(R.id.btn_check_complete)
+    public void onCustomDialog() {
+        MakerOrderDialogFragment dialogFragment = new MakerOrderDialogFragment();
+        dialogFragment.show(getSupportFragmentManager(), "custom");
+    }
+
+    @OnClick(R.id.btn_cancel)
+    public void onCancel() {
+        Intent intent = new Intent(DetailNegoActivity.this, DetailTradeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
+    private void initData() {
+
+        NegoCardListRequest request = new NegoCardListRequest(this, "10", "10", "10");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<NegoData>>() {
             @Override
             public void onSuccess(NetworkRequest<TradeListData<NegoData>> request, TradeListData<NegoData> result) {
-            NegoData[] data = result.getData();
-
-
+                NegoData[] data = result.getData();
+                setNegoData(data);
+                Log.d(this.toString(), "협상카드상세성공 : " + result.getMessage());
             }
 
             @Override
@@ -107,19 +109,19 @@ public class DetailNegoActivity extends AppCompatActivity {
 
     }
 
-    public void setNegoData(NegoData negoData) {
-        this.negoData = negoData;
-        checkImageData(negoData);
-        trade_nickname.setText(negoData.getMaker_info().getMaker_name());
+    private void setNegoData(NegoData[] data) {
+        checkImageData(data[0]);
+        trade_nickname.setText(data[0].getMaker_info().getMaker_name());
         //ratingbar_maker_grade.setRating(negoData.getMaker_info().getMaker_score());
-        offer_pice.setText(negoData.getNegotiation_price()+ "");
-        limit_date.setText(negoData.getNegotiation_dtime()); //yyyy-mm-dd까지
-        //trade_dday.setText(negoData.getNegotiation_dtime()); // D-?
+        offer_pice.setText(data[0].getNegotiation_price() + "");
+       // calenderDday(data[0]);
+        limit_date.setText(data[0].getNegotiation_dtime()); //yyyy-mm-dd까지
         //trade_remain_time; //24시간 알림
         //trade_maker_contents.setText(negoData.);
 
-
     }
+
+
     private void checkImageData(NegoData negoData) {
         if (negoData.getMaker_info().getMaker_profile_img() != null) {
             Glide.with(this).load(negoData.getMaker_info().getMaker_profile_img()).into(trade_profile);
@@ -132,8 +134,11 @@ public class DetailNegoActivity extends AppCompatActivity {
 //        } else {
 //            trade_profile.setImageResource(R.drawable.sample_profile);
 //        }
-
-
-
     }
+
 }
+//        String dTradeday = negoData.getNegotiation_dtime();
+//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd", Locale.KOREA);
+//        Date currentTime = new Date();
+//        String dToday = formatter.format(currentTime);
+        //trade_dday.setText(negoData.getNegotiation_dtime()); // D-
