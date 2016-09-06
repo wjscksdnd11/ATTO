@@ -62,6 +62,6 @@ public class LocalLoginRequest extends AbstractRequest<ResultMessage> {
 
     @Override
     public Request getRequest() {
-        return null;
+        return mRequest;
     }
 }

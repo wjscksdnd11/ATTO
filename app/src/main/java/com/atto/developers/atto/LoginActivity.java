@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
                 PropertyManager.getInstance().setEmail(e_mail);
                 PropertyManager.getInstance().setPassword(password);
+                Toast.makeText(LoginActivity.this, "성공 : " + result.getMessage(), Toast.LENGTH_LONG).show();
                 moveMainActivity();
             }
 

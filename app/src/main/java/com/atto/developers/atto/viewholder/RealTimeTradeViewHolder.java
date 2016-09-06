@@ -106,7 +106,7 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
         if (tradeData.getTrade_product_img() != null) {
 
-            Glide.with(itemView.getContext()).load(tradeData.getTrade_product_img()).centerCrop().into(realtime_photo);
+            Glide.with(itemView.getContext()).load(tradeData.getTrade_product_img()).into(realtime_photo);
         } else {
             realtime_photo.setImageResource(R.drawable.default_image);
 
@@ -114,7 +114,7 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
         if (tradeData.getMember_info().getMember_profile_img() != null) {
 
-            Glide.with(itemView.getContext()).load(tradeData.getMember_info().getMember_profile_img()).centerCrop().into(trade_profile);
+            Glide.with(itemView.getContext()).load(tradeData.getMember_info().getMember_profile_img()).into(trade_profile);
 
         } else {
             trade_profile.setImageResource(R.drawable.sample_profile);

@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.atto.developers.atto.AddTradeActivity;
 import com.atto.developers.atto.DetailTradeActivity;
@@ -20,6 +20,7 @@ import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.atto.developers.atto.networkdata.tradedata.TradeListData;
 import com.atto.developers.atto.request.TradeListRequest;
+import com.atto.developers.atto.view.DividerItemDecoration;
 
 import java.util.Arrays;
 
@@ -31,7 +32,6 @@ import butterknife.OnClick;
  * A simple {@link Fragment} subclass.
  */
 public class RealTimeTradeFragment extends Fragment {
-
 
     @BindView(R.id.rv_list)
     RecyclerView listView;
@@ -58,6 +58,8 @@ public class RealTimeTradeFragment extends Fragment {
         listView.setAdapter(mAdapter);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         listView.setLayoutManager(manager);
+        listView.addItemDecoration(
+                new DividerItemDecoration(getContext(), R.drawable.divider));
         mAdapter.setOnAdapterItemClickListener(new RecyclerRealTimeTradeAdapter.OnAdapterItemClickListener() {
             @Override
             public void onAdapterItemClick(View view, TradeData tradeData, int position) {
@@ -91,14 +93,14 @@ public class RealTimeTradeFragment extends Fragment {
             @Override
             public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
                 TradeData[] data = result.getData();
-                Toast.makeText(getContext(), "성공 : " + data[0].getTrade_product_img(), Toast.LENGTH_SHORT).show();
+                Log.d("RealTimeTradeFragment", "성공 : " + data[0].getTrade_product_img());
                 mAdapter.addAll(Arrays.asList(data));
                 dialogFragment.dismiss();
             }
 
             @Override
             public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(getContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
+                Log.d("RealTimeTradeFragment", "실패 : " + errorCode);
                 dialogFragment.dismiss();
             }
         });

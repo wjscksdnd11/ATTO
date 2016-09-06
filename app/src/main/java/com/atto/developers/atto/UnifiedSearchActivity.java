@@ -2,6 +2,7 @@ package com.atto.developers.atto;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
@@ -12,16 +13,14 @@ import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.atto.developers.atto.networkdata.tradedata.TradeListData;
 import com.atto.developers.atto.request.SearchListRequest;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class UnifiedSearchActivity extends AppCompatActivity {
 
-    String pageNumber = "1";
-    String rowCount = "50";
-    String keyword = "반지";
-    String keywordId = "1";
-
+    @BindView(R.id.edit_input_search)
+    AppCompatEditText inputSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +33,12 @@ public class UnifiedSearchActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_search)
     public void onSearch() {
+
+        String pageNumber = "1";
+        String rowCount = "50";
+        String keyword = inputSearchView.getText().toString();
+        String keywordId = "1";
+
         SearchListRequest request = new SearchListRequest(this, pageNumber, rowCount, keyword, keywordId);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
             @Override
@@ -62,4 +67,5 @@ public class UnifiedSearchActivity extends AppCompatActivity {
             }
         });
     }
+
 }

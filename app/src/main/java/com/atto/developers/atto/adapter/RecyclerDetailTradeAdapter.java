@@ -19,19 +19,30 @@ import java.util.List;
  * Created by Tacademy on 2016-09-01.
  */
 public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements DetailTradeViewHolder.OnMakerImageItemClickListener {
-	//TradeData mTradeData = new TradeData();
-	List<TradeData> trade_items = new ArrayList<>();
-	List<NegoData> nego_items = new ArrayList<>();
+
+    List<NegoData> nego_items = new ArrayList<>();
+
+    List<TradeData> trade_items = new ArrayList<>();
+
 
 	public boolean isHeader(int position) {
 		return position == 0;
 	}
 
+    public void add(NegoData negoData) {
+		nego_items.add(negoData);
+        notifyDataSetChanged();
+    }
 
-	public void addAll(List<TradeData> list){
-		trade_items.addAll(list);
-		notifyDataSetChanged();
-	}
+    public void add(TradeData tradeData) {
+        trade_items.add(tradeData);
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<TradeData> list){
+        trade_items.addAll(list);
+        notifyDataSetChanged();
+    }
 
 	public void addNego(List<NegoData> list){
 		nego_items.addAll(list);
@@ -113,6 +124,13 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 
 	}
 
+	@Override
+	public void onMakerImageItemClick(View view, NegoData negoData, int position) {
+		if (listener != null) {
+			listener.onAdapterItemClick(view, negoData, position);
+		}
+	}
+
 
 	public interface OnAdapterItemClickListener {
 		public void onAdapterItemClick(View view, NegoData negoData, int position);
@@ -132,13 +150,6 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 			count++;
 		}
 		return count;
-	}
-
-	@Override
-	public void onMakerImageItemClick(View view, NegoData negoData, int position) {
-		if (listener != null) {
-			listener.onAdapterItemClick(view, negoData, position);
-		}
 	}
 }
 
