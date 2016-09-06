@@ -10,9 +10,10 @@ import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.userdata.MyProfileData;
 
 /**
- * Created by goodn on 2016-09-05.
+ * Created by Tacademy on 2016-08-25.
  */
 public class MyPageViewHolder extends RecyclerView.ViewHolder {
+
 
     ImageView my_page_profile;
     TextView my_page_staus, my_page_title, my_page_price,
