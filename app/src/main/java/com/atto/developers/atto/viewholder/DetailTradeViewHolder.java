@@ -72,7 +72,7 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
         checkImageData(negoData);
         trade_nickname.setText(negoData.getMaker_info().getMaker_name());
         //ratingbar_maker_grade.setRating(negoData.getMaker_info().getMaker_score());
-        offer_pice.setText(negoData.getNegotiation_price() + "");
+        offer_pice.setText(negoData.getNegotiation_price() + "원");
         limit_date.setText(negoData.getNegotiation_dtime()); //yyyy-mm-dd까지
         //trade_dday.setText(negoData.getNegotiation_dtime()); // D-?
         //trade_remain_time; //24시간 알림

@@ -21,6 +21,9 @@ import com.atto.developers.atto.networkdata.tradedata.TradeListData;
 import com.atto.developers.atto.request.NegoCardListRequest;
 import com.bumptech.glide.Glide;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -110,14 +113,15 @@ public class DetailNegoActivity extends AppCompatActivity {
     }
 
     private void setNegoData(NegoData[] data) {
-        checkImageData(data[0]);
+        checkImageData();
         trade_nickname.setText(data[0].getMaker_info().getMaker_name());
         //ratingbar_maker_grade.setRating(negoData.getMaker_info().getMaker_score());
-        offer_pice.setText(data[0].getNegotiation_price() + "");
-       // calenderDday(data[0]);
+        offer_pice.setText(data[0].getNegotiation_price() + "원");
+        calenderDday(data[0]);
         limit_date.setText(data[0].getNegotiation_dtime()); //yyyy-mm-dd까지
         //trade_remain_time; //24시간 알림
         //trade_maker_contents.setText(negoData.);
+
 
     }
 
@@ -129,42 +133,25 @@ public class DetailNegoActivity extends AppCompatActivity {
         } else {
             img_add_port_photo.setImageResource(R.drawable.default_image);
         }
-//        if (negoData. != = null) {
-//            Glide.with(this).load(negoData.).into(img_add_port_photo);
-//        } else {
-//            trade_profile.setImageResource(R.drawable.sample_profile);
-//        }
+        if (negoData.getNegotiation_product_imges_info() != null) {
+            Glide.with(this).load(negoData.getNegotiation_product_imges_info()).into(img_add_port_photo);
+        } else {
+            trade_profile.setImageResource(R.drawable.default_image);
+        }
+    }
+    private void calenderDday(NegoData negoData) {
+        String[] data = negoData
+
+        Calendar a = Calendar.getInstance();
+        long currentTiem = a.getTimeInMillis();
+        a.set(Calendar.YEAR, Calendar.MONTH-1, Calendar.DAY_OF_MONTH);
+
+        long futureTime = a.getTimeInMillis();
+        a.set()
+        long diff = futureTime - currentTiem;
+        int day = (int) (diff / (1000 * 60 * 60 * 24));
+       \
     }
 
-//    @TargetApi(Build.VERSION_CODES.N)
-//    private int calenderDday(NegoData negoData) {
-//        try {
-//            //TimeZone tz = TimeZone.getTimeZone("Asia/Seoul");
-//            Calendar Day = Calendar.getInstance();
-//            Calendar TradeDay = Calendar.getInstance(TimeZone.getTimeZone(negoData.getNegotiation_dtime()));
-//            //int 값
-//            tYear = Day.get(Calendar.YEAR);
-//            tMonth = Day.get(Calendar.MONTH);
-//            tDay = Day.get(Calendar.DAY_OF_MONTH);
-//
-//            tYear = TradeDay.get
-//
-//
-//            Day.set(tYear, tMonth - 1, tDay);
-//            long Trade_Day = Day.getTimeInMillis() / 86400000;
-//            long Trade_dDay = TradeDay.getTimeInMillis() / 86400000;
-//            long sub = Trade_Day - Trade_dDay;
-//
-//            return(int)  sub + 1;
-//        } catch (Exception e) {
-//
-//            e.printStackTrace();
-//        }
-//        return 0;
-    }
 
-//        String dTradeday = negoData.getNegotiation_dtime();
-//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd", Locale.KOREA);
-//        Date currentTime = new Date();
-//        String dToday = formatter.format(currentTime);
-        //trade_dday.setText(negoData.getNegotiation_dtime()); // D-
+}
