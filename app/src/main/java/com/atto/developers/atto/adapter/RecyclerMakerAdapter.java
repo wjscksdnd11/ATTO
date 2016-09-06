@@ -1,5 +1,9 @@
 package com.atto.developers.atto.adapter;
 
+/**
+ * Created by goodn on 2016-09-05.
+ */
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,24 +20,23 @@ import java.util.List;
  * Created by Tacademy on 2016-08-26.
  */
 public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerViewHolder> implements RecyclerMakerViewHolder.OnMakerItemClickListener {
-
     List<MakerData> items = new ArrayList<>();
 
-
-//    public void add(MakerData makerData) {
-//        items.add(makerData);
-//        notifyDataSetChanged();
-//    }
+    public void add(MakerData makerData) {
+        items.add(makerData);
+        notifyDataSetChanged();
+    }
 
     public void clear() {
         items.clear();
         notifyDataSetChanged();
     }
 
-    public void addAll(List<MakerData> list) {
-        items.addAll(list);
+    public void addAll(List<MakerData> makerDatas) {
+        items.addAll(makerDatas);
         notifyDataSetChanged();
     }
+
 
     @Override
     public RecyclerMakerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -49,6 +52,7 @@ public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerView
 
     }
 
+
     public interface OnAdapterItemClickLIstener {
         public void onAdapterItemClick(View view, MakerData makerData, int position);
     }
@@ -58,7 +62,6 @@ public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerView
     public void setOnAdapterItemClickListener(OnAdapterItemClickLIstener listener) {
         this.listener = listener;
     }
-
 
     @Override
     public int getItemCount() {

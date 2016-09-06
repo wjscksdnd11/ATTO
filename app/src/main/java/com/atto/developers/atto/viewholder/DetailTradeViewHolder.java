@@ -47,11 +47,11 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
 		public void onMakerImageItemClick(View view, NegoData negoData, int position);
 	}
 
-	OnMakerImageItemClickListener listener;
+    OnMakerImageItemClickListener listener;
 
-	public void setOnMakerImageItemClickListener(OnMakerImageItemClickListener listener) {
-		this.listener = listener;
-	}
+    public void setOnMakerImageItemClickListener(OnMakerImageItemClickListener listener) {
+        this.listener = listener;
+    }
 
 	public DetailTradeViewHolder( View itemView) {
 		super(itemView);
@@ -79,9 +79,9 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
 		}
 
 	private void checkImageData(NegoData negoData) {
-		//if (negoData.getMaker_info().getMaker_profile_img() != null) {
+		if (negoData.getMaker_info().getMaker_profile_img() != null) {
 			Glide.with(itemView.getContext()).load(negoData.getMaker_info().getMaker_profile_img()).into(trade_profile);
 
-	//	}
+		}
 	}
 }

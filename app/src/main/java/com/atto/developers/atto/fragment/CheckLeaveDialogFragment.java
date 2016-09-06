@@ -4,12 +4,17 @@ package com.atto.developers.atto.fragment;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.atto.developers.atto.AccountLeaveActivity;
 import com.atto.developers.atto.R;
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.request.MemberLeaveRequest;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -17,7 +22,7 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CheckLeaveDialogFragment extends DialogFragment{
+public class CheckLeaveDialogFragment extends DialogFragment {
 
 
     public CheckLeaveDialogFragment() {
@@ -38,11 +43,25 @@ public class CheckLeaveDialogFragment extends DialogFragment{
     @OnClick(R.id.btn_check_complete)
     public void onCheckComplete() {
 
-        AccountLeaveActivity callActivity = (AccountLeaveActivity)getActivity();
+        AccountLeaveActivity callActivity = (AccountLeaveActivity) getActivity();
+        MemberLeaveRequest request = new MemberLeaveRequest(getContext());
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
+            @Override
+            public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
+                Log.d("CheckDialogFramgment", "성공");
+            }
+
+            @Override
+            public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
+                Log.d("CheckDialogFramgment", "실패" + errorCode);
+
+            }
+        });
         dismiss();
         callActivity.startIntent();
 
     }
+
     @OnClick(R.id.btn_cancel)
     public void onCancel() {
         dismiss();

@@ -45,7 +45,6 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
         return fragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,7 +60,6 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
         adapter = new DefaultListAdapter(getContext(), demoUtils.moarItems(0));
         adapter.setItems(items);
 
-        init();
 
         return view;
     }
@@ -69,6 +67,8 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
     @Override
     public void onResume() {
         super.onResume();
+        init();
+
     }
 
     private void init() {

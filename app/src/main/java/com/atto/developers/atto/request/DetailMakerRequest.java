@@ -1,6 +1,7 @@
 package com.atto.developers.atto.request;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.atto.developers.atto.networkdata.makerdata.MakerListItemData;
 import com.google.gson.reflect.TypeToken;
@@ -27,8 +28,10 @@ public class DetailMakerRequest extends AbstractRequest<MakerListItemData> {
                 .addPathSegment(tid)
                 .build();
         mRequest = new Request.Builder()
+                .url(url)
                 .tag(context)
                 .build();
+        Log.i("url", mRequest.url().toString());
 
     }
 

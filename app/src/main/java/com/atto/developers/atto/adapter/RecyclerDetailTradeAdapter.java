@@ -33,7 +33,7 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 		notifyDataSetChanged();
 	}
 
-	public void addNego(List<NegoData> list) {
+	public void addNego(List<NegoData> list){
 		nego_items.addAll(list);
 		notifyDataSetChanged();
 	}
@@ -50,17 +50,17 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 
 	@Override
 	public int getItemViewType(int position) {
-		if (position == 0)
+        if (position == 0)
 
-			return VIEW_TYPE_HEADER;
-		position--;
+            return VIEW_TYPE_HEADER;
+        position--;
 
-		for (int i = 0; i < nego_items.size(); i++) {
-			if (position == 0)
-				return VIEW_TYPE_GROUP;
-			position--;
-		}
-		throw new IllegalArgumentException("invalid position");
+        for (int i = 0; i < nego_items.size(); i++) {
+            if (position == 0)
+                return VIEW_TYPE_GROUP;
+            position--;
+        }
+        throw new IllegalArgumentException("invalid position");
 	}
 
 	@Override
@@ -110,7 +110,9 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 			throw new IllegalArgumentException("invalid position");
 
 		}
+
 	}
+
 
 	public interface OnAdapterItemClickListener {
 		public void onAdapterItemClick(View view, NegoData negoData, int position);
@@ -123,13 +125,6 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 	}
 
 	@Override
-	public void onMakerImageItemClick(View view, NegoData negoData, int position) {
-		if (listener != null) {
-			listener.onAdapterItemClick(view, negoData, position);
-		}
-	}
-
-	@Override
 	public int getItemCount() {
 		int count = 0;
 		count++;
@@ -138,5 +133,13 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 		}
 		return count;
 	}
+
+	@Override
+	public void onMakerImageItemClick(View view, NegoData negoData, int position) {
+		if (listener != null) {
+			listener.onAdapterItemClick(view, negoData, position);
+		}
+	}
 }
+
 

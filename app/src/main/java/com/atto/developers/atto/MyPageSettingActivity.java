@@ -1,18 +1,12 @@
 package com.atto.developers.atto;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
 import com.atto.developers.atto.fragment.CheckLogoutDialogFragment;
-import com.atto.developers.atto.manager.NetworkManager;
-import com.atto.developers.atto.manager.NetworkRequest;
-import com.atto.developers.atto.networkdata.ResultMessage;
-import com.atto.developers.atto.request.MemberLeaveRequest;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -39,9 +33,9 @@ public class MyPageSettingActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @OnClick(R.id.key_change_address)
+    @OnClick(R.id.key_about_atto)
     public void onChangeAddress() {
-        Intent intent = new Intent(MyPageSettingActivity.this, SearchAddressActivity.class);
+        Intent intent = new Intent(MyPageSettingActivity.this, AboutAttoActivity.class);
         startActivity(intent);
     }
 
@@ -61,19 +55,6 @@ public class MyPageSettingActivity extends AppCompatActivity {
         Intent intent = new Intent(MyPageSettingActivity.this, AccountLeaveActivity.class);
         startActivity(intent);
 
-        MemberLeaveRequest request = new MemberLeaveRequest(this);
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
-            @Override
-            public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
-                Toast.makeText(MyPageSettingActivity.this, "성공", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(MyPageSettingActivity.this, "실패" + errorCode, Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
 
     }
@@ -83,13 +64,13 @@ public class MyPageSettingActivity extends AppCompatActivity {
 
         CheckLogoutDialogFragment dialogFragment = new CheckLogoutDialogFragment();
         dialogFragment.show(getSupportFragmentManager(), "logout");
+
     }
 
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_mypage_setting);
-        toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

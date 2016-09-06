@@ -34,6 +34,7 @@
             android:id="@+id/layout_trade_keyword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_alignBottom="@+id/img_realtime_photo"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -47,7 +48,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/keyword_shapes"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/colorBlack" />
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/text_trade_keyword_b"
@@ -56,7 +57,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/keyword_shapes"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/colorBlack" />
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/text_trade_keyword_c"
@@ -65,7 +66,7 @@
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/keyword_shapes"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/colorBlack" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
     </RelativeLayout>

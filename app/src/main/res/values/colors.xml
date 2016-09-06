@@ -15,10 +15,10 @@
     <color name="white">#ffffff</color>
     <color name="white_opa">#B3ffffff</color>
 
-    <color name="color_btn">#ff3b7b</color>
+    <color name="color_btn">#f8606d</color>
 
     <!--<color name="color_atto_main">#ff3b7b</color>-->
-    <color name="color_atto_main">#fbfb6e70</color>
+    <color name="color_atto_main">#f8606d</color>
     <color name="color_atto_main_opa">#33ff3b7b</color>
 
     <color name="color_atto_sub">#f8b895</color>

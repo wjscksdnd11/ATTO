@@ -3,8 +3,8 @@ package com.atto.developers.atto;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
@@ -23,22 +23,23 @@ public class MyPageMoreTradeActivity extends AppCompatActivity {
         initToolBar();
         initData();
 
-
     }
 
     private void initData() {
 
         MyTradeListRequest request = new MyTradeListRequest(this, "1", "50");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
+
             @Override
             public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
-                Toast.makeText(MyPageMoreTradeActivity.this, "성공 : " + result.getData(), Toast.LENGTH_LONG).show();
+                TradeData[] tradeData = result.getData();
 
+                Log.d(this.toString(), "성공 : " + tradeData[0].getTrade_id());
             }
 
             @Override
             public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(MyPageMoreTradeActivity.this, "실패 errorCode : " + errorCode, Toast.LENGTH_LONG).show();
+                Log.d(this.toString(), "실패 errorCode : " + errorCode);
 
             }
         });

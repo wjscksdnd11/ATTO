@@ -29,6 +29,11 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
         notifyDataSetChanged();
     }
 
+    public void clear() {
+        items.clear();
+        notifyDataSetChanged();
+    }
+
     public static final int VIEW_TYPE_HEADER = 100;
     public static final int VIEW_TYPE_GROUP = 200;
 
@@ -47,12 +52,12 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
-            case VIEW_TYPE_HEADER : {
+            case VIEW_TYPE_HEADER: {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item_detail_maker, parent, false);
                 DetailMakerHeaderViewHolder holder = new DetailMakerHeaderViewHolder(view);
                 return holder;
             }
-            case VIEW_TYPE_GROUP : {
+            case VIEW_TYPE_GROUP: {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item_detail_maker_image, parent, false);
                 DetailMakerViewHolder holder = new DetailMakerViewHolder(view);
                 holder.setOnMakerImageItemClickListener(this);
@@ -64,23 +69,28 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (position == 0) {
-            DetailMakerHeaderViewHolder hvh = (DetailMakerHeaderViewHolder)holder;
-            return;
-        }
-        position--;
-        for (int i = 0; i < items.size(); i++) {
+
+        if (items.size() > 0) {
             if (position == 0) {
-                if (holder.getItemViewType() != VIEW_TYPE_GROUP) {
-                    throw new IllegalArgumentException("invalid view holder");
-                }
-                DetailMakerViewHolder gvh = (DetailMakerViewHolder)holder;
-                gvh.setImageData(items.get(i));
+                DetailMakerHeaderViewHolder hvh = (DetailMakerHeaderViewHolder) holder;
+                hvh.setHeaderData(items.get(0));
                 return;
             }
             position--;
+            for (int i = 0; i < items.size(); i++) {
+                if (position == 0) {
+                    if (holder.getItemViewType() != VIEW_TYPE_GROUP) {
+                        throw new IllegalArgumentException("invalid view holder");
+                    }
+                    DetailMakerViewHolder gvh = (DetailMakerViewHolder) holder;
+                    gvh.setImageData(items.get(i));
+                    return;
+                }
+                position--;
+            }
+            throw new IllegalArgumentException("invalid position");
         }
-        throw new IllegalArgumentException("invalid position");
+
 
     }
 

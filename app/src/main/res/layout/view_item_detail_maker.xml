@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
     android:background="@color/white">
+
     <TextView
         android:layout_marginTop="8dp"
         android:textSize="14sp"
@@ -25,14 +26,12 @@
         android:id="@+id/img_detail_maker_profile"
         android:layout_gravity="center_horizontal"
         android:layout_alignTop="@+id/text_detail_maker_signed"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/sample_profile" />
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="맛간식"
         android:id="@+id/text_detail_maker_nickname"
         android:layout_below="@+id/img_detail_maker_profile"
         android:layout_centerHorizontal="true" />
@@ -51,7 +50,6 @@
         android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_detail_maker_intro"
         android:id="@+id/text_detail_maker_intro"
         android:layout_below="@+id/ratingbar_detail_maker_grade"
         android:layout_centerHorizontal="true" />
