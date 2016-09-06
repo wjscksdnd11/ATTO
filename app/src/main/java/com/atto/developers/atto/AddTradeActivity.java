@@ -150,6 +150,7 @@ public class AddTradeActivity extends AppCompatActivity {
                 trade_price, trade_dtime, trade_product_contents, trade_key_words, trade_product_images_info);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListItemData>() {
 
+
             @Override
             public void onSuccess(NetworkRequest<TradeListItemData> request, TradeListItemData result) {
                 TradeData tradeData = result.getData();

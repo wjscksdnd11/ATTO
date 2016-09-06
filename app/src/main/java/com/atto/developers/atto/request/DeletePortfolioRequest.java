@@ -1,7 +1,6 @@
 package com.atto.developers.atto.request;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
@@ -12,27 +11,24 @@ import okhttp3.HttpUrl;
 import okhttp3.Request;
 
 /**
- * Created by Tacademy on 2016-09-01.
+ * Created by Tacademy on 2016-09-06.
  */
-//   /auth/logout
-public class LogoutRequest extends AbstractRequest<ResultMessage> {
-
+public class DeletePortfolioRequest extends AbstractRequest<ResultMessage> {
     Request mRequest;
-    private final static String AUTH = "auth";
-    private final static String LOGOUT = "logout";
-    public LogoutRequest(Context context) {
+private final static String PORTFOLIO = "portfolioes";
 
+    public DeletePortfolioRequest(Context context, String tid) {
         HttpUrl url = getBaseUrlBuilder()
-                .addPathSegment(AUTH)
-                .addPathSegment(LOGOUT)
+                .addPathSegment(PORTFOLIO)
+                .addPathSegment(tid)
+                .build();
+        mRequest = new Request.Builder()
+                .tag(context)
+                .delete()
                 .build();
 
-        mRequest = new Request.Builder()
-                .url(url)
-                .tag(context)
-                .build();
-        Log.i("url", mRequest.url().toString());
     }
+
     @Override
     protected Type getType() {
         return new TypeToken<ResultMessage>(){}.getType();
@@ -42,6 +38,4 @@ public class LogoutRequest extends AbstractRequest<ResultMessage> {
     public Request getRequest() {
         return mRequest;
     }
-
-
 }

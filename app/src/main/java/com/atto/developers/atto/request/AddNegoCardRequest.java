@@ -47,7 +47,7 @@ public class AddNegoCardRequest extends AbstractRequest<NegoData> {
                 .addFormDataPart(CONTENT, negotiation_product_contents);
 
 
-        if (negotiation_product_imges_info.length != 0) {
+        if (negotiation_product_imges_info.length > 0) {
             for (File product_img : negotiation_product_imges_info) {
                 if (product_img != null) {
                     body.addFormDataPart(IMAGES, product_img.getName(),
