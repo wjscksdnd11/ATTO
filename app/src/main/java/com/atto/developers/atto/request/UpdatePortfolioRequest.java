@@ -15,34 +15,26 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
- * Created by jeon on 2016-09-04.
+ * Created by Tacademy on 2016-09-06.
  */
-
-/*
-file_name : 포트 폴리오 제목
-        file_key_word_ids : 포트 폴리오 키워드 ID들 (3개 까지)(number)
-        portfolio_img : 포트 폴리오 이미지
-
-        예시) /portfolioes
-*/
-
-public class AddPortfolioRequest extends AbstractRequest<ResultMessage> {
+public class UpdatePortfolioRequest  extends AbstractRequest<ResultMessage> {
     Request mRequest;
     MediaType jpeg = MediaType.parse("image/jpeg");
     // 포트폴리오 등록
     private final static String PORTFOLIO = "portfolioes";
     private final static String FILE_KEY_WORD_IDS = "file_key_word_ids";
     private final static String PORTFOLIO_IMG = "portfolio_img";
-    private final static String PORTFOLIO_TITLE="file_name";
+    private final static String PORTFOLIO_TITLE = "file_name";
 
-    public AddPortfolioRequest(Context context, String file_name ,String [] file_key_word_ids,File portfolio_img ) {
+    public UpdatePortfolioRequest(Context context, String tid, String file_name,String [] file_key_word_ids, File portfolio_img ) {
 
         //포트폴리오 등록
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(PORTFOLIO)
+                .addPathSegment(tid)
                 .build();
         MultipartBody.Builder body=  new MultipartBody.Builder()
-        .addFormDataPart(PORTFOLIO_TITLE,file_name);
+                .addFormDataPart(PORTFOLIO_TITLE,file_name);
         if(file_key_word_ids.length>0){
             for(String file_key_word_id:file_key_word_ids){
                 body.addFormDataPart(FILE_KEY_WORD_IDS,file_key_word_id);
@@ -61,7 +53,7 @@ public class AddPortfolioRequest extends AbstractRequest<ResultMessage> {
 
         mRequest = new Request.Builder()
                 .url(url)
-                .post(requestbody)
+                .put(requestbody)
                 .tag(context)
                 .build();
 
