@@ -19,7 +19,6 @@ public class MyProfileData implements Serializable {
     private int member_auth;
     private long member_id;
 
-
     public long getMember_id() {
         return member_id;
     }
