@@ -11,7 +11,7 @@ import com.atto.developers.atto.networkdata.userdata.MyProfileData;
 /**
  * Created by goodn on 2016-09-05.
  */
-public class MypageViewHolder extends RecyclerView.ViewHolder {
+public class MyPageViewHolder extends RecyclerView.ViewHolder {
 
     ImageView my_page_profile;
     TextView my_page_staus, my_page_title, my_page_price,
@@ -31,7 +31,7 @@ public class MypageViewHolder extends RecyclerView.ViewHolder {
         this.listener = listener;
     }
 
-    public MypageViewHolder(View itemView) {
+    public MyPageViewHolder(View itemView) {
         super(itemView);
         my_page_profile = (ImageView) itemView.findViewById(R.id.my_page_img_trade_profile);
         my_page_staus = (TextView) itemView.findViewById(R.id.my_page_text_trade_staus);
