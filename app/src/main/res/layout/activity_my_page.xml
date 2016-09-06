@@ -53,14 +53,38 @@
                     android:layout_marginRight="15dp" />
         </LinearLayout>
 
-        <include
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/more_trade_layout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/view_mypage_maker_footerview">
+
+                <!--<com.astuetz.PagerSlidingTabStrip
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dip"
+                    android:background="@drawable/background_tabs" />-->
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:context=".MainActivity" />
+
+                <!--android:layout_below="@+id/tabs"-->
+
+        </RelativeLayout>
+
+        <!--<include
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             layout="@layout/view_item_mypage"
             android:id="@+id/include4"
             android:layout_above="@+id/view_mypage_maker_footerview"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true" />-->
 
         <include
             android:layout_width="match_parent"

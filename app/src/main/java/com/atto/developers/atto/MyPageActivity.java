@@ -2,20 +2,33 @@ package com.atto.developers.atto;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.atto.developers.atto.fragment.MyTradeFragment;
 import com.atto.developers.atto.fragment.ProgressDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
+import com.atto.developers.atto.networkdata.tradedata.TradeListData;
 import com.atto.developers.atto.networkdata.userdata.MyProfile;
 import com.atto.developers.atto.request.MyProfileRequest;
+import com.atto.developers.atto.request.MyTradeListRequest;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,16 +42,38 @@ public class MyPageActivity extends AppCompatActivity {
     @BindView(R.id.text_mypage_nickname)
     TextView nickNameView;
 
+/*    @BindView(R.id.tabs)
+    PagerSlidingTabStrip tabs;*/
+
+    @BindView(R.id.pager)
+    ViewPager pager;
+
+
+    private MyTradePagerAdapter adapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
         ButterKnife.bind(this);
+
+        adapter = new MyTradePagerAdapter(getSupportFragmentManager());
+
+        pager.setAdapter(adapter);
+
+        final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
+                .getDisplayMetrics());
+        pager.setPageMargin(pageMargin);
+
+//        tabs.setViewPager(pager);
+
         initData();
+        initTradeData();
         initToolBar();
 
     }
-    
+
     @OnClick(R.id.text_mypage_more_trade)
     void onTradeViewClick() {
         Intent intent = new Intent(MyPageActivity.this, MyPageMoreTradeActivity.class);
@@ -135,5 +170,61 @@ public class MyPageActivity extends AppCompatActivity {
 
 
         });
+    }
+
+
+
+    private void initTradeData() {
+
+        MyTradeListRequest request = new MyTradeListRequest(this, "1", "50");
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
+
+            @Override
+            public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
+                TradeData[] tradeData;
+                tradeData = result.getData();
+                adapter.addAll(Arrays.asList(tradeData));
+                Log.d(this.toString(), "성공 : " + tradeData[0].getTrade_id());
+            }
+
+            @Override
+            public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
+                Log.d(this.toString(), "실패 errorCode : " + errorCode);
+
+            }
+        });
+
+    }
+
+    public class MyTradePagerAdapter extends FragmentPagerAdapter {
+
+        private final String[] TITLES = {"Categories", "Home", "Top Paid", "Top Free", "Top Grossing", "Top New Paid",
+                "Top New Free", "Trending"};
+        List<TradeData> items = new ArrayList<>();
+
+        public void addAll(List<TradeData> list) {
+            items.addAll(list);
+            notifyDataSetChanged();
+        }
+
+        public MyTradePagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return String.valueOf(position);
+        }
+
+        @Override
+        public int getCount() {
+            return items.size();
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return MyTradeFragment.newInstance(items.get(position));
+        }
+
     }
 }

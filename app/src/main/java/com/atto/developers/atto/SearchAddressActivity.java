@@ -8,8 +8,6 @@ import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 public class SearchAddressActivity extends AppCompatActivity {
 
@@ -34,19 +32,7 @@ public class SearchAddressActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_address);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        setSupportActionBar(toolbar);
-
-        ImageButton imageBtn = (ImageButton) toolbar.findViewById(R.id.ic_back);
-        imageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        TextView textView = (TextView) toolbar.findViewById(R.id.text_title);
-        textView.setText(R.string.activity_search_address);
+        initToolBar();
 
         browser = (WebView) findViewById(R.id.webView);
         browser.getSettings().setJavaScriptEnabled(true);
@@ -55,7 +41,6 @@ public class SearchAddressActivity extends AppCompatActivity {
         browser.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-
                 browser.loadUrl("javascript:sample2_execDaumPostcode();");
             }
         });
@@ -63,5 +48,25 @@ public class SearchAddressActivity extends AppCompatActivity {
         //browser.loadUrl("file:///android_asset/daum.html");
         //browser.loadUrl("http://www.daddyface.com/public/daum.html");
         browser.loadUrl("http://cdn.rawgit.com/jolly73-df/DaumPostcodeExample/master/DaumPostcodeExample/app/src/main/assets/daum.html");
+    }
+
+    private void initToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        toolbar.setTitle(R.string.activity_search_address);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        browser.destroy();
     }
 }

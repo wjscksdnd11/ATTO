@@ -20,10 +20,10 @@ public class RecyclerMakerAdapter extends RecyclerView.Adapter<RecyclerMakerView
     List<MakerData> items = new ArrayList<>();
 
 
-//    public void add(MakerData makerData) {
-//        items.add(makerData);
-//        notifyDataSetChanged();
-//    }
+    public void add(MakerData makerData) {
+        items.add(makerData);
+        notifyDataSetChanged();
+    }
 
     public void clear() {
         items.clear();
