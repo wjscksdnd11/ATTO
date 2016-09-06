@@ -2,10 +2,12 @@ package com.atto.developers.atto;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
@@ -13,6 +15,8 @@ import com.atto.developers.atto.networkdata.tradedata.TradeListData;
 import com.atto.developers.atto.request.MyTradeListRequest;
 
 public class MyPageMoreTradeActivity extends AppCompatActivity {
+
+    RecyclerMakerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +26,11 @@ public class MyPageMoreTradeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         initToolBar();
         initData();
+
+        RecyclerView listView = (RecyclerView) findViewById(R.id.rv_list);
+        mAdapter = new RecyclerMakerAdapter();
+        listView.setAdapter(mAdapter);
+
 
     }
 
@@ -33,7 +42,6 @@ public class MyPageMoreTradeActivity extends AppCompatActivity {
             @Override
             public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
                 TradeData[] tradeData = result.getData();
-
                 Log.d(this.toString(), "성공 : " + tradeData[0].getTrade_id());
             }
 

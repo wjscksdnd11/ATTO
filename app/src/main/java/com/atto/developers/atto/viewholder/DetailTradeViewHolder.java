@@ -59,7 +59,7 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (listener == null) {
+                if (listener != null) {
                     listener.onMakerImageItemClick(view, negoData, getAdapterPosition());
                 }
             }

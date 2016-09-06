@@ -45,7 +45,7 @@ public class DetailTradeActivity extends AppCompatActivity {
 		toolbar.setTitle(R.string.activity_detail_trade);
 		toolbar.setTitleTextColor(Color.WHITE);
 		setSupportActionBar(toolbar);
-		toolbar.setNavigationIcon(R.drawable.ic_navigate_before_grey);
+		toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
 		toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -71,6 +71,7 @@ public class DetailTradeActivity extends AppCompatActivity {
 			@Override
 			public void onAdapterItemClick(View view, NegoData negoData, int position) {
 				Toast.makeText(DetailTradeActivity.this, "position : " + position, Toast.LENGTH_SHORT).show();
+
 			}
 		});
 		initData();
