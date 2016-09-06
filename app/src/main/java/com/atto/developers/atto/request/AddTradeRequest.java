@@ -106,6 +106,6 @@ public class AddTradeRequest extends AbstractRequest<TradeListItemData> {
 
     @Override
     public Request getRequest() {
-        return null;
+        return mRequest;
     }
 }
