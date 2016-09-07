@@ -21,9 +21,6 @@ import com.atto.developers.atto.networkdata.tradedata.TradeListData;
 import com.atto.developers.atto.request.NegoCardListRequest;
 import com.bumptech.glide.Glide;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -94,7 +91,6 @@ public class DetailNegoActivity extends AppCompatActivity {
     }
 
     private void initData() {
-
         NegoCardListRequest request = new NegoCardListRequest(this, "10", "10", "10");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<NegoData>>() {
             @Override
@@ -113,12 +109,13 @@ public class DetailNegoActivity extends AppCompatActivity {
     }
 
     private void setNegoData(NegoData[] data) {
-        checkImageData();
+        checkImageData(data[0]);
         trade_nickname.setText(data[0].getMaker_info().getMaker_name());
         //ratingbar_maker_grade.setRating(negoData.getMaker_info().getMaker_score());
         offer_pice.setText(data[0].getNegotiation_price() + "원");
-        calenderDday(data[0]);
+       // calenderDday(data[0]);
         limit_date.setText(data[0].getNegotiation_dtime()); //yyyy-mm-dd까지
+
         //trade_remain_time; //24시간 알림
         //trade_maker_contents.setText(negoData.);
 
@@ -139,19 +136,20 @@ public class DetailNegoActivity extends AppCompatActivity {
             trade_profile.setImageResource(R.drawable.default_image);
         }
     }
-    private void calenderDday(NegoData negoData) {
-        String[] data = negoData
-
-        Calendar a = Calendar.getInstance();
-        long currentTiem = a.getTimeInMillis();
-        a.set(Calendar.YEAR, Calendar.MONTH-1, Calendar.DAY_OF_MONTH);
-
-        long futureTime = a.getTimeInMillis();
-        a.set()
-        long diff = futureTime - currentTiem;
-        int day = (int) (diff / (1000 * 60 * 60 * 24));
-       \
-    }
+//    private void calenderDday(NegoData negoData) {
+//        String[] data = negoData
+//
+//        Calendar a = Calendar.getInstance();
+//        long currentTiem = a.getTimeInMillis();
+//        a.set(Calendar.YEAR, Calendar.MONTH-1, Calendar.DAY_OF_MONTH);
+//
+//        Calendar b = Calendar.getInstance(TimeZone.getTimeZone(negoData.getNegotiation_dtime()));
+//        long futureTime = b.getTimeInMillis();
+//        b.set();
+//        long diff = futureTime - currentTiem;
+//        int day = (int) (diff / (1000 * 60 * 60 * 24));
+//       \
+//    }
 
 
 }

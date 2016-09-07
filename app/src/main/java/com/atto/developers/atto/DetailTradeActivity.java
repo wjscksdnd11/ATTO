@@ -93,7 +93,7 @@ public class DetailTradeActivity extends AppCompatActivity {
 				TradeData[] data = result.getData();
 				mAdapter.addAll(Arrays.asList(data));
 				Log.d("DetailTradeActivity", " 	성공 : " + data[0].getTrade_id());
-
+				Toast.makeText(getApplicationContext(), "성공 : " + data[0].getTrade_id(), Toast.LENGTH_SHORT).show();
 			}
 
 			@Override
