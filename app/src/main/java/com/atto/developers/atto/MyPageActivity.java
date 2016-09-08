@@ -139,6 +139,7 @@ public class MyPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_in_left);
             }
         });
 
