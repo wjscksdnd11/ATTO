@@ -7,10 +7,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.networkdata.tradedata.TradeData;
-import com.bumptech.glide.Glide;
+import com.atto.developers.atto.networkdata.tradedata.TradeListItemData;
+
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 
 /**
@@ -67,9 +69,12 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 					checkKeywordList(keywordList);
 				}
 				//checkImageData(tradeData.getData().g);
+				int price = Integer.parseInt(tradeData.getData().getTrade_price());
+				String s_price = String.format("%,d", price);
+
 				mTvStatus.setText(String.valueOf(tradeData.getData().getTrade_status()));
 				mTvTitle.setText(tradeData.getData().getTrade_title());
-				mTvPrice.setText(tradeData.getData().getTrade_price().concat("원"));
+				mTvPrice.setText(s_price.concat("원"));
 				mTvDDay.setText(tradeData.getData().getTrade_dday());
 				mTvNickName.setText(tradeData.getData().getMember_info().getMember_alias());
 				mTvLimitDate.setText(tradeData.getData().getTrade_dtime());

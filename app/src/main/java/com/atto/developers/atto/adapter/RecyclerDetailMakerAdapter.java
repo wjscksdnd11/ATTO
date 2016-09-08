@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
+import com.atto.developers.atto.networkdata.portfoliodata.PortfolioListData;
 import com.atto.developers.atto.viewholder.DetailMakerHeaderViewHolder;
 import com.atto.developers.atto.viewholder.DetailMakerViewHolder;
 
@@ -19,6 +20,9 @@ import java.util.List;
 public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements DetailMakerViewHolder.OnMakerImageItemClickListener {
 
     List<MakerData> items = new ArrayList<>();
+    List<PortfolioListData> portItems = new ArrayList<>();
+
+
 
     public boolean isHeader(int position) {
         return position == 0;
@@ -26,6 +30,11 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
 
     public void add(MakerData makerData) {
         items.add(makerData);
+        notifyDataSetChanged();
+    }
+
+    public void addAll(PortfolioListData list) {
+        portItems.add(list);
         notifyDataSetChanged();
     }
 

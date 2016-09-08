@@ -64,4 +64,5 @@
     <string name="btn_img_address">우편번호 검색</string>
     <string name="new_password_hint">새로운 비밀번호</string>
     <string name="check_new_password_hint">비밀번호 확인</string>
+    <string name="activity_add_port">포트폴리오 추가하기</string>
 </resources>

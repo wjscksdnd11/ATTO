@@ -5,8 +5,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 
 import com.atto.developers.atto.manager.FontManager;
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.manager.PropertyManager;
+import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.request.LocalLoginRequest;
 import com.hanks.htextview.HTextView;
 import com.hanks.htextview.HTextViewType;
 
@@ -31,21 +37,14 @@ public class SplashActivity extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.splash_scale);
         textView.startAnimation(animation);*/
         mHandler = new Handler(Looper.getMainLooper());
-        moveLoginActivity();
+        loginSharedPreference();
 
     }
 
     private void moveMainActivity() {
-
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-
-            }
-        }, 2000);
+        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void moveLoginActivity() {
@@ -56,7 +55,41 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 2000);
+        }, 1000);
 
+    }
+
+    private void loginSharedPreference() {
+        if (isAutoLogin()) {
+            processAutoLogin();
+        } else {
+            moveLoginActivity();
+        }
+    }
+
+    private boolean isAutoLogin() {
+        String email = PropertyManager.getInstance().getEmail();
+        return !TextUtils.isEmpty(email);
+    }
+
+    private void processAutoLogin() {
+        String email = PropertyManager.getInstance().getEmail();
+        if (!TextUtils.isEmpty(email)) {
+            String password = PropertyManager.getInstance().getPassword();
+            String regid = PropertyManager.getInstance().getRegistrationId();
+            LocalLoginRequest request = new LocalLoginRequest(this, email, password, regid);
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
+                @Override
+                public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
+                    moveMainActivity();
+                }
+
+                @Override
+                public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
+                    moveLoginActivity();
+                }
+            });
+
+        }
     }
 }

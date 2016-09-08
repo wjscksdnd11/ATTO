@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by Tacademy on 2016-08-23.
@@ -38,9 +39,6 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.text_trade_dday)
     TextView trade_dday;
-
-    @BindView(R.id.text_trade_nickname)
-    TextView trade_nickname;
 
     @BindView(R.id.text_trade_limit_date)
     TextView trade_limit_date;
@@ -92,9 +90,11 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         checkImageData(tradeData);
         trade_status.setText(tradeData.getTrade_status() + "");
         trade_title.setText(tradeData.getTrade_title());
-        trade_price.setText(tradeData.getTrade_price() + "원");
+        int price = Integer.parseInt(tradeData.getTrade_price());
+        String s_price = String.format("%,d", price);
+        trade_price.setText(s_price + "원");
         trade_dday.setText(tradeData.getTrade_dday());
-        trade_nickname.setText(tradeData.getMember_info().getMember_alias());
+//        trade_nickname.setText(tradeData.getMember_info().getMember_alias());
         trade_limit_date.setText(tradeData.getTrade_dtime());
 
         int[] keywordList = tradeData.getTrade_key_word_info();
@@ -114,7 +114,8 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
         if (tradeData.getMember_info().getMember_profile_img() != null) {
 
-            Glide.with(itemView.getContext()).load(tradeData.getMember_info().getMember_profile_img()).into(trade_profile);
+            Glide.with(itemView.getContext()).load(tradeData.getMember_info().getMember_profile_img())
+                    .bitmapTransform(new CropCircleTransformation(itemView.getContext())).into(trade_profile);
 
         } else {
             trade_profile.setImageResource(R.drawable.sample_profile);
@@ -122,8 +123,6 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         }
 
     }
-
-
     private void checkKeywordList(int[] keywordList) {
         if (keywordList != null) {
             for (int i = 0; i < keywordList.length; i++) {
@@ -132,7 +131,6 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
                     keywordView[i].setText(keywordList[i] + "");
                 } else {
                     keywordView[i].setVisibility(View.GONE);
-
                 }
             }
         } else {

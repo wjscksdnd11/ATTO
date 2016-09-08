@@ -3,47 +3,50 @@ package com.atto.developers.atto;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class AddPortActivity extends AppCompatActivity {
 
+    @BindView(R.id.img_add_port_photo)
     ImageView photoView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_port);
-
-        photoView = (ImageView)findViewById(R.id.img_add_port_photo);
-        Button btn = (Button)findViewById(R.id.btn_add_port_register);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddPortActivity.this, DetailMakerActivity.class);
-                startActivity(intent);
-            }
-        });
-
+        ButterKnife.bind(this);
+        initToolBar();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.back_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.back) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void onDeletePhotoButton(View view) {
+    @OnClick(R.id.btn_add_port_delete_photo)
+    public void onDeletePhotoButton() {
         photoView.setImageDrawable(null);
     }
+
+    @OnClick(R.id.btn_add_port_register)
+    public void onRegister() {
+        Intent intent = new Intent(AddPortActivity.this, DetailMakerActivity.class);
+        startActivity(intent);
+    }
+
+    private void initToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        toolbar.setTitle(R.string.activity_add_port);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
 }

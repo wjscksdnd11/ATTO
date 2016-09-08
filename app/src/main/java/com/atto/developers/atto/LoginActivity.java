@@ -68,26 +68,36 @@ public class LoginActivity extends AppCompatActivity {
     @OnClick(R.id.btn_local_login)
     public void onLocalLogin() {
 
+
         final String e_mail = emailView.getText().toString();
         final String password = passwordView.getText().toString();
         String member_registration_token = PropertyManager.getInstance().getRegistrationId();
 
-        LocalLoginRequest request = new LocalLoginRequest(this, e_mail, password, member_registration_token);
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
-            @Override
-            public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
-                PropertyManager.getInstance().setEmail(e_mail);
-                PropertyManager.getInstance().setPassword(password);
-                Toast.makeText(LoginActivity.this, "성공 : " + result.getMessage(), Toast.LENGTH_LONG).show();
-                moveMainActivity();
-            }
+        if (e_mail.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "빈칸이 있습니다.", Toast.LENGTH_LONG).show();
 
-            @Override
-            public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(LoginActivity.this, "실패 : " + errorCode, Toast.LENGTH_LONG).show();
+        } else {
 
-            }
-        });
+            LocalLoginRequest request = new LocalLoginRequest(this, e_mail, password, member_registration_token);
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
+                @Override
+                public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
+                    PropertyManager.getInstance().setEmail(e_mail);
+                    PropertyManager.getInstance().setPassword(password);
+                    Toast.makeText(LoginActivity.this, "성공 : " + result.getMessage(), Toast.LENGTH_LONG).show();
+                    moveMainActivity();
+                }
+
+                @Override
+                public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
+                    Toast.makeText(LoginActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+        }
+
+
     }
 
     @OnClick(R.id.btn_kakao_login)

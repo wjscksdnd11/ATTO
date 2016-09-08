@@ -25,6 +25,8 @@ public class PropertyManager {
     private static final String KEY_PASSWORD = "password";
     private static final String KEY_REGISTRATION_ID = "regid";
     private static final String KEY_FACEBOOK_ID = "facebookid";
+    private static final String KEY_AUTH = "auth";
+
 
     private PropertyManager() {
         Context context = MyApplication.getContext();
@@ -67,4 +69,6 @@ public class PropertyManager {
     public String getFacebookId() {
         return mPrefs.getString(KEY_FACEBOOK_ID, "");
     }
+
+
 }

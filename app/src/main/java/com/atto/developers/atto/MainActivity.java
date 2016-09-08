@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atto.developers.atto.adapter.MyPagerAdapter;
@@ -69,9 +70,13 @@ public class MainActivity extends AppCompatActivity {
         pager.setAdapter(mAdapter);
         tabs.setupWithViewPager(pager);
         tabs.removeAllTabs();
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab1_selector)));
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab2_selector)));
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab3_selector)));
+//        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab1_selector)));
+//        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab2_selector)));
+//        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab3_selector)));
+
+        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, "ATTO")));
+        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, "TRADE")));
+        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, "MAKER")));
 
 /*        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_one))));
         tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_realtrade))));
@@ -134,6 +139,13 @@ public class MainActivity extends AppCompatActivity {
         return view;
     }
 
+    private View getTabIndicator(Context context, String title) {
+        View view = LayoutInflater.from(context).inflate(R.layout.tab_layout, null);
+        TextView textView = (TextView) view.findViewById(R.id.textView);
+        textView.setText(title);
+        return view;
+    }
+
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -144,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, MyPageActivity.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_in_right);
+                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_in_left);
             }
         });
 

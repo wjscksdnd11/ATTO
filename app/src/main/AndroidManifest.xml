@@ -29,6 +29,7 @@
 		<activity android:name=".MyDetailNegoActivity"/>
 		<activity android:name=".DetailMakerActivity"/>
 		<activity android:name=".DetailPortActivity"/>
+		<activity android:name=".DetailTradeActivity"/>
 		<activity android:name=".AddPortActivity"/>
 		<activity android:name=".MyPageSetProfileActivity"/>
 		<activity android:name=".ChangeAddressActivity"/>

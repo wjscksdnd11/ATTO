@@ -33,4 +33,9 @@
     <color name="color_rating_bg">#5F5F5F</color>
 
     <color name="color_hint">#e6e6e6</color>
+
+    <color name="color_title">#de000000</color>
+    <color name="color_caption">#8A000000</color>
+
+    <color name="color_text_price">#F455FC</color>
 </resources>

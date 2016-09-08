@@ -63,11 +63,15 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
 				mTvNickName.setText(negoData.getMaker_info().getMaker_name());
 				mTvOfferPrice.setText(String.valueOf(negoData.getNegotiation_price() + "원"));
 				mTvLimitDate.setText(negoData.getNegotiation_dtime()); //yyyy-mm-dd까지
+//				checkDdaytest(negoData);
+
+				//  mTvDDay.setText();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 
 	private void checkImageData(NegoData negoData) {
 		NegoDataMaker_info negoDataMakerInfo = negoData.getMaker_info();

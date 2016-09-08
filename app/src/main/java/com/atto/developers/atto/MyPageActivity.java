@@ -13,6 +13,7 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.atto.developers.atto.networkdata.tradedata.TradeListData;
 import com.atto.developers.atto.networkdata.userdata.MyProfile;
 import com.atto.developers.atto.request.MyProfileRequest;
 import com.atto.developers.atto.request.MyTradeListRequest;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +35,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by Tacademy on 2016-08-26.
@@ -47,6 +50,9 @@ public class MyPageActivity extends AppCompatActivity {
 
     @BindView(R.id.pager)
     ViewPager pager;
+
+    @BindView(R.id.img_mypage_profile)
+    ImageView profileImageView;
 
 
     private MyTradePagerAdapter adapter;
@@ -139,7 +145,7 @@ public class MyPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                overridePendingTransition(R.anim.anim_slide_in_right, R.anim.anim_slide_in_left);
+
             }
         });
 
@@ -155,6 +161,9 @@ public class MyPageActivity extends AppCompatActivity {
             public void onSuccess(NetworkRequest<MyProfile> request, MyProfile result) {
 
                 String nickname = result.getData().getMember_alias();
+                String image_url = result.getData().getMember_profile_img();
+
+                checkSetImage(image_url);
                 nickNameView.setText(nickname);
                 dialogFragment.dismiss();
                 Toast.makeText(MyPageActivity.this, "success", Toast.LENGTH_SHORT).show();
@@ -173,6 +182,11 @@ public class MyPageActivity extends AppCompatActivity {
         });
     }
 
+    private void checkSetImage(String url) {
+
+        Glide.with(this).load(url).bitmapTransform(new CropCircleTransformation(this)).into(profileImageView);
+
+    }
 
 
     private void initTradeData() {

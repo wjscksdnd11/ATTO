@@ -94,14 +94,14 @@ public class DetailTradeActivity extends AppCompatActivity {
 			@Override
 			public void onSuccess(NetworkRequest<TradeListItemData> request, TradeListItemData result) {
 				TradeListItemData data = result;
-					if (data != null) {
-						mAdapter.setTradeData(result);
-						Log.d("DetailTradeActivity", "    성공 : " + data.getData().getTrade_id());
-						Toast.makeText(getApplicationContext(), "성공 : " + data.getData().getTrade_id(), Toast.LENGTH_SHORT).show();
-						mDialogFragment.dismiss();
-					}else{
-						Log.d("DetailtradeActivity","실패");
-					}
+				if (data != null) {
+					mAdapter.setTradeData(result);
+					Log.d("DetailTradeActivity", "    성공 : " + data.getData().getTrade_id());
+					Toast.makeText(getApplicationContext(), "성공 : " + data.getData().getTrade_id(), Toast.LENGTH_SHORT).show();
+					mDialogFragment.dismiss();
+				}else{
+					Log.d("DetailtradeActivity","실패");
+				}
 			}
 
 			@Override
