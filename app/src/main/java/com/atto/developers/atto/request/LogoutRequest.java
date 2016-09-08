@@ -40,7 +40,7 @@ public class LogoutRequest extends AbstractRequest<ResultMessage> {
 
     @Override
     public Request getRequest() {
-        return null;
+        return mRequest;
     }
 
 

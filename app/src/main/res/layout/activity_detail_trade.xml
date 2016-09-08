@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.atto.developers.atto.DetailTradeActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context="com.atto.developers.atto.DetailTradeActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/main_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/toolbar_underline_background"
-        android:minHeight="?attr/actionBarSize">
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/main_toolbar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/toolbar_underline_background"
+		android:minHeight="?attr/actionBarSize">
+	</android.support.v7.widget.Toolbar>
 
-    </android.support.v7.widget.Toolbar>
+	<Button
+		android:id="@+id/btn_move_nego_register"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentStart="true"
+		android:background="@color/color_atto_main"
+		android:text="@string/text_register_nego"
+		android:textColor="@color/white"/>
 
-    <Button
-        android:id="@+id/btn_move_nego_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@color/color_atto_main"
-        android:text="@string/text_register_nego"
-        android:textColor="@color/white" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/re_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_move_nego_register"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/main_toolbar" />
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/re_list"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/btn_move_nego_register"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentStart="true"
+		android:layout_below="@+id/main_toolbar"/>
 
 </RelativeLayout>

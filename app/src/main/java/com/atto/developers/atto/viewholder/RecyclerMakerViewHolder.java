@@ -54,9 +54,9 @@ public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
         this.makerData = makerData;
 //            Float score = Float.parseFloat("5");
             // maker_profile.setImageDrawable(makerdata.getMader_representation_img());
-//            ratingbar_maker_grade.setRating(score);
+//            mRbMakerGrade.setRating(score);
 //            trade_keyword.setText(makerData.getMaker_key_word_lists().getKey_word_1());
-          //  trade_nickname.setText(makerData.getMaker_id());
+          //  mTvNickName.setText(makerData.getMaker_id());
 
     }
 }

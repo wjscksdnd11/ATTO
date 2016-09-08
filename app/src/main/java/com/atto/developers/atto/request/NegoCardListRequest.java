@@ -46,6 +46,8 @@ public class NegoCardListRequest   extends AbstractRequest<TradeListData<NegoDat
         Log.i("url", url.toString());
     }
 
+
+
     @Override
     protected Type getType() {
         return new TypeToken<TradeListData<NegoData>>(){}.getType();

@@ -60,7 +60,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
                     Log.d(this.toString(), "실패 : " + errorCode);
 
-
                 }
             });
         }
