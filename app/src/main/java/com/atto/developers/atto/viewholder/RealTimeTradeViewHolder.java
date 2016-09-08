@@ -86,8 +86,8 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
             checkKeywordList(keywordList);
         }
 
-        //realtime_photo.setImageDrawable(tradeData.getTrad_ );
-        //trade_profile.setImageDrawable(tradeData.);
+        //mIvPhoto.setImageDrawable(tradeData.getTrad_ );
+        //mIvProfile.setImageDrawable(tradeData.);
 
         checkImageData(tradeData);
         trade_status.setText(tradeData.getTrade_status() + "");

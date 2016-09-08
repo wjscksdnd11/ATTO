@@ -30,7 +30,7 @@ public class DetailNegoActivity extends AppCompatActivity {
     ImageView trade_profile;
     @BindView(R.id.text_trade_profile_nickname)
     TextView trade_nickname;
-    @BindView(R.id.offer_pice)
+    @BindView(R.id.offer_price)
     TextView offer_pice;
     @BindView(R.id.text_trade_dday)
     TextView trade_dday;
@@ -46,7 +46,6 @@ public class DetailNegoActivity extends AppCompatActivity {
     TextView trade_maker_contents;
 
     NegoData negoData;
-    //int tYear, tMonth, tDay;           //오늘 연월일 변수
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
@@ -60,15 +59,6 @@ public class DetailNegoActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_nego);
-        ButterKnife.bind(this);
-        initToolBar();
-        initData();
     }
 
     @OnClick(R.id.img_btn_Report)
@@ -90,13 +80,31 @@ public class DetailNegoActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void initData() {
-        NegoCardListRequest request = new NegoCardListRequest(this, "10", "10", "10");
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail_nego);
+        ButterKnife.bind(this);
+        initToolBar();
+        Intent intent = getIntent();
+        int Nego_id = intent.getIntExtra("Negotiation_id", -1);
+        initData(Nego_id);
+    }
+
+    private void initData(final int Nego_id) {
+        NegoCardListRequest request = new NegoCardListRequest(this, Nego_id + "", "10", "10");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<NegoData>>() {
             @Override
             public void onSuccess(NetworkRequest<TradeListData<NegoData>> request, TradeListData<NegoData> result) {
                 NegoData[] data = result.getData();
-                setNegoData(data);
+                if (data.length > 0) {
+                    for (int i = 0; i < data.length; i++) {
+                        if (data[i].getNegotiation_id() == Nego_id) {
+                           // setNegoDataList(Nego_id);
+                        }
+                    }
+                }
+
                 Log.d(this.toString(), "협상카드상세성공 : " + result.getMessage());
             }
 
@@ -108,34 +116,32 @@ public class DetailNegoActivity extends AppCompatActivity {
 
     }
 
-    private void setNegoData(NegoData[] data) {
-        checkImageData(data[0]);
-        trade_nickname.setText(data[0].getMaker_info().getMaker_name());
+    private void setNegoData(NegoData negoData) {
+        checkImageData(negoData);
+        trade_nickname.setText(negoData.getMaker_info().getMaker_name());
         //ratingbar_maker_grade.setRating(negoData.getMaker_info().getMaker_score());
-        offer_pice.setText(data[0].getNegotiation_price() + "원");
-       // calenderDday(data[0]);
-        limit_date.setText(data[0].getNegotiation_dtime()); //yyyy-mm-dd까지
-
+        offer_pice.setText(negoData.getNegotiation_price() + "원");
+        // calenderDday(data[0]);
+        limit_date.setText(negoData.getNegotiation_dtime()); //yyyy-mm-dd까지
         //trade_remain_time; //24시간 알림
         //trade_maker_contents.setText(negoData.);
-
-
     }
 
-
-    private void checkImageData(NegoData negoData) {
-        if (negoData.getMaker_info().getMaker_profile_img() != null) {
-            Glide.with(this).load(negoData.getMaker_info().getMaker_profile_img()).into(trade_profile);
+    private void checkImageData(NegoData data) {
+        if (data.getMaker_info().getMaker_profile_img() != null) {
+            Glide.with(this).load(data.getMaker_info().getMaker_profile_img()).into(trade_profile);
 
         } else {
             img_add_port_photo.setImageResource(R.drawable.default_image);
         }
-        if (negoData.getNegotiation_product_imges_info() != null) {
-            Glide.with(this).load(negoData.getNegotiation_product_imges_info()).into(img_add_port_photo);
+        if (data.getNegotiation_product_imges_info() != null) {
+            Glide.with(this).load(data.getNegotiation_product_imges_info()).into(img_add_port_photo);
         } else {
             trade_profile.setImageResource(R.drawable.default_image);
         }
     }
+
+
 //    private void calenderDday(NegoData negoData) {
 //        String[] data = negoData
 //

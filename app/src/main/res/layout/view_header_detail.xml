@@ -46,7 +46,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="맛있는 사탕이 먹고싶어요"
                 android:id="@+id/text_trade_title"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="5dp"
@@ -55,7 +54,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="aidhfoiahegiohqwegoihaweioghapighiaohgieaoehgieoahgioaeshgioesahgihgiehgpoihaosigheaoighaioghaighaoihgaighaihiahgia"
                 android:id="@+id/textView14"
                 android:paddingLeft="50dp"
                 android:paddingRight="50dp"
@@ -111,7 +109,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="20000원"
                 android:id="@+id/text_trade_price"
                 android:layout_marginTop="10dp" />
 

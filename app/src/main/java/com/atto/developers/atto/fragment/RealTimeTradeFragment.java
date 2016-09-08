@@ -53,7 +53,6 @@ public class RealTimeTradeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_real_time_trade, container, false);
         ButterKnife.bind(this, view);
-
         mAdapter = new RecyclerRealTimeTradeAdapter();
         listView.setAdapter(mAdapter);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
@@ -62,8 +61,9 @@ public class RealTimeTradeFragment extends Fragment {
                 new DividerItemDecoration(getContext(), R.drawable.divider));
         mAdapter.setOnAdapterItemClickListener(new RecyclerRealTimeTradeAdapter.OnAdapterItemClickListener() {
             @Override
-            public void onAdapterItemClick(View view, TradeData tradeData, int position) {
+            public void onAdapterItemClick(View view, final TradeData tradeData, int position) {
                 Intent intent = new Intent(getContext(), DetailTradeActivity.class);
+                intent.putExtra("trade_id", tradeData.getTrade_id());
                 startActivity(intent);
             }
         });
@@ -84,7 +84,6 @@ public class RealTimeTradeFragment extends Fragment {
     }
 
     private void initData() {
-
         final ProgressDialogFragment dialogFragment = new ProgressDialogFragment();
         dialogFragment.show(getFragmentManager(), "progress");
         mAdapter.clear();

@@ -120,25 +120,6 @@ public class MakerFragment extends Fragment {
                 dialogFragment.dismiss();
             }
         });
-
-        /*mAdapter.clear();
-        Random r = new Random();
-        for (int i = 0; i < 20; i++) {
-            MakerData makerData = new MakerData();
-            KeywordList keywordList = new KeywordList();
-            keywordList.setKey_word_1("keyword : " + i);
-            makerData.setMaker_score(r.nextInt(5) + "");
-            makerData.setMaker_id(nicknames[i]);
-            makerData.setMaker_line_tag("tag " + i);
-            makerData.setMaker_key_word_lists(keywordList);
-            makerData.setMaker_product_category("category 1 ");
-            makerData.setMaker_product_category_1("category 2");
-            makerData.setMaker_product_category_2("category 3");
-            makerData.setMaker_score(r.nextInt(5) + "");
-            mAdapter.add(makerData);
-
-        }*/
-
     }
 
 }

@@ -26,7 +26,7 @@ public class DetailTradeMultiViewHolder extends RecyclerView.ViewHolder {
         img_maker_profile = (ImageView)itemView.findViewById(R.id.img_maker_profile);
         text_trade_remain_time = (TextView) itemView.findViewById(R.id.text_trade_remain_time);
         text_trade_profile_nickname = (TextView)itemView.findViewById(R.id.text_trade_profile_nickname);
-        offer_pice = (TextView)itemView.findViewById(R.id.offer_pice);
+        offer_pice = (TextView)itemView.findViewById(R.id.offer_price);
         limit_date = (TextView)itemView.findViewById(R.id.limit_date);
         text_trade_dday = (TextView)itemView.findViewById(R.id.text_trade_dday);
         ratingbar_maker_grade = (RatingBar)itemView.findViewById(R.id.ratingbar_maker_grade);
