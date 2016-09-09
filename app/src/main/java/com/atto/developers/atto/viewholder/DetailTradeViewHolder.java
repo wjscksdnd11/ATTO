@@ -3,7 +3,6 @@ package com.atto.developers.atto.viewholder;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -13,8 +12,6 @@ import android.widget.Toast;
 import com.atto.developers.atto.DetailNegoActivity;
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.negodata.NegoData;
-import com.atto.developers.atto.networkdata.negodata.NegoDataMaker_info;
-import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -59,7 +56,7 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
 		try {
 			NegoData negoData = negoDataList.get(getAdapterPosition());
 			if (negoData != null) {
-				checkImageData(negoData);
+//				checkImageData(negoData);
 				mTvNickName.setText(negoData.getMaker_info().getMaker_name());
 				mTvOfferPrice.setText(String.valueOf(negoData.getNegotiation_price() + "원"));
 				mTvLimitDate.setText(negoData.getNegotiation_dtime()); //yyyy-mm-dd까지
@@ -73,11 +70,11 @@ public class DetailTradeViewHolder extends RecyclerView.ViewHolder {
 	}
 
 
-	private void checkImageData(NegoData negoData) {
+/*	private void checkImageData(NegoData negoData) {
 		NegoDataMaker_info negoDataMakerInfo = negoData.getMaker_info();
 		if (negoDataMakerInfo != null && !TextUtils.isEmpty(negoDataMakerInfo.getMaker_profile_img()))
 			Glide.with(itemView.getContext()).load(negoDataMakerInfo.getMaker_profile_img()).into(mIvProfile);
-	}
+	}*/
 
 	@OnClick(R.id.rl_img_detail_trade)
 	void onContainerClicked() {

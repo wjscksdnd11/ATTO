@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atto.developers.atto.R;
-import com.atto.developers.atto.networkdata.tradedata.TradeListItemData;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
 
 import java.util.List;
 
@@ -61,23 +61,23 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 	}
 
 
-	public void setTradeData(TradeListItemData tradeData) {
+	public void setTradeData(TradeData tradeData) {
 		try {
 			if (tradeData != null) {
-				if (tradeData.getData().getTrade_key_word_info() != null) {
-					int[] keywordList = tradeData.getData().getTrade_key_word_info();
+				if (tradeData.getTrade_key_word_info() != null) {
+					int[] keywordList = tradeData.getTrade_key_word_info();
 					checkKeywordList(keywordList);
 				}
 				//checkImageData(tradeData.getData().g);
-				int price = Integer.parseInt(tradeData.getData().getTrade_price());
-				String s_price = String.format("%,d", price);
 
-				mTvStatus.setText(String.valueOf(tradeData.getData().getTrade_status()));
-				mTvTitle.setText(tradeData.getData().getTrade_title());
-				mTvPrice.setText(s_price.concat("원"));
-				mTvDDay.setText(tradeData.getData().getTrade_dday());
-				mTvNickName.setText(tradeData.getData().getMember_info().getMember_alias());
-				mTvLimitDate.setText(tradeData.getData().getTrade_dtime());
+				int price = Integer.parseInt(tradeData.getTrade_price());
+				String s_price = String.format("%,d", price);
+				mTvStatus.setText(String.valueOf(tradeData.getTrade_status()));
+				mTvTitle.setText(tradeData.getTrade_title());
+				mTvPrice.setText(s_price + "원");
+				mTvDDay.setText(tradeData.getTrade_dday());
+				mTvNickName.setText(tradeData.getMember_info().getMember_alias());
+				mTvLimitDate.setText(tradeData.getTrade_dtime());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

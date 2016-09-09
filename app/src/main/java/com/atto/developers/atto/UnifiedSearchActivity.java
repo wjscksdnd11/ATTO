@@ -43,9 +43,13 @@ public class UnifiedSearchActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
             @Override
             public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
-                Toast.makeText(UnifiedSearchActivity.this, "search size : " + result.getData().length, Toast.LENGTH_LONG).show();
-            }
+                if(result.getData().length > 0) {
+                    Toast.makeText(UnifiedSearchActivity.this, "search size : " + result.getData().length, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(UnifiedSearchActivity.this, "검색 결과가 없습니다.", Toast.LENGTH_LONG).show();
 
+                }
+            }
             @Override
             public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
                 Toast.makeText(UnifiedSearchActivity.this, "실패", Toast.LENGTH_LONG).show();

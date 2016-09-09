@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
@@ -14,6 +15,7 @@ import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by goodn on 2016-08-31.
@@ -56,11 +58,14 @@ public class DetailMakerHeaderViewHolder extends RecyclerView.ViewHolder {
 
     public void setHeaderData(MakerData makerData) {
         this.makerData = makerData;
+        Toast.makeText(itemView.getContext(), makerData.getMaker_representation_img(), Toast.LENGTH_LONG).show();
 
-        statusView.setText("성사된 거래 " + makerData.getMaker_line_tag());
-        Glide.with(itemView.getContext()).load(makerData.getMader_representation_img()).into(profileImageView);
+        statusView.setText(makerData.getMaker_line_tag());
+        Glide.with(itemView.getContext()).load(makerData.getMaker_representation_img())
+                .bitmapTransform(new CropCircleTransformation(itemView.getContext())).into(profileImageView);
 //        nickNameView.setText(makerData.getMaker_id());
-//        ratingBar.setRating(Float.parseFloat(makerData.getMaker_score()));
+        ratingBar.setRating(makerData.getMaker_score());
+//        nickNameView.setText(makerData.get);
         introView.setText(makerData.getMaker_line_tag());
         categoryOneView.setText(makerData.getMaker_product_category_1() + "");
         categoryTwoView.setText(makerData.getMaker_product_category_2() + "");

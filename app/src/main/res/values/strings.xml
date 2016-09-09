@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">atto</string>
+    <string name="app_name">ATTO</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <!-- 메인 로그인 -->
@@ -152,5 +152,8 @@
     <string name="new_password_hint">새로운 비밀번호</string>
     <string name="check_new_password_hint">비밀번호 확인</string>
     <string name="activity_add_port">포트폴리오 추가하기</string>
+    <string name="key_maker_info">제작자 등록 정보</string>
+    <string name="activity_account_leave">탈퇴하기</string>
+    <string name="activity_about_atto">About atto</string>
 
 </resources>

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
-import com.atto.developers.atto.networkdata.portfoliodata.PortfolioListData;
+import com.atto.developers.atto.networkdata.portfoliodata.PortfolioData;
 import com.atto.developers.atto.viewholder.DetailMakerHeaderViewHolder;
 import com.atto.developers.atto.viewholder.DetailMakerViewHolder;
 
@@ -20,9 +20,7 @@ import java.util.List;
 public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements DetailMakerViewHolder.OnMakerImageItemClickListener {
 
     List<MakerData> items = new ArrayList<>();
-    List<PortfolioListData> portItems = new ArrayList<>();
-
-
+    List<PortfolioData> portItems = new ArrayList<>();
 
     public boolean isHeader(int position) {
         return position == 0;
@@ -33,8 +31,13 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
         notifyDataSetChanged();
     }
 
-    public void addAll(PortfolioListData list) {
-        portItems.add(list);
+    public void addAll(List<PortfolioData> list) {
+        portItems.addAll(list);
+        notifyDataSetChanged();
+    }
+
+    public void add(PortfolioData portfolioData) {
+        portItems.add(portfolioData);
         notifyDataSetChanged();
     }
 
@@ -82,17 +85,18 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
         if (items.size() > 0) {
             if (position == 0) {
                 DetailMakerHeaderViewHolder hvh = (DetailMakerHeaderViewHolder) holder;
-                hvh.setHeaderData(items.get(0));
+                hvh.setHeaderData(items.get(position));
                 return;
             }
             position--;
-            for (int i = 0; i < items.size(); i++) {
+            for (int i = 0; i < portItems.size(); i++) {
                 if (position == 0) {
                     if (holder.getItemViewType() != VIEW_TYPE_GROUP) {
                         throw new IllegalArgumentException("invalid view holder");
                     }
                     DetailMakerViewHolder gvh = (DetailMakerViewHolder) holder;
-                    gvh.setImageData(items.get(i));
+                    gvh.setImageData(portItems.get(position));
+
                     return;
                 }
                 position--;
@@ -102,6 +106,8 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
 
 
     }
+
+
 
 
     public interface OnAdapterItemClickLIstener {

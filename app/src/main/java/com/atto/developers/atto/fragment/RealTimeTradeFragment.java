@@ -92,8 +92,8 @@ public class RealTimeTradeFragment extends Fragment {
             @Override
             public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
                 TradeData[] data = result.getData();
-                Log.d("RealTimeTradeFragment", "성공 : " + data[0].getTrade_product_img());
                 mAdapter.addAll(Arrays.asList(data));
+                Log.d("RealTimeTradeFragment", "성공 : " + data[0].getTrade_product_img());
                 dialogFragment.dismiss();
             }
 
@@ -103,7 +103,5 @@ public class RealTimeTradeFragment extends Fragment {
                 dialogFragment.dismiss();
             }
         });
-
-
     }
 }

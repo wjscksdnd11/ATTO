@@ -18,7 +18,7 @@ public class AboutAttoActivity extends AppCompatActivity {
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        toolbar.setTitle(R.string.activity_mypage_setting);
+        toolbar.setTitle(R.string.activity_about_atto);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

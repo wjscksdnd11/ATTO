@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -65,14 +66,15 @@ public class SignUpActivity extends AppCompatActivity {
         String postCode = postCodeView.getText().toString();
         String address = addressView.getText().toString();
         String phone = phoneNumberView.getText().toString();
-        String registration_token = PropertyManager.getInstance().getRegistrationId();
+        String registration_token = "1";
 
-        if (email.isEmpty() || password.isEmpty() || name.isEmpty() || postCode.isEmpty() || address.isEmpty() || phone.isEmpty()) {
+
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(name) || TextUtils.isEmpty(postCode) ||
+                TextUtils.isEmpty(address) || TextUtils.isEmpty(phone)) {
             Toast.makeText(this, "잘못된 입력입니다.", Toast.LENGTH_LONG).show();
         } else {
             SignUpRequest request = new SignUpRequest(this, email, password, name, postCode, address, phone, registration_token);
             NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
-
                 @Override
                 public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
                     Log.i("result", result.getMessage());
@@ -82,6 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, " 성공 :" + result.getMessage(), Toast.LENGTH_SHORT).show();
                     CompleteDialogFragment dialog = new CompleteDialogFragment();
                     dialog.show(getSupportFragmentManager(), "signup");
+                    moveMainActivity();
                 }
 
                 @Override
@@ -93,6 +96,12 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public void moveMainActivity() {
+        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @OnClick(R.id.btn_img_address)

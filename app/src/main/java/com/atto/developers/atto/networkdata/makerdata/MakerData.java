@@ -1,18 +1,17 @@
 package com.atto.developers.atto.networkdata.makerdata;
 
 
-import com.atto.developers.atto.networkdata.listdata.KeywordList;
-
 public class MakerData implements java.io.Serializable {
     private static final long serialVersionUID = 6984295785682812238L;
     private int maker_id;
-    private String mader_representation_img;
+    private String maker_name;
+    private String maker_representation_img;
     private int maker_product_category_1;
     private int maker_product_category;// null 가능
     private int maker_product_category_2;
     private String maker_line_tag;// null 가능
     private float maker_score;
-    private KeywordList maker_key_word_lists;
+    private int[] maker_key_word_lists;
 
 
     public int getMaker_id() {
@@ -23,12 +22,20 @@ public class MakerData implements java.io.Serializable {
         this.maker_id = maker_id;
     }
 
-    public String getMader_representation_img() {
-        return mader_representation_img;
+    public String getMaker_name() {
+        return maker_name;
     }
 
-    public void setMader_representation_img(String mader_representation_img) {
-        this.mader_representation_img = mader_representation_img;
+    public void setMaker_name(String maker_name) {
+        this.maker_name = maker_name;
+    }
+
+    public String getMaker_representation_img() {
+        return maker_representation_img;
+    }
+
+    public void setMaker_representation_img(String mader_representation_img) {
+        this.maker_representation_img = mader_representation_img;
     }
 
     public int getMaker_product_category_1() {
@@ -71,11 +78,11 @@ public class MakerData implements java.io.Serializable {
         this.maker_score = maker_score;
     }
 
-    public KeywordList getMaker_key_word_lists() {
+    public int[] getMaker_key_word_lists() {
         return maker_key_word_lists;
     }
 
-    public void setMaker_key_word_lists(KeywordList maker_key_word_lists) {
+    public void setMaker_key_word_lists(int[] maker_key_word_lists) {
         this.maker_key_word_lists = maker_key_word_lists;
     }
 }

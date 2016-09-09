@@ -80,12 +80,6 @@ public class MyPageActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.text_mypage_more_trade)
-    void onTradeViewClick() {
-        Intent intent = new Intent(MyPageActivity.this, MyPageMoreTradeActivity.class);
-        startActivity(intent);
-    }
-
     @OnClick(R.id.btn_mypage_setting_myprofile)
     void onMyPageSettingClick() {
         Intent intent = new Intent(MyPageActivity.this, MyPageSetProfileActivity.class);
@@ -95,13 +89,10 @@ public class MyPageActivity extends AppCompatActivity {
     Intent intent;
 
     // 제작자일 때만 생기는 페이지
-    @OnClick({R.id.btn_footer_move_maker_info, R.id.btn_footer_move_maker_nego, R.id.btn_footer_move_accept_wait})
+    @OnClick({R.id.btn_footer_move_maker_nego, R.id.btn_footer_move_accept_wait})
     void onMovePage(View view) {
         switch (view.getId()) {
-            case R.id.btn_footer_move_maker_info:
-                intent = new Intent(MyPageActivity.this, MakerInfoActivity.class);
-                startActivity(intent);
-                break;
+
             case R.id.btn_footer_move_maker_nego:
                 intent = new Intent(MyPageActivity.this, MakerNegoActivity.class);
                 startActivity(intent);
@@ -188,7 +179,6 @@ public class MyPageActivity extends AppCompatActivity {
 
     }
 
-
     private void initTradeData() {
 
         MyTradeListRequest request = new MyTradeListRequest(this, "1", "50");
@@ -196,8 +186,9 @@ public class MyPageActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
-                TradeData[] tradeData;
-                tradeData = result.getData();
+                TradeData[] tradeData = result.getData();
+
+                if (tradeData.length > 0)
                 adapter.addAll(Arrays.asList(tradeData));
                 Log.d(this.toString(), "성공 : " + tradeData[0].getTrade_id());
             }

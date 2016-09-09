@@ -70,5 +70,12 @@ public class PropertyManager {
         return mPrefs.getString(KEY_FACEBOOK_ID, "");
     }
 
+    public String getKeyAuth() {
+        return mPrefs.getString(KEY_AUTH, "");
+    }
 
+    public void setKeyAuth(String auth) {
+        mEditor.putString(KEY_AUTH, auth);
+        mEditor.commit();
+    }
 }

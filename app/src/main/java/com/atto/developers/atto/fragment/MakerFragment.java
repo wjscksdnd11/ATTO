@@ -88,10 +88,6 @@ public class MakerFragment extends Fragment {
         initData();
     }
 
-    String[] nicknames = {"Lana Delange", "Sueann Membreno", "Kent Huntoon", "Dione Kogut", "Chelsea Ribeiro", "Ruth Kearns",
-            "Maryanne Sweigart", "Chasidy Scheffer", "Kyla Seddon", "Trinh Farr", "Tandy Norby", "Augustus Helm", "Annabel Schenck",
-            "Lurlene Meares", "Micheline Vannote", "Coretta Salaam", "Anya Quesenberry", "Gavin Caskey", "Annie Nellum", "Hershel Parkman"};
-
     private void initData() {
 
         final ProgressDialogFragment dialogFragment = new ProgressDialogFragment();
@@ -102,15 +98,14 @@ public class MakerFragment extends Fragment {
             @Override
             public void onSuccess(NetworkRequest<TradeListData<MakerData>> request, TradeListData<MakerData> result) {
                 MakerData[] data = result.getData();
-                Toast.makeText(getContext(), "성공 : " + data[0].getMaker_score(), Toast.LENGTH_SHORT).show();
-                Log.d("MakerFragment", String.valueOf(data[0].getMaker_score()));
-                Log.d("MakerFragment", String.valueOf(data[0].getMaker_id()));
-
-//                Log.d("MakerFragment", data[0].getMaker_product_category());
-//                Log.d("MakerFragment", data[0].getMaker_key_word_lists().getKey_word_1());
-
-                mAdapter.addAll(Arrays.asList(data));
+                if(data != null) {
+                    Toast.makeText(getContext(), "성공 : " + data[0].getMaker_score(), Toast.LENGTH_SHORT).show();
+                    Log.d("MakerFragment", String.valueOf(data[0].getMaker_score()));
+                    Log.d("MakerFragment", String.valueOf(data[0].getMaker_id()));
+                    mAdapter.addAll(Arrays.asList(data));
+                }
                 dialogFragment.dismiss();
+
             }
 
             @Override

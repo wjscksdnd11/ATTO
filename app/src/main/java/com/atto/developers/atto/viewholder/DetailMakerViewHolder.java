@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
+import com.atto.developers.atto.networkdata.portfoliodata.PortfolioData;
 import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
@@ -42,9 +43,13 @@ public class DetailMakerViewHolder extends RecyclerView.ViewHolder {
             }
         });
     }
-    public void setImageData(MakerData makerData) {
+    public void setImageData(PortfolioData portfolioData) {
 
-        Glide.with(itemView.getContext()).load(makerData.getMader_representation_img()).into(portView);
+        if (portfolioData != null) {
+            portfolioData.getPortfolio_img_info();
+            String image = portfolioData.getPortfolio_img_info();
+                Glide.with(itemView.getContext()).load(image).into(portView);
+            }
+        }
 
-    }
 }

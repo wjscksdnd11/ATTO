@@ -39,7 +39,7 @@ public class AccountLeaveActivity extends AppCompatActivity {
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        toolbar.setTitle(R.string.activity_my_page);
+        toolbar.setTitle(R.string.activity_account_leave);
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
 

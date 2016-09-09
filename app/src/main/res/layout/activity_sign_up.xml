@@ -71,6 +71,8 @@
                     android:hint="비밀번호"
                     android:inputType="textPassword"
                     android:maxLength="12"
+                    android:textColor="@color/white"
+
                     android:nextFocusDown="@+id/edit_signup_check_password"
                     android:textColorHighlight="@color/color_edit_line"
                     android:theme="@style/TextLabel" />
@@ -87,6 +89,8 @@
                     android:hint="비밀번호 확인"
                     android:inputType="textPassword"
                     android:maxLength="12"
+                    android:textColor="@color/white"
+
                     android:nextFocusDown="@+id/edit_signup_name"
                     android:theme="@style/TextLabel" />
 
@@ -101,6 +105,8 @@
                     android:drawableLeft="@drawable/ic_nickname"
                     android:drawablePadding="12dp"
                     android:hint="닉네임"
+                    android:textColor="@color/white"
+
                     android:inputType="text"
                     android:maxLength="6"
                     android:nextFocusDown="@+id/edit_signup_phonenumber"
@@ -118,6 +124,8 @@
                     android:hint="핸드폰"
                     android:inputType="phone"
                     android:maxLength="11"
+                    android:textColor="@color/white"
+
                     android:nextFocusDown="@+id/edit_signup_address"
                     android:theme="@style/TextLabel" />
 
@@ -135,6 +143,8 @@
                         android:layout_marginTop="10dp"
                         android:paddingLeft="8dp"
                         android:hint="주소"
+                        android:textColor="@color/white"
+
                         android:theme="@style/TextLabel" />
 
                     <Button
@@ -157,7 +167,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:textSize="12sp"
-                    android:textColor="@color/color_hint"
+                    android:textColor="@color/white"
                     android:id="@+id/text_signup_set_postcode" />
 
                 <android.support.v7.widget.AppCompatEditText

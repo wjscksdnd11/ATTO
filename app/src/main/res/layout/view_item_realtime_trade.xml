@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/activity_horizontal_margin">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/img_realtime_photo"
@@ -16,10 +15,10 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="12dp"
             android:background="@color/white" />
-
         <TextView
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:id="@+id/text_trade_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginBottom="4dp"
             android:layout_alignBottom="@+id/img_realtime_photo"
             android:layout_toRightOf="@+id/img_maker_profile"
             android:layout_toEndOf="@+id/img_maker_profile">
@@ -75,17 +75,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_above="@+id/img_maker_profile"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <TextView
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:id="@+id/text_trade_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Medium Text"
+            android:textColor="@color/white"
+            android:background="@drawable/text_price"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_alignBottom="@+id/img_realtime_photo"
             android:layout_alignParentRight="true"
@@ -97,7 +103,7 @@
             android:layout_height="wrap_content"
             android:text="Small Text"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/white"
             android:layout_alignBottom="@+id/text_trade_dday"
             android:layout_toLeftOf="@+id/text_trade_dday"
             android:layout_toStartOf="@+id/text_trade_dday" />
@@ -109,22 +115,26 @@
             android:background="@drawable/staus_shape"
             android:gravity="center"
             android:text="D-3"
+            android:textColor="@color/white"
+            android:layout_marginBottom="4dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_above="@+id/text_trade_price"
             android:layout_alignRight="@+id/text_trade_price"
             android:layout_alignEnd="@+id/text_trade_price" />
 
         <ImageView
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:id="@+id/img_maker_profile"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/image_shape"
             android:layout_alignBottom="@+id/img_realtime_photo"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
-</LinearLayout>
+
+</RelativeLayout>
 

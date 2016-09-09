@@ -84,13 +84,14 @@ public class MyTradeFragment extends Fragment {
         titleView.setText(tradeData.getTrade_title());
         keywordOneView.setText(tradeData.getTrade_product_category_1());
         keywordTwoView.setText(tradeData.getTrade_product_category_2());
-        priceView.setText(tradeData.getTrade_price());
+        int price = Integer.parseInt(tradeData.getTrade_price());
+        String s_price = String.format("%,d", price);
+        priceView.setText(s_price + "원");
         dDayView.setText(tradeData.getTrade_dday());
         limitDateView.setText(tradeData.getTrade_dtime());
         Glide.with(this)
                 .load(tradeData.getMember_info().getMember_profile_img())
                 .bitmapTransform(new CropCircleTransformation(getContext()))
-                .centerCrop()
                 .into(profileImageView);
         nickNameView.setText(tradeData.getMember_info().getMember_alias());
         statusView.setText(tradeData.getTrade_status() + "");

@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atto.developers.atto.adapter.MyPagerAdapter;
+import com.atto.developers.atto.manager.PropertyManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initToolBar();
+
+        Log.d("Cookie", PropertyManager.getInstance().getEmail());
+
 
         mAdapter = new MyPagerAdapter(getSupportFragmentManager());
 /*
@@ -154,9 +159,15 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MyPageActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_in_left);
+                if(PropertyManager.getInstance().getEmail().isEmpty() && PropertyManager.getInstance().getPassword().isEmpty()) {
+                    Toast.makeText(MainActivity.this, "로그인 후 이용가능합니다.", Toast.LENGTH_LONG).show();
+                } else {
+                    Intent intent = new Intent(MainActivity.this, MyPageActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_in_left);
+                }
+
+
             }
         });
 

@@ -36,10 +36,10 @@ public class SignUpRequest extends AbstractRequest<ResultMessage> {
     final static String E_MAIL = "member_email";
     final static String PASSWORD = "member_password";
     final static String NAME = "member_name";
-    final static String ZIP_CODE = "member_zipcode_1";
-    final static String ADRESS = "member_address_1";
+    final static String ZIP_CODE = "member_zipcode";
+    final static String ADRESS = "member_address";
     final static String PHONE_NUM = "member_phone";
-    final static String TOKEN = "registration_token";
+    final static String TOKEN = "member_registration_token";
 
     public SignUpRequest(Context context, String email, String password, String name, String zipcode, String adress_1, String phone, String registration_token) {
         HttpUrl url = getBaseUrlHttpsBuilder()

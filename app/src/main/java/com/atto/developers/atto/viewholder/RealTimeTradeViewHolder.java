@@ -10,6 +10,12 @@ import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.bumptech.glide.Glide;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
@@ -86,17 +92,23 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
         //mIvPhoto.setImageDrawable(tradeData.getTrad_ );
         //mIvProfile.setImageDrawable(tradeData.);
+        String[] status = itemView.getContext().getResources().getStringArray(R.array.status);
 
+        int dDay = 0;
         checkImageData(tradeData);
-        trade_status.setText(tradeData.getTrade_status() + "");
+        try {
+            dDay = checkDdaytest(tradeData.getTrade_dtime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        trade_status.setText(status[tradeData.getTrade_status()-1]);
         trade_title.setText(tradeData.getTrade_title());
         int price = Integer.parseInt(tradeData.getTrade_price());
         String s_price = String.format("%,d", price);
         trade_price.setText(s_price + "원");
-        trade_dday.setText(tradeData.getTrade_dday());
+        trade_dday.setText("D - " + dDay);
 //        trade_nickname.setText(tradeData.getMember_info().getMember_alias());
         trade_limit_date.setText(tradeData.getTrade_dtime());
-
         int[] keywordList = tradeData.getTrade_key_word_info();
         checkKeywordList(keywordList);
 
@@ -123,6 +135,18 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         }
 
     }
+
+    private int checkDdaytest(String trade_dtime) throws ParseException {
+        Calendar toTime = Calendar.getInstance();
+        long currentTiem = toTime.getTimeInMillis(); //롱탑?
+        SimpleDateFormat d = new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault());
+        Date trTime = d.parse(trade_dtime); //스트링 -> date변환X
+        long futureTime = trTime.getTime();
+        long diff = futureTime - currentTiem;
+        int day = (int) (diff / (1000 * 60 * 60 * 24));
+        return day;
+    }
+
     private void checkKeywordList(int[] keywordList) {
         if (keywordList != null) {
             for (int i = 0; i < keywordList.length; i++) {

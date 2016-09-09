@@ -16,6 +16,7 @@ import com.atto.developers.atto.fragment.ProgressDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.negodata.NegoData;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.atto.developers.atto.networkdata.tradedata.TradeListData;
 import com.atto.developers.atto.networkdata.tradedata.TradeListItemData;
 import com.atto.developers.atto.request.DetailTradeRequest;
@@ -30,6 +31,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class DetailTradeActivity extends AppCompatActivity {
+
 	private Unbinder mUnbinder;
 
 	@BindView(R.id.re_list)
@@ -47,6 +49,7 @@ public class DetailTradeActivity extends AppCompatActivity {
 	}
 
 	private void init() {
+
 		Intent intent = getIntent();
 		int tradeId = intent.getIntExtra("trade_id", -1);
 
@@ -88,16 +91,15 @@ public class DetailTradeActivity extends AppCompatActivity {
 		});
 	}
 
-	private void checkTradeData(final int tradeId) {
+	private void checkTradeData(int tradeId) {
 		DetailTradeRequest request = new DetailTradeRequest(this, "1", "1", "10", "10");
 		NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListItemData>() {
 			@Override
 			public void onSuccess(NetworkRequest<TradeListItemData> request, TradeListItemData result) {
-				TradeListItemData data = result;
+				TradeData data = result.getData();
+
 				if (data != null) {
-					mAdapter.setTradeData(result);
-					Log.d("DetailTradeActivity", "    성공 : " + data.getData().getTrade_id());
-					Toast.makeText(getApplicationContext(), "성공 : " + data.getData().getTrade_id(), Toast.LENGTH_SHORT).show();
+					mAdapter.setTradeData(data);
 					mDialogFragment.dismiss();
 				}else{
 					Log.d("DetailtradeActivity","실패");
@@ -107,21 +109,27 @@ public class DetailTradeActivity extends AppCompatActivity {
 			@Override
 			public void onFail(NetworkRequest<TradeListItemData> request, int errorCode, String errorMessage, Throwable e) {
 				Log.d("DetailTradeActivity", "실패: " + errorCode);
-				Toast.makeText(getApplicationContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
+				Toast.makeText(DetailTradeActivity.this, "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
 				mDialogFragment.dismiss();
 			}
 		});
 	}
 
 	private void checkNegoData(final int tradeId) {
-		NegoCardListRequest request = new NegoCardListRequest(this, String.valueOf(tradeId), "10", "10");
+		NegoCardListRequest request = new NegoCardListRequest(this, "1", "10", "10");
 		NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<NegoData>>() {
 			@Override
 			public void onSuccess(NetworkRequest<TradeListData<NegoData>> request, TradeListData<NegoData> result) {
 				NegoData[] data = result.getData();
 
-				mAdapter.addNego(Arrays.asList(data));
-				Log.d("DetailTradeActivity", "제작자성공 : " + data[0].getNegotiation_id());
+				if(data != null) {
+					if(data.length > 0) {
+						mAdapter.addNego(Arrays.asList(data));
+						Log.d("DetailTradeActivity", "제작자성공 : " + data[0].getNegotiation_id());
+
+					}
+				}
+
 			}
 
 			@Override

@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     tools:context="com.atto.developers.atto.fragment.RealTimeTradeFragment">
 
+
+
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_list"

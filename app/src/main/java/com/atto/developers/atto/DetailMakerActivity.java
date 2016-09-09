@@ -1,21 +1,23 @@
 package com.atto.developers.atto;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.atto.developers.atto.adapter.RecyclerDetailMakerAdapter;
 import com.atto.developers.atto.fragment.ProgressDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
-import com.atto.developers.atto.networkdata.ResultMessage;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
 import com.atto.developers.atto.networkdata.makerdata.MakerListItemData;
+import com.atto.developers.atto.networkdata.portfoliodata.PortfolioData;
+import com.atto.developers.atto.networkdata.portfoliodata.PortfolioListitemData;
 import com.atto.developers.atto.request.DetailMakerRequest;
 import com.atto.developers.atto.request.DetailPortfolioRequest;
 import com.atto.developers.atto.view.ItemOffsetDecoration;
@@ -56,7 +58,8 @@ public class DetailMakerActivity extends AppCompatActivity {
             @Override
             public void onAdapterItemClick(View view, MakerData makerData, int position) {
 
-                Toast.makeText(DetailMakerActivity.this, "position : " + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(DetailMakerActivity.this, DetailPortActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -73,9 +76,7 @@ public class DetailMakerActivity extends AppCompatActivity {
         String tid = "1";
         mAdapter.clear();
         detailMakerRequest(tid);
-//        detailPortFolioData(tid);
-
-
+        detailPortFolioData(tid);
     }
 
     private void detailMakerRequest(String tid) {
@@ -85,17 +86,13 @@ public class DetailMakerActivity extends AppCompatActivity {
             @Override
             public void onSuccess(NetworkRequest<MakerListItemData> request, MakerListItemData result) {
                 MakerData data = result.getData();
-                mAdapter.add(data);
-                for (int i = 0; i < 10; i++) {
-                    data.setMader_representation_img("http://cfile227.uf.daum.net/image/251FB64752FA49772D6348");
-                    mAdapter.add(data);
-                }
-                Toast.makeText(DetailMakerActivity.this, "성공 result : " + data.getMaker_id(), Toast.LENGTH_LONG).show();
+                if(data != null) mAdapter.add(data);
+                Log.d("DetailMakerActivity", "성공 result : " + data.getMaker_id());
                 dialogFragment.dismiss();
             }
             @Override
             public void onFail(NetworkRequest<MakerListItemData> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(DetailMakerActivity.this, "실패" + errorCode, Toast.LENGTH_LONG).show();
+                Log.d("DetailMakerActivity", "실패 : " + errorMessage);
                 dialogFragment.dismiss();
 
             }
@@ -105,14 +102,18 @@ public class DetailMakerActivity extends AppCompatActivity {
 
     private void detailPortFolioData(String tid) {
         DetailPortfolioRequest request = new DetailPortfolioRequest(this, tid);
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<PortfolioListitemData>() {
             @Override
-            public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
+            public void onSuccess(NetworkRequest<PortfolioListitemData> request, PortfolioListitemData result) {
 
+                PortfolioData portfolioData = result.getData();
+                if(portfolioData != null) {
+                    mAdapter.add(portfolioData);
+                }
             }
 
             @Override
-            public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
+            public void onFail(NetworkRequest<PortfolioListitemData> request, int errorCode, String errorMessage, Throwable e) {
 
             }
         });
