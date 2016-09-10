@@ -153,7 +153,6 @@ public class MyPageActivity extends AppCompatActivity {
 
                 String nickname = result.getData().getMember_alias();
                 String image_url = result.getData().getMember_profile_img();
-
                 checkSetImage(image_url);
                 nickNameView.setText(nickname);
                 dialogFragment.dismiss();
@@ -187,10 +186,12 @@ public class MyPageActivity extends AppCompatActivity {
             @Override
             public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
                 TradeData[] tradeData = result.getData();
+                if (tradeData != null) {
+                    if (tradeData.length > 0)
+                        adapter.addAll(Arrays.asList(tradeData));
+                    Log.d(this.toString(), "성공 : " + tradeData[0].getTrade_id());
 
-                if (tradeData.length > 0)
-                adapter.addAll(Arrays.asList(tradeData));
-                Log.d(this.toString(), "성공 : " + tradeData[0].getTrade_id());
+                }
             }
 
             @Override

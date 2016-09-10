@@ -72,8 +72,9 @@ public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
                     .bitmapTransform(new CropCircleTransformation(itemView.getContext())).into(maker_profile);
             Log.d("MakerFragment", "image url : " + makerData.getMaker_representation_img());
             ratingbar_maker_grade.setRating(makerData.getMaker_score());
-            trade_category_one.setText(makerData.getMaker_key_word_lists() + "");
-            trade_category_two.setText(makerData.getMaker_key_word_lists() + "");
+            if(makerData.getMaker_product_category_info().length > 0) {
+                trade_category_one.setText(makerData.getMaker_product_category_info()[0] + "");
+            }
             trade_nickname.setText(makerData.getMaker_name());
         }
 

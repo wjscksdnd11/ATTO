@@ -63,12 +63,12 @@ public class DetailMakerHeaderViewHolder extends RecyclerView.ViewHolder {
         statusView.setText(makerData.getMaker_line_tag());
         Glide.with(itemView.getContext()).load(makerData.getMaker_representation_img())
                 .bitmapTransform(new CropCircleTransformation(itemView.getContext())).into(profileImageView);
-//        nickNameView.setText(makerData.getMaker_id());
+        nickNameView.setText(makerData.getMaker_name());
         ratingBar.setRating(makerData.getMaker_score());
-//        nickNameView.setText(makerData.get);
         introView.setText(makerData.getMaker_line_tag());
-        categoryOneView.setText(makerData.getMaker_product_category_1() + "");
-        categoryTwoView.setText(makerData.getMaker_product_category_2() + "");
+
+        categoryOneView.setText(makerData.getMaker_product_category_info()[0] + "");
+        categoryTwoView.setText(makerData.getMaker_product_category_info()[1] + "");
 
     }
 }

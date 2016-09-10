@@ -61,7 +61,6 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
 
         adapter.setItems(items);
 
-
         return view;
     }
 
@@ -89,13 +88,11 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
         return new AsymmetricGridViewAdapter(getContext(), listView, adapter);
     }
 
-
     private void setNumColumns(int numColumns) {
         listView.setRequestedColumnCount(numColumns);
         listView.determineColumns();
         listView.setAdapter(getNewAdapter());
     }
-
 
     @Override
     public void onItemClick(@NotNull AdapterView<?> parent, @NotNull View view, int position, long id) {

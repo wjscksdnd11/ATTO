@@ -3,6 +3,7 @@ package com.atto.developers.atto.asymmetricgridview;
 import android.os.Parcel;
 import android.support.annotation.NonNull;
 
+import com.atto.developers.atto.networkdata.portfoliodata.PortfolioData;
 import com.felipecsl.asymmetricgridview.library.model.AsymmetricItem;
 
 /**
@@ -13,6 +14,7 @@ public class DemoItem implements AsymmetricItem {
     private int columnSpan;
     private int rowSpan;
     private int position;
+    private PortfolioData portfolioData;
 
     public DemoItem() {
         this(1, 1, 0);

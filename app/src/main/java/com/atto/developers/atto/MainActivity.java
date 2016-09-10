@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(PropertyManager.getInstance().getEmail().isEmpty() && PropertyManager.getInstance().getPassword().isEmpty()) {
+                if(PropertyManager.getInstance().getEmail() == null) {
                     Toast.makeText(MainActivity.this, "로그인 후 이용가능합니다.", Toast.LENGTH_LONG).show();
                 } else {
                     Intent intent = new Intent(MainActivity.this, MyPageActivity.class);

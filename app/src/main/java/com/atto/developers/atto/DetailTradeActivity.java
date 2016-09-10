@@ -121,7 +121,6 @@ public class DetailTradeActivity extends AppCompatActivity {
 			@Override
 			public void onSuccess(NetworkRequest<TradeListData<NegoData>> request, TradeListData<NegoData> result) {
 				NegoData[] data = result.getData();
-
 				if(data != null) {
 					if(data.length > 0) {
 						mAdapter.addNego(Arrays.asList(data));
@@ -129,9 +128,7 @@ public class DetailTradeActivity extends AppCompatActivity {
 
 					}
 				}
-
 			}
-
 			@Override
 			public void onFail(NetworkRequest<TradeListData<NegoData>> request, int errorCode, String errorMessage, Throwable e) {
 				Toast.makeText(getApplicationContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();

@@ -5,8 +5,6 @@
     tools:context="com.atto.developers.atto.fragment.RealTimeTradeFragment">
 
 
-
-    <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
@@ -19,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btn_trade_add"
-        android:background="@color/color_btn"
+        android:background="@color/color_text_price"
         android:textColor="@color/white"
         android:layout_gravity="left|bottom"
         android:layout_alignParentBottom="true"

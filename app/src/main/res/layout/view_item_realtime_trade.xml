@@ -104,9 +104,9 @@
             android:text="Small Text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/white"
-            android:layout_alignBottom="@+id/text_trade_dday"
-            android:layout_toLeftOf="@+id/text_trade_dday"
-            android:layout_toStartOf="@+id/text_trade_dday" />
+            android:layout_above="@+id/text_trade_dday"
+            android:layout_alignRight="@+id/text_trade_dday"
+            android:layout_alignEnd="@+id/text_trade_dday" />
 
         <TextView
             android:id="@+id/text_trade_dday"

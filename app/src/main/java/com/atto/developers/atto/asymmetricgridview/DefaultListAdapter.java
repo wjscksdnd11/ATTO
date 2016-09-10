@@ -21,6 +21,7 @@ public class DefaultListAdapter extends ArrayAdapter<DemoItem> implements DemoAd
 
     private final LayoutInflater layoutInflater;
 
+
     public DefaultListAdapter(Context context, List<DemoItem> items) {
         super(context, 0, items);
         layoutInflater = LayoutInflater.from(context);

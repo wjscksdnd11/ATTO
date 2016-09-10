@@ -36,8 +36,8 @@ public class MakerFragment extends Fragment {
     RecyclerView listView;
     RecyclerMakerAdapter mAdapter;
 
-    private static final int VERTICAL_ITEM_SPACE = 6;
 
+    public final static String MAKER_ID = "maker_id";
 
     public MakerFragment() {
         // Required empty public constructor
@@ -74,6 +74,7 @@ public class MakerFragment extends Fragment {
             @Override
             public void onAdapterItemClick(View view, MakerData makerItemData, int position) {
                 Intent intent = new Intent(getContext(), DetailMakerActivity.class);
+                intent.putExtra(MAKER_ID, makerItemData.getMaker_id());
                 startActivity(intent);
             }
         });
@@ -87,6 +88,8 @@ public class MakerFragment extends Fragment {
         super.onResume();
         initData();
     }
+
+
 
     private void initData() {
 

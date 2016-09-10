@@ -106,7 +106,7 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         int price = Integer.parseInt(tradeData.getTrade_price());
         String s_price = String.format("%,d", price);
         trade_price.setText(s_price + "원");
-        trade_dday.setText("D - " + dDay);
+        trade_dday.setText("D " + dDay);
 //        trade_nickname.setText(tradeData.getMember_info().getMember_alias());
         trade_limit_date.setText(tradeData.getTrade_dtime());
         int[] keywordList = tradeData.getTrade_key_word_info();

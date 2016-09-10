@@ -1,6 +1,7 @@
 package com.atto.developers.atto.viewholder;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -18,6 +19,8 @@ import butterknife.ButterKnife;
 public class DetailMakerViewHolder extends RecyclerView.ViewHolder {
 
     MakerData makerData;
+    PortfolioData portfolioData;
+
     @BindView(R.id.img_mypage_port)
     ImageView portView;
 
@@ -43,13 +46,16 @@ public class DetailMakerViewHolder extends RecyclerView.ViewHolder {
             }
         });
     }
+
     public void setImageData(PortfolioData portfolioData) {
 
+        this.portfolioData = portfolioData;
+
         if (portfolioData != null) {
-            portfolioData.getPortfolio_img_info();
-            String image = portfolioData.getPortfolio_img_info();
-                Glide.with(itemView.getContext()).load(image).into(portView);
-            }
+            String image = portfolioData.getPortfolio_img();
+            Log.d("DetailMakerActivity", "사진 url : " + image);
+            Glide.with(itemView.getContext()).load(image).centerCrop().into(portView);
         }
+    }
 
 }

@@ -15,8 +15,7 @@
             android:layout_height="72dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:src="@drawable/sample_profile" />
+            android:layout_marginBottom="@dimen/activity_horizontal_margin" />
 
     </LinearLayout>
 
@@ -49,6 +48,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:background="@drawable/keyword_shapes"
+                android:textColor="@color/white"
                 android:text="#반려동물" />
 
             <TextView
@@ -58,6 +58,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/keyword_shapes"
+                android:textColor="@color/white"
                 android:text="#간식" />
         </LinearLayout>
 

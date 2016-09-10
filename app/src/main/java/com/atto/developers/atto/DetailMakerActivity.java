@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.atto.developers.atto.adapter.RecyclerDetailMakerAdapter;
+import com.atto.developers.atto.fragment.MakerFragment;
 import com.atto.developers.atto.fragment.ProgressDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
@@ -32,12 +33,16 @@ public class DetailMakerActivity extends AppCompatActivity {
 
     RecyclerDetailMakerAdapter mAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_maker);
         ButterKnife.bind(this);
         initToolBar();
+
+        Intent intent = getIntent();
+        int maker_id = intent.getIntExtra(MakerFragment.MAKER_ID, -1);
 
         mAdapter = new RecyclerDetailMakerAdapter();
         listView.setAdapter(mAdapter);
@@ -64,24 +69,23 @@ public class DetailMakerActivity extends AppCompatActivity {
             }
         });
 
-        initData();
+        initData(maker_id);
 
     }
 
     ProgressDialogFragment dialogFragment = new ProgressDialogFragment();
 
-    private void initData() {
+    private void initData(int maker_id) {
 
         dialogFragment.show(getSupportFragmentManager(), "progress");
-        String tid = "1";
         mAdapter.clear();
-        detailMakerRequest(tid);
-        detailPortFolioData(tid);
+        detailMakerRequest(maker_id);
+        detailPortFolioData(maker_id);
     }
 
-    private void detailMakerRequest(String tid) {
+    private void detailMakerRequest(int tid) {
 
-        DetailMakerRequest request = new DetailMakerRequest(this, tid);
+        DetailMakerRequest request = new DetailMakerRequest(this, String.valueOf(tid));
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MakerListItemData>() {
             @Override
             public void onSuccess(NetworkRequest<MakerListItemData> request, MakerListItemData result) {
@@ -100,8 +104,8 @@ public class DetailMakerActivity extends AppCompatActivity {
 
     }
 
-    private void detailPortFolioData(String tid) {
-        DetailPortfolioRequest request = new DetailPortfolioRequest(this, tid);
+    private void detailPortFolioData(int tid) {
+        DetailPortfolioRequest request = new DetailPortfolioRequest(this, String.valueOf(tid));
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<PortfolioListitemData>() {
             @Override
             public void onSuccess(NetworkRequest<PortfolioListitemData> request, PortfolioListitemData result) {
@@ -109,12 +113,14 @@ public class DetailMakerActivity extends AppCompatActivity {
                 PortfolioData portfolioData = result.getData();
                 if(portfolioData != null) {
                     mAdapter.add(portfolioData);
+                    Log.d("DetailMakerActivity", portfolioData.getPortfolio_img());
+
                 }
             }
 
             @Override
             public void onFail(NetworkRequest<PortfolioListitemData> request, int errorCode, String errorMessage, Throwable e) {
-
+                Log.d("DetailMakerActivity", "실패 : " + errorMessage);
             }
         });
 
