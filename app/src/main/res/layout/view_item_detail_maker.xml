@@ -5,7 +5,7 @@
     android:layout_marginBottom="8dp"
     android:background="@color/white">
 
-    <TextView
+    <!--<TextView
         android:id="@+id/text_detail_maker_signed"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
@@ -17,13 +17,12 @@
         android:gravity="center"
         android:text="Large Text"
         android:textColor="@color/white"
-        android:textSize="14sp" />
+        android:textSize="14sp" />-->
 
     <ImageView
         android:id="@+id/img_detail_maker_profile"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignTop="@+id/text_detail_maker_signed"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp" />
@@ -36,7 +35,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp" />
 
-    <RatingBar
+    <!--<RatingBar
         android:id="@+id/ratingbar_detail_maker_grade"
         style="@style/myrating"
         android:layout_width="wrap_content"
@@ -44,7 +43,26 @@
         android:layout_below="@+id/text_detail_maker_nickname"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:rating="3.5" />
+        android:rating="3.5" />-->
+
+    <RatingBar
+        android:id="@+id/ratingbar_detail_maker_grade"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_gravity="left"
+        android:layout_below="@+id/text_detail_maker_nickname"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:progressDrawable="@drawable/custom_detail_ratingbar"
+        android:numStars="5"
+        android:stepSize="0.5"
+        android:rating="5"
+        android:layout_marginLeft="12dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:isIndicator="true"
+        />
 
     <TextView
         android:id="@+id/text_detail_maker_intro"

@@ -33,6 +33,12 @@ public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.text_detail_maker_nickname)
     TextView trade_nickname;
 
+    @BindView(R.id.text_detail_maker_line_tag)
+    TextView trade_lineTag;
+
+    @BindView(R.id.ratingbar_maker_grade_text)
+    TextView ratingText;
+
     MakerData makerData;
 
     public interface OnMakerItemClickListener {
@@ -71,11 +77,23 @@ public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
             Glide.with(itemView.getContext()).load(makerData.getMaker_representation_img())
                     .bitmapTransform(new CropCircleTransformation(itemView.getContext())).into(maker_profile);
             Log.d("MakerFragment", "image url : " + makerData.getMaker_representation_img());
+
+            String score = String.valueOf(makerData.getMaker_score());
             ratingbar_maker_grade.setRating(makerData.getMaker_score());
-            if(makerData.getMaker_product_category_info().length > 0) {
-                trade_category_one.setText(makerData.getMaker_product_category_info()[0] + "");
+            ratingText.setText("(" + score+ ")");
+
+            int categoryInfo[] = makerData.getMaker_product_category_info();
+            TextView categoryViews[] = {trade_category_one, trade_category_one};
+            if(categoryInfo != null) {
+                for(int num : categoryInfo) {
+                    for(TextView number : categoryViews) {
+                        number.setText(num + "");
+                    }
+                }
             }
             trade_nickname.setText(makerData.getMaker_name());
+            trade_lineTag.setText(makerData.getMaker_line_tag());
+
         }
 
     }

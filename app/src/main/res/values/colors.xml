@@ -40,4 +40,5 @@
     <color name="color_transparent_black">#50000000</color>
 
     <color name="color_text_price">#8000A388</color>
+    <color name="color_keyword">#809F0A97</color>
 </resources>

@@ -22,8 +22,6 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  */
 public class DetailMakerHeaderViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.text_detail_maker_signed)
-    TextView statusView;
 
     @BindView(R.id.img_detail_maker_profile)
     ImageView profileImageView;
@@ -53,20 +51,18 @@ public class DetailMakerHeaderViewHolder extends RecyclerView.ViewHolder {
     public DetailMakerHeaderViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
-        statusView.bringToFront();
+//        statusView.bringToFront();
     }
 
     public void setHeaderData(MakerData makerData) {
         this.makerData = makerData;
         Toast.makeText(itemView.getContext(), makerData.getMaker_representation_img(), Toast.LENGTH_LONG).show();
 
-        statusView.setText(makerData.getMaker_line_tag());
         Glide.with(itemView.getContext()).load(makerData.getMaker_representation_img())
                 .bitmapTransform(new CropCircleTransformation(itemView.getContext())).into(profileImageView);
         nickNameView.setText(makerData.getMaker_name());
         ratingBar.setRating(makerData.getMaker_score());
         introView.setText(makerData.getMaker_line_tag());
-
         categoryOneView.setText(makerData.getMaker_product_category_info()[0] + "");
         categoryTwoView.setText(makerData.getMaker_product_category_info()[1] + "");
 

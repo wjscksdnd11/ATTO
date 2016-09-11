@@ -43,6 +43,8 @@ public class DetailMakerActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int maker_id = intent.getIntExtra(MakerFragment.MAKER_ID, -1);
+        Log.d("DetailMakerActivity", "makerId : " + maker_id);
+
 
         mAdapter = new RecyclerDetailMakerAdapter();
         listView.setAdapter(mAdapter);
@@ -53,7 +55,6 @@ public class DetailMakerActivity extends AppCompatActivity {
                 return mAdapter.isHeader(position) ? manager.getSpanCount() : 1;
             }
         });
-
 
         ItemOffsetDecoration itemDecoration = new ItemOffsetDecoration(this, R.dimen.item_offset);
         listView.addItemDecoration(itemDecoration);

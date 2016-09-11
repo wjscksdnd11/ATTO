@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.atto.developers.atto.DetailPortActivity;
 import com.atto.developers.atto.R;
@@ -16,6 +15,11 @@ import com.atto.developers.atto.asymmetricgridview.DefaultListAdapter;
 import com.atto.developers.atto.asymmetricgridview.DemoAdapter;
 import com.atto.developers.atto.asymmetricgridview.DemoItem;
 import com.atto.developers.atto.asymmetricgridview.DemoUtils;
+import com.atto.developers.atto.manager.NetworkManager;
+import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
+import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.request.TradeListRequest;
 import com.felipecsl.asymmetricgridview.library.Utils;
 import com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridView;
 import com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridViewAdapter;
@@ -23,6 +27,7 @@ import com.felipecsl.asymmetricgridview.library.widget.AsymmetricGridViewAdapter
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,6 +36,9 @@ import java.util.List;
 public class AttoFragment extends Fragment implements AdapterView.OnItemClickListener {
     AsymmetricGridView listView;
     DemoAdapter adapter;
+
+    public final static String TRADE_ID = "trade_id";
+
 
     private final DemoUtils demoUtils = new DemoUtils();
 
@@ -57,8 +65,7 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
 
         final List<DemoItem> items = new ArrayList<>();
         // initialize your items array
-        adapter = new DefaultListAdapter(getContext(), demoUtils.moarItems(0));
-
+        adapter = new DefaultListAdapter(getContext());
         adapter.setItems(items);
 
         return view;
@@ -73,15 +80,14 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
 
     private void init() {
 
+        getDataRequest();
         demoUtils.currentOffset = 0;
-        adapter.setItems(demoUtils.moarItems(30));
-        adapter.appendItems(demoUtils.moarItems(30));
         listView.setAllowReordering(true);
-        listView.setRequestedColumnCount(3);
         listView.setRequestedHorizontalSpacing(Utils.dpToPx(getContext(), 3));
         listView.setDebugging(true);
         listView.setOnItemClickListener(this);
         setNumColumns(3);
+
     }
 
     private AsymmetricGridViewAdapter getNewAdapter() {
@@ -96,9 +102,28 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
 
     @Override
     public void onItemClick(@NotNull AdapterView<?> parent, @NotNull View view, int position, long id) {
-        Toast.makeText(getContext(), "item : " + position, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getContext(), DetailPortActivity.class);
+        intent.putExtra(TRADE_ID, position);
         startActivity(intent);
+    }
+
+    public void getDataRequest() {
+        TradeListRequest request = new TradeListRequest(getContext(), "1", "30");
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
+            @Override
+            public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
+                TradeData[] tradeDatas = result.getData();
+                if (tradeDatas != null) {
+                    if (tradeDatas.length > 0) {
+                        adapter.setItems(demoUtils.moreItems(tradeDatas.length, Arrays.asList(tradeDatas)));
+                    }
+                }
+            }
+            @Override
+            public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
+
+            }
+        });
     }
 
 }
