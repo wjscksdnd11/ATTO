@@ -8,6 +8,12 @@
         <item>제작완료</item>
         <item>배송완료</item>
     </string-array>
-    
-    
+
+    <string-array name="titles">
+        <item>ATTO</item>
+        <item>TRADE</item>
+        <item>MAKER</item>
+    </string-array>
+
+
 </resources>

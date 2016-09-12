@@ -119,8 +119,12 @@ public class DetailTradeActivity extends AppCompatActivity {
 			public void onSuccess(NetworkRequest<ListData<NegoData>> request, ListData<NegoData> result) {
 				Log.e(TAG, "Nego onSuccess 성공 : " + result);
 				NegoData[] data = result.getData();
-				mAdapter.addNego(Arrays.asList(data));
-
+				if(data != null) {
+					if(data.length > 0) {
+						mAdapter.addNego(Arrays.asList(data));
+						Log.d("DetailTradeActivity", "제작자성공 : " + data[0].getNegotiation_id());
+					}
+				}
 			}
 
 

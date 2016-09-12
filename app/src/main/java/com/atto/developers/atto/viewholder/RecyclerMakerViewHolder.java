@@ -78,9 +78,9 @@ public class RecyclerMakerViewHolder extends RecyclerView.ViewHolder {
                     .bitmapTransform(new CropCircleTransformation(itemView.getContext())).into(maker_profile);
             Log.d("MakerFragment", "image url : " + makerData.getMaker_representation_img());
 
-            String score = String.valueOf(makerData.getMaker_score());
-            ratingbar_maker_grade.setRating(makerData.getMaker_score());
-            ratingText.setText("(" + score+ ")");
+            String score = String.valueOf(makerData.getMaker_score() / 2);
+            ratingbar_maker_grade.setRating(makerData.getMaker_score() / 2);
+            ratingText.setText("(" + score + ")");
 
             int categoryInfo[] = makerData.getMaker_product_category_info();
             TextView categoryViews[] = {trade_category_one, trade_category_one};

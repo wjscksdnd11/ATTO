@@ -115,7 +115,6 @@ public class DetailMakerActivity extends AppCompatActivity {
                 if(portfolioData != null) {
                     mAdapter.add(portfolioData);
                     Log.d("DetailMakerActivity", portfolioData.getPortfolio_img());
-
                 }
             }
 
