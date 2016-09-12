@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,12 +15,15 @@ import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.manager.PropertyManager;
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.atto.developers.atto.networkdata.userdata.FacebookUserData;
+import com.atto.developers.atto.networkdata.userdata.LoginData;
+import com.atto.developers.atto.request.FacebookLoginRequest;
 import com.atto.developers.atto.request.LocalLoginRequest;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.DefaultAudience;
@@ -52,16 +56,16 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.edit_login_password)
     AppCompatEditText passwordView;
 //    @BindView(R.id.login_button)
-com.facebook.login.widget.LoginButton loginButton;
 
 
-
+    LoginButton loginButton;
     CallbackManager callbackManager;
     LoginManager mLoginManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
@@ -102,13 +106,37 @@ com.facebook.login.widget.LoginButton loginButton;
 
 
     }
+    public void checkUser(LoginResult loginResult){
+        String token = loginResult.getAccessToken().getToken();
+        FacebookLoginRequest request = new FacebookLoginRequest(this,token);
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<LoginData>() {
+            @Override
+            public void onSuccess(NetworkRequest<LoginData> request, LoginData result) {
 
+                Toast.makeText(LoginActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+                moveMainActivity();
+
+            }
+
+            @Override
+            public void onFail(NetworkRequest<LoginData> request, int errorCode, String errorMessage, Throwable e) {
+                if(isLogin()){
+                    //
+                };
+
+            }
+        });
+    }
     public void facebooklogin() {
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(LoginActivity.this, "facebook login success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "facebook login success : "+loginResult.getAccessToken().getToken(), Toast.LENGTH_SHORT).show();
+                Log.i("token",loginResult.getAccessToken().getToken());
+                checkUser(loginResult);
+
+
             }
 
             @Override
@@ -121,6 +149,7 @@ com.facebook.login.widget.LoginButton loginButton;
 
             }
         });
+
 
 //        facebookButton = (Button) findViewById(R.id.btn_login);
 //        facebookButton.setOnClickListener(new View.OnClickListener() {

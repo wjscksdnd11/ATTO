@@ -3,9 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.ResultMessage;
-import com.atto.developers.atto.networkdata.userdata.FacebookLogin;
-import com.atto.developers.atto.networkdata.userdata.FacebookUserData;
+import com.atto.developers.atto.networkdata.userdata.LoginData;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -22,7 +20,7 @@ import okhttp3.RequestBody;
 //access_token: 페이스북에서 넘겨 받은 토큰 (필수)
 //        /auth/facebook/token
 
-public class FacebookLoginRequest extends AbstractRequest<FacebookLogin<FacebookUserData>> {
+public class FacebookLoginRequest extends AbstractRequest<LoginData> {
     Request mRequest;
     private final static String AUTH = "auth";
     private final static String FACEBOOK ="facebook";
@@ -39,6 +37,7 @@ public class FacebookLoginRequest extends AbstractRequest<FacebookLogin<Facebook
 
         RequestBody body = new FormBody.Builder()
                 .add(ACCESS_TOKEN, access_token)
+                .add("member_registration_token","1234")
                 .build();
 
         mRequest = new Request.Builder()
@@ -52,7 +51,7 @@ public class FacebookLoginRequest extends AbstractRequest<FacebookLogin<Facebook
 
     @Override
     protected Type getType() {
-        return new TypeToken<ResultMessage>(){}.getType();
+        return new TypeToken<LoginData>(){}.getType();
     }
 
     @Override
