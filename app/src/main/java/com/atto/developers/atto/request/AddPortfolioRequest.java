@@ -2,7 +2,7 @@ package com.atto.developers.atto.request;
 
 import android.content.Context;
 
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
@@ -26,7 +26,7 @@ file_name : 포트 폴리오 제목
         예시) /portfolioes
 */
 
-public class AddPortfolioRequest extends AbstractRequest<FacebookLoginData> {
+public class AddPortfolioRequest extends AbstractRequest<ResultMessage> {
     Request mRequest;
     MediaType jpeg = MediaType.parse("image/jpeg");
     // 포트폴리오 등록
@@ -69,7 +69,7 @@ public class AddPortfolioRequest extends AbstractRequest<FacebookLoginData> {
 
     @Override
     protected Type getType() {
-        return new TypeToken<FacebookLoginData>() {
+        return new TypeToken<ResultMessage>() {
         }.getType();
     }
 

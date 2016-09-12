@@ -3,7 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
@@ -18,7 +18,7 @@ import okhttp3.RequestBody;
 /**
  * Created by Tacademy on 2016-09-02.
  */
-public class UpdateTradeRequest  extends AbstractRequest<FacebookLoginData> {
+public class UpdateTradeRequest  extends AbstractRequest<ResultMessage> {
 
     Request mRequest;
 
@@ -89,7 +89,7 @@ public class UpdateTradeRequest  extends AbstractRequest<FacebookLoginData> {
 
     @Override
     protected Type getType() {
-        return new TypeToken<FacebookLoginData>() {
+        return new TypeToken<ResultMessage>() {
         }.getType();
     }
 

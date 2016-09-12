@@ -15,7 +15,7 @@ import com.atto.developers.atto.fragment.CompleteDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.manager.PropertyManager;
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.atto.developers.atto.request.SignUpRequest;
 
 import butterknife.BindView;
@@ -74,9 +74,9 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(this, "잘못된 입력입니다.", Toast.LENGTH_LONG).show();
         } else {
             SignUpRequest request = new SignUpRequest(this, email, password, name, postCode, address, phone, registration_token);
-            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<FacebookLoginData>() {
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
                 @Override
-                public void onSuccess(NetworkRequest<FacebookLoginData> request, FacebookLoginData result) {
+                public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
                     Log.i("result", result.getMessage());
                     Toast.makeText(SignUpActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
                     PropertyManager.getInstance().setEmail(email);
@@ -88,7 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFail(NetworkRequest<FacebookLoginData> request, int errorCode, String errorMessage, Throwable e) {
+                public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
 
                     Log.e("error", request + " , " + errorCode + " , " + errorMessage);
                 }

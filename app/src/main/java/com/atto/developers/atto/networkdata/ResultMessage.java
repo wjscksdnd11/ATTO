@@ -4,7 +4,7 @@ package com.atto.developers.atto.networkdata;
 import java.io.Serializable;
 
 //메세지 처리 데이터 클래스
-public class FacebookLoginData implements Serializable {
+public class ResultMessage implements Serializable {
 
     private String message;
     private int code;

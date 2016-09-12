@@ -25,7 +25,7 @@ import android.widget.Toast;
 
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.atto.developers.atto.request.UpdateMyProfileRequest;
 import com.bumptech.glide.Glide;
 
@@ -120,12 +120,12 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
         UpdateMyProfileRequest request = new UpdateMyProfileRequest(this, member_zipconde_1, member_phone, member_address_1, member_alias, member_profile_img);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
             @Override
-            public void onSuccess(NetworkRequest<FacebookLoginData> request, FacebookLoginData result) {
+            public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
                 Toast.makeText(MyPageSetProfileActivity.this, "성공 : " + result.getMessage(), Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFail(NetworkRequest<FacebookLoginData> request, int errorCode, String errorMessage, Throwable e) {
+            public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
                 Toast.makeText(MyPageSetProfileActivity.this, "실패 : " + errorCode, Toast.LENGTH_LONG).show();
 
 

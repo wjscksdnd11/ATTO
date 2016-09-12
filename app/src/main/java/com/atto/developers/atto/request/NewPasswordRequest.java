@@ -3,7 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -16,7 +16,7 @@ import okhttp3.RequestBody;
 /**
  * Created by Tacademy on 2016-09-01.
  */
-public class NewPasswordRequest extends AbstractRequest<FacebookLoginData> {
+public class NewPasswordRequest extends AbstractRequest<ResultMessage> {
 
     private final static String MEMBERS = "members";
     private final static String ME ="me";
@@ -47,7 +47,7 @@ public class NewPasswordRequest extends AbstractRequest<FacebookLoginData> {
     }
     @Override
     protected Type getType() {
-        return new TypeToken<FacebookLoginData>(){}.getType();
+        return new TypeToken<ResultMessage>(){}.getType();
     }
 
     @Override

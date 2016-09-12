@@ -3,7 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -29,7 +29,7 @@ import okhttp3.ResponseBody;
 //        member_registration_token: 회원의 GCM 토큰 정보 (필수)
 //
 //        예시) /members
-public class SignUpRequest extends AbstractRequest<FacebookLoginData> {
+public class SignUpRequest extends AbstractRequest<ResultMessage> {
     Request mRequest;
 
     final static String MEMBERS = "members";
@@ -71,17 +71,17 @@ public class SignUpRequest extends AbstractRequest<FacebookLoginData> {
     }
 
     @Override
-    protected FacebookLoginData parse(ResponseBody body) throws IOException {
+    protected ResultMessage parse(ResponseBody body) throws IOException {
         String text = body.string();
         Gson gson = new Gson();
-        FacebookLoginData temp = gson.fromJson(text, getType());
+        ResultMessage temp = gson.fromJson(text, getType());
         Log.i("result", text);
         return temp;
     }
 
     @Override
     protected Type getType() {
-        return new TypeToken<FacebookLoginData>() {
+        return new TypeToken<ResultMessage>() {
         }.getType();
     }
 }

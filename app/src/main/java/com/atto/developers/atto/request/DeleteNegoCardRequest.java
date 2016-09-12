@@ -3,7 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -16,7 +16,7 @@ import okhttp3.Request;
  */
 
 //18. 협상카드 삭제
-public class DeleteNegoCardRequest extends AbstractRequest<FacebookLoginData> {
+public class DeleteNegoCardRequest extends AbstractRequest<ResultMessage> {
 
 
     Request mRequest;
@@ -42,7 +42,7 @@ public class DeleteNegoCardRequest extends AbstractRequest<FacebookLoginData> {
 
     @Override
     protected Type getType() {
-        return new TypeToken<FacebookLoginData>(){}.getType();
+        return new TypeToken<ResultMessage>(){}.getType();
     }
 
     @Override

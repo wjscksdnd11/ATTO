@@ -11,7 +11,7 @@ import com.atto.developers.atto.manager.FontManager;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.manager.PropertyManager;
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.atto.developers.atto.request.LocalLoginRequest;
 import com.hanks.htextview.HTextView;
 import com.hanks.htextview.HTextViewType;
@@ -78,14 +78,14 @@ public class SplashActivity extends AppCompatActivity {
             String password = PropertyManager.getInstance().getPassword();
             String regid = PropertyManager.getInstance().getRegistrationId();
             LocalLoginRequest request = new LocalLoginRequest(this, email, password, regid);
-            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<FacebookLoginData>() {
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
                 @Override
-                public void onSuccess(NetworkRequest<FacebookLoginData> request, FacebookLoginData result) {
+                public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
                     moveMainActivity();
                 }
 
                 @Override
-                public void onFail(NetworkRequest<FacebookLoginData> request, int errorCode, String errorMessage, Throwable e) {
+                public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
                     moveLoginActivity();
                 }
             });

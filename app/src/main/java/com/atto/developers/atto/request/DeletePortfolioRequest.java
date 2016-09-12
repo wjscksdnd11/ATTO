@@ -2,7 +2,7 @@ package com.atto.developers.atto.request;
 
 import android.content.Context;
 
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -13,7 +13,7 @@ import okhttp3.Request;
 /**
  * Created by Tacademy on 2016-09-06.
  */
-public class DeletePortfolioRequest extends AbstractRequest<FacebookLoginData> {
+public class DeletePortfolioRequest extends AbstractRequest<ResultMessage> {
     Request mRequest;
 private final static String PORTFOLIO = "portfolioes";
 
@@ -31,7 +31,7 @@ private final static String PORTFOLIO = "portfolioes";
 
     @Override
     protected Type getType() {
-        return new TypeToken<FacebookLoginData>(){}.getType();
+        return new TypeToken<ResultMessage>(){}.getType();
     }
 
     @Override

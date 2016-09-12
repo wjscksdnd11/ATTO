@@ -3,7 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -31,7 +31,7 @@ import okhttp3.Request;
         /trades/1?action=productorder
 
  */
-public class DeleteTradeRequest extends AbstractRequest<FacebookLoginData>{
+public class DeleteTradeRequest extends AbstractRequest<ResultMessage>{
 //    거래글 삭제
     Request mRequest;
     private final static String TRADES = "trades";
@@ -56,7 +56,7 @@ public class DeleteTradeRequest extends AbstractRequest<FacebookLoginData>{
 
     @Override
     protected Type getType() {
-        return new TypeToken<FacebookLoginData>(){}.getType();
+        return new TypeToken<ResultMessage>(){}.getType();
     }
 
     @Override

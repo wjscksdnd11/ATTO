@@ -3,7 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
@@ -27,7 +27,7 @@ import okhttp3.RequestBody;
 //        member_gender: 회원 성별(number/malel - 1 female -0)
 //        member_profile_img: 회원 프로필 사진
 
-public class UpdateMyProfileRequest extends AbstractRequest<FacebookLoginData> {
+public class UpdateMyProfileRequest extends AbstractRequest<ResultMessage> {
 
     Request mRequest;
 
@@ -84,7 +84,7 @@ public class UpdateMyProfileRequest extends AbstractRequest<FacebookLoginData> {
 
     @Override
     protected Type getType() {
-        return new TypeToken<FacebookLoginData>() {
+        return new TypeToken<ResultMessage>() {
         }.getType();
     }
 

@@ -13,7 +13,7 @@ import com.atto.developers.atto.AccountLeaveActivity;
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
-import com.atto.developers.atto.networkdata.FacebookLoginData;
+import com.atto.developers.atto.networkdata.ResultMessage;
 import com.atto.developers.atto.request.MemberLeaveRequest;
 
 import butterknife.ButterKnife;
@@ -45,14 +45,14 @@ public class CheckLeaveDialogFragment extends DialogFragment {
 
         AccountLeaveActivity callActivity = (AccountLeaveActivity) getActivity();
         MemberLeaveRequest request = new MemberLeaveRequest(getContext());
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<FacebookLoginData>() {
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
             @Override
-            public void onSuccess(NetworkRequest<FacebookLoginData> request, FacebookLoginData result) {
+            public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
                 Log.d("CheckDialogFramgment", "성공");
             }
 
             @Override
-            public void onFail(NetworkRequest<FacebookLoginData> request, int errorCode, String errorMessage, Throwable e) {
+            public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
                 Log.d("CheckDialogFramgment", "실패" + errorCode);
 
             }
