@@ -68,4 +68,7 @@
     <string name="key_maker_info">제작자 등록 정보</string>
     <string name="activity_account_leave">탈퇴하기</string>
     <string name="activity_about_atto">About atto</string>
+    <string name="loginFacebookButton">Login with Facebook</string>
+    <string name="logoutFacebookButton">Logout with Facebook</string>
+
 </resources>

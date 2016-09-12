@@ -103,7 +103,7 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         }
         trade_status.setText(status[tradeData.getTrade_status()-1]);
         trade_title.setText(tradeData.getTrade_title());
-        int price = Integer.parseInt(tradeData.getTrade_price());
+        int price = tradeData.getTrade_price();
         String s_price = String.format("%,d", price);
         trade_price.setText(s_price + "원");
         if(dDay < 0) {

@@ -84,7 +84,7 @@ public class MyTradeFragment extends Fragment {
         titleView.setText(tradeData.getTrade_title());
         keywordOneView.setText(tradeData.getTrade_product_category_1());
         keywordTwoView.setText(tradeData.getTrade_product_category_2());
-        int price = Integer.parseInt(tradeData.getTrade_price());
+        int price = tradeData.getTrade_price();
         String s_price = String.format("%,d", price);
         priceView.setText(s_price + "원");
         dDayView.setText(tradeData.getTrade_dday());

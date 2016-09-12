@@ -100,13 +100,19 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
         listView.setAdapter(getNewAdapter());
     }
 
+    List<TradeData> tradeDataList = new ArrayList<>();
+
+
     @Override
     public void onItemClick(@NotNull AdapterView<?> parent, @NotNull View view, int position, long id) {
-        Intent intent = new Intent(getContext(), DetailPortActivity.class);
-        intent.putExtra(TRADE_ID, position);
-        startActivity(intent);
-    }
 
+        int tradeId = tradeDataList.get(position).getTrade_id();
+        Intent intent = new Intent(getContext(), DetailPortActivity.class);
+        intent.putExtra(TRADE_ID, tradeId);
+        startActivity(intent);
+//        Toast.makeText(getContext(), "tradeId : " + tradeId, Toast.LENGTH_LONG).show();
+
+    }
     public void getDataRequest() {
         TradeListRequest request = new TradeListRequest(getContext(), "1", "30");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<TradeData>>() {
@@ -115,15 +121,22 @@ public class AttoFragment extends Fragment implements AdapterView.OnItemClickLis
                 TradeData[] tradeDatas = result.getData();
                 if (tradeDatas != null) {
                     if (tradeDatas.length > 0) {
+                        setTradeData(tradeDatas);
                         adapter.setItems(demoUtils.moreItems(tradeDatas.length, Arrays.asList(tradeDatas)));
                     }
                 }
             }
+
+
+
             @Override
             public void onFail(NetworkRequest<ListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
 
             }
         });
+    }
+    private void setTradeData(TradeData[] tradeDatas) {
+        this.tradeDataList = Arrays.asList(tradeDatas);
     }
 
 }
