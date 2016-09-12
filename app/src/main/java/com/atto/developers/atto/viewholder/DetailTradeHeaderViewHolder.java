@@ -1,5 +1,6 @@
 package com.atto.developers.atto.viewholder;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,6 +23,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by Tacademy on 2016-09-01.
@@ -66,7 +68,7 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 
 	TradeListItemData tradeListItemData;
 	TradeData tradeData;
-	//private Context mContext;
+	private Context mContext;
 
 
 	public DetailTradeHeaderViewHolder(View itemView) {
@@ -101,21 +103,21 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 	private void checkImageData(TradeListItemData tradeListItemData) {
 		if (tradeListItemData.getData().getTrade_product_img() != null) {
 			if (!TextUtils.isEmpty(tradeListItemData.getData().getTrade_product_img())) {
-				Glide.with(itemView.getContext()).load(tradeListItemData.getData().getTrade_product_img()).into(mIvPhoto);
+				Glide.with(itemView.getContext()).load(tradeListItemData.getData().getTrade_product_img()).centerCrop().into(mIvPhoto);
 			} else {
 				mIvPhoto.setImageResource(R.drawable.default_image);
 			}
 		}
 		if (tradeListItemData.getData().getTrade_product_imges_info() != null) {
-			if (!TextUtils.isEmpty(tradeListItemData.getData().getTrade_product_imges_info()[1])) {
-				Glide.with(itemView.getContext()).load(tradeListItemData.getData().getTrade_product_imges_info()[1]).into(mIvPhoto);
+			if (!TextUtils.isEmpty(tradeListItemData.getData().getTrade_product_imges_info()[0])) {
+				Glide.with(itemView.getContext()).load(tradeListItemData.getData().getTrade_product_imges_info()[0]).centerCrop().into(mIvPhoto);
 			} else {
 				mIvPhoto.setImageResource(R.drawable.default_image);
 			}
 		}
 		if(tradeListItemData.getData().getMember_info().getMember_profile_img() != null){
 			if(!TextUtils.isEmpty(tradeListItemData.getData().getMember_info().getMember_profile_img())){
-				Glide.with(itemView.getContext()).load(tradeListItemData.getData().getMember_info().getMember_profile_img()).into(mIvProfile);
+				Glide.with(itemView.getContext()).load(tradeListItemData.getData().getMember_info().getMember_profile_img()).bitmapTransform(new CropCircleTransformation(itemView.getContext())).into(mIvProfile);
 			}
 		}
 	}

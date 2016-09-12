@@ -5,12 +5,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.atto.developers.atto.fragment.MakerOrderDialogFragment;
 import com.atto.developers.atto.fragment.ReportDialogFragment;
@@ -21,31 +21,57 @@ import com.atto.developers.atto.networkdata.tradedata.ListData;
 import com.atto.developers.atto.request.NegoCardListRequest;
 import com.bumptech.glide.Glide;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class DetailNegoActivity extends AppCompatActivity {
-    @BindView(R.id.img_trade_profile)
-    ImageView trade_profile;
-    @BindView(R.id.text_trade_profile_nickname)
-    TextView trade_nickname;
-    @BindView(R.id.offer_price)
-    TextView offer_pice;
-    @BindView(R.id.text_trade_dday)
-    TextView trade_dday;
-    @BindView(R.id.limit_date)
-    TextView limit_date;
-    @BindView(R.id.text_trade_remain_time)
-    TextView trade_remain_time;
-    @BindView(R.id.ratingbar_maker_grade)
-    RatingBar maker_grade;
-    @BindView(R.id.img_add_port_photo)
-    ImageView img_add_port_photo;
-    @BindView(R.id.text_trade_maker_contents)
-    TextView trade_maker_contents;
+    private static final String TAG = DetailNegoActivity.class.getSimpleName();
+    private List<NegoData> mNegoListData = new ArrayList<>();
+    //private List<NegoData> mNegoData = new ArrayList<>();
 
-    NegoData negoData;
+    @BindView(R.id.img_maker_profile)
+    ImageView mIvProfile;
+
+    @BindView(R.id.img_add_port_photo)
+    ImageView mIvPortPhoto;
+
+    @BindView(R.id.text_maker_profile_nickname)
+    TextView mTvNickName;
+
+    @BindView(R.id.offer_price)
+    TextView mTvOfferPrice;
+
+    @BindView(R.id.text_trade_dday)
+    TextView mTvDDay;
+
+    @BindView(R.id.limit_date)
+    TextView mTvLimitDate;
+
+    @BindView(R.id.text_trade_remain_time)
+    TextView mRemainTime;
+
+    @BindView(R.id.ratingbar_maker_grade)
+    RatingBar mRbMakerGrade;
+
+    @BindView(R.id.ratingbar_maker_grade_text)
+    TextView mRbMakerScore;
+
+    public void addAll(List<NegoData> list) {
+        if (!mNegoListData.isEmpty()) mNegoListData.clear();
+        mNegoListData.addAll(list);
+    }
+
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
@@ -87,75 +113,74 @@ public class DetailNegoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initToolBar();
         Intent intent = getIntent();
-        int Nego_id = intent.getIntExtra("Negotiation_id", -1);
+        int Nego_id = intent.getIntExtra("Nego_Id", -1);
+
         initData(Nego_id);
     }
 
-    private void initData(final int Nego_id) {
-        NegoCardListRequest request = new NegoCardListRequest(this, Nego_id + "", "10", "10");
+    private void initData(int Nego_id) {
+        NegoCardListRequest request = new NegoCardListRequest(this, Nego_id + "", "", "10");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<NegoData>>() {
             @Override
             public void onSuccess(NetworkRequest<ListData<NegoData>> request, ListData<NegoData> result) {
                 NegoData[] data = result.getData();
-                if (data.length > 0) {
-                    for (int i = 0; i < data.length; i++) {
-                        if (data[i].getNegotiation_id() == Nego_id) {
-                           // setNegoDataList(Nego_id);
-                        }
-                    }
-                }
+                mNegoListData.addAll(Arrays.asList(data));
+                checkNegoset(mNegoListData);
+                Log.e(TAG, "Nego onSuccess 성공 : " + result);
 
-                Log.d(this.toString(), "협상카드상세성공 : " + result.getMessage());
             }
 
             @Override
             public void onFail(NetworkRequest<ListData<NegoData>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(getApplicationContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Trade onFail 실패: " + errorCode);
             }
         });
-
     }
 
-    private void setNegoData(NegoData negoData) {
-        checkImageData(negoData);
-        trade_nickname.setText(negoData.getMaker_info().getMaker_name());
-        //ratingbar_maker_grade.setRating(negoData.getMaker_info().getMaker_score());
-        offer_pice.setText(negoData.getNegotiation_price() + "원");
-        // calenderDday(data[0]);
-        limit_date.setText(negoData.getNegotiation_dtime()); //yyyy-mm-dd까지
-        //trade_remain_time; //24시간 알림
-        //trade_maker_contents.setText(negoData.);
-    }
+    private void checkNegoset(List<NegoData> mNegoListData) {
+        try {
+            if (mNegoListData != null) {
+                for (int i = 0; i < mNegoListData.size(); i++) {
+                    checkImageData(mNegoListData.get(i));
+                    checkDdayData(mNegoListData.get(i));
+                    mTvNickName.setText(mNegoListData.get(i).getMaker_info().getMaker_name());
+                    mTvOfferPrice.setText(String.valueOf(mNegoListData.get(i).getNegotiation_price() + "원"));
+                    mTvLimitDate.setText(mNegoListData.get(i).getNegotiation_dtime());
 
-    private void checkImageData(NegoData data) {
-        if (data.getMaker_info().getMaker_profile_img() != null) {
-            Glide.with(this).load(data.getMaker_info().getMaker_profile_img()).into(trade_profile);
-
-        } else {
-            img_add_port_photo.setImageResource(R.drawable.default_image);
-        }
-        if (data.getNegotiation_product_imges_info() != null) {
-            Glide.with(this).load(data.getNegotiation_product_imges_info()).into(img_add_port_photo);
-        } else {
-            trade_profile.setImageResource(R.drawable.default_image);
+                    String score = String.valueOf(mNegoListData.get(i).getMaker_info().getMaker_score() / 2);
+                    mRbMakerGrade.setRating(mNegoListData.get(i).getMaker_info().getMaker_score() / 2);
+                    mRbMakerScore.setText("(" + score + ")");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
+    private void checkImageData(NegoData negoData) {
+        if (negoData.getMaker_info().getMaker_profile_img() != null) {
+            if (!TextUtils.isEmpty(negoData.getMaker_info().getMaker_profile_img())) {
+                Glide.with(getApplicationContext()).load(negoData.getMaker_info().getMaker_profile_img()).bitmapTransform(new CropCircleTransformation(getApplicationContext())).into(mIvProfile);
+            }
+        }
+        if (negoData.getNegotiation_product_imges_info() != null) {
+            if (!TextUtils.isEmpty(negoData.getNegotiation_product_imges_info()[0])) {
+                Glide.with(getApplicationContext()).load(negoData.getNegotiation_product_imges_info()[1]).centerCrop().into(mIvPortPhoto);
+            } else {
+                mIvPortPhoto.setImageResource(R.drawable.default_image);
+            }
+        }
+    }
 
-//    private void calenderDday(NegoData negoData) {
-//        String[] data = negoData
-//
-//        Calendar a = Calendar.getInstance();
-//        long currentTiem = a.getTimeInMillis();
-//        a.set(Calendar.YEAR, Calendar.MONTH-1, Calendar.DAY_OF_MONTH);
-//
-//        Calendar b = Calendar.getInstance(TimeZone.getTimeZone(negoData.getNegotiation_dtime()));
-//        long futureTime = b.getTimeInMillis();
-//        b.set();
-//        long diff = futureTime - currentTiem;
-//        int day = (int) (diff / (1000 * 60 * 60 * 24));
-//       \
-//    }
-
-
+    private void checkDdayData(NegoData negoData) throws ParseException {
+        Calendar toTime = Calendar.getInstance();
+        long currentTiem = toTime.getTimeInMillis();
+        SimpleDateFormat d = new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault());
+        String negoTime = negoData.getNegotiation_dtime();
+        Date trTime = d.parse(negoTime);
+        long futureTime = trTime.getTime();
+        long diff = futureTime - currentTiem;
+        int day = (int) (diff / (1000 * 60 * 60 * 24));
+        mTvDDay.setText("D" + day);
+    }
 }

@@ -2,7 +2,6 @@ package com.atto.developers.atto.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,7 +11,7 @@ import com.atto.developers.atto.networkdata.userdata.MyProfileData;
 /**
  * Created by Tacademy on 2016-08-25.
  */
-public class MyPageViewHolder extends RecyclerView.ViewHolder {
+public class MypageViewHolder extends RecyclerView.ViewHolder {
 
 
     ImageView my_page_profile;
@@ -33,7 +32,7 @@ public class MyPageViewHolder extends RecyclerView.ViewHolder {
         this.listener = listener;
     }
 
-    public MyPageViewHolder(View itemView) {
+    public MypageViewHolder(View itemView) {
         super(itemView);
         my_page_profile = (ImageView) itemView.findViewById(R.id.my_page_img_trade_profile);
         my_page_staus = (TextView) itemView.findViewById(R.id.my_page_text_trade_staus);

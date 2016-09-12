@@ -26,9 +26,10 @@ import java.util.Arrays;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 public class DetailTradeActivity extends AppCompatActivity {
-
+	private Unbinder mUnbinder;
 	private static final String TAG = DetailTradeActivity.class.getSimpleName();
 
 	@BindView(R.id.re_list)
@@ -40,30 +41,24 @@ public class DetailTradeActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail_trade);
-		ButterKnife.bind(this);
-		initToolBar();
+		mUnbinder = ButterKnife.bind(this);
 
 		Intent intent = getIntent();
 		int trade_Id = intent.getIntExtra("trade_id", -1);
+		init(trade_Id);
+	}
 
-
-
+	private void init(int trade_Id) {
+		initToolBar();
 		mDialogFragment = new ProgressDialogFragment();
 		mDialogFragment.show(getSupportFragmentManager(), "detail_trade");
 		mAdapter = new RecyclerDetailTradeAdapter();
 		mListView.setAdapter(mAdapter);
 		mListView.setLayoutManager(new LinearLayoutManager(this));
 		mListView.addItemDecoration(new DividerItemDecoration(this, R.drawable.divider));
-		mAdapter.setOnAdapterItemClickListener(new RecyclerDetailTradeAdapter.OnAdapterItemClickLIstener() {
-			@Override
-			public void onAdapterItemClick(View view, NegoData negoData, int position) {
-				Intent intent = new Intent(DetailTradeActivity.this, DetailNegoActivity.class);
-				intent.putExtra("Nego_id", negoData.getNegotiation_id());
-				startActivity(intent);
-			}
-		});
 		initData(trade_Id);
 	}
+
 
 	private void initData(int trade_Id) {
 		checkTradeData(trade_Id);
@@ -93,7 +88,7 @@ public class DetailTradeActivity extends AppCompatActivity {
 
 	private void checkTradeData(final int trade_Id) {
 
-		DetailTradeRequest request = new DetailTradeRequest(this, trade_Id+"", "1", "1", "1");
+		DetailTradeRequest request = new DetailTradeRequest(this, trade_Id + "", "1", "1", "1");
 		NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListItemData>() {
 			@Override
 			public void onSuccess(NetworkRequest<TradeListItemData> request, TradeListItemData result) {
@@ -103,6 +98,7 @@ public class DetailTradeActivity extends AppCompatActivity {
 				mDialogFragment.dismiss();
 
 			}
+
 			@Override
 			public void onFail(NetworkRequest<TradeListItemData> request, int errorCode, String errorMessage, Throwable e) {
 				Log.e(TAG, "Trade onFail 실패: " + errorCode);
@@ -113,25 +109,26 @@ public class DetailTradeActivity extends AppCompatActivity {
 
 	private void checkNegoData(int trade_id) {
 
-		NegoCardListRequest request = new NegoCardListRequest(this, trade_id+"", "", "10");
+		NegoCardListRequest request = new NegoCardListRequest(this, trade_id + "", "", "10");
 		NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<NegoData>>() {
 			@Override
 			public void onSuccess(NetworkRequest<ListData<NegoData>> request, ListData<NegoData> result) {
 				Log.e(TAG, "Nego onSuccess 성공 : " + result);
 				NegoData[] data = result.getData();
-				if(data != null) {
-					if(data.length > 0) {
-						mAdapter.addNego(Arrays.asList(data));
-						Log.d("DetailTradeActivity", "제작자성공 : " + data[0].getNegotiation_id());
-					}
-				}
+				mAdapter.addAll(Arrays.asList(data));
 			}
-
 
 			@Override
 			public void onFail(NetworkRequest<ListData<NegoData>> request, int errorCode, String errorMessage, Throwable e) {
 				Log.e(TAG, "Nego onFail 실패: " + errorCode);
 			}
 		});
+	}
+
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		mUnbinder.unbind();
 	}
 }

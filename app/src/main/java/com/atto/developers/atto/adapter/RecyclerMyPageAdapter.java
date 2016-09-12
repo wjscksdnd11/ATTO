@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.userdata.MyProfileData;
-import com.atto.developers.atto.viewholder.MyPageViewHolder;
+import com.atto.developers.atto.viewholder.MypageViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by Tacademy on 2016-08-26.
  */
-public class RecyclerMyPageAdapter extends RecyclerView.Adapter<MyPageViewHolder> implements MyPageViewHolder.OnMyPageClickListener {
+public class RecyclerMyPageAdapter extends RecyclerView.Adapter<MypageViewHolder> implements MypageViewHolder.OnMyPageClickListener {
 
     List<MyProfileData> items = new ArrayList<>();
 
@@ -37,15 +37,15 @@ public class RecyclerMyPageAdapter extends RecyclerView.Adapter<MyPageViewHolder
     }
 
     @Override
-    public MyPageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MypageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item_mypage, parent, false);
-        MyPageViewHolder holder = new MyPageViewHolder(view);
+        MypageViewHolder holder = new MypageViewHolder(view);
         return holder;
 
     }
 
     @Override
-    public void onBindViewHolder(MyPageViewHolder holder, int position) {
+    public void onBindViewHolder(MypageViewHolder holder, int position) {
         holder.setMypageData(items.get(position));
 
     }
