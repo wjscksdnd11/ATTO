@@ -19,10 +19,10 @@ public class DetailPortfolioRequest extends AbstractRequest<PortfolioListitemDat
 
     private final static String PORTFOLIO = "portfolioes";
 
-    public DetailPortfolioRequest(Context context, String tid) {
+    public DetailPortfolioRequest(Context context, String pid) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(PORTFOLIO)
-                .addPathSegment(tid)
+                .addPathSegment(pid)
                 .build();
         mRequest = new Request.Builder()
                 .url(url)

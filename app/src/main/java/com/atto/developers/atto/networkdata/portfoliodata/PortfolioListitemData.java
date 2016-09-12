@@ -6,7 +6,8 @@ package com.atto.developers.atto.networkdata.portfoliodata;
 public class PortfolioListitemData implements java.io.Serializable {
 
     private PortfolioData data;
-
+    private String message;
+    private int code;
     public PortfolioData getData() {
         return data;
     }
@@ -31,7 +32,6 @@ public class PortfolioListitemData implements java.io.Serializable {
         this.code = code;
     }
 
-    private String message;
-    private int code;
+
 
 }

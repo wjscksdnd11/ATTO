@@ -8,7 +8,7 @@ public class TradeData implements java.io.Serializable {
     private static final long serialVersionUID = -7123457291554300083L;
     private int trade_id;
     private String trade_title;
-    private String trade_price;
+    private int trade_price;
     private String trade_dtime;
     private String trade_dday;
     private String[] trade_product_imges_info;// null 가능
@@ -60,11 +60,11 @@ public class TradeData implements java.io.Serializable {
         this.trade_title = trade_title;
     }
 
-    public String getTrade_price() {
+    public int getTrade_price() {
         return this.trade_price;
     }
 
-    public void setTrade_price(String trade_price) {
+    public void setTrade_price(int trade_price) {
         this.trade_price = trade_price;
     }
 

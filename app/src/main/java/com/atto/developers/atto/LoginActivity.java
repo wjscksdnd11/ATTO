@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void checkUser(LoginResult loginResult){
         String token = loginResult.getAccessToken().getToken();
-        FacebookLoginRequest request = new FacebookLoginRequest(this,token);
+        FacebookLoginRequest request = new FacebookLoginRequest(this,token,"1234");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<LoginData>() {
             @Override
             public void onSuccess(NetworkRequest<LoginData> request, LoginData result) {
