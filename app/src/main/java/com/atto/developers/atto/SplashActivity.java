@@ -12,7 +12,15 @@ import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.manager.PropertyManager;
 import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.networkdata.userdata.LoginData;
+import com.atto.developers.atto.request.FacebookLoginRequest;
 import com.atto.developers.atto.request.LocalLoginRequest;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.hanks.htextview.HTextView;
 import com.hanks.htextview.HTextViewType;
 
@@ -20,6 +28,9 @@ public class SplashActivity extends AppCompatActivity {
 
     Handler mHandler;
     HTextView hTextView;
+
+    LoginManager loginManager;
+    CallbackManager callbackManager;
 
 
     @Override
@@ -39,13 +50,16 @@ public class SplashActivity extends AppCompatActivity {
         mHandler = new Handler(Looper.getMainLooper());
         loginSharedPreference();
 
-    }
+        loginManager = LoginManager.getInstance();
+        callbackManager = CallbackManager.Factory.create();
 
+    }
     private void moveMainActivity() {
         Intent intent = new Intent(SplashActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
+
 
     private void moveLoginActivity() {
         mHandler.postDelayed(new Runnable() {
@@ -60,12 +74,99 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void loginSharedPreference() {
-        if (isAutoLogin()) {
+        if (isFacebookLogin()) {
+            processFacebookLogin();
+        } else if (isAutoLogin()) {
             processAutoLogin();
         } else {
             moveLoginActivity();
         }
     }
+
+    private boolean isFacebookLogin() {
+        if (!TextUtils.isEmpty(PropertyManager.getInstance().getFacebookId())) {
+            return true;
+        }
+        return false;
+    }
+
+    private void processFacebookLogin() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if (!accessToken.getUserId().equals(PropertyManager.getInstance().getFacebookId())) {
+            resetFacebookAndMoveLoginActivity();
+            return;
+        }
+        if (accessToken != null) {
+            String token = accessToken.getToken();
+            String regId = PropertyManager.getInstance().getRegistrationId();
+            FacebookLoginRequest request = new FacebookLoginRequest(this, token);
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<LoginData>() {
+                @Override
+                public void onSuccess(NetworkRequest<LoginData> request, LoginData result) {
+                    if (result.getCode() == 1) {
+                        moveMainActivity();
+                    } else {
+                        resetFacebookAndMoveLoginActivity();
+                    }
+                }
+
+                @Override
+                public void onFail(NetworkRequest<LoginData> request, int errorCode, String errorMessage, Throwable e) {
+                    loginManager.logOut();
+                    facebookLogin();
+                }
+            });
+        } else {
+            facebookLogin();
+        }
+    }
+
+    private void facebookLogin() {
+        loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult result) {
+                AccessToken accessToken = AccessToken.getCurrentAccessToken();
+                if (!accessToken.getUserId().equals(PropertyManager.getInstance().getFacebookId())) {
+                    resetFacebookAndMoveLoginActivity();
+                    return;
+                }
+                FacebookLoginRequest request = new FacebookLoginRequest(SplashActivity.this, accessToken.getToken());
+                NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<LoginData>() {
+                    @Override
+                    public void onSuccess(NetworkRequest<LoginData> request, LoginData result) {
+                        if (result.getCode() == 1) {
+                            moveMainActivity();
+                        } else {
+                            resetFacebookAndMoveLoginActivity();
+                        }
+                    }
+
+                    @Override
+                    public void onFail(NetworkRequest<LoginData> request, int errorCode, String errorMessage, Throwable e) {
+                        resetFacebookAndMoveLoginActivity();
+                    }
+                });
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+        loginManager.logInWithReadPermissions(this, null);
+    }
+
+    private void resetFacebookAndMoveLoginActivity() {
+        loginManager.logOut();
+        PropertyManager.getInstance().setFacebookId("");
+        moveLoginActivity();
+    }
+
 
     private boolean isAutoLogin() {
         String email = PropertyManager.getInstance().getEmail();

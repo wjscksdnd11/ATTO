@@ -65,6 +65,7 @@ public class DetailMakerActivity extends AppCompatActivity {
             public void onAdapterItemClick(View view, MakerData makerData, int position) {
 
                 Intent intent = new Intent(DetailMakerActivity.this, DetailPortActivity.class);
+//                Toast.makeText(DetailMakerActivity.this, "position : " + position, Toast.LENGTH_LONG).show();
                 startActivity(intent);
 
             }
@@ -79,7 +80,6 @@ public class DetailMakerActivity extends AppCompatActivity {
     private void initData(int maker_id) {
 
         dialogFragment.show(getSupportFragmentManager(), "progress");
-        mAdapter.clear();
         detailMakerRequest(maker_id);
         detailPortFolioData(maker_id);
     }
@@ -91,7 +91,7 @@ public class DetailMakerActivity extends AppCompatActivity {
             @Override
             public void onSuccess(NetworkRequest<MakerListItemData> request, MakerListItemData result) {
                 MakerData data = result.getData();
-                if(data != null) mAdapter.add(data);
+                if(data != null) mAdapter.setMakerData(data);
                 Log.d("DetailMakerActivity", "성공 result : " + data.getMaker_id());
                 dialogFragment.dismiss();
             }
@@ -113,7 +113,9 @@ public class DetailMakerActivity extends AppCompatActivity {
 
                 PortfolioData portfolioData = result.getData();
                 if(portfolioData != null) {
-                    mAdapter.add(portfolioData);
+                    for(int i = 0; i < 10; i++) {
+                        mAdapter.add(portfolioData);
+                    }
                     Log.d("DetailMakerActivity", portfolioData.getPortfolio_img());
                 }
             }

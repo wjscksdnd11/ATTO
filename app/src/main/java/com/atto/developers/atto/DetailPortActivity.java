@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.atto.developers.atto.fragment.AttoFragment;
 import com.atto.developers.atto.manager.NetworkManager;
@@ -30,6 +31,13 @@ public class DetailPortActivity extends AppCompatActivity {
     @BindView(R.id.img_detail_port)
     ImageView portView;
     Random r = new Random();
+
+    @BindView(R.id.text_detail_port_title)
+    TextView titleView;
+
+    @BindView(R.id.text_detail_port_category)
+    TextView categoryView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,13 +54,14 @@ public class DetailPortActivity extends AppCompatActivity {
     }
 
     public void getDataRequest(int tradeId) {
-        DetailTradeRequest request = new DetailTradeRequest(this, String.valueOf(tradeId), "1", "10", "10");
+        DetailTradeRequest request = new DetailTradeRequest(this, String.valueOf(tradeId), "", "", "");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListItemData>() {
             @Override
             public void onSuccess(NetworkRequest<TradeListItemData> request, TradeListItemData result) {
 
                 TradeData tradeData = result.getData();
-                setDetailImage(tradeData);
+                if(tradeData != null)
+                setDetailData(tradeData);
                 Log.d("DetailPortActivity", "성공 : " + tradeData.getTrade_product_img());
 
             }
@@ -65,10 +74,15 @@ public class DetailPortActivity extends AppCompatActivity {
 
     }
 
-    private void setDetailImage(TradeData tradeData) {
-        String image = tradeData.getTrade_product_img();
+    private void setDetailData(TradeData tradeData) {
 
-        Glide.with(this).load(image).centerCrop().into(portView);
+        String[] image = tradeData.getTrade_product_imges_info();
+        if(image != null) {
+            Glide.with(this).load(image[0]).into(portView);
+        }
+        titleView.setText(tradeData.getTrade_title());
+        categoryView.setText("# "+tradeData.getTrade_key_word_info()[0] + "");
+
     }
 
     @OnClick(R.id.btn_detail_port_move_trade)

@@ -88,7 +88,7 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 				checkDdaytest(tradeListItemData);
 				mTvStatus.setText(String.valueOf(tradeListItemData.getData().getTrade_status()));
 				mTvTitle.setText(tradeListItemData.getData().getTrade_title());
-				mTvPrice.setText(tradeListItemData.getData().getTrade_price().concat("원"));
+				mTvPrice.setText(tradeListItemData.getData().getTrade_price() + "원");
 				mTvNickName.setText(tradeListItemData.getData().getMember_info().getMember_alias());
 				mTvLimitDate.setText(tradeListItemData.getData().getTrade_dtime());
 			}

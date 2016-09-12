@@ -57,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
     AppCompatEditText passwordView;
 //    @BindView(R.id.login_button)
 
+    @BindView(R.id.btn_login)
+    TextView loginTextView;
 
     LoginButton loginButton;
     CallbackManager callbackManager;
@@ -94,7 +96,6 @@ public class LoginActivity extends AppCompatActivity {
         });
         callbackManager = CallbackManager.Factory.create();
         mLoginManager = LoginManager.getInstance();
-//        loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -106,9 +107,21 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-    public void checkUser(LoginResult loginResult){
+
+    @OnClick(R.id.btn_login)
+    public void onLogin() {
+        if (isLogin()) {
+            logoutFacebook();
+            loginTextView.setText(getResources().getString(R.string.logoutFacebookButton));
+        } else {
+            loginFacebook();
+            loginTextView.setText(getResources().getString(R.string.loginFacebookButton));
+        }
+    }
+
+    public void checkUser(LoginResult loginResult) {
         String token = loginResult.getAccessToken().getToken();
-        FacebookLoginRequest request = new FacebookLoginRequest(this,token);
+        FacebookLoginRequest request = new FacebookLoginRequest(this, token);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<LoginData>() {
             @Override
             public void onSuccess(NetworkRequest<LoginData> request, LoginData result) {
@@ -120,20 +133,22 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFail(NetworkRequest<LoginData> request, int errorCode, String errorMessage, Throwable e) {
-                if(isLogin()){
+                if (isLogin()) {
                     //
-                };
+                }
+                ;
 
             }
         });
     }
+
     public void facebooklogin() {
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(LoginActivity.this, "facebook login success : "+loginResult.getAccessToken().getToken(), Toast.LENGTH_SHORT).show();
-                Log.i("token",loginResult.getAccessToken().getToken());
+                Toast.makeText(LoginActivity.this, "facebook login success : " + loginResult.getAccessToken().getToken(), Toast.LENGTH_SHORT).show();
+                Log.i("token", loginResult.getAccessToken().getToken());
                 checkUser(loginResult);
 
 
@@ -234,6 +249,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mLoginManager.logInWithPublishPermissions(this, Arrays.asList("publish_actions"));
     }
+
     private void readPost() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken != null) {
@@ -275,6 +291,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mLoginManager.logInWithReadPermissions(this, Arrays.asList("user_posts"));
     }
+
     private void getInfo() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken != null) {
@@ -367,6 +384,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(LoginActivity.this, "login manager...", Toast.LENGTH_SHORT).show();
+                checkUser(loginResult);
+
             }
 
             @Override
@@ -395,10 +414,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
     @OnClick(R.id.btn_local_login)
     public void onLocalLogin() {
-
 
         final String e_mail = emailView.getText().toString();
         final String password = passwordView.getText().toString();
@@ -408,7 +425,6 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "빈칸이 있습니다.", Toast.LENGTH_LONG).show();
 
         } else {
-
             LocalLoginRequest request = new LocalLoginRequest(this, e_mail, password, member_registration_token);
             NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
                 @Override
