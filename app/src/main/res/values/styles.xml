@@ -66,4 +66,14 @@
         <item name="actionMenuTextColor">@android:color/white</item>
     </style>
 
+    <style name="FacebookLoginButton">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:drawableLeft">@drawable/ic_facebook</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:gravity">center</item>
+        <!--<item name="android:background">@drawable/facebook_signin_btn</item>-->
+        <item name="android:layout_gravity">center</item>
+
+    </style>
 </resources>

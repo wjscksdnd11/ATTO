@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void checkUser(LoginResult loginResult){
         String token = loginResult.getAccessToken().getToken();
-        FacebookLoginRequest request = new FacebookLoginRequest(this,token,"1234");
+        FacebookLoginRequest request = new FacebookLoginRequest(this,token);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<LoginData>() {
             @Override
             public void onSuccess(NetworkRequest<LoginData> request, LoginData result) {
@@ -120,20 +120,22 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFail(NetworkRequest<LoginData> request, int errorCode, String errorMessage, Throwable e) {
-                if(isLogin()){
+                if (isLogin()) {
                     //
-                };
+                }
+                ;
 
             }
         });
     }
+
     public void facebooklogin() {
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(LoginActivity.this, "facebook login success : "+loginResult.getAccessToken().getToken(), Toast.LENGTH_SHORT).show();
-                Log.i("token",loginResult.getAccessToken().getToken());
+                Toast.makeText(LoginActivity.this, "facebook login success : " + loginResult.getAccessToken().getToken(), Toast.LENGTH_SHORT).show();
+                Log.i("token", loginResult.getAccessToken().getToken());
                 checkUser(loginResult);
 
 
@@ -234,6 +236,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mLoginManager.logInWithPublishPermissions(this, Arrays.asList("publish_actions"));
     }
+
     private void readPost() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken != null) {
@@ -275,6 +278,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mLoginManager.logInWithReadPermissions(this, Arrays.asList("user_posts"));
     }
+
     private void getInfo() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken != null) {
@@ -367,6 +371,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(LoginActivity.this, "login manager...", Toast.LENGTH_SHORT).show();
+                checkUser(loginResult);
+
             }
 
             @Override

@@ -11,12 +11,12 @@ public class TradeData implements java.io.Serializable {
     private int trade_price;
     private String trade_dtime;
     private String trade_dday;
+    private int trade_status;
     private String[] trade_product_imges_info;// null 가능
     private String trade_product_img;// null 가능
     private String trade_product_category_1;// null 가능
     private String trade_product_category_2;// null 가능
     private int[] trade_key_word_info;
-    private int trade_status;
     private Member_info member_info;
 
     public int[] getTrade_key_word_info() {

@@ -19,17 +19,24 @@ import java.util.List;
  */
 public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements DetailMakerViewHolder.OnMakerImageItemClickListener {
 
-    List<MakerData> items = new ArrayList<>();
+    private MakerData mMakerData;
+
     List<PortfolioData> portItems = new ArrayList<>();
 
     public boolean isHeader(int position) {
         return position == 0;
     }
 
+    public void setMakerData(MakerData mMakerData ) {
+        this.mMakerData = mMakerData ;
+    }
+
+/*
     public void add(MakerData makerData) {
         items.add(makerData);
         notifyDataSetChanged();
     }
+*/
 
     public void addAll(List<PortfolioData> list) {
         portItems.addAll(list);
@@ -41,23 +48,24 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
         notifyDataSetChanged();
     }
 
-    public void clear() {
-        items.clear();
-        notifyDataSetChanged();
-    }
-
     public static final int VIEW_TYPE_HEADER = 100;
     public static final int VIEW_TYPE_GROUP = 200;
 
+//    @Override
+//    public int getItemViewType(int position) {
+//        if (position == 0) return VIEW_TYPE_HEADER;
+//        position--;
+//        for (int i = 0; i < items.size(); i++) {
+//            if (position == 0) return VIEW_TYPE_GROUP;
+//            position--;
+//        }
+//        throw new IllegalArgumentException("invalid position");
+//    }
+
+
     @Override
     public int getItemViewType(int position) {
-        if (position == 0) return VIEW_TYPE_HEADER;
-        position--;
-        for (int i = 0; i < items.size(); i++) {
-            if (position == 0) return VIEW_TYPE_GROUP;
-            position--;
-        }
-        throw new IllegalArgumentException("invalid position");
+        return position == 0 ? VIEW_TYPE_HEADER : VIEW_TYPE_GROUP;
     }
 
     @Override
@@ -78,13 +86,40 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
         throw new IllegalArgumentException("invalid viewtype");
     }
 
+//    @Override
+//    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+//
+//        if (items.size() > 0) {
+//            if (position == 0) {
+//                DetailMakerHeaderViewHolder hvh = (DetailMakerHeaderViewHolder) holder;
+//                hvh.setHeaderData(items.get(position));
+//                return;
+//            }
+//            position--;
+//            for (int i = 0; i < portItems.size(); i++) {
+//                if (position == 0) {
+//                    if (holder.getItemViewType() != VIEW_TYPE_GROUP) {
+//                        throw new IllegalArgumentException("invalid view holder");
+//                    }
+//                    DetailMakerViewHolder gvh = (DetailMakerViewHolder) holder;
+//                    gvh.setImageData(portItems.get(i));
+//
+//                    return;
+//                }
+//                position--;
+//            }
+//            throw new IllegalArgumentException("invalid position");
+//        }
+//
+//
+//    }
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-        if (items.size() > 0) {
+        if (portItems.size() > 0) {
             if (position == 0) {
                 DetailMakerHeaderViewHolder hvh = (DetailMakerHeaderViewHolder) holder;
-                hvh.setHeaderData(items.get(position));
+                hvh.setHeaderData(mMakerData);
                 return;
             }
             position--;
@@ -94,16 +129,13 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
                         throw new IllegalArgumentException("invalid view holder");
                     }
                     DetailMakerViewHolder gvh = (DetailMakerViewHolder) holder;
-                    gvh.setImageData(portItems.get(position));
-
+                    gvh.setImageData(portItems.get(i));
                     return;
                 }
                 position--;
             }
             throw new IllegalArgumentException("invalid position");
         }
-
-
     }
 
 
@@ -123,7 +155,7 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
     public int getItemCount() {
         int count = 0;
         count++;
-        for (int i = 0; i < items.size(); i++) {
+        for (int i = 0; i < portItems.size(); i++) {
             count++;
         }
         return count;

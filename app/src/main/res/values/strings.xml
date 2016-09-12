@@ -157,4 +157,6 @@
     <string name="activity_about_atto">About atto</string>
 <!-- 페이스북 앱 id-->
     <string name="facebook_app_id">595957133909630</string>
+    <string name="loginFacebookButton">Login with Facebook</string>
+    <string name="logoutFacebookButton">Logout with Facebook</string>
 </resources>
