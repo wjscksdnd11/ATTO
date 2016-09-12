@@ -19,9 +19,12 @@ import okhttp3.RequestBody;
  * Created by Tacademy on 2016-09-02.
  */
 public class AddNegoCardRequest extends AbstractRequest<NegoData> {
-    //    협상카드 등록
+    //    협상카드 등록 url
     private final static String TRADE = "trades";
     private final static String NEGTIATION = "negotiations";
+
+
+    // 매개변수
     private final static String PRICE = "negotiation_price";
     private final static String DTIME = "negotiation_dtime";
     private final static String CONTENT = "negotiation_product_contents";

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
-import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.networkdata.tradedata.ListData;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -16,7 +16,7 @@ import okhttp3.Request;
  * Created by Tacademy on 2016-09-02.
  */
 
-public class MakerListRequest extends AbstractRequest<TradeListData<MakerData>> {
+public class MakerListRequest extends AbstractRequest<ListData<MakerData>> {
 //제작자 리스트 요청 - makerfragment
     Request mRequest;
 
@@ -40,7 +40,7 @@ public class MakerListRequest extends AbstractRequest<TradeListData<MakerData>> 
 
     @Override
     protected Type getType() {
-        return new TypeToken<TradeListData<MakerData>>(){}.getType();
+        return new TypeToken<ListData<MakerData>>(){}.getType();
     }
 
     @Override

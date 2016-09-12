@@ -24,7 +24,7 @@ import okhttp3.RequestBody;
 
     예시) /makers
 */
-
+ // 안쓰기로...
 public class AddMakerRequest extends AbstractRequest<MakerListItemData> {
     Request mRequest;
 //제작자 등록

@@ -12,6 +12,39 @@ public class MakerData implements java.io.Serializable {
     private int maker_product_category_2;
     private String maker_line_tag;// null 가능
     private float maker_score;
+    private String maker_name;
+    private int[] maker_product_category_info;
+
+    public int[] getMaker_product_category_info() {
+        return maker_product_category_info;
+    }
+
+    public void setMaker_product_category_info(int[] maker_product_category_info) {
+        this.maker_product_category_info = maker_product_category_info;
+    }
+
+    public String getMaker_name() {
+        return maker_name;
+    }
+
+    public void setMaker_name(String maker_name) {
+        this.maker_name = maker_name;
+    }
+
+    public String getMaker_achievement_count() {
+        return maker_achievement_count;
+    }
+
+    public void setMaker_achievement_count(String maker_achievement_count) {
+        this.maker_achievement_count = maker_achievement_count;
+    }
+
+    private String maker_achievement_count;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     private KeywordList maker_key_word_lists;
 
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.atto.developers.atto.networkdata.negodata.NegoData;
-import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.networkdata.tradedata.ListData;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -15,7 +15,7 @@ import okhttp3.Request;
 /**
  * Created by Tacademy on 2016-09-02.
  */
-public class NegoCardListRequest   extends AbstractRequest<TradeListData<NegoData>>{
+public class NegoCardListRequest   extends AbstractRequest<ListData<NegoData>>{
 
 //    협상카드 리스트
 
@@ -48,7 +48,7 @@ public class NegoCardListRequest   extends AbstractRequest<TradeListData<NegoDat
 
     @Override
     protected Type getType() {
-        return new TypeToken<TradeListData<NegoData>>(){}.getType();
+        return new TypeToken<ListData<NegoData>>(){}.getType();
     }
 
     @Override

@@ -18,7 +18,7 @@ import com.atto.developers.atto.adapter.RecyclerRealTimeTradeAdapter;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
-import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.networkdata.tradedata.ListData;
 import com.atto.developers.atto.request.TradeListRequest;
 import com.atto.developers.atto.view.DividerItemDecoration;
 
@@ -89,9 +89,9 @@ public class RealTimeTradeFragment extends Fragment {
         dialogFragment.show(getFragmentManager(), "progress");
         mAdapter.clear();
         TradeListRequest request = new TradeListRequest(getContext(), "10", "10");
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<TradeData>>() {
             @Override
-            public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
+            public void onSuccess(NetworkRequest<ListData<TradeData>> request, ListData<TradeData> result) {
                 TradeData[] data = result.getData();
                 Log.d("RealTimeTradeFragment", "성공 : " + data[0].getTrade_product_img());
                 mAdapter.addAll(Arrays.asList(data));
@@ -99,7 +99,7 @@ public class RealTimeTradeFragment extends Fragment {
             }
 
             @Override
-            public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
+            public void onFail(NetworkRequest<ListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
                 Log.d("RealTimeTradeFragment", "실패 : " + errorCode);
                 dialogFragment.dismiss();
             }

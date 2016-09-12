@@ -11,7 +11,7 @@ import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
-import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.networkdata.tradedata.ListData;
 import com.atto.developers.atto.request.MyTradeListRequest;
 
 public class MyPageMoreTradeActivity extends AppCompatActivity {
@@ -37,16 +37,16 @@ public class MyPageMoreTradeActivity extends AppCompatActivity {
     private void initData() {
 
         MyTradeListRequest request = new MyTradeListRequest(this, "1", "50");
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<TradeData>>() {
 
             @Override
-            public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
+            public void onSuccess(NetworkRequest<ListData<TradeData>> request, ListData<TradeData> result) {
                 TradeData[] tradeData = result.getData();
                 Log.d(this.toString(), "성공 : " + tradeData[0].getTrade_id());
             }
 
             @Override
-            public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
+            public void onFail(NetworkRequest<ListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
                 Log.d(this.toString(), "실패 errorCode : " + errorCode);
 
             }

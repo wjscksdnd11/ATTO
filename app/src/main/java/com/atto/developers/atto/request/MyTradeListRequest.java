@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
-import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.networkdata.tradedata.ListData;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -15,7 +15,7 @@ import okhttp3.Request;
 /**
  * Created by Tacademy on 2016-09-02.
  */
-public class MyTradeListRequest  extends AbstractRequest<TradeListData<TradeData>>{
+public class MyTradeListRequest  extends AbstractRequest<ListData<TradeData>>{
     Request mRequest;
     private final static String TRADES = "trades";
     private final static String PAGE_NO = "pageNo";
@@ -42,7 +42,7 @@ public class MyTradeListRequest  extends AbstractRequest<TradeListData<TradeData
 
     @Override
     protected Type getType() {
-        return new TypeToken<TradeListData<TradeData>>(){}.getType();
+        return new TypeToken<ListData<TradeData>>(){}.getType();
     }
 
     @Override

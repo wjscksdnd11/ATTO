@@ -8,7 +8,19 @@ public class PortfolioData implements java.io.Serializable {
     private String maker_id;
     private String[] portfolio_img_info;
     private String portfolio_id;
-    private KeywordList portfolio_key_word_lists;
+    private KeywordList portfolio_key_word_info;
+    private String maker_name;
+
+
+
+    public String getMaker_name() {
+        return maker_name;
+    }
+
+    public void setMaker_name(String maker_name) {
+        this.maker_name = maker_name;
+    }
+
 
     public String getMaker_id() {
         return this.maker_id;
@@ -34,11 +46,11 @@ public class PortfolioData implements java.io.Serializable {
         this.portfolio_id = portfolio_id;
     }
 
-    public KeywordList getPortfolio_key_word_lists() {
-        return this.portfolio_key_word_lists;
+    public KeywordList getPortfolio_key_word_info() {
+        return this.portfolio_key_word_info;
     }
 
-    public void setPortfolio_key_word_lists(KeywordList portfolio_key_word_lists) {
-        this.portfolio_key_word_lists = portfolio_key_word_lists;
+    public void setPortfolio_key_word_info(KeywordList portfolio_key_word_info) {
+        this.portfolio_key_word_info = portfolio_key_word_info;
     }
 }

@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
-import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.networkdata.tradedata.ListData;
 import com.atto.developers.atto.request.SearchListRequest;
 
 import butterknife.BindView;
@@ -40,14 +40,14 @@ public class UnifiedSearchActivity extends AppCompatActivity {
         String keywordId = "1";
 
         SearchListRequest request = new SearchListRequest(this, pageNumber, rowCount, keyword, keywordId);
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<TradeData>>() {
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<TradeData>>() {
             @Override
-            public void onSuccess(NetworkRequest<TradeListData<TradeData>> request, TradeListData<TradeData> result) {
+            public void onSuccess(NetworkRequest<ListData<TradeData>> request, ListData<TradeData> result) {
                 Toast.makeText(UnifiedSearchActivity.this, "search size : " + result.getData().length, Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFail(NetworkRequest<TradeListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
+            public void onFail(NetworkRequest<ListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
                 Toast.makeText(UnifiedSearchActivity.this, "실패", Toast.LENGTH_LONG).show();
 
             }

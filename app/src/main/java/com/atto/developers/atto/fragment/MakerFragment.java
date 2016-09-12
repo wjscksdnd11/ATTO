@@ -20,7 +20,7 @@ import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.makerdata.MakerData;
-import com.atto.developers.atto.networkdata.tradedata.TradeListData;
+import com.atto.developers.atto.networkdata.tradedata.ListData;
 import com.atto.developers.atto.request.MakerListRequest;
 import com.atto.developers.atto.view.DividerItemDecoration;
 
@@ -98,9 +98,9 @@ public class MakerFragment extends Fragment {
         dialogFragment.show(getFragmentManager(), "progress");
         mAdapter.clear();
         MakerListRequest request = new MakerListRequest(getContext(), "1", "10");
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListData<MakerData>>() {
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<MakerData>>() {
             @Override
-            public void onSuccess(NetworkRequest<TradeListData<MakerData>> request, TradeListData<MakerData> result) {
+            public void onSuccess(NetworkRequest<ListData<MakerData>> request, ListData<MakerData> result) {
                 MakerData[] data = result.getData();
                 Toast.makeText(getContext(), "성공 : " + data[0].getMaker_score(), Toast.LENGTH_SHORT).show();
                 Log.d("MakerFragment", String.valueOf(data[0].getMaker_score()));
@@ -114,7 +114,7 @@ public class MakerFragment extends Fragment {
             }
 
             @Override
-            public void onFail(NetworkRequest<TradeListData<MakerData>> request, int errorCode, String errorMessage, Throwable e) {
+            public void onFail(NetworkRequest<ListData<MakerData>> request, int errorCode, String errorMessage, Throwable e) {
                 Toast.makeText(getContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
 
                 dialogFragment.dismiss();
