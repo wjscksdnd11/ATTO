@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/view_img_maker_trade"
+    android:id="@+id/rl_img_detail_trade"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -31,7 +31,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="choiseokmine"
                 android:id="@+id/text_trade_profile_nickname"
                 android:layout_gravity="center_horizontal" />
 
@@ -56,8 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="10000원"
-                android:id="@+id/offer_pice"
+                android:id="@+id/offer_price"
                 android:layout_marginTop="50dp"
                 android:layout_marginLeft="25dp" />
         </LinearLayout>
@@ -73,7 +71,6 @@
             <TextView
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="D-13"
                 android:textColor="@color/white"
                 android:background="@drawable/staus_shape"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -87,7 +84,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="2016.08.26"
                 android:id="@+id/limit_date"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp" />

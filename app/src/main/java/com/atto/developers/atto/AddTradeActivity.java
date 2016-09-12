@@ -14,6 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -104,8 +105,7 @@ public class AddTradeActivity extends AppCompatActivity {
     @OnClick(R.id.text_add_trade_register_trade)
     public void onTradeRegister() {
         addData();
-        Intent intent = new Intent(AddTradeActivity.this, DetailTradeActivity.class);
-        startActivity(intent);
+
     }
 
 
@@ -142,27 +142,36 @@ public class AddTradeActivity extends AppCompatActivity {
         String trade_price = priceView.getText().toString();
         String trade_dtime = pickUpDateView.getText().toString();
         String trade_product_contents = inputContentView.getText().toString();
-        File imageFile = new File(file_path);
+        File imageFile = null;
+        if (file_path != null) {
+            imageFile = new File(file_path);
+        }
         File[] trade_product_images_info = {imageFile};
         String[] trade_key_words = {keywordOneView.getText().toString()};
 
-        AddTradeRequest request = new AddTradeRequest(this, trade_title, trade_product_category_1, trade_product_category_2,
-                trade_price, trade_dtime, trade_product_contents, trade_key_words, trade_product_images_info);
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListItemData>() {
+        if (TextUtils.isEmpty(trade_title) || TextUtils.isEmpty(trade_product_category_1) || TextUtils.isEmpty(trade_product_category_2) || TextUtils.isEmpty(trade_price)
+                || TextUtils.isEmpty(trade_dtime) || TextUtils.isEmpty(trade_product_contents) || imageFile == null || (trade_product_images_info.length > 0) || trade_key_words.length > 0) {
+            Toast.makeText(this, "잘못된 입력입니다.", Toast.LENGTH_LONG).show();
+        } else {
+            AddTradeRequest request = new AddTradeRequest(this, trade_title, trade_product_category_1, trade_product_category_2,
+                    trade_price, trade_dtime, trade_product_contents, trade_key_words, trade_product_images_info);
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListItemData>() {
 
+                @Override
+                public void onSuccess(NetworkRequest<TradeListItemData> request, TradeListItemData result) {
+                    TradeData tradeData = result.getData();
+                    Toast.makeText(AddTradeActivity.this, "성공 : " + tradeData.getTrade_id(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AddTradeActivity.this, DetailTradeActivity.class);
+                    startActivity(intent);
+                }
 
-            @Override
-            public void onSuccess(NetworkRequest<TradeListItemData> request, TradeListItemData result) {
-                TradeData tradeData = result.getData();
-                Toast.makeText(AddTradeActivity.this, "성공 : " + tradeData.getTrade_id(), Toast.LENGTH_SHORT).show();
-            }
+                @Override
+                public void onFail(NetworkRequest<TradeListItemData> request, int errorCode, String errorMessage, Throwable e) {
+                    Toast.makeText(AddTradeActivity.this, "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
 
-            @Override
-            public void onFail(NetworkRequest<TradeListItemData> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(AddTradeActivity.this, "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
-
-            }
-        });
+                }
+            });
+        }
 
     }
 

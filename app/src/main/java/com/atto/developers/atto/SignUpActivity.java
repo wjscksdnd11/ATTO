@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -62,31 +63,45 @@ public class SignUpActivity extends AppCompatActivity {
         final String email = emailView.getText().toString();
         final String password = passwordView.getText().toString();
         String name = nickNameView.getText().toString();
-        String zipcode = postCodeView.getText().toString();
-        String adress_1 = addressView.getText().toString();
+        String postCode = postCodeView.getText().toString();
+        String address = addressView.getText().toString();
         String phone = phoneNumberView.getText().toString();
-        String registration_token = PropertyManager.getInstance().getRegistrationId();
+        String registration_token = "1";
 
-        SignUpRequest request = new SignUpRequest(this, email, password, name, zipcode, adress_1, phone, registration_token);
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
 
-            @Override
-            public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
-                Log.i("result", result.getMessage());
-                Toast.makeText(SignUpActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
-                PropertyManager.getInstance().setEmail(email);
-                PropertyManager.getInstance().setPassword(password);
-                Toast.makeText(SignUpActivity.this, " 성공 :" + result.getMessage(), Toast.LENGTH_SHORT).show();
-                CompleteDialogFragment dialog = new CompleteDialogFragment();
-                dialog.show(getSupportFragmentManager(), "signup");
-            }
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(name) || TextUtils.isEmpty(postCode) ||
+                TextUtils.isEmpty(address) || TextUtils.isEmpty(phone)) {
+            Toast.makeText(this, "잘못된 입력입니다.", Toast.LENGTH_LONG).show();
+        } else {
+            SignUpRequest request = new SignUpRequest(this, email, password, name, postCode, address, phone, registration_token);
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
+                @Override
+                public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
+                    Log.i("result", result.getMessage());
+                    Toast.makeText(SignUpActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+                    PropertyManager.getInstance().setEmail(email);
+                    PropertyManager.getInstance().setPassword(password);
+                    Toast.makeText(SignUpActivity.this, " 성공 :" + result.getMessage(), Toast.LENGTH_SHORT).show();
+                    CompleteDialogFragment dialog = new CompleteDialogFragment();
+                    dialog.show(getSupportFragmentManager(), "signup");
+                    moveMainActivity();
+                }
 
-            @Override
-            public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
+                @Override
+                public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
 
-                Log.e("error", request + " , " + errorCode + " , " + errorMessage);
-            }
-        });
+                    Log.e("error", request + " , " + errorCode + " , " + errorMessage);
+                }
+            });
+        }
+
+
+    }
+
+    public void moveMainActivity() {
+        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @OnClick(R.id.btn_img_address)
@@ -126,6 +141,9 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 }
                 break;
+
+
         }
     }
+
 }

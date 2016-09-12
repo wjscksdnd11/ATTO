@@ -41,4 +41,6 @@ public class ListData<T> implements java.io.Serializable {
     public void setMessage(String message) {
         this.message = message;
     }
+
+
 }

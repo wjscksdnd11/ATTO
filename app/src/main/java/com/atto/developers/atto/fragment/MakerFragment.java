@@ -36,8 +36,8 @@ public class MakerFragment extends Fragment {
     RecyclerView listView;
     RecyclerMakerAdapter mAdapter;
 
-    private static final int VERTICAL_ITEM_SPACE = 6;
 
+    public final static String MAKER_ID = "maker_id";
 
     public MakerFragment() {
         // Required empty public constructor
@@ -74,6 +74,7 @@ public class MakerFragment extends Fragment {
             @Override
             public void onAdapterItemClick(View view, MakerData makerItemData, int position) {
                 Intent intent = new Intent(getContext(), DetailMakerActivity.class);
+                intent.putExtra(MAKER_ID, makerItemData.getMaker_id());
                 startActivity(intent);
             }
         });
@@ -88,9 +89,7 @@ public class MakerFragment extends Fragment {
         initData();
     }
 
-    String[] nicknames = {"Lana Delange", "Sueann Membreno", "Kent Huntoon", "Dione Kogut", "Chelsea Ribeiro", "Ruth Kearns",
-            "Maryanne Sweigart", "Chasidy Scheffer", "Kyla Seddon", "Trinh Farr", "Tandy Norby", "Augustus Helm", "Annabel Schenck",
-            "Lurlene Meares", "Micheline Vannote", "Coretta Salaam", "Anya Quesenberry", "Gavin Caskey", "Annie Nellum", "Hershel Parkman"};
+
 
     private void initData() {
 
@@ -102,15 +101,14 @@ public class MakerFragment extends Fragment {
             @Override
             public void onSuccess(NetworkRequest<ListData<MakerData>> request, ListData<MakerData> result) {
                 MakerData[] data = result.getData();
-                Toast.makeText(getContext(), "성공 : " + data[0].getMaker_score(), Toast.LENGTH_SHORT).show();
-                Log.d("MakerFragment", String.valueOf(data[0].getMaker_score()));
-                Log.d("MakerFragment", String.valueOf(data[0].getMaker_id()));
-
-//                Log.d("MakerFragment", data[0].getMaker_product_category());
-//                Log.d("MakerFragment", data[0].getMaker_key_word_lists().getKey_word_1());
-
-                mAdapter.addAll(Arrays.asList(data));
+                if(data != null) {
+                    Toast.makeText(getContext(), "성공 : " + data[0].getMaker_score(), Toast.LENGTH_SHORT).show();
+                    Log.d("MakerFragment", String.valueOf(data[0].getMaker_score()));
+                    Log.d("MakerFragment", String.valueOf(data[0].getMaker_id()));
+                    mAdapter.addAll(Arrays.asList(data));
+                }
                 dialogFragment.dismiss();
+
             }
 
             @Override
@@ -120,25 +118,6 @@ public class MakerFragment extends Fragment {
                 dialogFragment.dismiss();
             }
         });
-
-        /*mAdapter.clear();
-        Random r = new Random();
-        for (int i = 0; i < 20; i++) {
-            MakerData makerData = new MakerData();
-            KeywordList keywordList = new KeywordList();
-            keywordList.setKey_word_1("keyword : " + i);
-            makerData.setMaker_score(r.nextInt(5) + "");
-            makerData.setMaker_id(nicknames[i]);
-            makerData.setMaker_line_tag("tag " + i);
-            makerData.setMaker_key_word_lists(keywordList);
-            makerData.setMaker_product_category("category 1 ");
-            makerData.setMaker_product_category_1("category 2");
-            makerData.setMaker_product_category_2("category 3");
-            makerData.setMaker_score(r.nextInt(5) + "");
-            mAdapter.add(makerData);
-
-        }*/
-
     }
 
 }

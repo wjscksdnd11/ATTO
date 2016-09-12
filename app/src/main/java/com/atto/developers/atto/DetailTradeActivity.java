@@ -9,16 +9,17 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.atto.developers.atto.adapter.RecyclerDetailTradeAdapter;
+import com.atto.developers.atto.fragment.ProgressDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.negodata.NegoData;
-import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.atto.developers.atto.networkdata.tradedata.ListData;
+import com.atto.developers.atto.networkdata.tradedata.TradeListItemData;
+import com.atto.developers.atto.request.DetailTradeRequest;
 import com.atto.developers.atto.request.NegoCardListRequest;
-import com.atto.developers.atto.request.TradeListRequest;
+import com.atto.developers.atto.view.DividerItemDecoration;
 
 import java.util.Arrays;
 
@@ -28,9 +29,45 @@ import butterknife.OnClick;
 
 public class DetailTradeActivity extends AppCompatActivity {
 
+	private static final String TAG = DetailTradeActivity.class.getSimpleName();
+
 	@BindView(R.id.re_list)
-	RecyclerView listView;
+	RecyclerView mListView;
 	RecyclerDetailTradeAdapter mAdapter;
+	ProgressDialogFragment mDialogFragment;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_detail_trade);
+		ButterKnife.bind(this);
+		initToolBar();
+
+		Intent intent = getIntent();
+		int trade_Id = intent.getIntExtra("trade_id", -1);
+
+
+
+		mDialogFragment = new ProgressDialogFragment();
+		mDialogFragment.show(getSupportFragmentManager(), "detail_trade");
+		mAdapter = new RecyclerDetailTradeAdapter();
+		mListView.setAdapter(mAdapter);
+		mListView.setLayoutManager(new LinearLayoutManager(this));
+		mListView.addItemDecoration(new DividerItemDecoration(this, R.drawable.divider));
+		mAdapter.setOnAdapterItemClickListener(new RecyclerDetailTradeAdapter.OnAdapterItemClickLIstener() {
+			@Override
+			public void onAdapterItemClick(View view, NegoData negoData, int position) {
+				Intent intent = new Intent(DetailTradeActivity.this, DetailNegoActivity.class);
+				intent.putExtra("Nego_id", negoData.getNegotiation_id());
+				startActivity(intent);
+			}
+		});
+		initData(trade_Id);
+	}
+
+	private void initData(int trade_Id) {
+		checkTradeData(trade_Id);
+	}
 
 	@OnClick(R.id.btn_move_nego_register)
 	public void onMoveAddNego() {
@@ -54,71 +91,43 @@ public class DetailTradeActivity extends AppCompatActivity {
 		});
 	}
 
+	private void checkTradeData(final int trade_Id) {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_detail_trade);
-		ButterKnife.bind(this);
-		initToolBar();
-
-		mAdapter = new RecyclerDetailTradeAdapter();
-		listView.setAdapter(mAdapter);
-		LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-		listView.setLayoutManager(manager);
-		mAdapter.setOnAdapterItemClickListener(new RecyclerDetailTradeAdapter.OnAdapterItemClickListener() {
-
+		DetailTradeRequest request = new DetailTradeRequest(this, trade_Id+"", "1", "1", "1");
+		NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListItemData>() {
 			@Override
-			public void onAdapterItemClick(View view, NegoData negoData, int position) {
-				Toast.makeText(DetailTradeActivity.this, "position : " + position, Toast.LENGTH_SHORT).show();
+			public void onSuccess(NetworkRequest<TradeListItemData> request, TradeListItemData result) {
+				Log.e(TAG, " Trade onSuccess 성공 : " + result);
+				mAdapter.setTradeData(result);
+				checkNegoData(trade_Id);
+				mDialogFragment.dismiss();
 
 			}
-		});
-		initData();
-	}
-
-	private void initData() {
-		checkTradeData();
-		checkNegoData();
-
-	}
-
-	private void checkTradeData() {
-		TradeListRequest request = new TradeListRequest(this, "10", "10");
-		NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<TradeData>>() {
 			@Override
-			public void onSuccess(NetworkRequest<ListData<TradeData>> request, ListData<TradeData> result) {
-				TradeData[] data = result.getData();
-				mAdapter.addAll(Arrays.asList(data));
-				Log.d("DetailTradeActivity", " 	성공 : " + data[0].getTrade_id());
-
-			}
-
-			@Override
-			public void onFail(NetworkRequest<ListData<TradeData>> request, int errorCode, String errorMessage, Throwable e) {
-				Toast.makeText(getApplicationContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
+			public void onFail(NetworkRequest<TradeListItemData> request, int errorCode, String errorMessage, Throwable e) {
+				Log.e(TAG, "Trade onFail 실패: " + errorCode);
+				mDialogFragment.dismiss();
 			}
 		});
 	}
 
-	private void checkNegoData() {
-		for (int i = 0; i < mAdapter.getItemCount(); i++) {
-			NegoCardListRequest request = new NegoCardListRequest(this, "5", "10", "10");
-			NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<NegoData>>() {
-				@Override
-				public void onSuccess(NetworkRequest<ListData<NegoData>> request, ListData<NegoData> result) {
-					NegoData[] data = result.getData();
-					mAdapter.addNego(Arrays.asList(data));
-					Log.d("DetailTradeActivity", "제작자성공 : " + data[0].getNegotiation_id());
-				}
+	private void checkNegoData(int trade_id) {
 
-				@Override
-				public void onFail(NetworkRequest<ListData<NegoData>> request, int errorCode, String errorMessage, Throwable e) {
-					Toast.makeText(getApplicationContext(), "실패 : " + errorCode, Toast.LENGTH_SHORT).show();
-				}
-			});
-		}
+		NegoCardListRequest request = new NegoCardListRequest(this, trade_id+"", "", "10");
+		NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<NegoData>>() {
+			@Override
+			public void onSuccess(NetworkRequest<ListData<NegoData>> request, ListData<NegoData> result) {
+				Log.e(TAG, "Nego onSuccess 성공 : " + result);
+				NegoData[] data = result.getData();
+				mAdapter.addNego(Arrays.asList(data));
+
+			}
+
+
+			@Override
+			public void onFail(NetworkRequest<ListData<NegoData>> request, int errorCode, String errorMessage, Throwable e) {
+				Log.e(TAG, "Nego onFail 실패: " + errorCode);
+			}
+		});
 	}
 }
-
-

@@ -2,7 +2,7 @@ package com.atto.developers.atto.request;
 
 import android.content.Context;
 
-import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.networkdata.portfoliodata.PortfolioListitemData;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -13,25 +13,28 @@ import okhttp3.Request;
 /**
  * Created by Tacademy on 2016-09-06.
  */
-public class DetailPortfolioRequest extends AbstractRequest<ResultMessage> {
-Request mRequest;
+public class DetailPortfolioRequest extends AbstractRequest<PortfolioListitemData> {
+
+    Request mRequest;
 
     private final static String PORTFOLIO = "portfolioes";
 
     public DetailPortfolioRequest(Context context, String tid) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment(PORTFOLIO)
+                .addPathSegment(tid)
                 .build();
         mRequest = new Request.Builder()
-
                 .url(url)
                 .tag(context)
                 .build();
 
     }
+
     @Override
     protected Type getType() {
-        return new TypeToken<ResultMessage>(){}.getType();
+        return new TypeToken<PortfolioListitemData>() {
+        }.getType();
     }
 
     @Override

@@ -2,21 +2,25 @@ package com.atto.developers.atto;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-import com.atto.developers.atto.adapter.RecyclerMakerAdapter;
+import com.atto.developers.atto.adapter.RecyclerRealTimeTradeAdapter;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.atto.developers.atto.networkdata.tradedata.ListData;
 import com.atto.developers.atto.request.MyTradeListRequest;
+import com.atto.developers.atto.view.DividerItemDecoration;
+
+import java.util.Arrays;
 
 public class MyPageMoreTradeActivity extends AppCompatActivity {
 
-    RecyclerMakerAdapter mAdapter;
+    RecyclerRealTimeTradeAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +32,12 @@ public class MyPageMoreTradeActivity extends AppCompatActivity {
         initData();
 
         RecyclerView listView = (RecyclerView) findViewById(R.id.rv_list);
-        mAdapter = new RecyclerMakerAdapter();
+        mAdapter = new RecyclerRealTimeTradeAdapter();
         listView.setAdapter(mAdapter);
+        listView.addItemDecoration(
+                new DividerItemDecoration(this, R.drawable.divider));
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        listView.setLayoutManager(manager);
 
 
     }
@@ -42,6 +50,8 @@ public class MyPageMoreTradeActivity extends AppCompatActivity {
             @Override
             public void onSuccess(NetworkRequest<ListData<TradeData>> request, ListData<TradeData> result) {
                 TradeData[] tradeData = result.getData();
+                mAdapter.add((TradeData) Arrays.asList(tradeData));
+
                 Log.d(this.toString(), "성공 : " + tradeData[0].getTrade_id());
             }
 

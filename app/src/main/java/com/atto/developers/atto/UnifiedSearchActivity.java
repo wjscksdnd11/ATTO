@@ -42,8 +42,17 @@ public class UnifiedSearchActivity extends AppCompatActivity {
         SearchListRequest request = new SearchListRequest(this, pageNumber, rowCount, keyword, keywordId);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<TradeData>>() {
             @Override
+
             public void onSuccess(NetworkRequest<ListData<TradeData>> request, ListData<TradeData> result) {
-                Toast.makeText(UnifiedSearchActivity.this, "search size : " + result.getData().length, Toast.LENGTH_LONG).show();
+                TradeData[] tradeData = result.getData();
+                if (tradeData != null) {
+                    if (tradeData.length > 0) {
+                        Toast.makeText(UnifiedSearchActivity.this, "search size : " + result.getData().length, Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(UnifiedSearchActivity.this, "검색 결과가 없습니다.", Toast.LENGTH_LONG).show();
+                    }
+                }
+
             }
 
             @Override
@@ -53,7 +62,6 @@ public class UnifiedSearchActivity extends AppCompatActivity {
             }
         });
     }
-
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.activity_unified_search);

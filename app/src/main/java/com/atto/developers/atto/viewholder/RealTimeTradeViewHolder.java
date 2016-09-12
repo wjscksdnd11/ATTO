@@ -10,8 +10,15 @@ import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.bumptech.glide.Glide;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by Tacademy on 2016-08-23.
@@ -38,9 +45,6 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.text_trade_dday)
     TextView trade_dday;
-
-    @BindView(R.id.text_trade_nickname)
-    TextView trade_nickname;
 
     @BindView(R.id.text_trade_limit_date)
     TextView trade_limit_date;
@@ -86,17 +90,25 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
             checkKeywordList(keywordList);
         }
 
-        //realtime_photo.setImageDrawable(tradeData.getTrad_ );
-        //trade_profile.setImageDrawable(tradeData.);
+        //mIvPhoto.setImageDrawable(tradeData.getTrad_ );
+        //mIvProfile.setImageDrawable(tradeData.);
+        String[] status = itemView.getContext().getResources().getStringArray(R.array.status);
 
+        int dDay = 0;
         checkImageData(tradeData);
-        trade_status.setText(tradeData.getTrade_status() + "");
+        try {
+            dDay = checkDdaytest(tradeData.getTrade_dtime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        trade_status.setText(status[tradeData.getTrade_status()-1]);
         trade_title.setText(tradeData.getTrade_title());
-        trade_price.setText(tradeData.getTrade_price() + "원");
-        trade_dday.setText(tradeData.getTrade_dday());
-        trade_nickname.setText(tradeData.getMember_info().getMember_alias());
+        int price = Integer.parseInt(tradeData.getTrade_price());
+        String s_price = String.format("%,d", price);
+        trade_price.setText(s_price + "원");
+        trade_dday.setText("D " + dDay);
+//        trade_nickname.setText(tradeData.getMember_info().getMember_alias());
         trade_limit_date.setText(tradeData.getTrade_dtime());
-
         int[] keywordList = tradeData.getTrade_key_word_info();
         checkKeywordList(keywordList);
 
@@ -114,7 +126,8 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
         if (tradeData.getMember_info().getMember_profile_img() != null) {
 
-            Glide.with(itemView.getContext()).load(tradeData.getMember_info().getMember_profile_img()).into(trade_profile);
+            Glide.with(itemView.getContext()).load(tradeData.getMember_info().getMember_profile_img())
+                    .bitmapTransform(new CropCircleTransformation(itemView.getContext())).into(trade_profile);
 
         } else {
             trade_profile.setImageResource(R.drawable.sample_profile);
@@ -123,6 +136,16 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
     }
 
+    private int checkDdaytest(String trade_dtime) throws ParseException {
+        Calendar toTime = Calendar.getInstance();
+        long currentTiem = toTime.getTimeInMillis(); //롱탑?
+        SimpleDateFormat d = new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault());
+        Date trTime = d.parse(trade_dtime); //스트링 -> date변환X
+        long futureTime = trTime.getTime();
+        long diff = futureTime - currentTiem;
+        int day = (int) (diff / (1000 * 60 * 60 * 24));
+        return day;
+    }
 
     private void checkKeywordList(int[] keywordList) {
         if (keywordList != null) {
@@ -132,7 +155,6 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
                     keywordView[i].setText(keywordList[i] + "");
                 } else {
                     keywordView[i].setVisibility(View.GONE);
-
                 }
             }
         } else {

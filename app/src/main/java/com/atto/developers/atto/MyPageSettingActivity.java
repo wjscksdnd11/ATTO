@@ -21,9 +21,9 @@ public class MyPageSettingActivity extends AppCompatActivity {
         initToolBar();
     }
 
-    @OnClick(R.id.key_setting_profile)
+    @OnClick(R.id.key_maker_info)
     public void onSettingProfile() {
-        Intent intent = new Intent(MyPageSettingActivity.this, MyPageSetProfileActivity.class);
+        Intent intent = new Intent(MyPageSettingActivity.this, MakerInfoActivity.class);
         startActivity(intent);
     }
 
