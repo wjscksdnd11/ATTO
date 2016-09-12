@@ -2,7 +2,7 @@ package com.atto.developers.atto.request;
 
 import android.content.Context;
 
-import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.networkdata.FacebookLoginData;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
@@ -17,7 +17,7 @@ import okhttp3.RequestBody;
 /**
  * Created by Tacademy on 2016-09-06.
  */
-public class UpdatePortfolioRequest  extends AbstractRequest<ResultMessage> {
+public class UpdatePortfolioRequest  extends AbstractRequest<FacebookLoginData> {
     Request mRequest;
     MediaType jpeg = MediaType.parse("image/jpeg");
     // 포트폴리오 등록
@@ -61,7 +61,7 @@ public class UpdatePortfolioRequest  extends AbstractRequest<ResultMessage> {
 
     @Override
     protected Type getType() {
-        return new TypeToken<ResultMessage>() {
+        return new TypeToken<FacebookLoginData>() {
         }.getType();
     }
 

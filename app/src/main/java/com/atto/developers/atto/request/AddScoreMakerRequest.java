@@ -3,7 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.networkdata.FacebookLoginData;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -17,7 +17,7 @@ import okhttp3.RequestBody;
 /**
  * Created by jeon on 2016-09-04.
  */
-public class AddScoreMakerRequest extends AbstractRequest<ResultMessage> {
+public class AddScoreMakerRequest extends AbstractRequest<FacebookLoginData> {
     Request mRequest;
 //제작자 평점 등록
     MediaType jpeg = MediaType.parse("image/jpeg");
@@ -48,7 +48,7 @@ public class AddScoreMakerRequest extends AbstractRequest<ResultMessage> {
 
     @Override
     protected Type getType() {
-        return new TypeToken<ResultMessage>() {
+        return new TypeToken<FacebookLoginData>() {
         }.getType();
     }
 

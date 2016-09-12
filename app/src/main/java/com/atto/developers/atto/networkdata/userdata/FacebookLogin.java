@@ -3,14 +3,17 @@ package com.atto.developers.atto.networkdata.userdata;
 /**
  * Created by Tacademy on 2016-09-12.
  */
-public class LoginData {
-
-    private String message;
+public class FacebookLogin<T> {
     private int code;
-    private AuthData data;
+    private T result;
 
+    public T getResult() {
+        return result;
+    }
 
-
+    public void setResult(T result) {
+        this.result = result;
+    }
 
     public int getCode() {
         return code;
@@ -19,13 +22,4 @@ public class LoginData {
     public void setCode(int code) {
         this.code = code;
     }
-
-    public String getMessage() {
-        return this.message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
-

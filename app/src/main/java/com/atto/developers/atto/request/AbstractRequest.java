@@ -1,7 +1,7 @@
 package com.atto.developers.atto.request;
 
 import com.atto.developers.atto.manager.NetworkRequest;
-import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.networkdata.FacebookLoginData;
 import com.atto.developers.atto.networkdata.userdata.NetworkResultTemp;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -46,8 +46,8 @@ public abstract class AbstractRequest<T> extends NetworkRequest<T> {
             T result = gson.fromJson(text, getType());
             return result;
         } else if (temp.getCode() == 0) {
-            Type type = new TypeToken<ResultMessage>(){}.getType();
-            ResultMessage result = gson.fromJson(text, type);
+            Type type = new TypeToken<FacebookLoginData>(){}.getType();
+            FacebookLoginData result = gson.fromJson(text, type);
             throw new IOException(result.getMessage());
         } else {
             T result = gson.fromJson(text, getType(temp.getCode()));

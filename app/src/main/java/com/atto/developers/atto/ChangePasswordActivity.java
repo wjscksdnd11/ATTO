@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
-import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.networkdata.FacebookLoginData;
 import com.atto.developers.atto.request.NewPasswordRequest;
 
 import butterknife.BindView;
@@ -49,15 +49,15 @@ public class ChangePasswordActivity extends AppCompatActivity {
             newPasswordCheckView.setText("");
         } else {
             NewPasswordRequest request = new NewPasswordRequest(this, password, new_password);
-            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<FacebookLoginData>() {
                 @Override
-                public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
+                public void onSuccess(NetworkRequest<FacebookLoginData> request, FacebookLoginData result) {
                     Log.d(this.toString(), "성공 : " + result.getMessage());
                     finish();
                 }
 
                 @Override
-                public void onFail(NetworkRequest<ResultMessage> request, int errorCode, String errorMessage, Throwable e) {
+                public void onFail(NetworkRequest<FacebookLoginData> request, int errorCode, String errorMessage, Throwable e) {
                     Log.d(this.toString(), "실패 : " + errorCode);
 
                 }

@@ -89,19 +89,26 @@
         android:textColor="@color/color_hint"
         android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/btn_kakao_login"
+    <!--<TextView-->
+        <!--android:id="@+id/btn_kakao_login"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="18dp"-->
+        <!--android:drawableLeft="@drawable/ic_facebook"-->
+        <!--android:drawablePadding="8dp"-->
+        <!--android:gravity="center"-->
+        <!--android:text="Login with Facebook"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="14dp"-->
+        <!--android:textStyle="bold" />-->
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="18dp"
-        android:drawableLeft="@drawable/ic_facebook"
-        android:drawablePadding="8dp"
-        android:gravity="center"
-        android:text="Login with Facebook"
-        android:textColor="@color/white"
-        android:textSize="14dp"
-        android:textStyle="bold" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp" />
 
     <LinearLayout
         android:layout_width="match_parent"

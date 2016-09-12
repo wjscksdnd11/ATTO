@@ -155,5 +155,6 @@
     <string name="key_maker_info">제작자 등록 정보</string>
     <string name="activity_account_leave">탈퇴하기</string>
     <string name="activity_about_atto">About atto</string>
-
+<!-- 페이스북 앱 id-->
+    <string name="facebook_app_id">595957133909630</string>
 </resources>

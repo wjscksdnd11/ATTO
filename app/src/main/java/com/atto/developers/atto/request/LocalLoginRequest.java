@@ -3,7 +3,7 @@ package com.atto.developers.atto.request;
 import android.content.Context;
 import android.util.Log;
 
-import com.atto.developers.atto.networkdata.ResultMessage;
+import com.atto.developers.atto.networkdata.FacebookLoginData;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -24,7 +24,7 @@ import okhttp3.RequestBody;
 //
 //        예시) /auth/login
 
-public class LocalLoginRequest extends AbstractRequest<ResultMessage> {
+public class LocalLoginRequest extends AbstractRequest<FacebookLoginData> {
     Request mRequest;
     private final static String AUTH = "auth";
     private final static String LOGIN ="login";
@@ -57,7 +57,7 @@ public class LocalLoginRequest extends AbstractRequest<ResultMessage> {
 
     @Override
     protected Type getType() {
-        return new TypeToken<ResultMessage>(){}.getType();
+        return new TypeToken<FacebookLoginData>(){}.getType();
     }
 
     @Override
