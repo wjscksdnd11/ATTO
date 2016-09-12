@@ -149,8 +149,10 @@ public class AddTradeActivity extends AppCompatActivity {
         File[] trade_product_images_info = {imageFile};
         String[] trade_key_words = {keywordOneView.getText().toString()};
 
+        Log.d("AddTradeActivity", "data : " + trade_title  +" "+ trade_product_category_1 +" "+ trade_product_category_2
+                +" "+ trade_price +" "+ trade_dtime +" "+ trade_product_contents);
         if (TextUtils.isEmpty(trade_title) || TextUtils.isEmpty(trade_product_category_1) || TextUtils.isEmpty(trade_product_category_2) || TextUtils.isEmpty(trade_price)
-                || TextUtils.isEmpty(trade_dtime) || TextUtils.isEmpty(trade_product_contents) || imageFile == null || (trade_product_images_info.length > 0) || trade_key_words.length > 0) {
+                || TextUtils.isEmpty(trade_dtime) || TextUtils.isEmpty(trade_product_contents)) {
             Toast.makeText(this, "잘못된 입력입니다.", Toast.LENGTH_LONG).show();
         } else {
             AddTradeRequest request = new AddTradeRequest(this, trade_title, trade_product_category_1, trade_product_category_2,

@@ -125,7 +125,6 @@ public class DetailTradeActivity extends AppCompatActivity {
 					if(data.length > 0) {
 						mAdapter.addNego(Arrays.asList(data));
 						Log.d("DetailTradeActivity", "제작자성공 : " + data[0].getNegotiation_id());
-
 					}
 				}
 			}

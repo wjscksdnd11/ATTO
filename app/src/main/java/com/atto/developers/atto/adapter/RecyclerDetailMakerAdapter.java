@@ -60,7 +60,6 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
         throw new IllegalArgumentException("invalid position");
     }
 
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {

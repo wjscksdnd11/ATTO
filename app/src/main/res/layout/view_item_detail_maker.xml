@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:background="@drawable/keyword_shapes"
+            android:background="@drawable/category_shapes"
             android:text="#반려동물"
             android:textColor="@color/white" />
 
@@ -98,7 +98,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@drawable/keyword_shapes"
+            android:background="@drawable/category_shapes"
             android:text="#간식"
             android:textColor="@color/white" />
     </LinearLayout>

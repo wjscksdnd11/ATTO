@@ -3,7 +3,6 @@ package com.atto.developers.atto;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +17,7 @@ import android.widget.Toast;
 
 import com.atto.developers.atto.adapter.MyPagerAdapter;
 import com.atto.developers.atto.manager.PropertyManager;
+import com.gigamole.navigationtabstrip.NavigationTabStrip;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,12 +26,13 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
 
-    @BindView(R.id.tabs)
-    TabLayout tabs;
+/*    @BindView(R.id.tabs)
+    TabLayout tabs;*/
     @BindView(R.id.pager)
     ViewPager pager;
 
     MyPagerAdapter mAdapter;
+    private NavigationTabStrip mNavigationTabStrip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         mAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        mNavigationTabStrip = (NavigationTabStrip) findViewById(R.id.nts);
+        setUI();
 /*
 
         tabHost = (FragmentTabHost) findViewById(R.id.tabhost);
@@ -56,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         tabHost.addTab(tabHost.newTabSpec("tab3").setIndicator(getTabIndicator(this, getString(R.string.main_tab_maker))),
                 MakerFragment.class, null);
 */
-        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        /*pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -71,17 +74,17 @@ public class MainActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
 
             }
-        });
-        pager.setAdapter(mAdapter);
-        tabs.setupWithViewPager(pager);
-        tabs.removeAllTabs();
-//        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab1_selector)));
-//        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab2_selector)));
-//        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab3_selector)));
-
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, "ATTO")));
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, "TRADE")));
-        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, "MAKER")));
+        });*/
+//        pager.setAdapter(mAdapter);
+//        tabs.setupWithViewPager(pager);
+//        tabs.removeAllTabs();
+////        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab1_selector)));
+////        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab2_selector)));
+////        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, R.drawable.tab3_selector)));
+//
+//        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, "ATTO")));
+//        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, "TRADE")));
+//        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, "MAKER")));
 
 /*        tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_one))));
         tabs.addTab(tabs.newTab().setCustomView(getTabIndicator(this, getString(R.string.main_tab_realtrade))));
@@ -166,10 +169,32 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     overridePendingTransition(R.anim.anim_slide_in_left, R.anim.anim_slide_in_left);
                 }
-
-
             }
         });
+    }
 
+    private void setUI() {
+        pager.setAdapter(mAdapter);
+//        mTopNavigationTabStrip.setTabIndex(1, true);
+//        mCenterNavigationTabStrip.setViewPager(mViewPager, 1);
+        mNavigationTabStrip.setTabIndex(0, true);
+        mNavigationTabStrip.setViewPager(pager, 0);
+
+//        final NavigationTabStrip navigationTabStrip = (NavigationTabStrip) findViewById(R.id.nts);
+//        navigationTabStrip.setTitles("Nav", "Tab", "Strip");
+//        navigationTabStrip.setTabIndex(0, true);
+//        navigationTabStrip.setTitleSize(15);
+//        navigationTabStrip.setStripColor(Color.RED);
+//        navigationTabStrip.setStripWeight(6);
+//        navigationTabStrip.setStripFactor(2);
+//        navigationTabStrip.setStripType(NavigationTabStrip.StripType.LINE);
+//        navigationTabStrip.setStripGravity(NavigationTabStrip.StripGravity.BOTTOM);
+//        navigationTabStrip.setTypeface("fonts/typeface.ttf");
+//        navigationTabStrip.setCornersRadius(3);
+        mNavigationTabStrip.setAnimationDuration(300);
+//        navigationTabStrip.setInactiveColor(Color.GRAY);
+//        navigationTabStrip.setActiveColor(Color.WHITE);
+//        navigationTabStrip.setOnPageChangeListener(...);
+//        navigationTabStrip.setOnTabStripSelectedIndexListener(...);
     }
 }

@@ -3,8 +3,8 @@ package com.atto.developers.atto;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.atto.developers.atto.fragment.AttoFragment;
 import com.atto.developers.atto.manager.NetworkManager;
@@ -39,7 +39,7 @@ public class DetailPortActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int tradeId = intent.getIntExtra(AttoFragment.TRADE_ID, 0);
 
-        Toast.makeText(DetailPortActivity.this, "tradeId : " + tradeId, Toast.LENGTH_LONG).show();
+        Log.d("DetailPortActivity", "tradeId : " + tradeId);
         getDataRequest(tradeId);
 //        portView.setImageResource(images[r.nextInt(12)]);
 
@@ -50,12 +50,15 @@ public class DetailPortActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListItemData>() {
             @Override
             public void onSuccess(NetworkRequest<TradeListItemData> request, TradeListItemData result) {
+
                 TradeData tradeData = result.getData();
                 setDetailImage(tradeData);
-            }
+                Log.d("DetailPortActivity", "성공 : " + tradeData.getTrade_product_img());
 
+            }
             @Override
             public void onFail(NetworkRequest<TradeListItemData> request, int errorCode, String errorMessage, Throwable e) {
+                Log.d("DetailPortActivity", "실패 : " + errorCode);
 
             }
         });
@@ -64,6 +67,7 @@ public class DetailPortActivity extends AppCompatActivity {
 
     private void setDetailImage(TradeData tradeData) {
         String image = tradeData.getTrade_product_img();
+
         Glide.with(this).load(image).centerCrop().into(portView);
     }
 
