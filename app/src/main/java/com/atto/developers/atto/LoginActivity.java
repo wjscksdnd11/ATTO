@@ -94,6 +94,8 @@ public class LoginActivity extends AppCompatActivity {
         });
         callbackManager = CallbackManager.Factory.create();
         mLoginManager = LoginManager.getInstance();
+        PropertyManager.getInstance().setFacebookId("");
+
 //        loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
@@ -106,9 +108,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-    public void checkUser(LoginResult loginResult){
+
+    public void checkUser(LoginResult loginResult) {
         String token = loginResult.getAccessToken().getToken();
-        FacebookLoginRequest request = new FacebookLoginRequest(this,token);
+        FacebookLoginRequest request = new FacebookLoginRequest(this, token, PropertyManager.getInstance().getRegistrationId());
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<LoginData>() {
             @Override
             public void onSuccess(NetworkRequest<LoginData> request, LoginData result) {
@@ -123,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (isLogin()) {
                     //
                 }
-                ;
+
 
             }
         });
@@ -137,8 +140,6 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "facebook login success : " + loginResult.getAccessToken().getToken(), Toast.LENGTH_SHORT).show();
                 Log.i("token", loginResult.getAccessToken().getToken());
                 checkUser(loginResult);
-
-
             }
 
             @Override
@@ -151,48 +152,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
-
-//        facebookButton = (Button) findViewById(R.id.btn_login);
-//        facebookButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (isLogin()) {
-//                    logoutFacebook();
-//                } else {
-//                    loginFacebook();
-//                }
-//            }
-//        });
-//        setButtonLabel();
-
-//        Button btn = (Button) findViewById(R.id.btn_info);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getInfo();
-//            }
-//        });
-//
-//        btn = (Button)findViewById(R.id.btn_read);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                readPost();
-//            }
-//        });
-//
-//        btn = (Button)findViewById(R.id.btn_write);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                try {
-//                    writePost();
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
     }
 
     private void writePost() throws JSONException {
@@ -399,7 +358,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
-
 
 
     @OnClick(R.id.btn_local_login)

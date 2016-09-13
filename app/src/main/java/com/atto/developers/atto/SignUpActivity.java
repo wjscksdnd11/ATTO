@@ -84,7 +84,6 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, " 성공 :" + result.getMessage(), Toast.LENGTH_SHORT).show();
                     CompleteDialogFragment dialog = new CompleteDialogFragment();
                     dialog.show(getSupportFragmentManager(), "signup");
-                    moveMainActivity();
                 }
 
                 @Override

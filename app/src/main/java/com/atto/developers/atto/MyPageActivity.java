@@ -75,7 +75,7 @@ public class MyPageActivity extends AppCompatActivity {
 //        tabs.setViewPager(pager);
 
         initData();
-        initTradeData();
+//        initTradeData();
         initToolBar();
 
     }
@@ -156,7 +156,7 @@ public class MyPageActivity extends AppCompatActivity {
                 checkSetImage(image_url);
                 nickNameView.setText(nickname);
                 dialogFragment.dismiss();
-                Toast.makeText(MyPageActivity.this, "success", Toast.LENGTH_SHORT).show();
+                Log.d("MyPageActivity", "success : " + nickname);
 
             }
 

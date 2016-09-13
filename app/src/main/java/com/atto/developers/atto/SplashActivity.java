@@ -1,5 +1,10 @@
 package com.atto.developers.atto;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,15 +13,16 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
-import com.atto.developers.atto.gcm.RegistrationIntentService;
 import com.atto.developers.atto.manager.FontManager;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
 import com.atto.developers.atto.manager.PropertyManager;
 import com.atto.developers.atto.networkdata.ResultMessage;
 import com.atto.developers.atto.networkdata.userdata.LoginData;
+import com.atto.developers.atto.networkdata.userdata.MyProfile;
 import com.atto.developers.atto.request.FacebookLoginRequest;
 import com.atto.developers.atto.request.LocalLoginRequest;
+import com.atto.developers.atto.request.MyProfileRequest;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -30,11 +36,7 @@ import com.hanks.htextview.HTextViewType;
 
 public class SplashActivity extends AppCompatActivity {
 
-    Handler mHandler;
     HTextView hTextView;
-
-
-
 
     private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
@@ -72,8 +74,8 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
-                new IntentFilter(RegistrationIntentService.REGISTRATION_COMPLETE));
+//        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+//                new IntentFilter(RegistrationIntentService.REGISTRATION_COMPLETE));
     }
 
     @Override
@@ -88,14 +90,32 @@ public class SplashActivity extends AppCompatActivity {
             if (!regId.equals("")) {
                 doRealStart();
             } else {
-                Intent intent = new Intent(this, RegistrationIntentService.class);
-                startService(intent);
+//                Intent intent = new Intent(this, RegistrationIntentService.class);
+//                startService(intent);
             }
         }
     }
 
     private void doRealStart() {
 // 여기 무슨리퀘스트지 ?
+
+        MyProfileRequest request = new MyProfileRequest(this);
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<MyProfile>() {
+            @Override
+            public void onSuccess(NetworkRequest<MyProfile> request, MyProfile result) {
+                moveMainActivity();
+            }
+            @Override
+            public void onFail(NetworkRequest<MyProfile> request, int errorCode, String errorMessage, Throwable e) {
+                if (errorCode == -1) {
+                    if (errorMessage.equals("not login")) {
+                        loginSharedPreference();
+                        return;
+                    }
+                }
+                moveLoginActivity();
+            }
+        });
 
     }
 
@@ -268,7 +288,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
             }
-        }, 20);
+        }, 1000);
     }
 
     Handler mHandler = new Handler(Looper.getMainLooper());
