@@ -10,8 +10,11 @@ import android.widget.TextView;
 import com.atto.developers.atto.fragment.AttoFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.portfoliodata.PortfolioData;
+import com.atto.developers.atto.networkdata.portfoliodata.PortfolioListitemData;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.atto.developers.atto.networkdata.tradedata.TradeListItemData;
+import com.atto.developers.atto.request.DetailPortfolioRequest;
 import com.atto.developers.atto.request.DetailTradeRequest;
 import com.bumptech.glide.Glide;
 
@@ -45,15 +48,21 @@ public class DetailPortActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
+
         int tradeId = intent.getIntExtra(AttoFragment.TRADE_ID, 0);
+        int portId = intent.getIntExtra(DetailMakerActivity.MAKER_PORT_ID, 0);
+        if(tradeId != 0) {
+            getTradeDataRequest(tradeId);
+        } else if(portId != 0) {
+            getPortDataRequest(portId);
+        }
 
         Log.d("DetailPortActivity", "tradeId : " + tradeId);
-        getDataRequest(tradeId);
 //        portView.setImageResource(images[r.nextInt(12)]);
 
     }
 
-    public void getDataRequest(int tradeId) {
+    private void getTradeDataRequest(int tradeId) {
         DetailTradeRequest request = new DetailTradeRequest(this, String.valueOf(tradeId), "", "", "");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<TradeListItemData>() {
             @Override
@@ -61,7 +70,7 @@ public class DetailPortActivity extends AppCompatActivity {
 
                 TradeData tradeData = result.getData();
                 if(tradeData != null)
-                setDetailData(tradeData);
+                setDetailTradeData(tradeData);
                 Log.d("DetailPortActivity", "성공 : " + tradeData.getTrade_product_img());
 
             }
@@ -74,7 +83,39 @@ public class DetailPortActivity extends AppCompatActivity {
 
     }
 
-    private void setDetailData(TradeData tradeData) {
+    private void getPortDataRequest(int tid) {
+        DetailPortfolioRequest request = new DetailPortfolioRequest(this, String.valueOf(tid));
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<PortfolioListitemData>() {
+            @Override
+            public void onSuccess(NetworkRequest<PortfolioListitemData> request, PortfolioListitemData result) {
+
+                PortfolioData portfolioData = result.getData();
+                if(portfolioData != null) {
+                    setDetailPortData(portfolioData);
+                }
+            }
+
+
+
+            @Override
+            public void onFail(NetworkRequest<PortfolioListitemData> request, int errorCode, String errorMessage, Throwable e) {
+                Log.d("DetailMakerActivity", "실패 : " + errorMessage);
+            }
+        });
+
+
+    }
+
+    private void setDetailPortData(PortfolioData portfolioData) {
+        String image = portfolioData.getPortfolio_img();
+        if(image != null) {
+            Glide.with(this).load(image).into(portView);
+        }
+        titleView.setText(portfolioData.getPortfolio_title());
+        categoryView.setText("# "+portfolioData.getPortfolio_key_word_info()[0]+ "");
+    }
+
+    private void setDetailTradeData(TradeData tradeData) {
 
         String[] image = tradeData.getTrade_product_imges_info();
         if(image != null) {
