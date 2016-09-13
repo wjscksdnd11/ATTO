@@ -25,7 +25,7 @@ public class DetailMakerViewHolder extends RecyclerView.ViewHolder {
     ImageView portView;
 
     public interface OnMakerImageItemClickListener {
-        public void onMakerImageItemClick(View view, PortfolioData portfolioData, int position);
+        public void onMakerImageItemClick(View view, MakerData makerData, int position);
     }
 
     public interface OnPortImageItemClickListener {

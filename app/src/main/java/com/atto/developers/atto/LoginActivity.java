@@ -366,13 +366,12 @@ public class LoginActivity extends AppCompatActivity {
 
         final String e_mail = emailView.getText().toString();
         final String password = passwordView.getText().toString();
-        String member_registration_token = PropertyManager.getInstance().getRegistrationId();
+        String member_registration_token = "1";
 
         if (e_mail.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "빈칸이 있습니다.", Toast.LENGTH_LONG).show();
 
         } else {
-
             LocalLoginRequest request = new LocalLoginRequest(this, e_mail, password, member_registration_token);
             NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
                 @Override

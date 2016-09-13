@@ -27,7 +27,6 @@ public class PropertyManager {
     private static final String KEY_FACEBOOK_ID = "facebookid";
     private static final String KEY_AUTH = "auth";
 
-
     private PropertyManager() {
         Context context = MyApplication.getContext();
         mPrefs = PreferenceManager.getDefaultSharedPreferences(context);

@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -75,7 +76,7 @@ public class MyPageActivity extends AppCompatActivity {
 //        tabs.setViewPager(pager);
 
         initData();
-//        initTradeData();
+        initTradeData();
         initToolBar();
 
     }
@@ -153,7 +154,9 @@ public class MyPageActivity extends AppCompatActivity {
 
                 String nickname = result.getData().getMember_alias();
                 String image_url = result.getData().getMember_profile_img();
+                if(image_url != null)
                 checkSetImage(image_url);
+                if(!TextUtils.isEmpty(nickname))
                 nickNameView.setText(nickname);
                 dialogFragment.dismiss();
                 Log.d("MyPageActivity", "success : " + nickname);
@@ -180,11 +183,12 @@ public class MyPageActivity extends AppCompatActivity {
 
     private void initTradeData() {
 
-        MyTradeListRequest request = new MyTradeListRequest(this, "1", "50");
+        MyTradeListRequest request = new MyTradeListRequest(this, "0", "50");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<TradeData>>() {
 
             @Override
             public void onSuccess(NetworkRequest<ListData<TradeData>> request, ListData<TradeData> result) {
+
                 TradeData[] tradeData = result.getData();
                 if (tradeData != null) {
                     if (tradeData.length > 0)

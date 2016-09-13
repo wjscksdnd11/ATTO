@@ -26,10 +26,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DetailNegoActivity extends AppCompatActivity {
-    @BindView(R.id.img_trade_profile)
+    @BindView(R.id.img_maker_profile)
     ImageView trade_profile;
-    @BindView(R.id.text_trade_profile_nickname)
+
+    /*@BindView(R.id.text_trade_profile_nickname)
     TextView trade_nickname;
+    */
     @BindView(R.id.offer_price)
     TextView offer_pice;
     @BindView(R.id.text_trade_dday)
@@ -79,7 +81,7 @@ public class DetailNegoActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
-
+    int negoId = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,20 +89,27 @@ public class DetailNegoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initToolBar();
         Intent intent = getIntent();
-        int Nego_id = intent.getIntExtra("Negotiation_id", -1);
-        initData(Nego_id);
+        negoId = intent.getIntExtra("Nego_Id", -1);
+        initData(negoId);
     }
 
-    private void initData(final int Nego_id) {
-        NegoCardListRequest request = new NegoCardListRequest(this, Nego_id + "", "10", "10");
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData(negoId);
+    }
+
+    private void initData(final int negoId) {
+        NegoCardListRequest request = new NegoCardListRequest(this, negoId + "", "10", "10");
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<NegoData>>() {
             @Override
             public void onSuccess(NetworkRequest<ListData<NegoData>> request, ListData<NegoData> result) {
                 NegoData[] data = result.getData();
                 if (data.length > 0) {
                     for (int i = 0; i < data.length; i++) {
-                        if (data[i].getNegotiation_id() == Nego_id) {
-                           // setNegoDataList(Nego_id);
+                        if (data[i].getNegotiation_id() == negoId) {
+                            setNegoData(data[0]);
+
                         }
                     }
                 }
@@ -118,7 +127,7 @@ public class DetailNegoActivity extends AppCompatActivity {
 
     private void setNegoData(NegoData negoData) {
         checkImageData(negoData);
-        trade_nickname.setText(negoData.getMaker_info().getMaker_name());
+//        trade_nickname.setText(negoData.getMaker_info().getMaker_name());
         //ratingbar_maker_grade.setRating(negoData.getMaker_info().getMaker_score());
         offer_pice.setText(negoData.getNegotiation_price() + "원");
         // calenderDday(data[0]);
