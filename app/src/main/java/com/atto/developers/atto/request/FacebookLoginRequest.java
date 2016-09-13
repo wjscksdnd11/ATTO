@@ -27,7 +27,7 @@ public class FacebookLoginRequest extends AbstractRequest<LoginData> {
     private final static String TOKEN = "token";
     private final static String ACCESS_TOKEN = "access_token";
 
-    public FacebookLoginRequest(Context context, String access_token) {
+    public FacebookLoginRequest(Context context, String access_token, String member_registration_token) {
 
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment(AUTH)

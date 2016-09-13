@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
+import com.atto.developers.atto.gcm.RegistrationIntentService;
 import com.atto.developers.atto.manager.FontManager;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
@@ -21,6 +23,8 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.hanks.htextview.HTextView;
 import com.hanks.htextview.HTextViewType;
 
@@ -29,8 +33,11 @@ public class SplashActivity extends AppCompatActivity {
     Handler mHandler;
     HTextView hTextView;
 
-    LoginManager loginManager;
-    CallbackManager callbackManager;
+
+
+
+    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+    private BroadcastReceiver mRegistrationBroadcastReceiver;
 
 
     @Override
@@ -49,28 +56,69 @@ public class SplashActivity extends AppCompatActivity {
         textView.startAnimation(animation);*/
         mHandler = new Handler(Looper.getMainLooper());
         loginSharedPreference();
-
         loginManager = LoginManager.getInstance();
         callbackManager = CallbackManager.Factory.create();
 
-    }
-    private void moveMainActivity() {
-        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-
-    private void moveLoginActivity() {
-        mHandler.postDelayed(new Runnable() {
+        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
             @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(intent);
+            public void onReceive(Context context, Intent intent) {
+
+                doRealStart();
+            }
+        };
+        setUpIfNeeded();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(RegistrationIntentService.REGISTRATION_COMPLETE));
+    }
+
+    @Override
+    protected void onPause() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+        super.onPause();
+    }
+
+    private void setUpIfNeeded() {
+        if (checkPlayServices()) {
+            String regId = PropertyManager.getInstance().getRegistrationId();
+            if (!regId.equals("")) {
+                doRealStart();
+            } else {
+                Intent intent = new Intent(this, RegistrationIntentService.class);
+                startService(intent);
+            }
+        }
+    }
+
+    private void doRealStart() {
+// 여기 무슨리퀘스트지 ?
+
+    }
+
+    private boolean checkPlayServices() {
+        GoogleApiAvailability apiAvailability = GoogleApiAvailability.getInstance();
+        int resultCode = apiAvailability.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (apiAvailability.isUserResolvableError(resultCode)) {
+                Dialog dialog = apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST);
+                dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        finish();
+                    }
+                });
+                dialog.show();
+            } else {
                 finish();
             }
-        }, 1000);
-
+            return false;
+        }
+        return true;
     }
 
     private void loginSharedPreference() {
@@ -83,12 +131,8 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isFacebookLogin() {
-        if (!TextUtils.isEmpty(PropertyManager.getInstance().getFacebookId())) {
-            return true;
-        }
-        return false;
-    }
+    LoginManager loginManager;
+    CallbackManager callbackManager;
 
     private void processFacebookLogin() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
@@ -99,7 +143,7 @@ public class SplashActivity extends AppCompatActivity {
         if (accessToken != null) {
             String token = accessToken.getToken();
             String regId = PropertyManager.getInstance().getRegistrationId();
-            FacebookLoginRequest request = new FacebookLoginRequest(this, token);
+            FacebookLoginRequest request = new FacebookLoginRequest(this, token, regId );
             NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<LoginData>() {
                 @Override
                 public void onSuccess(NetworkRequest<LoginData> request, LoginData result) {
@@ -130,7 +174,9 @@ public class SplashActivity extends AppCompatActivity {
                     resetFacebookAndMoveLoginActivity();
                     return;
                 }
-                FacebookLoginRequest request = new FacebookLoginRequest(SplashActivity.this, accessToken.getToken());
+                FacebookLoginRequest request = new FacebookLoginRequest(SplashActivity.this, accessToken.getToken(),
+                        PropertyManager.getInstance().getRegistrationId());
+
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<LoginData>() {
                     @Override
                     public void onSuccess(NetworkRequest<LoginData> request, LoginData result) {
@@ -146,6 +192,7 @@ public class SplashActivity extends AppCompatActivity {
                         resetFacebookAndMoveLoginActivity();
                     }
                 });
+
             }
 
             @Override
@@ -167,12 +214,28 @@ public class SplashActivity extends AppCompatActivity {
         moveLoginActivity();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PLAY_SERVICES_RESOLUTION_REQUEST &&
+                resultCode == Activity.RESULT_OK) {
+            setUpIfNeeded();
+            return;
+        }
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private boolean isFacebookLogin() {
+        if (!TextUtils.isEmpty(PropertyManager.getInstance().getFacebookId())) {
+            return true;
+        }
+        return false;
+    }
 
     private boolean isAutoLogin() {
         String email = PropertyManager.getInstance().getEmail();
         return !TextUtils.isEmpty(email);
     }
-
     private void processAutoLogin() {
         String email = PropertyManager.getInstance().getEmail();
         if (!TextUtils.isEmpty(email)) {
@@ -190,7 +253,23 @@ public class SplashActivity extends AppCompatActivity {
                     moveLoginActivity();
                 }
             });
-
         }
     }
+
+    private void moveMainActivity() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
+    private void moveLoginActivity() {
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                finish();
+            }
+        }, 20);
+    }
+
+    Handler mHandler = new Handler(Looper.getMainLooper());
 }
