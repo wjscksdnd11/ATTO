@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by goodn on 2016-08-31.
  */
-public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements DetailMakerViewHolder.OnMakerImageItemClickListener {
+public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements DetailMakerViewHolder.OnPortImageItemClickListener {
 
     private MakerData mMakerData;
 
@@ -31,13 +31,6 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
         this.mMakerData = mMakerData ;
     }
 
-/*
-    public void add(MakerData makerData) {
-        items.add(makerData);
-        notifyDataSetChanged();
-    }
-*/
-
     public void addAll(List<PortfolioData> list) {
         portItems.addAll(list);
         notifyDataSetChanged();
@@ -50,18 +43,6 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
 
     public static final int VIEW_TYPE_HEADER = 100;
     public static final int VIEW_TYPE_GROUP = 200;
-
-//    @Override
-//    public int getItemViewType(int position) {
-//        if (position == 0) return VIEW_TYPE_HEADER;
-//        position--;
-//        for (int i = 0; i < items.size(); i++) {
-//            if (position == 0) return VIEW_TYPE_GROUP;
-//            position--;
-//        }
-//        throw new IllegalArgumentException("invalid position");
-//    }
-
 
     @Override
     public int getItemViewType(int position) {
@@ -79,40 +60,12 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
             case VIEW_TYPE_GROUP: {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_item_detail_maker_image, parent, false);
                 DetailMakerViewHolder holder = new DetailMakerViewHolder(view);
-                holder.setOnMakerImageItemClickListener(this);
+                holder.setOnPortImageItemClickListener(this);
                 return holder;
             }
         }
         throw new IllegalArgumentException("invalid viewtype");
     }
-
-//    @Override
-//    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-//
-//        if (items.size() > 0) {
-//            if (position == 0) {
-//                DetailMakerHeaderViewHolder hvh = (DetailMakerHeaderViewHolder) holder;
-//                hvh.setHeaderData(items.get(position));
-//                return;
-//            }
-//            position--;
-//            for (int i = 0; i < portItems.size(); i++) {
-//                if (position == 0) {
-//                    if (holder.getItemViewType() != VIEW_TYPE_GROUP) {
-//                        throw new IllegalArgumentException("invalid view holder");
-//                    }
-//                    DetailMakerViewHolder gvh = (DetailMakerViewHolder) holder;
-//                    gvh.setImageData(portItems.get(i));
-//
-//                    return;
-//                }
-//                position--;
-//            }
-//            throw new IllegalArgumentException("invalid position");
-//        }
-//
-//
-//    }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
@@ -138,11 +91,16 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
         }
     }
 
-
+    @Override
+    public void onPortImageItemClick(View view, PortfolioData portfolioData, int position) {
+        if (listener != null) {
+            listener.onAdapterItemClick(view, portfolioData, position);
+        }
+    }
 
 
     public interface OnAdapterItemClickLIstener {
-        public void onAdapterItemClick(View view, MakerData makerData, int position);
+        public void onAdapterItemClick(View view, PortfolioData portfolioData, int position);
     }
 
     OnAdapterItemClickLIstener listener;
@@ -161,10 +119,4 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
         return count;
     }
 
-    @Override
-    public void onMakerImageItemClick(View view, MakerData makerData, int position) {
-        if (listener != null) {
-            listener.onAdapterItemClick(view, makerData, position);
-        }
-    }
 }

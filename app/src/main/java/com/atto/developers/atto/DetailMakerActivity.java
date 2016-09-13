@@ -32,6 +32,7 @@ public class DetailMakerActivity extends AppCompatActivity {
     RecyclerView listView;
 
     RecyclerDetailMakerAdapter mAdapter;
+    public static final String MAKER_PORT_ID = "maker_port_id";
 
 
     @Override
@@ -62,9 +63,10 @@ public class DetailMakerActivity extends AppCompatActivity {
 
         mAdapter.setOnAdapterItemClickListener(new RecyclerDetailMakerAdapter.OnAdapterItemClickLIstener() {
             @Override
-            public void onAdapterItemClick(View view, MakerData makerData, int position) {
+            public void onAdapterItemClick(View view, PortfolioData portfolioData, int position) {
 
                 Intent intent = new Intent(DetailMakerActivity.this, DetailPortActivity.class);
+                intent.putExtra(MAKER_PORT_ID, portfolioData.getPortfolio_id());
 //                Toast.makeText(DetailMakerActivity.this, "position : " + position, Toast.LENGTH_LONG).show();
                 startActivity(intent);
 

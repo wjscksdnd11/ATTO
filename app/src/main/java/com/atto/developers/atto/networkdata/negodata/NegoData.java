@@ -4,8 +4,6 @@ import java.util.Arrays;
 
 public class NegoData implements java.io.Serializable {
 	private static final long serialVersionUID = -2572726441148153839L;
-
-
 	int code;
 	private int negotiation_id;
 	private NegoDataMaker_info maker_info;

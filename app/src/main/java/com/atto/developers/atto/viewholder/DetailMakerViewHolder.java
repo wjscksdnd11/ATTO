@@ -25,12 +25,16 @@ public class DetailMakerViewHolder extends RecyclerView.ViewHolder {
     ImageView portView;
 
     public interface OnMakerImageItemClickListener {
-        public void onMakerImageItemClick(View view, MakerData makerData, int position);
+        public void onMakerImageItemClick(View view, PortfolioData portfolioData, int position);
     }
 
-    OnMakerImageItemClickListener listener;
+    public interface OnPortImageItemClickListener {
+        public void onPortImageItemClick(View view, PortfolioData portfolioData, int position);
+    }
 
-    public void setOnMakerImageItemClickListener(OnMakerImageItemClickListener listener) {
+    OnPortImageItemClickListener listener;
+
+    public void setOnPortImageItemClickListener(OnPortImageItemClickListener listener) {
         this.listener = listener;
     }
 
@@ -41,7 +45,7 @@ public class DetailMakerViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View view) {
                 if (listener != null) {
-                    listener.onMakerImageItemClick(view, makerData, getAdapterPosition());
+                    listener.onPortImageItemClick(view, portfolioData, getAdapterPosition());
                 }
             }
         });
