@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-         />
+        android:src="@drawable/profile_default_image" />
 
     <TextView
         android:id="@+id/text_mypage_nickname"
@@ -27,7 +27,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:text="Nick Name"
+        android:text="프로필을 설정해주세요"
         android:textColor="@color/white"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

@@ -68,7 +68,6 @@ public class SignUpActivity extends AppCompatActivity {
         String phone = phoneNumberView.getText().toString();
         String registration_token = "1";
 
-
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(name) || TextUtils.isEmpty(postCode) ||
                 TextUtils.isEmpty(address) || TextUtils.isEmpty(phone)) {
             Toast.makeText(this, "잘못된 입력입니다.", Toast.LENGTH_LONG).show();
@@ -84,7 +83,6 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, " 성공 :" + result.getMessage(), Toast.LENGTH_SHORT).show();
                     CompleteDialogFragment dialog = new CompleteDialogFragment();
                     dialog.show(getSupportFragmentManager(), "signup");
-                    moveMainActivity();
                 }
 
                 @Override

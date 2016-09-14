@@ -8,22 +8,47 @@ public class TradeData implements java.io.Serializable {
     private static final long serialVersionUID = -7123457291554300083L;
     private int trade_id;
     private String trade_title;
+    private String trade_product_contents;
     private int trade_price;
     private String trade_dtime;
     private String trade_dday;
     private int trade_status;
     private String[] trade_product_imges_info;// null 가능
     private String trade_product_img;// null 가능
-    private String trade_product_category_1;// null 가능
-    private String trade_product_category_2;// null 가능
-    private int[] trade_key_word_info;
+    private int trade_product_category_1;// null 가능
+    private int trade_product_category_2;// null 가능
+    private Integer[] trade_key_word_info;
     private Member_info member_info;
 
-    public int[] getTrade_key_word_info() {
+    public String getTrade_product_contents() {
+        return trade_product_contents;
+    }
+
+    public void setTrade_product_contents(String trade_product_contents) {
+        this.trade_product_contents = trade_product_contents;
+    }
+
+    public void setTrade_product_category_1(int trade_product_category_1) {
+        this.trade_product_category_1 = trade_product_category_1;
+    }
+
+    public void setTrade_product_category_2(int trade_product_category_2) {
+        this.trade_product_category_2 = trade_product_category_2;
+    }
+
+    public int getTrade_product_category_1() {
+        return trade_product_category_1;
+    }
+
+    public int getTrade_product_category_2() {
+        return trade_product_category_2;
+    }
+
+    public Integer[] getTrade_key_word_info() {
         return trade_key_word_info;
     }
 
-    public void setTrade_key_word_info(int[] trade_key_word_info) {
+    public void setTrade_key_word_info(Integer[] trade_key_word_info) {
         this.trade_key_word_info = trade_key_word_info;
     }
 
@@ -100,19 +125,4 @@ public class TradeData implements java.io.Serializable {
         this.member_info = member_info;
     }
 
-    public String getTrade_product_category_2() {
-        return trade_product_category_2;
-    }
-
-    public void setTrade_product_category_2(String trade_product_category_2) {
-        this.trade_product_category_2 = trade_product_category_2;
-    }
-
-    public String getTrade_product_category_1() {
-        return trade_product_category_1;
-    }
-
-    public void setTrade_product_category_1(String trade_product_category_1) {
-        this.trade_product_category_1 = trade_product_category_1;
-    }
 }

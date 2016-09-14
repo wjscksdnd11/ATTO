@@ -1,6 +1,5 @@
 package com.atto.developers.atto.viewholder;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -23,7 +22,6 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by Tacademy on 2016-09-01.
@@ -68,7 +66,7 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 
 	TradeListItemData tradeListItemData;
 	TradeData tradeData;
-	private Context mContext;
+	//private Context mContext;
 
 
 	public DetailTradeHeaderViewHolder(View itemView) {

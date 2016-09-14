@@ -53,4 +53,6 @@ dependencies {
     compile 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     compile "com.google.android.gms:play-services-gcm:9.0.0"
+
+    compile "com.android.support:support-core-utils:24.2.0"
 }

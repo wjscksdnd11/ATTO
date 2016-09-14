@@ -10,39 +10,26 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.atto.developers.atto.fragment.MakerOrderDialogFragment;
 import com.atto.developers.atto.fragment.ReportDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
-import com.atto.developers.atto.networkdata.negodata.NegeListItemData;
 import com.atto.developers.atto.networkdata.negodata.NegoData;
-import com.atto.developers.atto.request.DetailNegoRequest;
+import com.atto.developers.atto.networkdata.tradedata.ListData;
+import com.atto.developers.atto.request.NegoCardListRequest;
 import com.bumptech.glide.Glide;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class DetailNegoActivity extends AppCompatActivity {
-    private static final String TAG = DetailNegoActivity.class.getSimpleName();
-
-    @BindView(R.id.img_maker_profile)
-    ImageView mIvProfile;
-
-    @BindView(R.id.img_add_port_photo)
-    ImageView mIvPortPhoto;
-
-    @BindView(R.id.text_maker_profile_nickname)
-    TextView mTvNickName;
-
+    @BindView(R.id.img_trade_profile)
+    ImageView trade_profile;
+    @BindView(R.id.text_trade_profile_nickname)
+    TextView trade_nickname;
     @BindView(R.id.offer_price)
     TextView mTvOfferPrice;
 
@@ -103,10 +90,8 @@ public class DetailNegoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initToolBar();
         Intent intent = getIntent();
-        int negotiationId = intent.getIntExtra("negotiation_id", -1);
-
-
-        initData(negotiationId);
+        int Nego_id = intent.getIntExtra("Negotiation_id", -1);
+        initData(Nego_id);
     }
 
     private void initData(int negotiationId) {

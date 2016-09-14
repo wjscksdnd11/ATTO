@@ -36,8 +36,7 @@ public class UpdateMyProfileRequest extends AbstractRequest<ResultMessage> {
     private final static String MEMBERS = "members";
     private final static String ME = "me";
 
-    final static String ZIP_CODE = "member_zipcode_1";
-
+    private final static String ZIP_CODE = "member_zipcode_1";
     private final static String ACTION = "action";
     private final static String ACTION_VAlUE = "modify";
     private final static String PHONE = "member_phone";
@@ -54,20 +53,17 @@ public class UpdateMyProfileRequest extends AbstractRequest<ResultMessage> {
                 .build();
         MultipartBody.Builder body = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart(ACTION,ACTION_VAlUE)
-                .addFormDataPart(PHONE, member_zipcode_1)
-                .addFormDataPart(ADRESS, member_phone)
-                .addFormDataPart(PROFILE_IMG, member_address_1)
+                .addFormDataPart(ACTION, ACTION_VAlUE)
+                .addFormDataPart(ZIP_CODE, member_zipcode_1)
+                .addFormDataPart(PHONE, member_phone)
+                .addFormDataPart(ADRESS, member_address_1)
                 .addFormDataPart(NICKNAME, member_alias);
 
-
-
-
-                if (member_profile_img != null) {
-                    body.addFormDataPart(PROFILE_IMG, member_profile_img.getName(),
-                            RequestBody.create(jpeg, member_profile_img));
-                } else{
-            body.addFormDataPart(PROFILE_IMG,"");
+        if (member_profile_img != null) {
+            body.addFormDataPart(PROFILE_IMG, member_profile_img.getName(),
+                    RequestBody.create(jpeg, member_profile_img));
+        } else {
+            body.addFormDataPart(PROFILE_IMG, "");
         }
         MultipartBody requestbody = body.build();
 

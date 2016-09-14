@@ -104,7 +104,7 @@
                     android:layout_marginTop="10dp"
                     android:drawableLeft="@drawable/ic_nickname"
                     android:drawablePadding="12dp"
-                    android:hint="닉네임"
+                    android:hint="이름"
                     android:textColor="@color/white"
 
                     android:inputType="text"

@@ -86,7 +86,7 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         this.tradeData = tradeData;
 
         if (tradeData.getTrade_key_word_info() != null) {
-            int[] keywordList = tradeData.getTrade_key_word_info();
+            Integer[] keywordList = tradeData.getTrade_key_word_info();
             checkKeywordList(keywordList);
         }
 
@@ -115,7 +115,7 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
 
 //        trade_nickname.setText(tradeData.getMember_info().getMember_alias());
         trade_limit_date.setText(tradeData.getTrade_dtime());
-        int[] keywordList = tradeData.getTrade_key_word_info();
+        Integer[] keywordList = tradeData.getTrade_key_word_info();
         checkKeywordList(keywordList);
 
     }
@@ -153,7 +153,7 @@ public class RealTimeTradeViewHolder extends RecyclerView.ViewHolder {
         return day;
     }
 
-    private void checkKeywordList(int[] keywordList) {
+    private void checkKeywordList(Integer[] keywordList) {
         if (keywordList != null) {
             for (int i = 0; i < keywordList.length; i++) {
                 Log.i("realtime", "keywordList : " + keywordList[i]);

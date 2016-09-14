@@ -106,9 +106,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-    public void checkUser(LoginResult loginResult){
+
+    public void checkUser(LoginResult loginResult) {
         String token = loginResult.getAccessToken().getToken();
-        FacebookLoginRequest request = new FacebookLoginRequest(this,token," 1");
+        FacebookLoginRequest request = new FacebookLoginRequest(this,token);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<LoginData>() {
             @Override
             public void onSuccess(NetworkRequest<LoginData> request, LoginData result) {
@@ -123,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (isLogin()) {
                     //
                 }
-                ;
+
 
             }
         });
@@ -137,8 +138,6 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "facebook login success : " + loginResult.getAccessToken().getToken(), Toast.LENGTH_SHORT).show();
                 Log.i("token", loginResult.getAccessToken().getToken());
                 checkUser(loginResult);
-
-
             }
 
             @Override
@@ -401,7 +400,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
     @OnClick(R.id.btn_local_login)
     public void onLocalLogin() {
 
@@ -414,7 +412,6 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "빈칸이 있습니다.", Toast.LENGTH_LONG).show();
 
         } else {
-
             LocalLoginRequest request = new LocalLoginRequest(this, e_mail, password, member_registration_token);
             NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
                 @Override

@@ -109,15 +109,24 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
     public void onCompleteUpdate() {
 
         File member_profile_img = null;
-
-        String member_zipconde_1 = postCodeView.getText().toString();
+        String member_zipcode_1 = postCodeView.getText().toString();
         String member_phone = inputPhoneNumberView.getText().toString();
         String member_address_1 = addressView.getText().toString();
         String member_alias = inputNickNameView.getText().toString();
         if (!TextUtils.isEmpty(img_file_path)) {
             member_profile_img = new File(img_file_path);
         }
-        UpdateMyProfileRequest request = new UpdateMyProfileRequest(this, member_zipconde_1, member_phone, member_address_1, member_alias, member_profile_img);
+        if(TextUtils.isEmpty(member_zipcode_1)) {
+            member_zipcode_1 = "";
+        }
+        if(TextUtils.isEmpty(member_address_1)) {
+            member_address_1 = "";
+        }
+        if(TextUtils.isEmpty(member_phone) || TextUtils.isEmpty(member_alias)) {
+            Toast.makeText(MyPageSetProfileActivity.this, "값을 입력해주세요",Toast.LENGTH_LONG).show();
+        }
+
+        UpdateMyProfileRequest request = new UpdateMyProfileRequest(this, member_zipcode_1, member_phone, member_address_1, member_alias, member_profile_img);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultMessage>() {
             @Override
             public void onSuccess(NetworkRequest<ResultMessage> request, ResultMessage result) {
@@ -197,7 +206,6 @@ public class MyPageSetProfileActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void checkPermission() {
         List<String> permissions = new ArrayList<>();
