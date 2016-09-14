@@ -10,6 +10,8 @@ public class NegoData implements java.io.Serializable {
 	private int negotiation_price;
 	private String negotiation_dtime;
 	private String negotiation_ctime;
+	private String[] negotiation_product_imges_info;// null 가능
+
 
 	public String getNegotiation_ctime() {
 		return negotiation_ctime;
@@ -18,8 +20,6 @@ public class NegoData implements java.io.Serializable {
 	public void setNegotiation_ctime(String negotiation_ctime) {
 		this.negotiation_ctime = negotiation_ctime;
 	}
-
-	private String[] negotiation_product_imges_info;// null 가능
 
 	public int getNegotiation_id() {
 		return this.negotiation_id;

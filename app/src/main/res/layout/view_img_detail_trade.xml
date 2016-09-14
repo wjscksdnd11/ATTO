@@ -75,7 +75,7 @@ android:orientation="horizontal"
     android:layout_alignParentTop="true"
     android:layout_centerHorizontal="true"
     android:orientation="vertical"
-    android:gravity="center_vertical|center_horizontal">
+    android:gravity="center_horizontal">
 
     <TextView
         android:id="@+id/text_trade_remain_time"
@@ -84,16 +84,16 @@ android:orientation="horizontal"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/staus_shape"
-        android:gravity="center"
-        android:text="24:24:24"
-        android:textColor="@color/white" />
+        android:gravity="top|center"
+        android:textColor="@color/white"
+        android:layout_gravity="top" />
 
     <TextView
         android:id="@+id/offer_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="10000원"
+
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </LinearLayout>
@@ -115,7 +115,6 @@ android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="2016.09.12까지"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="16sp" />
 

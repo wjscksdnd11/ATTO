@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.atto.developers.atto.adapter.MyPagerAdapter;
 import com.atto.developers.atto.manager.PropertyManager;
 import com.gigamole.navigationtabstrip.NavigationTabStrip;
 

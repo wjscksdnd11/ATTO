@@ -31,11 +31,6 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
         this.mMakerData = mMakerData ;
     }
 
-    public void addAll(List<PortfolioData> list) {
-        portItems.addAll(list);
-        notifyDataSetChanged();
-    }
-
     public void add(PortfolioData portfolioData) {
         portItems.add(portfolioData);
         notifyDataSetChanged();
@@ -97,7 +92,6 @@ public class RecyclerDetailMakerAdapter extends RecyclerView.Adapter<RecyclerVie
             listener.onAdapterItemClick(view, portfolioData, position);
         }
     }
-
 
     public interface OnAdapterItemClickLIstener {
         public void onAdapterItemClick(View view, PortfolioData portfolioData, int position);

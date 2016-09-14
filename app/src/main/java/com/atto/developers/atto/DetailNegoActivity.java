@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,18 +15,15 @@ import com.atto.developers.atto.fragment.MakerOrderDialogFragment;
 import com.atto.developers.atto.fragment.ReportDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.negodata.NegeListItemData;
 import com.atto.developers.atto.networkdata.negodata.NegoData;
-import com.atto.developers.atto.networkdata.tradedata.ListData;
-import com.atto.developers.atto.request.NegoCardListRequest;
+import com.atto.developers.atto.request.DetailNegoRequest;
 import com.bumptech.glide.Glide;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -37,8 +33,6 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class DetailNegoActivity extends AppCompatActivity {
     private static final String TAG = DetailNegoActivity.class.getSimpleName();
-    private List<NegoData> mNegoListData = new ArrayList<>();
-    //private List<NegoData> mNegoData = new ArrayList<>();
 
     @BindView(R.id.img_maker_profile)
     ImageView mIvProfile;
@@ -67,11 +61,6 @@ public class DetailNegoActivity extends AppCompatActivity {
     @BindView(R.id.ratingbar_maker_grade_text)
     TextView mRbMakerScore;
 
-    public void addAll(List<NegoData> list) {
-        if (!mNegoListData.isEmpty()) mNegoListData.clear();
-        mNegoListData.addAll(list);
-    }
-
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
@@ -86,6 +75,7 @@ public class DetailNegoActivity extends AppCompatActivity {
             }
         });
     }
+
 
     @OnClick(R.id.img_btn_Report)
     public void onReport() {
@@ -113,70 +103,65 @@ public class DetailNegoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initToolBar();
         Intent intent = getIntent();
-        int Nego_id = intent.getIntExtra("Nego_Id", -1);
+        int negotiationId = intent.getIntExtra("negotiation_id", -1);
 
-        initData(Nego_id);
+
+        initData(negotiationId);
     }
 
-    private void initData(int Nego_id) {
-        NegoCardListRequest request = new NegoCardListRequest(this, Nego_id + "", "", "10");
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ListData<NegoData>>() {
+    private void initData(int negotiationId) {
+        DetailNegoRequest request = new DetailNegoRequest(this, negotiationId+"", negotiationId+"");
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<NegeListItemData>() {
             @Override
-            public void onSuccess(NetworkRequest<ListData<NegoData>> request, ListData<NegoData> result) {
-                NegoData[] data = result.getData();
-                mNegoListData.addAll(Arrays.asList(data));
-                checkNegoset(mNegoListData);
-                Log.e(TAG, "Nego onSuccess 성공 : " + result);
-
+            public void onSuccess(NetworkRequest<NegeListItemData> request, NegeListItemData result) {
+                Log.e(TAG, "DetailNego onSuccess 성공 : " + result.getData());
+                NegoData data = result.getData();
+                checkNego(data);
             }
 
             @Override
-            public void onFail(NetworkRequest<ListData<NegoData>> request, int errorCode, String errorMessage, Throwable e) {
-                Log.e(TAG, "Trade onFail 실패: " + errorCode);
+            public void onFail(NetworkRequest<NegeListItemData> request, int errorCode, String errorMessage, Throwable e) {
+                Log.e(TAG, "DetailNego onFail 실패 : " + errorCode);
             }
         });
     }
 
-    private void checkNegoset(List<NegoData> mNegoListData) {
+    private void checkNego(NegoData data) {
         try {
-            if (mNegoListData != null) {
-                for (int i = 0; i < mNegoListData.size(); i++) {
-                    checkImageData(mNegoListData.get(i));
-                    checkDdayData(mNegoListData.get(i));
-                    mTvNickName.setText(mNegoListData.get(i).getMaker_info().getMaker_name());
-                    mTvOfferPrice.setText(String.valueOf(mNegoListData.get(i).getNegotiation_price() + "원"));
-                    mTvLimitDate.setText(mNegoListData.get(i).getNegotiation_dtime());
-
-                    String score = String.valueOf(mNegoListData.get(i).getMaker_info().getMaker_score() / 2);
-                    mRbMakerGrade.setRating(mNegoListData.get(i).getMaker_info().getMaker_score() / 2);
-                    mRbMakerScore.setText("(" + score + ")");
-                }
+            if (data != null) {
+                Log.e(TAG, "DetailNego checkNego : " + data.getNegotiation_id());
+                checkImageData(data);
+                checkDdayData(data);
+                mTvNickName.setText(data.getMaker_info().getMaker_name());
+                mTvOfferPrice.setText(data.getNegotiation_price() + "원");
+                mTvLimitDate.setText(data.getNegotiation_dtime());
+                String score = String.valueOf(data.getMaker_info().getMaker_score() / 2);
+                mRbMakerGrade.setRating(data.getMaker_info().getMaker_score() / 2);
+                mRbMakerScore.setText("(" + score + ")");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (ParseException e1) {
+            e1.printStackTrace();
         }
     }
 
-    private void checkImageData(NegoData negoData) {
-        if (negoData.getMaker_info().getMaker_profile_img() != null) {
-            if (!TextUtils.isEmpty(negoData.getMaker_info().getMaker_profile_img())) {
-                Glide.with(getApplicationContext()).load(negoData.getMaker_info().getMaker_profile_img()).bitmapTransform(new CropCircleTransformation(getApplicationContext())).into(mIvProfile);
+    private void checkImageData(NegoData data) {
+        if (data.getMaker_info().getMaker_profile_img() != null) {
+            Log.e(TAG, "checkNego Image1 : " + data.getMaker_info().getMaker_profile_img());
+                Glide.with(this).load(data.getMaker_info().getMaker_profile_img()).bitmapTransform(new CropCircleTransformation(getApplicationContext())).into(mIvProfile);
             }
-        }
-        if (negoData.getNegotiation_product_imges_info() != null) {
-            if (!TextUtils.isEmpty(negoData.getNegotiation_product_imges_info()[0])) {
-                Glide.with(getApplicationContext()).load(negoData.getNegotiation_product_imges_info()[1]).centerCrop().into(mIvPortPhoto);
+        if (data.getNegotiation_product_imges_info()[0] != null) {
+            Log.e(TAG, "checkNego Image[] : " + data.getNegotiation_product_imges_info()[0]);
+                Glide.with(this).load(data.getNegotiation_product_imges_info()[0]).centerCrop().into(mIvPortPhoto);
             } else {
                 mIvPortPhoto.setImageResource(R.drawable.default_image);
             }
         }
-    }
 
-    private void checkDdayData(NegoData negoData) throws ParseException {
+    private void checkDdayData(NegoData data) throws ParseException {
         Calendar toTime = Calendar.getInstance();
         long currentTiem = toTime.getTimeInMillis();
         SimpleDateFormat d = new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault());
-        String negoTime = negoData.getNegotiation_dtime();
+        String negoTime = data.getNegotiation_dtime();
         Date trTime = d.parse(negoTime);
         long futureTime = trTime.getTime();
         long diff = futureTime - currentTiem;

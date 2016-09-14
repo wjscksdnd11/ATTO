@@ -1,14 +1,13 @@
 package com.atto.developers.atto.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.negodata.NegoData;
-import com.atto.developers.atto.networkdata.tradedata.TradeListItemData;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.atto.developers.atto.viewholder.DetailTradeHeaderViewHolder;
 import com.atto.developers.atto.viewholder.DetailTradeViewHolder;
 
@@ -18,18 +17,17 @@ import java.util.List;
 /**
  * Created by Tacademy on 2016-09-01.
  */
-public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements DetailTradeViewHolder.OnNegoImageItemClickListener{
     private static final String TAG = RecyclerDetailTradeAdapter.class.getSimpleName();
-    private TradeListItemData mTradeData;
+    private TradeData tradeData;
     private List<NegoData> mNegoDataList = new ArrayList<>();
 
 
-    public void setTradeData(TradeListItemData tradeListItemData) {
-        this.mTradeData = tradeListItemData;
+    public void setTradeData(TradeData tradeData) {
+        this.tradeData = tradeData;
     }
 
     public void addAll(List<NegoData> list) {
-        if (!mNegoDataList.isEmpty()) mNegoDataList.clear();
         mNegoDataList.addAll(list);
         notifyDataSetChanged();
     }
@@ -48,13 +46,12 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
             case VIEW_TYPE_HEADER: {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_header_detail, parent, false);
                 DetailTradeHeaderViewHolder holder = new DetailTradeHeaderViewHolder(view);
-                Log.e(TAG, "Adapter onCreateView header");
                 return holder;
             }
             case VIEW_TYPE_GROUP: {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_img_detail_trade, parent, false);
                 DetailTradeViewHolder holder = new DetailTradeViewHolder(view);
-                Log.e(TAG, "Adapter onCreateView group");
+                holder.setOnNegoImageItemClickListener(this);
                 return holder;
             }
         }
@@ -63,17 +60,45 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        // HEADER
-        if (holder instanceof DetailTradeHeaderViewHolder) {
-            DetailTradeHeaderViewHolder hvh = (DetailTradeHeaderViewHolder) holder;
-            hvh.setTradeData(mTradeData);
-        }
-        // GROUP
-        else {
-            DetailTradeViewHolder gvh = (DetailTradeViewHolder) holder;
-            gvh.setNegoDataList(mNegoDataList);
+        if (mNegoDataList.size() > 0) {
+            if (position == 0) {
+                DetailTradeHeaderViewHolder hvh = (DetailTradeHeaderViewHolder) holder;
+                hvh.setTradeData(tradeData);
+                return;
+            }
+            position--;
+            for (int i = 0; i < mNegoDataList.size(); i++) {
+                if (position == 0) {
+                    if (holder.getItemViewType() != VIEW_TYPE_GROUP) {
+                        throw new IllegalArgumentException("invalid view holder");
+                    }
+                    DetailTradeViewHolder gvh = (DetailTradeViewHolder) holder;
+                    gvh.setNegoDataList(mNegoDataList.get(i));
+                    return;
+                }
+                position--;
+            }
+            throw new IllegalArgumentException("invalid position");
         }
     }
+
+    @Override
+    public void onNegoImageItemClick(View view, NegoData negoData, int position) {
+        if(listener != null){
+            listener.onNegoAdapterItemClick(view, negoData, position);
+        }
+    }
+
+    public interface OnNegoAdapterItemClickLisnter{
+        public void onNegoAdapterItemClick(View view, NegoData negoData, int position);
+    }
+
+    OnNegoAdapterItemClickLisnter listener;
+
+    public void setOnNegoAdapterItemClickListner(OnNegoAdapterItemClickLisnter listener){
+        this.listener = listener;
+    }
+
 
     @Override
     public int getItemCount() {
@@ -85,11 +110,6 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
         return count;
     }
 
-
-    /*@Override
-    public int getItemCount() {
-        return mTradeData == null ? 0 : (mNegoDataList == null ? 0 : mNegoDataList.size() + 1);
-    }*/
 }
 
 

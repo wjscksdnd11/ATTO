@@ -78,21 +78,21 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 	}
 
 
-	public void setTradeData(TradeListItemData tradeListItemData) {
-		Log.e(TAG, "Trade Header ViewHolder: " + tradeListItemData);
+	public void setTradeData(TradeData tradeData) {
+		Log.e(TAG, "Trade Header ViewHolder: " + tradeData);
 		try {
-			if (tradeListItemData != null) {
-				if (tradeListItemData.getData().getTrade_key_word_info() != null) {
-					int[] keywordList = tradeListItemData.getData().getTrade_key_word_info();
+			if (tradeData != null) {
+				if (tradeData.getTrade_key_word_info() != null) {
+					int[] keywordList = tradeData.getTrade_key_word_info();
 					checkKeywordList(keywordList);
 				}
-				checkImageData(tradeListItemData);
-				checkDdaytest(tradeListItemData);
-				mTvStatus.setText(String.valueOf(tradeListItemData.getData().getTrade_status()));
-				mTvTitle.setText(tradeListItemData.getData().getTrade_title());
-				mTvPrice.setText(tradeListItemData.getData().getTrade_price() + "원");
-				mTvNickName.setText(tradeListItemData.getData().getMember_info().getMember_alias());
-				mTvLimitDate.setText(tradeListItemData.getData().getTrade_dtime());
+				checkImageData(tradeData);
+				checkDdaytest(tradeData);
+				mTvStatus.setText(String.valueOf(tradeData.getTrade_status()));
+				mTvTitle.setText(tradeData.getTrade_title());
+				mTvPrice.setText(tradeData.getTrade_price() + "원");
+				mTvNickName.setText(tradeData.getMember_info().getMember_alias());
+				mTvLimitDate.setText(tradeData.getTrade_dtime());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,24 +100,24 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 	}
 
 
-	private void checkImageData(TradeListItemData tradeListItemData) {
-		if (tradeListItemData.getData().getTrade_product_img() != null) {
-			if (!TextUtils.isEmpty(tradeListItemData.getData().getTrade_product_img())) {
-				Glide.with(itemView.getContext()).load(tradeListItemData.getData().getTrade_product_img()).centerCrop().into(mIvPhoto);
+	private void checkImageData(TradeData tradeData) {
+		if (tradeData.getTrade_product_img() != null) {
+			if (!TextUtils.isEmpty(tradeData.getTrade_product_img())) {
+				Glide.with(itemView.getContext()).load(tradeData.getTrade_product_img()).centerCrop().into(mIvPhoto);
 			} else {
 				mIvPhoto.setImageResource(R.drawable.default_image);
 			}
 		}
-		if (tradeListItemData.getData().getTrade_product_imges_info() != null) {
-			if (!TextUtils.isEmpty(tradeListItemData.getData().getTrade_product_imges_info()[0])) {
-				Glide.with(itemView.getContext()).load(tradeListItemData.getData().getTrade_product_imges_info()[0]).centerCrop().into(mIvPhoto);
+		if (tradeData.getTrade_product_imges_info() != null) {
+			if (!TextUtils.isEmpty(tradeData.getTrade_product_imges_info()[0])) {
+				Glide.with(itemView.getContext()).load(tradeData.getTrade_product_imges_info()[0]).centerCrop().into(mIvPhoto);
 			} else {
 				mIvPhoto.setImageResource(R.drawable.default_image);
 			}
 		}
-		if(tradeListItemData.getData().getMember_info().getMember_profile_img() != null){
-			if(!TextUtils.isEmpty(tradeListItemData.getData().getMember_info().getMember_profile_img())){
-				Glide.with(itemView.getContext()).load(tradeListItemData.getData().getMember_info().getMember_profile_img()).bitmapTransform(new CropCircleTransformation(itemView.getContext())).into(mIvProfile);
+		if(tradeData.getMember_info().getMember_profile_img() != null){
+			if(!TextUtils.isEmpty(tradeData.getMember_info().getMember_profile_img())){
+				Glide.with(itemView.getContext()).load(tradeData.getMember_info().getMember_profile_img()).bitmapTransform(new CropCircleTransformation(itemView.getContext())).into(mIvProfile);
 			}
 		}
 	}
@@ -131,15 +131,15 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 	}
 
 
-	private void checkDdaytest(TradeListItemData tradeListItemData) throws ParseException {
+	private void checkDdaytest(TradeData tradeData) throws ParseException {
 		Calendar toTime = Calendar.getInstance();
 		long currentTiem = toTime.getTimeInMillis();
 		SimpleDateFormat d = new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault());
-		String tradeTime = tradeListItemData.getData().getTrade_dtime();
+		String tradeTime = tradeData.getTrade_dtime();
 		Date trTime = d.parse(tradeTime);
 		long futureTime = trTime.getTime();
 		long diff = futureTime - currentTiem;
 		int day = (int) (diff / (1000 * 60 * 60 * 24));
-		mTvDDay.setText("D-" + day);
+		mTvDDay.setText("D" + day);
 	}
 }

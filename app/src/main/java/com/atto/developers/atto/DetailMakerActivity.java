@@ -30,7 +30,6 @@ public class DetailMakerActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_list)
     RecyclerView listView;
-
     RecyclerDetailMakerAdapter mAdapter;
     public static final String MAKER_PORT_ID = "maker_port_id";
 
