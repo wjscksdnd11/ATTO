@@ -133,4 +133,6 @@ public class DetailTradeActivity extends AppCompatActivity {
 			}
 		});
 	}
+
+
 }

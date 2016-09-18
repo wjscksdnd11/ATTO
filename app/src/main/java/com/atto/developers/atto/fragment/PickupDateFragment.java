@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.atto.developers.atto.AddNegoActivity;
 import com.atto.developers.atto.AddTradeActivity;
 import com.atto.developers.atto.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;

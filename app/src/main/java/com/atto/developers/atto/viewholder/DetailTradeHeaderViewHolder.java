@@ -9,19 +9,17 @@ import android.widget.TextView;
 
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.tradedata.TradeData;
-import com.atto.developers.atto.networkdata.tradedata.TradeListItemData;
 import com.bumptech.glide.Glide;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by Tacademy on 2016-09-01.
@@ -29,12 +27,16 @@ import butterknife.ButterKnife;
 public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 	private static final String TAG = DetailTradeHeaderViewHolder.class.getSimpleName();
 
-	@BindViews({
-			R.id.text_trade_keyword_a,
-			R.id.text_trade_keyword_b,
-			R.id.text_trade_keyword_c
-	})
-	List<TextView> mTvKeywordList;
+	private static final int KEYWORD_COUNT = 3;
+	TextView[] keywordView = new TextView[3];
+
+//	@BindViews({
+//			R.id.text_trade_keyword_a,
+//			R.id.text_trade_keyword_b,
+//			R.id.text_trade_keyword_c
+//	})
+//	List<TextView> mTvKeywordList;
+
 
 	@BindView(R.id.img_realtime_photo)
 	ImageView mIvPhoto;
@@ -64,15 +66,14 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 	TextView mTvLimitDate;
 
 
-	TradeListItemData tradeListItemData;
-	TradeData tradeData;
-	//private Context mContext;
-
-
 	public DetailTradeHeaderViewHolder(View itemView) {
 		super(itemView);
 		//this.mContext = itemView.getContext();
 		ButterKnife.bind(this, itemView);
+
+		keywordView[0] = (TextView) itemView.findViewById(R.id.text_trade_keyword_a);
+		keywordView[1] = (TextView) itemView.findViewById(R.id.text_trade_keyword_b);
+		keywordView[2] = (TextView) itemView.findViewById(R.id.text_trade_keyword_c);
 	}
 
 
@@ -80,10 +81,10 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 		Log.e(TAG, "Trade Header ViewHolder: " + tradeData);
 		try {
 			if (tradeData != null) {
-				if (tradeData.getTrade_key_word_info() != null) {
-					int[] keywordList = tradeData.getTrade_key_word_info();
-					checkKeywordList(keywordList);
-				}
+//				if (tradeData.getTrade_key_word_info() != null) {
+//					int[] keywordList = tradeData.getTrade_key_word_info();
+//					checkKeywordList(keywordList);
+//				}
 				checkImageData(tradeData);
 				checkDdaytest(tradeData);
 				mTvStatus.setText(String.valueOf(tradeData.getTrade_status()));
@@ -91,6 +92,8 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 				mTvPrice.setText(tradeData.getTrade_price() + "원");
 				mTvNickName.setText(tradeData.getMember_info().getMember_alias());
 				mTvLimitDate.setText(tradeData.getTrade_dtime());
+				Integer[] keywordList = tradeData.getTrade_key_word_info();
+				checkKeywordList(keywordList);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,12 +123,29 @@ public class DetailTradeHeaderViewHolder extends RecyclerView.ViewHolder {
 		}
 	}
 
-	private void checkKeywordList(int[] keywordList) {
-		for (TextView keywordView : mTvKeywordList)
-			keywordView.setVisibility(View.GONE);
+//	private void checkKeywordList(int[] keywordList) {
+//		for (TextView keywordView : mTvKeywordList)
+//			keywordView.setVisibility(View.GONE);
+//
+//		for (int i = 0; i < keywordList.length; i++)
+//			mTvKeywordList.get(i).setText(String.valueOf(keywordList[i]));
+//	}
 
-		for (int i = 0; i < keywordList.length; i++)
-			mTvKeywordList.get(i).setText(String.valueOf(keywordList[i]));
+	private void checkKeywordList(Integer[] keywordList) {
+		if (keywordList != null) {
+			for (int i = 0; i < keywordList.length; i++) {
+				Log.i("realtime", "keywordList : " + keywordList[i]);
+				if (keywordList[i] != 0) {
+					keywordView[i].setText(keywordList[i] + "");
+				} else {
+					keywordView[i].setVisibility(View.GONE);
+				}
+			}
+		} else {
+			for (int i = 0; i < KEYWORD_COUNT; i++) {
+				keywordView[i].setVisibility(View.GONE);
+			}
+		}
 	}
 
 

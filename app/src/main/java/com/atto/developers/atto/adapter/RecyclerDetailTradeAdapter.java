@@ -1,14 +1,13 @@
 package com.atto.developers.atto.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.atto.developers.atto.R;
 import com.atto.developers.atto.networkdata.negodata.NegoData;
-import com.atto.developers.atto.networkdata.tradedata.TradeListItemData;
+import com.atto.developers.atto.networkdata.tradedata.TradeData;
 import com.atto.developers.atto.viewholder.DetailTradeHeaderViewHolder;
 import com.atto.developers.atto.viewholder.DetailTradeViewHolder;
 
@@ -24,9 +23,11 @@ public class RecyclerDetailTradeAdapter extends RecyclerView.Adapter<RecyclerVie
     private List<NegoData> mNegoDataList = new ArrayList<>();
 
 
+
     public void setTradeData(TradeData tradeData) {
         this.tradeData = tradeData;
     }
+
 
     public void addAll(List<NegoData> list) {
         mNegoDataList.addAll(list);

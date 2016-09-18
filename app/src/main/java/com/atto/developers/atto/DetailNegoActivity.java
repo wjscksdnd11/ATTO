@@ -1,35 +1,45 @@
 package com.atto.developers.atto;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.atto.developers.atto.fragment.MakerOrderDialogFragment;
 import com.atto.developers.atto.fragment.ReportDialogFragment;
 import com.atto.developers.atto.manager.NetworkManager;
 import com.atto.developers.atto.manager.NetworkRequest;
+import com.atto.developers.atto.networkdata.negodata.NegeListItemData;
 import com.atto.developers.atto.networkdata.negodata.NegoData;
-import com.atto.developers.atto.networkdata.tradedata.ListData;
-import com.atto.developers.atto.request.NegoCardListRequest;
+import com.atto.developers.atto.request.DetailNegoRequest;
 import com.bumptech.glide.Glide;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class DetailNegoActivity extends AppCompatActivity {
-    @BindView(R.id.img_trade_profile)
-    ImageView trade_profile;
-    @BindView(R.id.text_trade_profile_nickname)
-    TextView trade_nickname;
+    private static final String TAG = DetailNegoActivity.class.getSimpleName();
+
+    @BindView(R.id.img_maker_profile)
+    ImageView mIvProfile;
+
+    @BindView(R.id.img_add_port_photo)
+    ImageView mIvPortPhoto;
+
+    @BindView(R.id.text_maker_profile_nickname)
+    TextView mTvNickName;
+
     @BindView(R.id.offer_price)
     TextView mTvOfferPrice;
 
@@ -48,20 +58,23 @@ public class DetailNegoActivity extends AppCompatActivity {
     @BindView(R.id.ratingbar_maker_grade_text)
     TextView mRbMakerScore;
 
+    @BindView(R.id.text_trade_maker_contents)
+    TextView mTmcontents;
 
-    private void initToolBar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
-        toolbar.setTitle(R.string.activity_mypage_setting);
-        toolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
+
+//    private void initToolBar() {
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+//        toolbar.setTitle(R.string.activity_mypage_setting);
+//        toolbar.setTitleTextColor(Color.WHITE);
+//        setSupportActionBar(toolbar);
+//        toolbar.setNavigationIcon(R.drawable.ic_navigate_before_white);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
+//    }
 
 
     @OnClick(R.id.img_btn_Report)
@@ -88,14 +101,17 @@ public class DetailNegoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_nego);
         ButterKnife.bind(this);
-        initToolBar();
+//        initToolBar();
         Intent intent = getIntent();
-        int Nego_id = intent.getIntExtra("Negotiation_id", -1);
+        int Nego_id = intent.getIntExtra("negotiation_id", -1);
         initData(Nego_id);
+        Log.e(TAG, "DetailNego : " +Nego_id);
+
     }
 
     private void initData(int negotiationId) {
         DetailNegoRequest request = new DetailNegoRequest(this, negotiationId+"", negotiationId+"");
+        Log.e(TAG, "DetailNego request : " + request.getRequest());
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<NegeListItemData>() {
             @Override
             public void onSuccess(NetworkRequest<NegeListItemData> request, NegeListItemData result) {
@@ -117,12 +133,14 @@ public class DetailNegoActivity extends AppCompatActivity {
                 Log.e(TAG, "DetailNego checkNego : " + data.getNegotiation_id());
                 checkImageData(data);
                 checkDdayData(data);
+                mTmcontents.setText(data.getNegotiation_product_contents());
                 mTvNickName.setText(data.getMaker_info().getMaker_name());
                 mTvOfferPrice.setText(data.getNegotiation_price() + "원");
                 mTvLimitDate.setText(data.getNegotiation_dtime());
                 String score = String.valueOf(data.getMaker_info().getMaker_score() / 2);
                 mRbMakerGrade.setRating(data.getMaker_info().getMaker_score() / 2);
                 mRbMakerScore.setText("(" + score + ")");
+                Glide.with(this).load(data.getNegotiation_product_imges_info()[0]).centerCrop().into(mIvPortPhoto);
             }
         } catch (ParseException e1) {
             e1.printStackTrace();
@@ -134,12 +152,10 @@ public class DetailNegoActivity extends AppCompatActivity {
             Log.e(TAG, "checkNego Image1 : " + data.getMaker_info().getMaker_profile_img());
                 Glide.with(this).load(data.getMaker_info().getMaker_profile_img()).bitmapTransform(new CropCircleTransformation(getApplicationContext())).into(mIvProfile);
             }
-        if (data.getNegotiation_product_imges_info()[0] != null) {
-            Log.e(TAG, "checkNego Image[] : " + data.getNegotiation_product_imges_info()[0]);
-                Glide.with(this).load(data.getNegotiation_product_imges_info()[0]).centerCrop().into(mIvPortPhoto);
-            } else {
-                mIvPortPhoto.setImageResource(R.drawable.default_image);
-            }
+//        if (data.getNegotiation_product_imges_info()[0] != null) {
+//            Log.e(TAG, "checkNego Image[] : " + data.getNegotiation_product_imges_info()[0]);
+//                Glide.with(this).load(data.getNegotiation_product_imges_info()[0]).centerCrop().into(mIvPortPhoto);
+//            }
         }
 
     private void checkDdayData(NegoData data) throws ParseException {
