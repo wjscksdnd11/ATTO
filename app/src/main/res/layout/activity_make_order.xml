@@ -21,8 +21,6 @@
             android:minHeight="?attr/actionBarSize">
         </android.support.v7.widget.Toolbar>
 
-
-
         <include
             android:id="@+id/add_maker_headerview"
             layout="@layout/view_add_maker_order_headerview"
@@ -35,7 +33,7 @@
         <include
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/view_make_order_top" />
+            layout="@layout/view_make_order_cstop" />
 
         <include
                 android:id="@+id/include6"

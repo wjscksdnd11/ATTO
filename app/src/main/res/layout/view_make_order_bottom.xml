@@ -44,7 +44,7 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/btn_img_address"
+            android:id="@+id/btn_make_address"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_weight="1"

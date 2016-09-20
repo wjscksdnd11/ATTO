@@ -14,42 +14,9 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:id="@+id/img_maker_profile"
+            android:id="@+id/img_consumer_profile"
             android:layout_width="56dp"
             android:layout_height="56dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="5dp">
-
-            <RatingBar
-                android:id="@+id/ratingbar_maker_grade"
-                android:layout_width="wrap_content"
-                android:layout_height="12dp"
-                android:layout_gravity="center"
-                android:progressDrawable="@drawable/custom_bar"
-                android:numStars="5"
-                android:stepSize="0.5"
-                android:rating="5"
-                android:clickable="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:isIndicator="true"
-                />
-
-            <TextView
-                android:id="@+id/ratingbar_maker_grade_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:textSize="10sp"
-                android:textAppearance="?android:attr/textAppearanceSmall"/>
-        </LinearLayout>
-
 
 
     </LinearLayout>
@@ -62,7 +29,7 @@
         android:layout_marginRight="20dp">
 
         <TextView
-            android:id="@+id/text_maker_nickname"
+            android:id="@+id/text_consumer_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"

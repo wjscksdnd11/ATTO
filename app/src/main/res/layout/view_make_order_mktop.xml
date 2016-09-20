@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackg"
+    android:orientation="vertical"    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/text_consumer"
+        android:id="@+id/textView11"
+        android:layout_marginLeft="5dp" />
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/view_make_consumer_order" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="수제잼이 먹고싶어요."
+        android:id="@+id/textView12"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2016년 09월 23일"
+        android:id="@+id/textView13"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20,000원"
+        android:id="@+id/textView14"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/imageView2"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/color_atto_main"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_detailed"
+        android:id="@+id/textView15"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
+
+</LinearLayout>
